@@ -181,7 +181,9 @@ h1,h2,h3,.num,.btn{font-family:'Fredoka',sans-serif}
 
 .modal-bg{position:fixed;inset:0;background:rgba(5,15,19,.75);display:none;align-items:center;justify-content:center;z-index:50;padding:20px;backdrop-filter:blur(3px)}
 .modal-bg.show{display:flex}
-.modal{background:var(--cream);color:var(--ink);border-radius:22px;padding:26px 22px;width:100%;max-width:380px;text-align:center;animation:pop .35s cubic-bezier(.2,1.4,.4,1)}
+.modal{position:relative;background:var(--cream);color:var(--ink);border-radius:22px;padding:26px 22px;width:100%;max-width:380px;text-align:center;animation:pop .35s cubic-bezier(.2,1.4,.4,1)}
+.modal-x{position:absolute;right:12px;top:10px;width:34px;height:34px;border:none;border-radius:50%;background:rgba(9,28,34,.08);color:var(--ink);font-size:1.35rem;line-height:1;cursor:pointer}
+.modal-x:active{transform:scale(.96)}
 @keyframes pop{from{transform:scale(.7);opacity:0}to{transform:scale(1);opacity:1}}
 .modal .m-emoji{font-size:3.5rem;display:block;margin-bottom:8px}
 .modal h2{font-size:1.5rem;margin-bottom:6px}
@@ -471,7 +473,8 @@ const DEFAULT = {
   stories:{}, bosses:{}, badges:[],
   totalCorrect:0, totalWrong:0, wordsLearned:[], gamesPlayed:0, letterGamesTried:{},
   practiceLevel:1, practiceRounds:0,
-  daily:{ day:null, storyDone:0, questions:0, xpEarned:0 }
+  review:{},
+  daily:{ day:null, variant:0, storyDone:0, questions:0, xpEarned:0, practiceDone:0, gamesDone:0 }
 };
 let S = load();
 let ACCOUNT = loadAccount();
@@ -486,6 +489,8 @@ function load(){
       const parsed = JSON.parse(raw);
       const merged = Object.assign(structuredClone(DEFAULT), parsed);
       if(!merged.bosses) merged.bosses = {};
+      if(!merged.review) merged.review = {};
+      merged.daily = Object.assign(structuredClone(DEFAULT.daily), merged.daily || {});
       if(parsed.bossDefeated) merged.bosses.airport = true; /* migración v1 */
       return merged;
     }
@@ -524,6 +529,20 @@ function cloudHeaders(extra={}){
 function cloudUrl(params=''){
   return `${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}${params}`;
 }
+function mergeReviewStats(local={}, remote={}){
+  const out = {};
+  [...new Set([...Object.keys(remote || {}), ...Object.keys(local || {})])].forEach(k=>{
+    const a = local[k] || {};
+    const b = remote[k] || {};
+    out[k] = {
+      correct: Math.max(a.correct || 0, b.correct || 0),
+      wrong: Math.max(a.wrong || 0, b.wrong || 0),
+      seen: Math.max(a.seen || 0, b.seen || 0),
+      last: [a.last, b.last].filter(Boolean).sort().pop() || null
+    };
+  });
+  return out;
+}
 function mergeProgress(local, remote){
   const base = Object.assign(structuredClone(DEFAULT), remote || {}, local || {});
   base.stories = Object.assign({}, remote?.stories || {}, local?.stories || {});
@@ -539,9 +558,10 @@ function mergeProgress(local, remote){
   base.totalWrong = Math.max(local?.totalWrong || 0, remote?.totalWrong || 0);
   base.gamesPlayed = Math.max(local?.gamesPlayed || 0, remote?.gamesPlayed || 0);
   base.letterGamesTried = Object.assign({}, remote?.letterGamesTried || {}, local?.letterGamesTried || {});
+  base.review = mergeReviewStats(local?.review || {}, remote?.review || {});
   base.practiceLevel = Math.max(local?.practiceLevel || 1, remote?.practiceLevel || 1);
   base.practiceRounds = Math.max(local?.practiceRounds || 0, remote?.practiceRounds || 0);
-  base.daily = local?.daily || remote?.daily || structuredClone(DEFAULT.daily);
+  base.daily = Object.assign(structuredClone(DEFAULT.daily), remote?.daily || {}, local?.daily || {});
   base.lastDay = local?.lastDay || remote?.lastDay || null;
   return base;
 }
@@ -685,9 +705,13 @@ function renderHomeAccountBox(){
 }
 
 function todayStr(){ return new Date().toISOString().slice(0,10); }
+function dayVariant(day){
+  return String(day || todayStr()).split('').reduce((n,ch)=>n+ch.charCodeAt(0),0) % 4;
+}
 function checkDay(){
   const t = todayStr();
-  if(S.daily.day !== t) S.daily = { day:t, storyDone:0, questions:0, xpEarned:0 };
+  if(S.daily.day !== t) S.daily = Object.assign(structuredClone(DEFAULT.daily), { day:t, variant:dayVariant(t) });
+  else S.daily = Object.assign(structuredClone(DEFAULT.daily), S.daily || {});
   if(S.lastDay !== t){
     const y = new Date(); y.setDate(y.getDate()-1);
     S.streak = (S.lastDay === y.toISOString().slice(0,10)) ? S.streak + 1 : 1;
@@ -1858,7 +1882,7 @@ stories:[
 /* ════════════════ 🏨 HOTEL ════════════════ */
 {
 id:'hotel', ico:'🏨', name:'Hotel',
-brunoIntro:'Bruno reservó <b>3 aventuras</b> en el hotel. ¡Hacé check-in como un viajero experto!',
+brunoIntro:'Bruno reservó <b>15 aventuras</b> en el hotel. Practicá check-in, problemas de cuarto, servicios, desayuno, equipaje y check-out hasta vencer al Night Manager.',
 vocab:[
   {en:'reception', es:'recepción'}, {en:'key', es:'llave'},
   {en:'room', es:'habitación'}, {en:'towel', es:'toalla'},
@@ -1867,21 +1891,33 @@ vocab:[
   {en:'pool', es:'piscina'}, {en:'password', es:'contraseña'},
   {en:'hot water', es:'agua caliente'}, {en:'blanket', es:'cobija'},
   {en:'front desk', es:'recepción'}, {en:'check-out', es:'salida'},
-  {en:'pillow', es:'almohada'}, {en:'stairs', es:'escaleras'}
+  {en:'pillow', es:'almohada'}, {en:'stairs', es:'escaleras'},
+  {en:'housekeeping', es:'limpieza'}, {en:'luggage storage', es:'guarda equipaje'},
+  {en:'wake-up call', es:'llamada despertador'}, {en:'safe', es:'caja fuerte'},
+  {en:'view', es:'vista'}, {en:'noise', es:'ruido'},
+  {en:'late check-out', es:'salida tarde'}, {en:'taxi', es:'taxi'}
 ],
 phrases:[
   {q:'I have a ___ for tonight.', a:'reservation', opts:['reservation','restaurant','revolution']},
   {q:'What time is ___?', a:'breakfast', opts:['breakfast','blanket','basket']},
   {q:'There is no hot ___ in my room.', a:'water', opts:['water','window','winter']},
   {q:'Can I have an extra ___?', a:'towel', opts:['towel','tower','town']},
-  {q:'What is the wifi ___?', a:'password', opts:['password','passport','pasta']}
+  {q:'What is the wifi ___?', a:'password', opts:['password','passport','pasta']},
+  {q:'Can I have a late ___?', a:'check-out', opts:['check-out','checkout','chicken']},
+  {q:'Can you store my ___?', a:'luggage', opts:['luggage','language','lettuce']},
+  {q:'I need a wake-up ___.', a:'call', opts:['call','cold','card']},
+  {q:'The room is too ___.', a:'noisy', opts:['noisy','nice','new']}
 ],
 unscramble:[
   {words:['have','I','a','reservation'], answer:'I have a reservation', es:'tengo una reservación'},
   {words:['time','what','is','breakfast'], answer:'what time is breakfast', es:'¿a qué hora es el desayuno?'},
   {words:['room','is','my','cold'], answer:'my room is cold', es:'mi habitación está fría'},
   {words:['can','a','I','have','towel'], answer:'can I have a towel', es:'¿me da una toalla?'},
-  {words:['is','where','the','elevator'], answer:'where is the elevator', es:'¿dónde está el ascensor?'}
+  {words:['is','where','the','elevator'], answer:'where is the elevator', es:'¿dónde está el ascensor?'},
+  {words:['can','I','have','late','check-out'], answer:'can I have late check-out', es:'puedo tener salida tarde'},
+  {words:['store','my','luggage','can','you'], answer:'can you store my luggage', es:'puede guardar mi equipaje'},
+  {words:['room','is','too','noisy','my'], answer:'my room is too noisy', es:'mi habitación tiene mucho ruido'},
+  {words:['need','a','wake-up','call','I'], answer:'I need a wake-up call', es:'necesito una llamada despertador'}
 ],
 boss:{ name:'The Night Manager', emoji:'🧛🏨',
   questions:[
@@ -1999,7 +2035,31 @@ stories:[
      en:'Everyone laughs. The receptionist says it happens every day. You learned "lost" AND "found" today!',
      es:'Todos se ríen. La recepcionista dice que pasa todos los días. ¡Hoy aprendiste "lost" Y "found"!'}
   ]
-}
+},
+...[ 
+  ['extra-towels','TWL→ROOM','Extra Towels','🛁','Pide toallas extra para la habitacion.','After the pool, every towel in the room is wet. Bruno looks at the bathroom like a detective.','Can I have extra towels, please?','towel','towel','can I have a towel',['can','a','I','have','towel'],'Towels delivered'],
+  ['breakfast-buffet','EGG→COF','Breakfast Buffet','🥐','Pregunta por el desayuno y sus horarios.','The smell of coffee leads you downstairs. The breakfast buffet is almost closing.','What time is breakfast?','breakfast','breakfast','what time is breakfast',['time','what','is','breakfast'],'Breakfast found'],
+  ['elevator-out','LIFT→STAIRS','Elevator Out','🛗','Busca las escaleras cuando el ascensor no funciona.','The elevator doors stay closed. A small sign says: out of order. Bruno points to the hallway.','Where are the stairs?','stairs','stairs','where are the stairs',['where','are','the','stairs'],'Stairs found'],
+  ['room-too-cold','AC→WARM','Room Too Cold','🥶','Reporta que el cuarto esta demasiado frio.','The air conditioner is working too well. The room feels like an ice cave.','My room is too cold.','blanket','cold','my room is cold',['room','is','my','cold'],'Warm again'],
+  ['housekeeping','BED→CLEAN','Housekeeping','🧹','Pide limpieza para la habitacion.','You return from a long day and the room needs fresh sheets. Bruno waits by the door.','Could we have housekeeping, please?','housekeeping','housekeeping','we need housekeeping',['we','need','housekeeping'],'Room refreshed'],
+  ['luggage-storage','BAG→SAVE','Luggage Storage','🧳','Guarda el equipaje antes del vuelo.','Check-out is at 11, but your flight leaves at 6. The suitcases need a safe place.','Can you store my luggage?','luggage','luggage','can you store my luggage',['store','my','luggage','can','you'],'Bags stored'],
+  ['late-checkout','CLOCK→YES','Late Check-out','⏰','Pide salir un poco mas tarde.','Your morning meeting runs long and the room key is still on the desk.','Can I have late check-out?','check-out','check-out','can I have late check-out',['can','I','have','late','check-out'],'Extra time'],
+  ['wake-up-call','PHONE→WAKE','Wake-up Call','☎️','Programa una llamada despertador.','Tomorrow starts early. Bruno does not trust the phone alarm alone.','I need a wake-up call at six.','call','call','I need a wake-up call',['need','a','wake-up','call','I'],'Morning secured'],
+  ['safe-box','SAFE→LOCK','The Room Safe','🔒','Pregunta por la caja fuerte.','You have passports and cash. The small safe in the closet is blinking.','How do I use the safe?','safe','safe','how do I use the safe',['how','do','I','use','the','safe'],'Safe locked'],
+  ['city-view','VIEW→WOW','City View','🌇','Pide una habitacion con vista.','From the window you see a brick wall. Bruno expected something more dramatic.','Do you have a room with a view?','view','view','a room with a view',['a','room','with','a','view'],'View upgraded'],
+  ['noisy-room','NOISE→HELP','Noisy Room','🔊','Reporta ruido en la noche.','At midnight, music thumps through the wall. Bruno opens one eye.','My room is too noisy.','noise','noisy','my room is too noisy',['room','is','too','noisy','my'],'Quiet room'],
+  ['taxi-to-airport','CAB→FLY','Taxi to the Airport','🚕','Pide un taxi desde el hotel.','Bags are packed and the airport is far away. The front desk can help.','Can you call a taxi for me?','taxi','taxi','can you call a taxi',['can','you','call','a','taxi'],'Taxi called']
+].map(s=>({
+  id:s[0], code:s[1], title:s[2], emoji:s[3], sub:s[4], reward:{xp:72, coins:34},
+  nodes:[
+    {t:'scene', img:s[3], title:s[2], en:s[5], es:s[4]},
+    {t:'decision', speaker:'🐶 Bruno', line:'Choose the best hotel phrase.',
+     opts:[{x:s[6], ok:true, fb:'Perfecto para Hotel World.'},{x:'My pillow wants a passport.', ok:false, fb:'Suena divertido, pero no resuelve el problema.'},{x:'The elevator is breakfast.', ok:false, fb:'Casi poesia de hotel, pero no.'}]},
+    {t:'fill', q:`Complete the hotel word: ___`, a:s[7], opts:[s[7], 'ticket', 'salad'], fb:`${s[7]} es una palabra clave del hotel.`},
+    {t:'build', words:s[10], answer:s[9], es:s[9]},
+    {t:'scene', img:'✅', title:s[11], en:'Hotel mission complete. Bruno stamps your room key like a tiny passport.', es:'Mision de hotel completada. Bruno sella tu llave como si fuera pasaporte.'}
+  ]
+}))
 ]},
 
 /* ════════════════ 🛒 SHOPPING ════════════════ */
@@ -3092,6 +3152,399 @@ stories:[
     ]
   }))
 ]
+},
+
+/* ════════════════ 🏥 HEALTH ════════════════ */
+{
+id:'health', ico:'🏥', name:'Health',
+brunoIntro:'Bruno encontro una bata miniatura y <b>15 aventuras</b> de salud. Practica doctor, farmacia, sintomas, emergencias suaves, citas medicas y cuidado personal hasta vencer al Fever Phantom.',
+vocab:[
+  {en:'doctor', es:'doctor'}, {en:'nurse', es:'enfermero/a'}, {en:'clinic', es:'clinica'},
+  {en:'hospital', es:'hospital'}, {en:'appointment', es:'cita'}, {en:'medicine', es:'medicina'},
+  {en:'pharmacy', es:'farmacia'}, {en:'headache', es:'dolor de cabeza'}, {en:'fever', es:'fiebre'},
+  {en:'cough', es:'tos'}, {en:'pain', es:'dolor'}, {en:'allergy', es:'alergia'},
+  {en:'bandage', es:'vendaje'}, {en:'pill', es:'pastilla'}, {en:'prescription', es:'receta medica'},
+  {en:'insurance', es:'seguro'}, {en:'emergency', es:'emergencia'}, {en:'rest', es:'descanso'},
+  {en:'water', es:'agua'}, {en:'symptom', es:'sintoma'}, {en:'temperature', es:'temperatura'},
+  {en:'healthy', es:'saludable'}, {en:'dizzy', es:'mareado'}, {en:'stomachache', es:'dolor de estomago'}
+],
+phrases:[
+  {q:'I have a ___.', a:'headache', opts:['headache','handshake','hotel']},
+  {q:'I need to see a ___.', a:'doctor', opts:['doctor','driver','dollar']},
+  {q:'Do you have a ___?', a:'fever', opts:['fever','favor','flower']},
+  {q:'Take one ___ with water.', a:'pill', opts:['pill','pillow','pilot']},
+  {q:'I am allergic to ___.', a:'nuts', opts:['nuts','notes','nights']},
+  {q:'This is an ___.', a:'emergency', opts:['emergency','energy','example']},
+  {q:'You need to ___.', a:'rest', opts:['rest','read','rent']},
+  {q:'Where is the ___?', a:'pharmacy', opts:['pharmacy','factory','family']}
+],
+unscramble:[
+  {words:['have','a','headache','I'], answer:'I have a headache', es:'me duele la cabeza'},
+  {words:['need','a','doctor','I'], answer:'I need a doctor', es:'necesito un doctor'},
+  {words:['take','one','pill','with','water'], answer:'take one pill with water', es:'tome una pastilla con agua'},
+  {words:['have','a','fever','I'], answer:'I have a fever', es:'tengo fiebre'},
+  {words:['am','allergic','to','nuts','I'], answer:'I am allergic to nuts', es:'soy alergico/a a las nueces'},
+  {words:['need','to','rest','you'], answer:'you need to rest', es:'necesita descansar'},
+  {words:['is','the','pharmacy','where'], answer:'where is the pharmacy', es:'donde esta la farmacia'},
+  {words:['this','is','an','emergency'], answer:'this is an emergency', es:'esto es una emergencia'}
+],
+boss:{ name:'Fever Phantom', emoji:'👻🌡️',
+  questions:[
+    {q:'"Headache" significa...', opts:['Dolor de cabeza','Dolor de mano','Hamburguesa'], a:0},
+    {q:'Como decis "necesito un doctor"?', opts:['I need a doctor.','I need a driver.','I need a dollar.'], a:0},
+    {q:'"Fever" es...', opts:['Fiebre','Flor','Favor'], a:0},
+    {q:'"Take one pill with water" significa...', opts:['Tome una pastilla con agua','Tome una almohada','Beba cafe'], a:0},
+    {q:'"Pharmacy" es...', opts:['Farmacia','Familia','Fabrica'], a:0},
+    {q:'Como dices "soy alergico/a a las nueces"?', opts:['I am allergic to nuts.','I am angry at notes.','I am alert at night.'], a:0},
+    {q:'"Emergency" significa...', opts:['Emergencia','Energia','Ejemplo'], a:0},
+    {q:'"You need to rest" significa...', opts:['Necesita descansar','Necesita leer','Necesita pagar renta'], a:0},
+    {q:'"Prescription" es...', opts:['Receta medica','Presentacion','Impresora'], a:0},
+    {q:'"Dizzy" significa...', opts:['Mareado','Ocupado','Soleado'], a:0}
+  ]},
+stories:[
+  ...[
+    ['doctor-appointment','CALL→DOC','Doctor Appointment','🩺','Agenda una cita medica sencilla.','You need a doctor appointment. Bruno sits quietly beside the phone.','I need to make an appointment.','appointment','appointment','I need an appointment',['need','an','appointment','I'],'Appointment booked'],
+    ['headache-help','PAIN→REST','Headache Help','🤕','Explica un dolor de cabeza.','Your head hurts and the clinic asks about symptoms.','I have a headache.','headache','headache','I have a headache',['have','a','headache','I'],'Symptom explained'],
+    ['pharmacy-visit','RX→PILL','Pharmacy Visit','💊','Compra medicina y entiende instrucciones.','The pharmacy is open and you need medicine.','I need some medicine.','medicine','medicine','I need medicine',['need','medicine','I'],'Medicine ready'],
+    ['fever-check','HOT→TEMP','Fever Check','🌡️','Pregunta por fiebre y temperatura.','You feel hot and tired. The nurse checks your temperature.','I think I have a fever.','fever','fever','I have a fever',['have','a','fever','I'],'Temperature checked'],
+    ['cough-day','COF→TEA','Cough Day','😷','Habla de tos y descanso.','You cannot stop coughing during breakfast. Bruno brings emotional support.','I have a cough.','cough','cough','I have a cough',['have','a','cough','I'],'Cough handled'],
+    ['allergy-alert','NUT→NO','Allergy Alert','🥜','Explica una alergia antes de comer.','Someone offers cookies. You need to ask about nuts.','I am allergic to nuts.','allergy','nuts','I am allergic to nuts',['am','allergic','to','nuts','I'],'Allergy safe'],
+    ['small-cut','CUT→BAND','Small Cut','🩹','Pide un vendaje para una cortada pequeña.','You cut your finger while opening a box. It is small but annoying.','Do you have a bandage?','bandage','bandage','do you have a bandage',['have','a','bandage','do','you'],'Bandage found'],
+    ['insurance-card','CARD→OK','Insurance Card','💳','Muestra tu seguro en la clinica.','Reception asks for your insurance card. Bruno checks your bag.','Here is my insurance card.','insurance','insurance','here is my insurance card',['here','is','my','insurance','card'],'Card accepted'],
+    ['dizzy-moment','SPIN→SIT','Dizzy Moment','💫','Di que te sientes mareada y pide sentarte.','The room spins for a moment. You need to speak clearly.','I feel dizzy. Can I sit down?','dizzy','dizzy','I feel dizzy',['feel','dizzy','I'],'Seat found'],
+    ['stomachache','FOOD→PAIN','Stomachache','🤢','Explica dolor de estomago.','Lunch was suspicious. Now your stomach is complaining.','I have a stomachache.','stomachache','stomachache','I have a stomachache',['have','a','stomachache','I'],'Stomach explained'],
+    ['prescription-pickup','DOC→RX','Prescription Pickup','📋','Retira una receta medica.','The doctor sent a prescription to the pharmacy.','I am here to pick up a prescription.','prescription','prescription','I need my prescription',['need','my','prescription','I'],'Prescription ready'],
+    ['drink-water','DRY→WTR','Drink Water','💧','Pide agua y cuida tu salud.','You feel tired after walking in the sun. Bruno points at your water bottle.','I need some water.','water','water','I need water',['need','water','I'],'Hydration win'],
+    ['rest-order','BED→OK','You Need Rest','🛌','Entiende cuando te dicen que descanses.','The nurse says your body needs time. Bruno agrees dramatically.','You need to rest.','rest','rest','you need to rest',['need','to','rest','you'],'Rest accepted'],
+    ['emergency-call','911→HELP','Emergency Call','🚑','Practica una emergencia simple.','Someone falls in the park. You need to call for help.','This is an emergency.','emergency','emergency','this is an emergency',['this','is','an','emergency'],'Help called'],
+    ['healthy-plan','NOW→WELL','Healthy Plan','🥗','Arma un plan para sentirte mejor.','Bruno wants you healthy for more adventures. Time for a simple plan.','I want to be healthy.','healthy','healthy','I want to be healthy',['want','to','be','healthy','I'],'Health plan ready']
+  ].map(s=>({
+    id:s[0], code:s[1], title:s[2], emoji:s[3], sub:s[4], reward:{xp:75, coins:35},
+    nodes:[
+      {t:'scene', img:s[3], title:s[2], en:s[5], es:s[4]},
+      {t:'decision', speaker:'🐶 Bruno', line:'Choose the best health phrase.',
+       opts:[{x:s[6], ok:true, fb:'Perfecto para Health World.'},{x:'My sandwich needs a doctor.', ok:false, fb:'Divertido, pero no resuelve la situacion.'},{x:'I am a thermometer.', ok:false, fb:'Casi poesia medica, pero no.'}]},
+      {t:'fill', q:`Complete the health word: ___`, a:s[7], opts:[s[7], 'ticket', 'printer'], fb:`${s[7]} es una palabra clave de salud.`},
+      {t:'build', words:s[10], answer:s[9], es:s[9]},
+      {t:'scene', img:'✅', title:s[11], en:'Health mission complete. Bruno adds a tiny heart sticker.', es:'Mision de salud completada. Bruno agrega un sello de corazon.'}
+    ]
+  }))
+]
+},
+
+/* ════════════════ 🚗 TRAVEL ════════════════ */
+{
+id:'travel', ico:'🚗', name:'Travel',
+brunoIntro:'Bruno saco un mapa, una maleta y <b>15 aventuras</b> de viaje. Practica rutas, transporte, hoteles, gasolina, mapas, alquiler de carro y planes hasta vencer al Road Trip Goblin.',
+vocab:[
+  {en:'map', es:'mapa'}, {en:'route', es:'ruta'}, {en:'road', es:'carretera'},
+  {en:'car', es:'carro'}, {en:'bus', es:'bus'}, {en:'train', es:'tren'},
+  {en:'station', es:'estacion'}, {en:'ticket', es:'boleto'}, {en:'driver', es:'conductor'},
+  {en:'gas', es:'gasolina'}, {en:'hotel', es:'hotel'}, {en:'reservation', es:'reservacion'},
+  {en:'luggage', es:'equipaje'}, {en:'suitcase', es:'maleta'}, {en:'passport', es:'pasaporte'},
+  {en:'traffic', es:'trafico'}, {en:'parking', es:'estacionamiento'}, {en:'left', es:'izquierda'},
+  {en:'right', es:'derecha'}, {en:'straight', es:'recto'}, {en:'lost', es:'perdido'},
+  {en:'arrival', es:'llegada'}, {en:'departure', es:'salida'}, {en:'delay', es:'retraso'}
+],
+phrases:[
+  {q:'Where is the ___?', a:'station', opts:['station','suitcase','street']},
+  {q:'I need a train ___.', a:'ticket', opts:['ticket','table','toast']},
+  {q:'Turn ___ at the corner.', a:'left', opts:['left','lift','late']},
+  {q:'Go ___ for two blocks.', a:'straight', opts:['straight','street','strong']},
+  {q:'We need ___.', a:'gas', opts:['gas','gate','glass']},
+  {q:'I have a hotel ___.', a:'reservation', opts:['reservation','conversation','celebration']},
+  {q:'My luggage is ___.', a:'lost', opts:['lost','last','list']},
+  {q:'The train is ___.', a:'delayed', opts:['delayed','delicious','deleted']}
+],
+unscramble:[
+  {words:['need','a','ticket','I'], answer:'I need a ticket', es:'necesito un boleto'},
+  {words:['where','the','station','is'], answer:'where is the station', es:'donde esta la estacion'},
+  {words:['turn','left','here'], answer:'turn left here', es:'gire a la izquierda aqui'},
+  {words:['go','straight','two','blocks'], answer:'go straight two blocks', es:'siga recto dos cuadras'},
+  {words:['need','gas','we'], answer:'we need gas', es:'necesitamos gasolina'},
+  {words:['have','a','reservation','I'], answer:'I have a reservation', es:'tengo una reservacion'},
+  {words:['my','luggage','is','lost'], answer:'my luggage is lost', es:'mi equipaje esta perdido'},
+  {words:['train','is','delayed','the'], answer:'the train is delayed', es:'el tren esta retrasado'}
+],
+boss:{ name:'Road Trip Goblin', emoji:'👺🛣️',
+  questions:[
+    {q:'"Map" significa...', opts:['Mapa','Comida','Maleta'], a:0},
+    {q:'Como decis "necesito un boleto"?', opts:['I need a ticket.','I need a table.','I need a toast.'], a:0},
+    {q:'"Turn left" significa...', opts:['Gire a la izquierda','Gire a la derecha','Siga recto'], a:0},
+    {q:'"Go straight" significa...', opts:['Siga recto','Pare','Regrese'], a:0},
+    {q:'"Reservation" es...', opts:['Reservacion','Conversacion','Celebracion'], a:0},
+    {q:'"My luggage is lost" significa...', opts:['Mi equipaje esta perdido','Mi boleto esta caro','Mi tren esta lleno'], a:0},
+    {q:'"Gas" en viaje puede ser...', opts:['Gasolina','Regalo','Puerta'], a:0},
+    {q:'"Delayed" significa...', opts:['Retrasado','Delicioso','Borrado'], a:0},
+    {q:'"Parking" es...', opts:['Estacionamiento','Parque','Pasaporte'], a:0},
+    {q:'"Departure" significa...', opts:['Salida','Llegada','Derecha'], a:0}
+  ]},
+stories:[
+  ...[
+    ['map-check','MAP→GO','Map Check','🗺️','Revisa el mapa antes de salir.','The road trip starts. Bruno studies the map like a tiny navigator.','Where are we going?','map','map','where is the map',['where','is','the','map'],'Route ready'],
+    ['train-ticket','BUY→TRAIN','Train Ticket','🚆','Compra un boleto de tren.','The train station is busy and the ticket machine is blinking.','I need a train ticket.','ticket','ticket','I need a ticket',['need','a','ticket','I'],'Ticket bought'],
+    ['bus-station','CITY→BUS','Bus Station','🚌','Encuentra la estacion correcta.','Three buses arrive at once. Bruno watches the signs carefully.','Where is the bus station?','station','station','where is the station',['where','the','station','is'],'Station found'],
+    ['turn-left','GPS→LEFT','Turn Left','⬅️','Sigue direcciones simples.','The GPS speaks quickly and Bruno barks at the wrong turn.','Turn left at the corner.','left','left','turn left here',['turn','left','here'],'Left turn done'],
+    ['go-straight','ROAD→YES','Go Straight','⬆️','Sigue recto sin perderte.','The street is long and the map says two more blocks.','Go straight for two blocks.','straight','straight','go straight two blocks',['go','straight','two','blocks'],'Still on route'],
+    ['gas-stop','LOW→GAS','Gas Stop','⛽','Pide gasolina antes de quedarte parado.','The fuel light turns on. Bruno looks personally offended.','We need gas.','gas','gas','we need gas',['need','gas','we'],'Tank full'],
+    ['hotel-reservation','KEY→ROOM','Hotel Reservation','🏨','Confirma tu reservacion de hotel.','You arrive at the hotel after a long drive.','I have a reservation.','reservation','reservation','I have a reservation',['have','a','reservation','I'],'Room confirmed'],
+    ['lost-luggage','BAG→HELP','Lost Luggage','🧳','Reporta equipaje perdido.','The carousel stops. Your suitcase does not appear.','My luggage is lost.','luggage','lost','my luggage is lost',['my','luggage','is','lost'],'Luggage reported'],
+    ['traffic-jam','STOP→WAIT','Traffic Jam','🚦','Habla de trafico y retrasos.','Cars are not moving. Bruno sighs dramatically.','There is a lot of traffic.','traffic','traffic','there is traffic',['there','is','traffic'],'Traffic survived'],
+    ['parking-spot','CAR→PARK','Parking Spot','🅿️','Pregunta por estacionamiento.','You arrive downtown but every parking spot is full.','Where is the parking lot?','parking','parking','where is parking',['where','is','parking'],'Car parked'],
+    ['car-rental','KEY→CAR','Car Rental','🚙','Alquila un carro para viajar.','At the rental desk, Bruno checks the car keys.','I would like to rent a car.','car','car','I rent a car',['rent','a','car','I'],'Car rented'],
+    ['road-snack','SNACK→GO','Road Snack','🥪','Compra algo para el camino.','Everyone is hungry and the next town is far away.','Can we stop for food?','food','stop','can we stop',['can','we','stop'],'Snack secured'],
+    ['train-delay','WAIT→GO','Train Delay','⏱️','Entiende un retraso de tren.','The board changes. Your train is not leaving yet.','The train is delayed.','delay','delayed','the train is delayed',['train','is','delayed','the'],'Delay understood'],
+    ['arrival-plan','ARR→MEET','Arrival Plan','📍','Coordina la llegada.','You are almost there and your friend asks for an update.','We will arrive at 6.','arrival','arrive','we arrive at six',['we','arrive','at','six'],'Arrival shared'],
+    ['road-trip-finale','ROAD→BOSS','Road Trip Finale','🏁','Llega al destino y prepara el Boss.','The destination appears on the horizon. Bruno sees the Road Trip Goblin.','We made it!','route','made','we made it',['made','it','we'],'Boss unlocked']
+  ].map(s=>({
+    id:s[0], code:s[1], title:s[2], emoji:s[3], sub:s[4], reward:{xp:75, coins:35},
+    nodes:[
+      {t:'scene', img:s[3], title:s[2], en:s[5], es:s[4]},
+      {t:'decision', speaker:'🐶 Bruno', line:'Choose the best travel phrase.',
+       opts:[{x:s[6], ok:true, fb:'Perfecto para Travel World.'},{x:'The suitcase is driving.', ok:false, fb:'Divertido, pero no resuelve el viaje.'},{x:'I am a map now.', ok:false, fb:'Casi poesia viajera, pero no.'}]},
+      {t:'fill', q:`Complete the travel word: ___`, a:s[7], opts:[s[7], 'printer', 'doctor'], fb:`${s[7]} es una palabra clave de viaje.`},
+      {t:'build', words:s[10], answer:s[9], es:s[9]},
+      {t:'scene', img:'✅', title:s[11], en:'Travel mission complete. Bruno stamps the map with a paw.', es:'Mision de viaje completada. Bruno sella el mapa con una patita.'}
+    ]
+  }))
+]
+},
+
+/* ════════════════ 🎓 EDUCATION ════════════════ */
+{
+id:'education', ico:'🎓', name:'Education',
+brunoIntro:'Bruno abrio una mochila y encontro <b>15 aventuras</b> de estudio. Practica clases, tareas, examenes, biblioteca, preguntas y proyectos hasta vencer al Exam Wizard.',
+vocab:[
+  {en:'school', es:'escuela'}, {en:'class', es:'clase'}, {en:'teacher', es:'profesor/a'},
+  {en:'student', es:'estudiante'}, {en:'homework', es:'tarea'}, {en:'exam', es:'examen'},
+  {en:'quiz', es:'prueba corta'}, {en:'grade', es:'nota'}, {en:'book', es:'libro'},
+  {en:'library', es:'biblioteca'}, {en:'question', es:'pregunta'}, {en:'answer', es:'respuesta'},
+  {en:'lesson', es:'leccion'}, {en:'notebook', es:'cuaderno'}, {en:'pencil', es:'lapiz'},
+  {en:'study', es:'estudiar'}, {en:'learn', es:'aprender'}, {en:'read', es:'leer'},
+  {en:'write', es:'escribir'}, {en:'project', es:'proyecto'}, {en:'group', es:'grupo'},
+  {en:'deadline', es:'fecha limite'}, {en:'mistake', es:'error'}, {en:'practice', es:'practica'}
+],
+phrases:[
+  {q:'I have a ___ today.', a:'class', opts:['class','glass','grass']},
+  {q:'I forgot my ___.', a:'homework', opts:['homework','hotel','helmet']},
+  {q:'Can I ask a ___?', a:'question', opts:['question','kitchen','station']},
+  {q:'What is the ___?', a:'answer', opts:['answer','airport','animal']},
+  {q:'I need to ___ for the exam.', a:'study', opts:['study','stand','start']},
+  {q:'The project is due ___.', a:'tomorrow', opts:['tomorrow','together','teacher']},
+  {q:'Can you ___ that, please?', a:'repeat', opts:['repeat','report','repair']},
+  {q:'I made a ___.', a:'mistake', opts:['mistake','meeting','medicine']}
+],
+unscramble:[
+  {words:['have','class','today','I'], answer:'I have class today', es:'tengo clase hoy'},
+  {words:['forgot','my','homework','I'], answer:'I forgot my homework', es:'olvide mi tarea'},
+  {words:['ask','a','question','can','I'], answer:'can I ask a question', es:'puedo hacer una pregunta'},
+  {words:['need','to','study','I'], answer:'I need to study', es:'necesito estudiar'},
+  {words:['read','the','book','I'], answer:'I read the book', es:'leo el libro'},
+  {words:['write','the','answer'], answer:'write the answer', es:'escribe la respuesta'},
+  {words:['project','is','due','tomorrow','the'], answer:'the project is due tomorrow', es:'el proyecto vence mañana'},
+  {words:['made','a','mistake','I'], answer:'I made a mistake', es:'cometi un error'}
+],
+boss:{ name:'Exam Wizard', emoji:'🧙‍♂️📚',
+  questions:[
+    {q:'"Homework" significa...', opts:['Tarea','Hotel','Casco'], a:0},
+    {q:'Como decis "puedo hacer una pregunta"?', opts:['Can I ask a question?','Can I eat a question?','Can I ask a kitchen?'], a:0},
+    {q:'"Study" significa...', opts:['Estudiar','Pararse','Empezar'], a:0},
+    {q:'"Library" es...', opts:['Biblioteca','Libreria siempre','Laboratorio'], a:0},
+    {q:'"I forgot my homework" significa...', opts:['Olvide mi tarea','Hice mi tarea','Compre un libro'], a:0},
+    {q:'"Answer" significa...', opts:['Respuesta','Animal','Aeropuerto'], a:0},
+    {q:'"Mistake" es...', opts:['Error','Medicina','Reunion'], a:0},
+    {q:'"The project is due tomorrow" significa...', opts:['El proyecto vence mañana','El proyecto duerme mañana','El proyecto es azul'], a:0},
+    {q:'Como pides que repitan?', opts:['Can you repeat that, please?','Can you report that, please?','Can you repair that, please?'], a:0},
+    {q:'"Grade" en escuela es...', opts:['Nota','Grado/calificacion','Ambas pueden ser correctas'], a:2}
+  ]},
+stories:[
+  ...[
+    ['first-class','BELL→CLASS','First Class','🏫','Llegas a tu primera clase.','The bell rings. Bruno sits quietly beside your backpack.','I have class today.','class','class','I have class today',['have','class','today','I'],'Class started'],
+    ['homework-panic','BAG→TASK','Homework Panic','📄','Olvidaste la tarea y debes explicarlo.','The teacher asks for homework. Your folder is empty.','I forgot my homework.','homework','homework','I forgot my homework',['forgot','my','homework','I'],'Truth told'],
+    ['ask-question','HAND→ASK','Ask a Question','🙋','Levanta la mano y pregunta.','You do not understand one word. Bruno points at your hand.','Can I ask a question?','question','question','can I ask a question',['ask','a','question','can','I'],'Question asked'],
+    ['library-card','BOOK→LIB','Library Card','📚','Pide ayuda en la biblioteca.','The library is quiet and full of books.','Where is the library card desk?','library','library','where is the library',['where','is','the','library'],'Library found'],
+    ['exam-study','NIGHT→EXAM','Exam Study','📝','Estudia para el examen sin entrar en panico.','The exam is tomorrow. Bruno brings pencils and courage.','I need to study for the exam.','study','study','I need to study',['need','to','study','I'],'Study mode'],
+    ['quiz-surprise','POP→QUIZ','Pop Quiz','❓','Responde a una prueba sorpresa.','The teacher says: surprise quiz. Bruno blinks twice.','I will do my best.','quiz','best','I will do my best',['will','do','my','best','I'],'Quiz survived'],
+    ['group-project','TEAM→PROJ','Group Project','👥','Trabaja en equipo para un proyecto.','Your group needs to divide the work clearly.','I can write the introduction.','project','project','I can write',['can','write','I'],'Group ready'],
+    ['teacher-feedback','RED→FIX','Teacher Feedback','🧑‍🏫','Usa comentarios para mejorar.','Your teacher gives feedback on your paragraph.','Thank you for your feedback.','feedback','feedback','thank you for your feedback',['thank','you','for','your','feedback'],'Draft improved'],
+    ['lost-pencil','PEN→FIND','Lost Pencil','✏️','Pide un lapiz prestado.','Your pencil disappears right before class starts.','Can I borrow a pencil?','pencil','pencil','can I borrow a pencil',['borrow','a','pencil','can','I'],'Pencil borrowed'],
+    ['reading-time','PAGE→READ','Reading Time','📖','Lee un texto y confirma la idea principal.','The class reads a short story. Bruno follows every line.','I read the book.','read','book','I read the book',['read','the','book','I'],'Reading done'],
+    ['write-answer','WRITE→OK','Write the Answer','🖊️','Escribe una respuesta clara.','The worksheet has one difficult question.','I know the answer.','answer','answer','write the answer',['write','the','answer'],'Answer written'],
+    ['deadline-project','DUE→DONE','Project Deadline','⏳','Entrega el proyecto a tiempo.','The project is due tomorrow. Bruno guards the folder.','The project is due tomorrow.','deadline','tomorrow','the project is due tomorrow',['project','is','due','tomorrow','the'],'Deadline met'],
+    ['mistake-fix','ERR→LEARN','Fix a Mistake','🧩','Corrige un error sin frustrarte.','You find a mistake in your answer. That means you are learning.','I made a mistake.','mistake','mistake','I made a mistake',['made','a','mistake','I'],'Mistake fixed'],
+    ['repeat-please','FAST→SLOW','Repeat, Please','🔁','Pide que repitan algo.','The teacher explains too fast. Bruno tilts his head.','Can you repeat that, please?','repeat','repeat','can you repeat that please',['repeat','that','please','can','you'],'Repeated clearly'],
+    ['final-exam','TEST→BOSS','Final Exam','🏆','Termina el repaso y prepara el Boss.','The final exam begins. Exam Wizard waits behind the chalkboard.','I am ready for the exam.','exam','ready','I am ready',['am','ready','I'],'Boss unlocked']
+  ].map(s=>({
+    id:s[0], code:s[1], title:s[2], emoji:s[3], sub:s[4], reward:{xp:75, coins:35},
+    nodes:[
+      {t:'scene', img:s[3], title:s[2], en:s[5], es:s[4]},
+      {t:'decision', speaker:'🐶 Bruno', line:'Choose the best school phrase.',
+       opts:[{x:s[6], ok:true, fb:'Perfecto para Education World.'},{x:'My notebook ate the teacher.', ok:false, fb:'Divertido, pero no ayuda en clase.'},{x:'I am a pencil now.', ok:false, fb:'Casi poesia escolar, pero no.'}]},
+      {t:'fill', q:`Complete the school word: ___`, a:s[7], opts:[s[7], 'gas', 'doctor'], fb:`${s[7]} es una palabra clave de estudio.`},
+      {t:'build', words:s[10], answer:s[9], es:s[9]},
+      {t:'scene', img:'✅', title:s[11], en:'Education mission complete. Bruno puts a star on your notebook.', es:'Mision de estudio completada. Bruno pone una estrella en tu cuaderno.'}
+    ]
+  }))
+]
+},
+
+/* ═════════════════ SOCIAL ════════════════ */
+{
+id:'social', ico:'👥', name:'Social',
+brunoIntro:'Bruno escucho risas cerca de una cafeteria y encontro <b>15 aventuras</b> sociales. Practica saludos, invitaciones, planes, cumplidos, disculpas y conversaciones reales hasta vencer al Connection DJ.',
+vocab:[
+  {en:'friend', es:'amigo/a'}, {en:'neighbor', es:'vecino/a'}, {en:'party', es:'fiesta'},
+  {en:'invitation', es:'invitacion'}, {en:'conversation', es:'conversacion'}, {en:'message', es:'mensaje'},
+  {en:'introduce', es:'presentar'}, {en:'meet', es:'conocer'}, {en:'plan', es:'plan'},
+  {en:'weekend', es:'fin de semana'}, {en:'coffee', es:'cafe'}, {en:'dinner', es:'cena'},
+  {en:'birthday', es:'cumpleanos'}, {en:'gift', es:'regalo'}, {en:'compliment', es:'cumplido'},
+  {en:'sorry', es:'lo siento'}, {en:'excuse me', es:'disculpe'}, {en:'welcome', es:'bienvenido/a'},
+  {en:'together', es:'juntos'}, {en:'later', es:'mas tarde'}, {en:'busy', es:'ocupado/a'},
+  {en:'available', es:'disponible'}, {en:'nice', es:'agradable'}, {en:'join', es:'unirse'}
+],
+phrases:[
+  {q:'Nice to ___ you.', a:'meet', opts:['meet','meat','map']},
+  {q:'Would you like to ___ us?', a:'join', opts:['join','jump','joke']},
+  {q:'Are you ___ this weekend?', a:'available', opts:['available','arrival','airport']},
+  {q:'I am ___ today.', a:'busy', opts:['busy','bus','boss']},
+  {q:'Thank you for the ___.', a:'invitation', opts:['invitation','information','station']},
+  {q:'That is a nice ___.', a:'compliment', opts:['compliment','competition','computer']},
+  {q:'See you ___.', a:'later', opts:['later','letter','lighter']},
+  {q:'I am ___ for being late.', a:'sorry', opts:['sorry','story','sunny']}
+],
+unscramble:[
+  {words:['nice','to','meet','you'], answer:'nice to meet you', es:'gusto en conocerte'},
+  {words:['would','you','like','to','join','us'], answer:'would you like to join us', es:'te gustaria unirte'},
+  {words:['are','you','available','this','weekend'], answer:'are you available this weekend', es:'estas disponible este fin de semana'},
+  {words:['I','am','busy','today'], answer:'I am busy today', es:'estoy ocupado/a hoy'},
+  {words:['thank','you','for','the','invitation'], answer:'thank you for the invitation', es:'gracias por la invitacion'},
+  {words:['that','is','a','nice','jacket'], answer:'that is a nice jacket', es:'esa es una chaqueta bonita'},
+  {words:['see','you','later'], answer:'see you later', es:'nos vemos mas tarde'},
+  {words:['I','am','sorry','for','being','late'], answer:'I am sorry for being late', es:'lo siento por llegar tarde'}
+],
+boss:{ name:'Connection DJ', emoji:'🎧✨',
+  questions:[
+    {q:'"Nice to meet you" significa...', opts:['Gusto en conocerte','Necesito comida','Buen mapa'], a:0},
+    {q:'Como invitas a alguien a unirse?', opts:['Would you like to join us?','Would you like to jump us?','Would you like to joke us?'], a:0},
+    {q:'"Available" significa...', opts:['Disponible','Aeropuerto','Llegada'], a:0},
+    {q:'"I am busy today" significa...', opts:['Estoy ocupado/a hoy','Estoy en bus hoy','Soy jefe hoy'], a:0},
+    {q:'"Invitation" es...', opts:['Invitacion','Informacion','Estacion'], a:0},
+    {q:'Como dices "nos vemos mas tarde"?', opts:['See you later.','See your letter.','Sea you lighter.'], a:0},
+    {q:'"Sorry" significa...', opts:['Lo siento','Historia','Soleado'], a:0},
+    {q:'"Compliment" es...', opts:['Cumplido','Computadora','Competencia'], a:0},
+    {q:'"Neighbor" significa...', opts:['Vecino/a','Enfermero/a','Pasajero/a'], a:0},
+    {q:'Como agradeces una invitacion?', opts:['Thank you for the invitation.','Thank you for the station.','Thank you for the situation.'], a:0}
+  ]},
+stories:[
+  ...[
+    ['new-neighbor','DOOR→HI','New Neighbor','🏘️','Saludas a una persona nueva en el vecindario.','A new neighbor moves in next door. Bruno carries a welcome smile.','Hi, nice to meet you.','meet','meet','nice to meet you',['nice','to','meet','you'],'Neighbor met'],
+    ['coffee-invite','CAFE→YES','Coffee Invite','☕','Acepta o propone tomar cafe.','A classmate smiles and points to the coffee shop across the street.','Would you like to get coffee?','coffee','coffee','would you like coffee',['would','you','like','coffee'],'Coffee planned'],
+    ['weekend-plan','SAT→PLAN','Weekend Plan','📅','Pregunta si alguien esta disponible.','Your friend wants to make a weekend plan, but nobody knows the time yet.','Are you available this weekend?','available','available','are you available this weekend',['are','you','available','this','weekend'],'Plan opened'],
+    ['join-the-group','TABLE→JOIN','Join the Group','🪑','Pide unirte a una mesa o grupo.','A friendly group is playing a word game. Bruno nudges your chair closer.','Can I join you?','join','join','would you like to join us',['would','you','like','to','join','us'],'Group joined'],
+    ['birthday-message','CAKE→MSG','Birthday Message','🎂','Escribe un mensaje de cumpleanos.','It is your friend birthday and you want to write something warm.','Happy birthday! I hope you have a great day.','birthday','birthday','happy birthday have a great day',['happy','birthday','have','a','great','day'],'Message sent'],
+    ['party-invitation','CARD→GO','Party Invitation','💌','Responde a una invitacion.','An invitation arrives for a small party. Bruno reads it like important mail.','Thank you for the invitation.','invitation','invitation','thank you for the invitation',['thank','you','for','the','invitation'],'Invitation accepted'],
+    ['small-talk-weather','SUN→CHAT','Small Talk','🌤️','Inicia una conversacion sencilla.','You wait in line and someone mentions the weather. Bruno looks ready for polite conversation.','It is a beautiful day.','conversation','day','it is a beautiful day',['it','is','a','beautiful','day'],'Chat started'],
+    ['give-compliment','WOW→NICE','Nice Compliment','✨','Da un cumplido natural.','Your friend arrives wearing a great jacket. Bruno approves the style.','That is a nice jacket.','compliment','nice','that is a nice jacket',['that','is','a','nice','jacket'],'Compliment landed'],
+    ['running-late','TIME→SORRY','Running Late','⏰','Disculpate por llegar tarde.','Traffic slows everything down. Your friend is already waiting.','I am sorry for being late.','sorry','sorry','I am sorry for being late',['I','am','sorry','for','being','late'],'Apology accepted'],
+    ['busy-today','NO→KIND','Busy Today','📌','Di que no puedes sin sonar brusca.','Someone invites you out, but your day is full. Bruno helps you answer kindly.','I am busy today, but thank you.','busy','busy','I am busy today',['I','am','busy','today'],'Kind no'],
+    ['see-you-later','BYE→NEXT','See You Later','👋','Cierra una conversacion con amabilidad.','The conversation ends, but you want to sound friendly.','See you later.','later','later','see you later',['see','you','later'],'Friendly goodbye'],
+    ['group-photo','PIC→SMILE','Group Photo','📸','Organiza una foto grupal.','Everyone gathers for a photo. Bruno sits front and center.','Can we take a photo together?','together','together','can we take a photo together',['can','we','take','a','photo','together'],'Photo taken'],
+    ['text-message','PHONE→SEND','Text Message','📱','Envias un mensaje claro.','You need to confirm plans by message. Bruno watches the typing dots.','I will send you a message.','message','message','I will send you a message',['I','will','send','you','a','message'],'Message clear'],
+    ['introduce-friend','A→B','Introduce a Friend','🤝','Presenta a dos personas.','Two friends arrive and do not know each other yet. Time to connect them.','Let me introduce my friend.','introduce','friend','let me introduce my friend',['let','me','introduce','my','friend'],'Friends connected'],
+    ['social-finale','CHAT→BOSS','Social Finale','🎧','Usa todo lo aprendido antes del Boss.','Music plays softly and the Connection DJ waits near the final conversation circle.','I am ready to talk with new people.','friend','ready','I am ready',['I','am','ready'],'Boss unlocked']
+  ].map(s=>({
+    id:s[0], code:s[1], title:s[2], emoji:s[3], sub:s[4], reward:{xp:75, coins:35},
+    nodes:[
+      {t:'scene', img:s[3], title:s[2], en:s[5], es:s[4]},
+      {t:'decision', speaker:'🐶 Bruno', line:'Choose the best social phrase.',
+       opts:[{x:s[6], ok:true, fb:'Perfecto para Social World.'},{x:'My calendar is eating soup.', ok:false, fb:'Suena gracioso, pero no conecta la conversacion.'},{x:'I am a party invitation.', ok:false, fb:'Casi poesia social, pero no.'}]},
+      {t:'fill', q:`Complete the social word: ___`, a:s[7], opts:[s[7], 'printer', 'medicine'], fb:`${s[7]} es una palabra clave social.`},
+      {t:'build', words:s[10], answer:s[9], es:s[9]},
+      {t:'scene', img:'✅', title:s[11], en:'Social mission complete. Bruno saves this friendship moment in your passport.', es:'Mision social completada. Bruno guarda este momento de amistad en tu pasaporte.'}
+    ]
+  }))
+]
+},
+
+/* ═════════════════ LIFESTYLE ════════════════ */
+{
+id:'lifestyle', ico:'🌟', name:'Lifestyle',
+brunoIntro:'Bruno preparo una salida completa por la ciudad: <b>18 aventuras</b> en el mall, con mascotas, gimnasio, salon de belleza, calles desconocidas y reuniones con amigos. Ingles para vivir, no solo para estudiar.',
+vocab:[
+  {en:'mall', es:'centro comercial'}, {en:'store', es:'tienda'}, {en:'sale', es:'oferta'},
+  {en:'food court', es:'area de comidas'}, {en:'receipt', es:'recibo'}, {en:'pet', es:'mascota'},
+  {en:'vet', es:'veterinario/a'}, {en:'leash', es:'correa'}, {en:'treat', es:'premio'},
+  {en:'gym', es:'gimnasio'}, {en:'workout', es:'entrenamiento'}, {en:'treadmill', es:'caminadora'},
+  {en:'locker', es:'casillero'}, {en:'appointment', es:'cita'}, {en:'haircut', es:'corte de cabello'},
+  {en:'nails', es:'unas'}, {en:'style', es:'estilo'}, {en:'lost', es:'perdido/a'},
+  {en:'corner', es:'esquina'}, {en:'block', es:'cuadra'}, {en:'address', es:'direccion'},
+  {en:'friends', es:'amigos'}, {en:'reservation', es:'reservacion'}, {en:'table', es:'mesa'}
+],
+phrases:[
+  {q:'Where is the ___?', a:'mall', opts:['mall','meal','mail']},
+  {q:'Do you have this on ___?', a:'sale', opts:['sale','salt','seat']},
+  {q:'My pet needs a ___.', a:'vet', opts:['vet','van','vest']},
+  {q:'Can I book a ___?', a:'haircut', opts:['haircut','shortcut','helmet']},
+  {q:'I need a gym ___.', a:'locker', opts:['locker','letter','ladder']},
+  {q:'I am ___. Can you help me?', a:'lost', opts:['lost','last','list']},
+  {q:'Turn at the next ___.', a:'corner', opts:['corner','coffee','counter']},
+  {q:'We have a ___ for six.', a:'reservation', opts:['reservation','conversation','celebration']}
+],
+unscramble:[
+  {words:['where','is','the','mall'], answer:'where is the mall', es:'donde esta el centro comercial'},
+  {words:['is','this','on','sale'], answer:'is this on sale', es:'esto esta en oferta'},
+  {words:['my','pet','needs','a','vet'], answer:'my pet needs a vet', es:'mi mascota necesita veterinario'},
+  {words:['can','I','book','a','haircut'], answer:'can I book a haircut', es:'puedo reservar un corte de cabello'},
+  {words:['need','a','locker','I'], answer:'I need a locker', es:'necesito un casillero'},
+  {words:['I','am','lost'], answer:'I am lost', es:'estoy perdido/a'},
+  {words:['turn','at','the','corner'], answer:'turn at the corner', es:'gire en la esquina'},
+  {words:['we','have','a','reservation'], answer:'we have a reservation', es:'tenemos una reservacion'}
+],
+boss:{ name:'City Life Remix', emoji:'🌆🎵',
+  questions:[
+    {q:'"Mall" significa...', opts:['Centro comercial','Correo','Comida'], a:0},
+    {q:'Como preguntas si algo esta en oferta?', opts:['Is this on sale?','Is this on salt?','Is this on seat?'], a:0},
+    {q:'"Vet" es...', opts:['Veterinario/a','Camioneta','Chaleco'], a:0},
+    {q:'Como reservas un corte de cabello?', opts:['Can I book a haircut?','Can I cook a haircut?','Can I break a haircut?'], a:0},
+    {q:'"Locker" en gimnasio es...', opts:['Casillero','Carta','Escalera'], a:0},
+    {q:'"I am lost" significa...', opts:['Estoy perdido/a','Estoy tarde','Estoy en lista'], a:0},
+    {q:'"Corner" significa...', opts:['Esquina','Cafe','Mostrador'], a:0},
+    {q:'Como dices "tenemos una reservacion"?', opts:['We have a reservation.','We have a conversation.','We have a celebration.'], a:0},
+    {q:'"Food court" es...', opts:['Area de comidas','Corte de pelo','Cancha'], a:0},
+    {q:'"Workout" significa...', opts:['Entrenamiento','Trabajo terminado','Salida'], a:0}
+  ]},
+stories:[
+  ...[
+    ['mall-map','MAP→MALL','Mall Map','🛍️','Encuentra el mapa del centro comercial.','The mall is huge. Bruno stops under a bright directory sign and waits for your plan.','Where is the mall map?','mall','mall','where is the mall',['where','is','the','mall'],'Map found'],
+    ['sale-window','WIN→SALE','Sale Window','🏷️','Pregunta por una oferta en una vitrina.','A jacket in the window has a red tag. Bruno looks very serious about discounts.','Is this on sale?','sale','sale','is this on sale',['is','this','on','sale'],'Sale checked'],
+    ['food-court-choice','FOOD→SEAT','Food Court','🍜','Elige comida y pregunta por una mesa.','The food court smells amazing and every table looks full.','Is this table available?','table','table','is this table available',['is','this','table','available'],'Seat found'],
+    ['pet-vet-call','PET→VET','Vet Call','🐾','Llama al veterinario para una cita.','Your pet is acting tired. Bruno sits quietly while you call the clinic.','My pet needs a vet.','vet','vet','my pet needs a vet',['my','pet','needs','a','vet'],'Vet called'],
+    ['buy-leash','SHOP→LEASH','New Leash','🦮','Compra una correa nueva.','The old leash breaks near the pet store. Bruno points to the strong blue one.','I need a new leash.','leash','leash','I need a new leash',['I','need','a','new','leash'],'Leash ready'],
+    ['pet-treats','GOOD→TREAT','Pet Treats','🦴','Pregunta por premios para mascota.','A shelf is full of treats, but you want the healthy option.','Do you have healthy treats?','treat','treat','do you have healthy treats',['do','you','have','healthy','treats'],'Treats chosen'],
+    ['gym-front-desk','GYM→JOIN','Gym Check-in','🏋️','Entra al gimnasio y pregunta por membresia.','The gym music is energetic. Bruno waits near the front desk.','I would like to join the gym.','gym','gym','I join the gym',['I','join','the','gym'],'Gym joined'],
+    ['locker-room','BAG→LOCK','Locker Room','🔐','Pide un casillero antes de entrenar.','You need a safe place for your bag before the workout starts.','I need a locker.','locker','locker','I need a locker',['need','a','locker','I'],'Locker found'],
+    ['treadmill-help','RUN→HELP','Treadmill Help','🏃','Pide ayuda con una maquina.','The treadmill has too many buttons. Bruno studies it like a control panel.','Can you help me with the treadmill?','treadmill','help','can you help me',['can','you','help','me'],'Machine ready'],
+    ['salon-appointment','CALL→STYLE','Salon Appointment','💇','Reserva una cita en el salon.','The salon has one opening this afternoon and Bruno approves the mirror lights.','Can I book an appointment?','appointment','appointment','can I book an appointment',['can','I','book','an','appointment'],'Appointment booked'],
+    ['haircut-style','CUT→LOOK','Haircut Style','✂️','Explica como quieres el corte.','The stylist asks what you want. You show a photo and take a breath.','I would like a short haircut.','haircut','haircut','can I book a haircut',['can','I','book','a','haircut'],'Style explained'],
+    ['nail-color','COLOR→NAILS','Nail Color','💅','Escoge color para las unas.','There are fifty colors on the wall. Bruno seems to prefer mint green.','I would like this color.','nails','color','I would like this color',['I','would','like','this','color'],'Color picked'],
+    ['lost-city','MAP→LOST','Lost in the City','🧭','Pide ayuda cuando no reconoces la calle.','The street looks unfamiliar and your phone battery is low. Bruno stays close.','I am lost. Can you help me?','lost','lost','I am lost',['I','am','lost'],'Help asked'],
+    ['wrong-corner','TURN→OK','Wrong Corner','🚦','Confirma donde girar.','A kind stranger points down the street, but you need one clear direction.','Do I turn at the corner?','corner','corner','turn at the corner',['turn','at','the','corner'],'Corner confirmed'],
+    ['address-check','PIN→GO','Address Check','📍','Confirma una direccion.','The building number is hard to see. Bruno checks both sides of the street.','Is this the correct address?','address','address','is this the address',['is','this','the','address'],'Address confirmed'],
+    ['friends-reunion','GROUP→HI','Friends Reunion','👥','Llegas a una reunion de amigos.','Your friends wave from across the room. Bruno recognizes the happy voices.','I am happy to see you.','friends','friends','I am happy to see you',['I','am','happy','to','see','you'],'Friends greeted'],
+    ['six-person-table','RES→TABLE','Table for Six','🍽️','Confirma la reservacion del grupo.','The host asks for the name on the reservation. Everyone looks at you.','We have a reservation for six.','reservation','reservation','we have a reservation',['we','have','a','reservation'],'Table ready'],
+    ['lifestyle-finale','CITY→BOSS','Lifestyle Finale','🌆','Une todo lo aprendido antes del reto final.','Mall lights, gym music, city streets and friend plans come together. Bruno says you are ready.','I can handle everyday life in English.','style','ready','I am ready',['I','am','ready'],'Boss unlocked']
+  ].map(s=>({
+    id:s[0], code:s[1], title:s[2], emoji:s[3], sub:s[4], reward:{xp:78, coins:36},
+    nodes:[
+      {t:'scene', img:s[3], title:s[2], en:s[5], es:s[4]},
+      {t:'decision', speaker:'🐶 Bruno', line:'Choose the best everyday phrase.',
+       opts:[{x:s[6], ok:true, fb:'Perfecto para Lifestyle World.'},{x:'My receipt is doing yoga.', ok:false, fb:'Divertido, pero no resuelve la situacion.'},{x:'The corner ordered coffee.', ok:false, fb:'Suena creativo, pero no ayuda aqui.'}]},
+      {t:'fill', q:`Complete the lifestyle word: ___`, a:s[7], opts:[s[7], 'airport', 'printer'], fb:`${s[7]} es una palabra clave de vida diaria.`},
+      {t:'build', words:s[10], answer:s[9], es:s[9]},
+      {t:'scene', img:'✅', title:s[11], en:'Lifestyle mission complete. Bruno adds a city sticker to your passport.', es:'Mision de vida diaria completada. Bruno agrega un sello de ciudad a tu pasaporte.'}
+    ]
+  }))
+]
 }
 ];
 
@@ -3102,6 +3555,8 @@ const BADGES = [
   {id:'streak-3', emoji:'🔥', name:'On Fire', desc:'Racha de 3 días'},
   {id:'rich', emoji:'🪙', name:'Treasure Hunter', desc:'Juntá 300 monedas'},
   {id:'words-50', emoji:'📚', name:'Word Collector', desc:'50 palabras aprendidas'},
+  {id:'practice-5', emoji:'📈', name:'Practice Habit', desc:'Completá 5 prácticas libres'},
+  {id:'accuracy-80', emoji:'🎯', name:'Sharp Ear', desc:'Alcanzá 80% de precisión con 50 respuestas'},
   {id:'gamer', emoji:'🎮', name:'Game On', desc:'Jugá tu primer juego de letras'},
   {id:'arcade-10', emoji:'🕹️', name:'Arcade Pro', desc:'Completá 10 juegos de letras'},
   {id:'boss-slayer', emoji:'⚔️', name:'Boss Slayer', desc:'Vencé tu primer boss'},
@@ -3111,6 +3566,11 @@ const BADGES = [
   {id:'master-shopping', emoji:'🛒', name:'Deal Hunter', desc:'Completá Shopping World'},
   {id:'master-daily', emoji:'🏠', name:'Daily Hero', desc:'Completá Daily Life World'},
   {id:'master-office', emoji:'💼', name:'Office Pro', desc:'Completá Office World'},
+  {id:'master-health', emoji:'🏥', name:'Health Hero', desc:'Completá Health World'},
+  {id:'master-travel', emoji:'🚗', name:'Road Explorer', desc:'Completá Travel World'},
+  {id:'master-education', emoji:'🎓', name:'Study Star', desc:'Completá Education World'},
+  {id:'master-social', emoji:'👥', name:'Social Star', desc:'Completá Social World'},
+  {id:'master-lifestyle', emoji:'🌟', name:'Lifestyle Explorer', desc:'Completá Lifestyle World'},
   {id:'conqueror', emoji:'👑', name:'World Conqueror', desc:'Vencé todos los bosses'}
 ];
 
@@ -3171,6 +3631,14 @@ function speak(text){
 }
 function speakBtn(text){
   return `<button class="speak-btn" onclick="event.stopPropagation();speak('${String(text).replace(/\\/g,'\\\\').replace(/'/g,"\\'")}')" title="Escuchar pronunciación">🔊</button>`;
+}
+function narrateScene(node){
+  if(!node) return;
+  speak(`${node.title}. ${node.en}`);
+}
+function narrateSceneBtn(node){
+  const text = `${node.title}. ${node.en}`;
+  return `<button class="speak-btn" onclick="event.stopPropagation();speak('${String(text).replace(/\\/g,'\\\\').replace(/'/g,"\\'")}')" title="Escuchar narración">🔊</button>`;
 }
 function audio(){
   if(!SOUND_ON) return null;
@@ -3239,6 +3707,34 @@ function learnWords(arr){
   checkBadge('words-50', S.wordsLearned.length>=50);
   save();
 }
+function reviewKey(kind, item){
+  if(kind==='vocab') return `vocab:${item.world || ''}:${item.en}`;
+  if(kind==='phrase') return `phrase:${item.world || ''}:${item.q}:${item.a}`;
+  return `build:${item.world || ''}:${item.answer}`;
+}
+function reviewWeight(key){
+  const r = S.review?.[key];
+  if(!r) return 1;
+  return 1 + (r.wrong || 0) * 4 + Math.max(0, (r.seen || 0) - (r.correct || 0));
+}
+function recordReview(key, ok){
+  if(!key) return;
+  if(!S.review) S.review = {};
+  const r = S.review[key] || { correct:0, wrong:0, seen:0, last:null };
+  r.seen++;
+  if(ok) r.correct++; else r.wrong++;
+  r.last = new Date().toISOString();
+  S.review[key] = r;
+  save(false);
+}
+function pickAdaptive(items, kind, count, level){
+  const pool = practiceSlice(items, kind, level);
+  const scored = shuffle([...pool]).map(item=>{
+    const key = reviewKey(kind, item);
+    return { item, key, score: reviewWeight(key) + Math.random() * 1.5 };
+  }).sort((a,b)=>b.score-a.score);
+  return scored.slice(0, count).map(x=>Object.assign({}, x.item, { reviewKey:x.key }));
+}
 
 /* =====================================================
    HOME
@@ -3269,11 +3765,29 @@ function renderHome(){
   }
   document.getElementById('bruno-msg').innerHTML = msg;
 
-  const goals = [
-    {ico:'📖', text:'Completar 1 historia', cur:S.daily.storyDone, max:1},
-    {ico:'❓', text:'Responder 20 preguntas', cur:S.daily.questions, max:20},
-    {ico:'⚡', text:'Ganar 100 XP', cur:S.daily.xpEarned, max:100}
+  const goalSets = [
+    [
+      {ico:'📖', text:'Completar 1 historia', cur:S.daily.storyDone, max:1},
+      {ico:'❓', text:'Responder 20 preguntas', cur:S.daily.questions, max:20},
+      {ico:'⚡', text:'Ganar 100 XP', cur:S.daily.xpEarned, max:100}
+    ],
+    [
+      {ico:'📈', text:'Completar práctica libre', cur:S.daily.practiceDone, max:1},
+      {ico:'❓', text:'Responder 15 preguntas', cur:S.daily.questions, max:15},
+      {ico:'⚡', text:'Ganar 80 XP', cur:S.daily.xpEarned, max:80}
+    ],
+    [
+      {ico:'🎮', text:'Jugar 1 juego de letras', cur:S.daily.gamesDone, max:1},
+      {ico:'📖', text:'Completar 1 historia', cur:S.daily.storyDone, max:1},
+      {ico:'❓', text:'Responder 12 preguntas', cur:S.daily.questions, max:12}
+    ],
+    [
+      {ico:'🧠', text:'Repasar 10 respuestas', cur:S.daily.questions, max:10},
+      {ico:'📈', text:'Practicar 1 ronda adaptativa', cur:S.daily.practiceDone, max:1},
+      {ico:'⚡', text:'Ganar 60 XP', cur:S.daily.xpEarned, max:60}
+    ]
   ];
+  const goals = goalSets[S.daily.variant || 0] || goalSets[0];
   document.getElementById('goals').innerHTML = goals.map(g=>{
     const p = Math.min(100, g.cur/g.max*100);
     const ok = g.cur>=g.max;
@@ -3319,6 +3833,7 @@ function previewWorld(i){
   const sampleWords = w.vocab.slice(0,6).map(v=>`${v.en} = ${v.es}`).join(' · ');
   const nextName = w.name;
   modal(`
+    <button class="modal-x" onclick="closeModal();go('scr-home')" title="Volver al inicio">×</button>
     <span class="m-emoji">${w.ico}</span>
     <h2>${w.name} World</h2>
     <p>Está bloqueado por ahora, pero Bruno ya olfateó lo que viene.</p>
@@ -3329,7 +3844,10 @@ function previewWorld(i){
     </div>
     <div class="bruno-demo"><span class="bdog">🐶</span><span class="bcoin">🪙</span><span class="bportal">${w.ico}</span></div>
     <p>Para llegar aquí, completá <b>${prev.name}</b> y ayudá a Bruno a correr hacia <b>${nextName}</b>.</p>
-    <button class="btn btn-coral" onclick="closeModal();openWorld(${i-1})">Volver a ${prev.name}</button>
+    <div class="sync-actions mt">
+      <button class="btn btn-coral" onclick="closeModal();go('scr-home')">Volver al inicio</button>
+      <button class="btn btn-ghost" onclick="closeModal();openWorld(${i-1})">Volver a ${prev.name}</button>
+    </div>
   `);
 }
 
@@ -3510,10 +4028,11 @@ function renderNode(){
     stage.innerHTML = `
       <div class="scenecard">
         <span class="scene-img">${node.img}</span>
-        <div class="scene-title">${node.title}</div>
+        <div class="scene-title">${node.title} ${narrateSceneBtn(node)}</div>
         <div class="scene-text">${node.en}<span class="es">${node.es}</span></div>
       </div>
       <button class="btn btn-coral" onclick="nextNode()">Continuar →</button>`;
+    setTimeout(()=>narrateScene(node), 180);
   }
   else if(node.t==='decision'){
     stage.innerHTML = `
@@ -3638,6 +4157,8 @@ function pickFill(btn, val){
 function registerAnswer(ok){
   S.daily.questions++;
   if(ok) S.totalCorrect++; else { S.totalWrong++; if(SP) SP.mistakes++; }
+  const total = S.totalCorrect + S.totalWrong;
+  checkBadge('accuracy-80', total>=50 && Math.round(S.totalCorrect/total*100)>=80);
   save();
 }
 
@@ -3752,19 +4273,19 @@ function startGlobalPractice(){
   const vocabCount = level <= 2 ? 6 : 4;
   const phraseCount = level <= 1 ? 2 : level <= 3 ? 4 : 3;
   const buildCount = level <= 2 ? 2 : level <= 4 ? 3 : 5;
-  const vocabPool = practiceSlice(pool.vocab, 'vocab', level);
-  const phrasePool = practiceSlice(pool.phrases, 'phrase', level);
-  const buildPool = practiceSlice(pool.unscramble, 'build', level);
+  const vocabPool = pickAdaptive(pool.vocab, 'vocab', vocabCount, level);
+  const phrasePool = pickAdaptive(pool.phrases, 'phrase', phraseCount, level);
+  const buildPool = pickAdaptive(pool.unscramble, 'build', buildCount, level);
 
-  shuffle([...vocabPool]).slice(0,vocabCount).forEach(v=>{
+  vocabPool.forEach(v=>{
     const wrong = shuffle(pool.vocab.filter(x=>x.en!==v.en)).slice(0,2).map(x=>x.es);
-    qs.push({type:'choice', q:`${v.world}: ¿qué significa "${v.en}"?`, opts:shuffle([v.es,...wrong]), a:v.es, learn:[v.en]});
+    qs.push({type:'choice', q:`${v.world}: ¿qué significa "${v.en}"?`, opts:shuffle([v.es,...wrong]), a:v.es, learn:[v.en], reviewKey:v.reviewKey});
   });
-  shuffle([...phrasePool]).slice(0,phraseCount).forEach(p=>{
-    qs.push({type:'choice', q:`${p.world}: ${p.q}`, opts:shuffle([...p.opts]), a:p.a, learn:[p.a]});
+  phrasePool.forEach(p=>{
+    qs.push({type:'choice', q:`${p.world}: ${p.q}`, opts:shuffle([...p.opts]), a:p.a, learn:[p.a], reviewKey:p.reviewKey});
   });
-  shuffle([...buildPool]).slice(0,buildCount).forEach(u=>{
-    qs.push({type:'build', words:u.words, answer:u.answer, es:u.es});
+  buildPool.forEach(u=>{
+    qs.push({type:'build', words:u.words, answer:u.answer, es:u.es, reviewKey:u.reviewKey});
   });
 
   SP = { mode:'challenge', practice:true, qs:shuffle(qs).slice(0,10), i:0, mistakes:0, hearts:3, score:0 };
@@ -3834,6 +4355,7 @@ function chCheckBuild(){
   const q = SP.qs[SP.i];
   const ok = SP.built.join(' ').toLowerCase() === q.answer.toLowerCase();
   registerAnswer(ok);
+  if(SP.practice) recordReview(q.reviewKey, ok);
   const fb = document.getElementById('fb');
   if(ok){
     playSfx('ok');
@@ -3853,6 +4375,7 @@ function chAnswer(btn, val){
   const q = SP.qs[SP.i];
   const ok = val === q.a;
   registerAnswer(ok);
+  if(SP.practice) recordReview(q.reviewKey, ok);
   const fb = document.getElementById('fb');
   document.querySelectorAll('.opt').forEach(b=>{
     b.disabled=true;
@@ -3880,6 +4403,8 @@ function finishChallenge(){
   if(isPractice){
     const before = S.practiceLevel || 1;
     S.practiceRounds = (S.practiceRounds || 0) + 1;
+    S.daily.practiceDone = (S.daily.practiceDone || 0) + 1;
+    checkBadge('practice-5', S.practiceRounds>=5);
     if(SP.score >= 8) S.practiceLevel = Math.min(5, before + 1);
     else if(SP.score <= 4) S.practiceLevel = Math.max(1, before - 1);
     if(S.practiceLevel > before) levelNote = `Bruno subió tu práctica a <b>${practiceLevelName()}</b>.`;
@@ -3925,6 +4450,7 @@ function finishGame(emoji, title, msg, xp, coins){
   if(GM && GM._timer) clearInterval(GM._timer);
   if(GM && GM._raf) cancelAnimationFrame(GM._raf);
   S.gamesPlayed++;
+  S.daily.gamesDone = (S.daily.gamesDone || 0) + 1;
   checkBadge('gamer', true);
   checkBadge('arcade-10', S.gamesPlayed>=10);
   gainCoins(coins); gainXP(xp); save();
@@ -4593,6 +5119,7 @@ function renderProfile(){
     <div class="statrow"><span>📖 Historias completadas</span><b>${Object.keys(S.stories).length}/${totalStories}</b></div>
     <div class="statrow"><span>👹 Bosses vencidos</span><b>${Object.keys(S.bosses).length}/${WORLDS.length}</b></div>
     <div class="statrow"><span>🗣️ Palabras aprendidas</span><b>${S.wordsLearned.length}</b></div>
+    <div class="statrow"><span>🧠 Ítems en repaso inteligente</span><b>${Object.keys(S.review || {}).length}</b></div>
     <div class="statrow"><span>🎮 Juegos de letras</span><b>${S.gamesPlayed||0}</b></div>
     <div class="statrow"><span>📈 Práctica libre</span><b>${practiceLevelName()}</b></div>
     <div class="statrow"><span>🎯 Precisión</span><b>${acc}%</b></div>
