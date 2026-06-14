@@ -1237,7 +1237,7 @@ stories:[
      ]},
     {t:'decision', speaker:'🧑‍🍳 Cashier', line:'"Hi! For here or to go?"',
      opts:[
-       {x:'To go, please. My flight is soon.', ok:true, fo:true, fb:'"To go" = para llevar · "for here" = para comer ahí.'},
+       {x:'To go, please. My flight is soon.', ok:true, fb:'"To go" = para llevar · "for here" = para comer ahí.'},
        {x:'To the moon, please.', ok:false, fb:'😂 "To GO", no "to the moon". Para llevar.'},
        {x:'Here and there and everywhere.', ok:false, fb:'😅 Elegí UNO: aquí o para llevar.'}
      ]},
@@ -1880,9 +1880,10 @@ stories:[
 ]},
 
 /* ════════════════ 🏨 HOTEL ════════════════ */
+/* Personajes: 🏨 Manager Olivia · 🔧 Tech Tony · 🛎️ Bellboy Ben · 👩 Emma (desayuno/spa) · 🐶 Bruno */
 {
 id:'hotel', ico:'🏨', name:'Hotel',
-brunoIntro:'Bruno reservó <b>15 aventuras</b> en el hotel. Practicá check-in, problemas de cuarto, servicios, desayuno, equipaje y check-out hasta vencer al Night Manager.',
+brunoIntro:'Bruno reservó <b>15 aventuras</b> en el hotel. ¡Conocé a la Manager Olivia, al técnico Tony, al botones Ben y a Emma mientras dominás el inglés hotelero de nivel pro!',
 vocab:[
   {en:'reception', es:'recepción'}, {en:'key', es:'llave'},
   {en:'room', es:'habitación'}, {en:'towel', es:'toalla'},
@@ -1890,12 +1891,17 @@ vocab:[
   {en:'floor', es:'piso'}, {en:'booking', es:'reserva'},
   {en:'pool', es:'piscina'}, {en:'password', es:'contraseña'},
   {en:'hot water', es:'agua caliente'}, {en:'blanket', es:'cobija'},
-  {en:'front desk', es:'recepción'}, {en:'check-out', es:'salida'},
+  {en:'front desk', es:'recepción'}, {en:'checkout', es:'salida'},
   {en:'pillow', es:'almohada'}, {en:'stairs', es:'escaleras'},
-  {en:'housekeeping', es:'limpieza'}, {en:'luggage storage', es:'guarda equipaje'},
+  {en:'housekeeping', es:'limpieza'}, {en:'luggage', es:'equipaje'},
   {en:'wake-up call', es:'llamada despertador'}, {en:'safe', es:'caja fuerte'},
-  {en:'view', es:'vista'}, {en:'noise', es:'ruido'},
-  {en:'late check-out', es:'salida tarde'}, {en:'taxi', es:'taxi'}
+  {en:'view', es:'vista'}, {en:'noisy', es:'ruidoso'},
+  {en:'late checkout', es:'salida tardía'}, {en:'taxi', es:'taxi'},
+  {en:'balcony', es:'balcón'}, {en:'laundry', es:'lavandería'},
+  {en:'gym', es:'gimnasio'}, {en:'spa', es:'spa'},
+  {en:'trolley', es:'carrito'}, {en:'concierge', es:'conserje'},
+  {en:'suite', es:'suite'}, {en:'double room', es:'habitación doble'},
+  {en:'iron', es:'plancha'}, {en:'quiet', es:'tranquilo'}
 ],
 phrases:[
   {q:'I have a ___ for tonight.', a:'reservation', opts:['reservation','restaurant','revolution']},
@@ -1903,10 +1909,14 @@ phrases:[
   {q:'There is no hot ___ in my room.', a:'water', opts:['water','window','winter']},
   {q:'Can I have an extra ___?', a:'towel', opts:['towel','tower','town']},
   {q:'What is the wifi ___?', a:'password', opts:['password','passport','pasta']},
-  {q:'Can I have a late ___?', a:'check-out', opts:['check-out','checkout','chicken']},
+  {q:'Can I have a late ___?', a:'checkout', opts:['checkout','chicken','chocolate']},
   {q:'Can you store my ___?', a:'luggage', opts:['luggage','language','lettuce']},
   {q:'I need a wake-up ___.', a:'call', opts:['call','cold','card']},
-  {q:'The room is too ___.', a:'noisy', opts:['noisy','nice','new']}
+  {q:'The room is too ___.', a:'noisy', opts:['noisy','nice','new']},
+  {q:'Is there a ___ in the hotel?', a:'gym', opts:['gym','gem','gum']},
+  {q:'I would like a room with a ___.', a:'view', opts:['view','vine','vibe']},
+  {q:'The ___ is broken.', a:'safe', opts:['safe','sale','sake']},
+  {q:'Does the hotel have ___ service?', a:'laundry', opts:['laundry','library','lottery']}
 ],
 unscramble:[
   {words:['have','I','a','reservation'], answer:'I have a reservation', es:'tengo una reservación'},
@@ -1914,10 +1924,13 @@ unscramble:[
   {words:['room','is','my','cold'], answer:'my room is cold', es:'mi habitación está fría'},
   {words:['can','a','I','have','towel'], answer:'can I have a towel', es:'¿me da una toalla?'},
   {words:['is','where','the','elevator'], answer:'where is the elevator', es:'¿dónde está el ascensor?'},
-  {words:['can','I','have','late','check-out'], answer:'can I have late check-out', es:'puedo tener salida tarde'},
-  {words:['store','my','luggage','can','you'], answer:'can you store my luggage', es:'puede guardar mi equipaje'},
-  {words:['room','is','too','noisy','my'], answer:'my room is too noisy', es:'mi habitación tiene mucho ruido'},
-  {words:['need','a','wake-up','call','I'], answer:'I need a wake-up call', es:'necesito una llamada despertador'}
+  {words:['can','I','have','late','checkout'], answer:'can I have late checkout', es:'¿puedo tener salida tardía?'},
+  {words:['store','my','luggage','can','you'], answer:'can you store my luggage', es:'¿puede guardar mi equipaje?'},
+  {words:['room','is','too','noisy','my'], answer:'my room is too noisy', es:'mi habitación está muy ruidosa'},
+  {words:['need','a','wake-up','call','I'], answer:'I need a wake-up call', es:'necesito una llamada despertador'},
+  {words:['lost','I','key','my','card'], answer:'I lost my key card', es:'perdí mi tarjeta-llave'},
+  {words:['use','the','safe','how','I','do'], answer:'how do I use the safe', es:'¿cómo uso la caja fuerte?'},
+  {words:['like','scrambled','I','eggs','would'], answer:'I would like scrambled eggs', es:'quisiera huevos revueltos'}
 ],
 boss:{ name:'The Night Manager', emoji:'🧛🏨',
   questions:[
@@ -1927,139 +1940,495 @@ boss:{ name:'The Night Manager', emoji:'🧛🏨',
     {q:'¿Cómo se dice "ascensor"?', opts:['Elevator','Escalator','Alligator'], a:0},
     {q:'"There is no hot water" significa…', opts:['No hay agua caliente','El agua está rica','Hay mucha agua'], a:0},
     {q:'¿Cómo pedís la clave del wifi?', opts:['What is the wifi password?','Where is the wifi water?','Who is the wifi?'], a:0},
-    {q:'"My room is on the third floor" = mi habitación está en…', opts:['El tercer piso','La tercera fila','El tercer país'], a:0},
-    {q:'¿Cómo se dice "desayuno"?', opts:['Breakfast','Breakdance','Bracelet'], a:0}
+    {q:'"My room is too noisy" significa…', opts:['Mi cuarto está muy ruidoso','Mi cuarto es muy bonito','Mi cuarto está muy limpio'], a:0},
+    {q:'¿Cómo se dice "desayuno"?', opts:['Breakfast','Breakdance','Bracelet'], a:0},
+    {q:'¿Cómo pedís guardar tu equipaje?', opts:['Can you store my luggage?','Can you eat my luggage?','Can you buy my luggage?'], a:0},
+    {q:'"Late checkout" es…', opts:['Salida tardía','Llegada tarde','Café tardío'], a:0},
+    {q:'"Safe" en el hotel es…', opts:['Caja fuerte','Algo seguro','Salvo y sano'], a:0},
+    {q:'"I need a wake-up call" pide…', opts:['Una llamada para despertar','Llamar a alguien despierto','Un café para despertar'], a:0},
+    {q:'¿Cómo se dice "tranquilo" (para una habitación)?', opts:['Quiet','Quick','Quit'], a:0},
+    {q:'"Balcony" significa…', opts:['Balcón','Balcón de ópera','Baloncesto'], a:0}
   ]},
 stories:[
 {
-  id:'checking-in', code:'BAG→KEY', title:'Checking In', emoji:'🔑',
-  sub:'Llegaste cansado del viaje. Conseguí tu llave.',
+  id:'hotel-checkin', code:'BAG→KEY', title:'Checking In', emoji:'🔑',
+  sub:'Llegaste cansado del viaje. Conseguí tu llave y descansá.',
   reward:{xp:60, coins:30},
   nodes:[
     {t:'scene', img:'🏨', title:'Checking In',
-     en:'After a long trip, you arrive at the hotel. The receptionist smiles. Your bed is SO close...',
-     es:'Después de un viaje largo, llegás al hotel. La recepcionista sonríe. Tu cama está TAN cerca…'},
-    {t:'decision', speaker:'💁 Receptionist', line:'"Good evening! How can I help you?"',
+     en:'After a long trip, you arrive at the hotel. Manager Olivia smiles at the front desk. Your bed is SO close...',
+     es:'Después de un viaje largo, llegás al hotel. La gerente Olivia sonríe en recepción. Tu cama está TAN cerca…'},
+    {t:'decision', speaker:'🏨 Manager Olivia', line:'"Good evening! How can I help you?"',
      opts:[
-       {x:'Hello, I have a reservation.', ok:true, fb:'Frase de oro en hoteles: "I have a reservation."'},
-       {x:'Hello, I have a dream.', ok:false, fb:'Muy inspirador, pero la señora necesita tu RESERVA 😄'},
+       {x:'Hello, I have a reservation.', ok:true, fb:'Frase de oro en hoteles de todo el mundo: "I have a reservation."'},
+       {x:'Hello, I have a dream.', ok:false, fb:'Muy inspirador, pero Olivia necesita tu RESERVA 😄'},
        {x:'Sleep. Now. Please.', ok:false, fb:'Te entendemos… pero primero el check-in 😴'}
      ]},
-    {t:'decision', speaker:'💁 Receptionist', line:'"Can I see your ID, please?"',
+    {t:'decision', speaker:'🏨 Manager Olivia', line:'"Can I see your ID, please?"',
      opts:[
        {x:'Sure, here you go.', ok:true, fb:'"Here you go" = aquí tiene. Natural y amable.'},
-       {x:'Why? Who are you?', ok:false, fb:'Es la recepcionista 😅 Pedir ID es normal en hoteles.'},
-       {x:'My ID is sleeping.', ok:false, fb:'Tu ID no duerme… ¡está en tu bolso! 😂'}
+       {x:'Why? Who are you?', ok:false, fb:'Es la gerente 😅 Pedir ID es normal en hoteles.'},
+       {x:'My ID is sleeping.', ok:false, fb:'Tu ID no duerme… está en tu bolso 😂'}
      ]},
     {t:'fill', q:'"Your room is on the fifth ___." (piso)', a:'floor', opts:['floor','flower','flour'],
      fb:'floor = piso · floor/flower/flour suenan parecido, ¡cuidado!'},
-    {t:'build', words:['time','breakfast','what','is'], answer:'what is breakfast time', es:'¿cuál es la hora del desayuno?'},
-    {t:'decision', speaker:'💁 Receptionist', line:'"Breakfast is from 6 to 10. Here is your key. Anything else?"',
+    {t:'build', words:['time','breakfast','what','is'], answer:'what time is breakfast', es:'¿cuál es la hora del desayuno?'},
+    {t:'decision', speaker:'🏨 Manager Olivia', line:'"Breakfast from 6 to 10. Here is your key. Anything else?"',
      opts:[
        {x:'What is the wifi password?', ok:true, fb:'¡LA pregunta del siglo XXI! Siempre necesaria 📶'},
-       {x:'Yes, I want your job.', ok:false, fb:'😂 No, no le pidás trabajo. Pedí el wifi.'},
-       {x:'Where is my house?', ok:false, fb:'Tu casa quedó en Costa Rica… aquí tenés "room" 🏨'}
+       {x:'Yes, I want your job.', ok:false, fb:'😂 No le pidás trabajo a Olivia. Pedí el wifi.'},
+       {x:'Where is my house?', ok:false, fb:'Tu casa quedó en Costa Rica… aquí tenés una "room" 🏨'}
      ]},
-    {t:'scene', img:'😴', title:'Sweet dreams',
-     en:'Key in hand, wifi connected, breakfast time noted. You did the whole check-in in English. Good night!',
-     es:'Llave en mano, wifi conectado, hora del desayuno anotada. Hiciste todo el check-in en inglés. ¡Buenas noches!'}
+    {t:'scene', img:'😴', title:'Sweet dreams!',
+     en:'Key in hand, wifi connected, breakfast noted. You did the whole check-in in English. Good night!',
+     es:'Llave en mano, wifi conectado, desayuno anotado. Hiciste todo el check-in en inglés. ¡Buenas noches!'}
   ]
 },
 {
-  id:'no-hot-water', code:'RM→FIX', title:'No Hot Water', emoji:'🚿',
+  id:'hotel-wrong-room', code:'SGL→DBL', title:'Wrong Reservation', emoji:'😲',
+  sub:'Te dieron habitación sencilla pero reservaste doble.',
+  reward:{xp:65, coins:32},
+  nodes:[
+    {t:'scene', img:'😲', title:'Wrong Reservation',
+     en:'You open your room door: one tiny single bed. You reserved a double room for two people. Bellboy Ben watches nervously.',
+     es:'Abrís la puerta: una cama sencilla minúscula. Reservaste doble para dos personas. El botones Ben observa nervioso.'},
+    {t:'decision', speaker:'🐶 Bruno', line:'Back to reception. How do you explain?',
+     opts:[
+       {x:'Excuse me, I reserved a double room, not a single.', ok:true, fb:'"Double room" = doble · "single" = sencilla. Diferencia clave en hoteles.'},
+       {x:'This bed is too small for my dreams.', ok:false, fb:'😂 Poético pero confuso. Explicá el error de reserva.'},
+       {x:'I want more beds. All the beds.', ok:false, fb:'😅 No son todas las camas, solo una doble. Sé específico.'}
+     ]},
+    {t:'decision', speaker:'🏨 Manager Olivia', line:'"I am so sorry! Do you have your booking confirmation?"',
+     opts:[
+       {x:'Yes, here it is on my phone.', ok:true, fb:'"Booking confirmation" = confirmación de reserva. Siempre tenerla a mano.'},
+       {x:'Yes, and I am always right.', ok:false, fb:'😄 Puede que sí, pero mostrá la confirmación.'},
+       {x:'No, but trust me.', ok:false, fb:'😅 Mostrá la confirmación. Olivia necesita verla.'}
+     ]},
+    {t:'fill', q:'"We will move you to room ___." (cuatrocientos doce)', a:'412', opts:['412','999','one'],
+     fb:'Los números de habitación son clave. Siempre confirmá cuál te asignaron.'},
+    {t:'build', words:['reserved','double','I','a','room'], answer:'I reserved a double room', es:'reservé una habitación doble'},
+    {t:'decision', speaker:'🛎️ Bellboy Ben', line:'"Can I move your bags to room 412?"',
+     opts:[
+       {x:'Yes please, thank you Ben!', ok:true, fb:'"Trolley" = carrito de equipaje. ¡Ben al rescate! 🛎️'},
+       {x:'No, I carry them myself.', ok:false, fb:'😄 ¡Es el trabajo de Ben! Dejaló ayudarte.'},
+       {x:'Ben, do you ever rest?', ok:false, fb:'😂 Ben trabaja muchísimo. Solo aceptá la ayuda.'}
+     ]},
+    {t:'scene', img:'🛏️', title:'Double the comfort!',
+     en:'Room 412: two beds, a balcony view. You solved a hotel mix-up entirely in English!',
+     es:'Habitación 412: dos camas y vista al balcón. ¡Resolviste un error hotelero completamente en inglés!'}
+  ]
+},
+{
+  id:'hotel-no-hot-water', code:'🥶→🚿', title:'No Hot Water', emoji:'🚿',
   sub:'La ducha está helada. Reportá el problema.',
   reward:{xp:70, coins:35},
   nodes:[
     {t:'scene', img:'🥶', title:'No Hot Water',
-     en:'Morning! You jump in the shower and... AHHH! The water is FREEZING. There is no hot water.',
-     es:'¡Buenos días! Te metés a la ducha y… ¡AHHH! El agua está HELADA. No hay agua caliente.'},
+     en:'Morning! You jump in the shower and... AHHH! Freezing cold. There is no hot water at all.',
+     es:'¡Buenos días! Te metés a la ducha y… ¡AHHH! Helada total. No hay agua caliente.'},
     {t:'decision', speaker:'🐶 Bruno', line:'You call the front desk. What do you say?',
      opts:[
-       {x:'Hello, there is no hot water in my room.', ok:true, fb:'Claro y directo: "there is no…" = no hay…'},
-       {x:'Hello, the water is angry.', ok:false, fb:'El agua no tiene sentimientos 😂 Es "cold", no "angry".'},
-       {x:'Hello, I am ice now.', ok:false, fb:'Dramático pero confuso 🧊 Decí el problema: no hot water.'}
+       {x:'Hello, there is no hot water in my room.', ok:true, fb:'Claro y directo: "there is no hot water" = no hay agua caliente.'},
+       {x:'Hello, the water is angry.', ok:false, fb:'El agua no tiene sentimientos 😂 Decí el problema directamente.'},
+       {x:'Hello, I am ice now.', ok:false, fb:'Dramático pero confuso 🧊 "There is no hot water" es mejor.'}
      ]},
-    {t:'decision', speaker:'☎️ Front Desk', line:'"I am sorry! What is your room number?"',
+    {t:'decision', speaker:'🏨 Manager Olivia', line:'"I am so sorry! Room number?"',
      opts:[
-       {x:'Room 504.', ok:true, fb:'Número de habitación: lo primero que piden siempre.'},
+       {x:'Room 504.', ok:true, fb:'Número de habitación: lo primero que piden siempre. ✅'},
        {x:'I am 50 years old.', ok:false, fb:'Tu edad no calienta el agua 😄 Pidió tu ROOM number.'},
        {x:'Five hundred dollars.', ok:false, fb:'No te están cobrando… pidieron tu habitación 💸'}
      ]},
-    {t:'fill', q:'"We will send someone to ___ it." (arreglar)', a:'fix', opts:['fix','fish','fly'],
-     fb:'fix = arreglar · "to fix it" = para arreglarlo'},
+    {t:'fill', q:'"Tony will come to ___ it." (arreglar)', a:'fix', opts:['fix','fish','fly'],
+     fb:'fix = arreglar. Tony es el técnico estrella del hotel.'},
     {t:'build', words:['water','no','is','there','hot'], answer:'there is no hot water', es:'no hay agua caliente'},
-    {t:'decision', speaker:'🔧 Technician', line:'The technician arrives. "Done! Try it now. Sorry about that."',
+    {t:'decision', speaker:'🔧 Tech Tony', line:'"Fixed! The heater was off. Sorry about that!"',
      opts:[
-       {x:'Thank you for fixing it so fast!', ok:true, fb:'Agradecer el servicio rápido siempre cae bien 🔧✨'},
-       {x:'Took you forever.', ok:false, fb:'¡Llegó en 10 minutos! No exagerés 😅'},
-       {x:'Fix my life too, please.', ok:false, fb:'😂 Eso no está en su contrato. Solo el agua.'}
+       {x:'That was fast! Thank you, Tony!', ok:true, fb:'"That was fast!" = ¡qué rápido! Tony merece el elogio 🔧✨'},
+       {x:'Took you forever, Tony.', ok:false, fb:'¡Llegó en 5 minutos! No exagerés 😅'},
+       {x:'Fix the whole hotel.', ok:false, fb:'😂 Solo era el calentador. Agradecé y listo.'}
      ]},
-    {t:'scene', img:'🚿', title:'Hot shower!',
-     en:'Hot water is back! You reported a problem, gave your room number, and thanked the staff. Pro traveler!',
-     es:'¡Volvió el agua caliente! Reportaste el problema, diste tu número de habitación y agradeciste. ¡Viajero pro!'}
+    {t:'scene', img:'🚿', title:'Hot shower at last!',
+     en:'Hot water restored! You reported clearly and Tony fixed fast. Perfect teamwork in English!',
+     es:'¡Agua caliente restaurada! Reportaste claro y Tony arregló rápido. ¡Trabajo en equipo en inglés!'}
   ]
 },
 {
-  id:'lost-key', code:'KEY→???', title:'Lost Key Card', emoji:'🗝️',
+  id:'hotel-lost-key', code:'KEY→???', title:'Lost Key Card', emoji:'🗝️',
   sub:'Tu tarjeta-llave desapareció. Recuperá el acceso.',
-  reward:{xp:80, coins:40},
+  reward:{xp:70, coins:35},
   nodes:[
     {t:'scene', img:'🚪', title:'Lost Key Card',
-     en:'You come back from the pool. You search your pockets... your key card is GONE. The door will not open.',
-     es:'Volvés de la piscina. Buscás en tus bolsillos… tu tarjeta-llave DESAPARECIÓ. La puerta no abre.'},
+     en:'Back from the pool. Pockets searched... key card GONE. The door will not open.',
+     es:'Volvés de la piscina. Bolsillos revisados… tarjeta DESAPARECIÓ. La puerta no abre.'},
     {t:'decision', speaker:'🐶 Bruno', line:'Back to reception. How do you explain?',
      opts:[
-       {x:'Excuse me, I lost my key card.', ok:true, fb:'"I lost my…" — la estructura que ya dominás desde el aeropuerto 😉'},
+       {x:'Excuse me, I lost my key card.', ok:true, fb:'"I lost my key card" — la estructura que ya dominás desde el aeropuerto 😉'},
        {x:'Excuse me, my door hates me.', ok:false, fb:'La puerta no te odia 😂 Perdiste la LLAVE.'},
-       {x:'The key is on vacation.', ok:false, fb:'Creativo… pero decí "I lost my key card".'}
+       {x:'The pool ate my key.', ok:false, fb:'Las piscinas no comen llaves 😅 Decí que la perdiste.'}
      ]},
-    {t:'decision', speaker:'💁 Receptionist', line:'"No problem. Can you confirm your name and room number?"',
+    {t:'decision', speaker:'🏨 Manager Olivia', line:'"No problem. Name and room number?"',
      opts:[
-       {x:'Sure. Ana Mora, room 504.', ok:true, fb:'Nombre + habitación = verificación estándar. ✅'},
+       {x:'Ana Mora, room 504.', ok:true, fb:'Nombre + habitación = verificación estándar. ✅'},
        {x:'I am the pool person.', ok:false, fb:'"Pool person" no es identificación válida 😄'},
-       {x:'Guess it!', ok:false, fb:'No es un juego de adivinanzas 😂 Dale tus datos.'}
+       {x:'Guess it!', ok:false, fb:'No es adivinanzas 😂 Dale tus datos a Olivia.'}
      ]},
-    {t:'fill', q:'"Here is a new key card. Please do not ___ it." (perder)', a:'lose', opts:['lose','love','loose'],
-     fb:'lose = perder · lose/loose se confunden mucho: lose tiene UNA o.'},
+    {t:'fill', q:'"Here is a new key. Please do not ___ it." (perder)', a:'lose', opts:['lose','love','loose'],
+     fb:'lose = perder · "loose" = suelto. Una sola o en "lose".'},
     {t:'build', words:['key','I','my','lost','card'], answer:'I lost my key card', es:'perdí mi tarjeta-llave'},
     {t:'scene', img:'🛋️', title:'Wait...',
-     en:'Walking back, you put your hand in your jacket... THE OLD KEY CARD IS THERE. It was there all along.',
-     es:'De regreso, metés la mano en tu chaqueta… LA TARJETA VIEJA ESTÁ AHÍ. Siempre estuvo ahí.'},
-    {t:'decision', speaker:'🐶 Bruno', line:'Do you tell the receptionist?',
+     en:'Walking back, hand in jacket... THE OLD KEY IS THERE. It was there all along.',
+     es:'De regreso, mano en la chaqueta… LA TARJETA VIEJA ESTÁ AHÍ. Siempre estuvo ahí.'},
+    {t:'decision', speaker:'🐶 Bruno', line:'Do you tell Olivia?',
      opts:[
        {x:'Yes: "Sorry, I found it! It was in my jacket."', ok:true, fb:'"I found it" = la encontré. La honestidad también se practica en inglés 😄'},
-       {x:'No. This secret dies with me.', ok:false, fb:'😂 Bruno te vio. Confesá: "I found it!"'},
-       {x:'I throw the old key in the pool.', ok:false, fb:'¡¿A la piscina?! Bruno está horrorizado 🐶'}
+       {x:'No. This secret dies with me.', ok:false, fb:'😂 Bruno te vio. Y Olivia ya sabe.'},
+       {x:'I keep both cards for double luck.', ok:false, fb:'Devolvé la extra 😅 Sé honesto.'}
      ]},
-    {t:'scene', img:'😅', title:'Classic!',
-     en:'Everyone laughs. The receptionist says it happens every day. You learned "lost" AND "found" today!',
-     es:'Todos se ríen. La recepcionista dice que pasa todos los días. ¡Hoy aprendiste "lost" Y "found"!'}
+    {t:'scene', img:'😅', title:'Happens every day!',
+     en:'Everyone laughs. Olivia says it happens daily. You learned "lost" AND "found" in one visit!',
+     es:'Todos se ríen. Olivia dice que pasa todos los días. ¡Aprendiste "lost" Y "found" en una visita!'}
   ]
 },
-...[ 
-  ['extra-towels','TWL→ROOM','Extra Towels','🛁','Pide toallas extra para la habitacion.','After the pool, every towel in the room is wet. Bruno looks at the bathroom like a detective.','Can I have extra towels, please?','towel','towel','can I have a towel',['can','a','I','have','towel'],'Towels delivered'],
-  ['breakfast-buffet','EGG→COF','Breakfast Buffet','🥐','Pregunta por el desayuno y sus horarios.','The smell of coffee leads you downstairs. The breakfast buffet is almost closing.','What time is breakfast?','breakfast','breakfast','what time is breakfast',['time','what','is','breakfast'],'Breakfast found'],
-  ['elevator-out','LIFT→STAIRS','Elevator Out','🛗','Busca las escaleras cuando el ascensor no funciona.','The elevator doors stay closed. A small sign says: out of order. Bruno points to the hallway.','Where are the stairs?','stairs','stairs','where are the stairs',['where','are','the','stairs'],'Stairs found'],
-  ['room-too-cold','AC→WARM','Room Too Cold','🥶','Reporta que el cuarto esta demasiado frio.','The air conditioner is working too well. The room feels like an ice cave.','My room is too cold.','blanket','cold','my room is cold',['room','is','my','cold'],'Warm again'],
-  ['housekeeping','BED→CLEAN','Housekeeping','🧹','Pide limpieza para la habitacion.','You return from a long day and the room needs fresh sheets. Bruno waits by the door.','Could we have housekeeping, please?','housekeeping','housekeeping','we need housekeeping',['we','need','housekeeping'],'Room refreshed'],
-  ['luggage-storage','BAG→SAVE','Luggage Storage','🧳','Guarda el equipaje antes del vuelo.','Check-out is at 11, but your flight leaves at 6. The suitcases need a safe place.','Can you store my luggage?','luggage','luggage','can you store my luggage',['store','my','luggage','can','you'],'Bags stored'],
-  ['late-checkout','CLOCK→YES','Late Check-out','⏰','Pide salir un poco mas tarde.','Your morning meeting runs long and the room key is still on the desk.','Can I have late check-out?','check-out','check-out','can I have late check-out',['can','I','have','late','check-out'],'Extra time'],
-  ['wake-up-call','PHONE→WAKE','Wake-up Call','☎️','Programa una llamada despertador.','Tomorrow starts early. Bruno does not trust the phone alarm alone.','I need a wake-up call at six.','call','call','I need a wake-up call',['need','a','wake-up','call','I'],'Morning secured'],
-  ['safe-box','SAFE→LOCK','The Room Safe','🔒','Pregunta por la caja fuerte.','You have passports and cash. The small safe in the closet is blinking.','How do I use the safe?','safe','safe','how do I use the safe',['how','do','I','use','the','safe'],'Safe locked'],
-  ['city-view','VIEW→WOW','City View','🌇','Pide una habitacion con vista.','From the window you see a brick wall. Bruno expected something more dramatic.','Do you have a room with a view?','view','view','a room with a view',['a','room','with','a','view'],'View upgraded'],
-  ['noisy-room','NOISE→HELP','Noisy Room','🔊','Reporta ruido en la noche.','At midnight, music thumps through the wall. Bruno opens one eye.','My room is too noisy.','noise','noisy','my room is too noisy',['room','is','too','noisy','my'],'Quiet room'],
-  ['taxi-to-airport','CAB→FLY','Taxi to the Airport','🚕','Pide un taxi desde el hotel.','Bags are packed and the airport is far away. The front desk can help.','Can you call a taxi for me?','taxi','taxi','can you call a taxi',['can','you','call','a','taxi'],'Taxi called']
-].map(s=>({
-  id:s[0], code:s[1], title:s[2], emoji:s[3], sub:s[4], reward:{xp:72, coins:34},
+{
+  id:'hotel-room-service', code:'📞→🍔', title:'Room Service', emoji:'🛎️',
+  sub:'Hambre a medianoche. Pedí comida sin salir de la cama.',
+  reward:{xp:65, coins:32},
   nodes:[
-    {t:'scene', img:s[3], title:s[2], en:s[5], es:s[4]},
-    {t:'decision', speaker:'🐶 Bruno', line:'Choose the best hotel phrase.',
-     opts:[{x:s[6], ok:true, fb:'Perfecto para Hotel World.'},{x:'My pillow wants a passport.', ok:false, fb:'Suena divertido, pero no resuelve el problema.'},{x:'The elevator is breakfast.', ok:false, fb:'Casi poesia de hotel, pero no.'}]},
-    {t:'fill', q:`Complete the hotel word: ___`, a:s[7], opts:[s[7], 'ticket', 'salad'], fb:`${s[7]} es una palabra clave del hotel.`},
-    {t:'build', words:s[10], answer:s[9], es:s[9]},
-    {t:'scene', img:'✅', title:s[11], en:'Hotel mission complete. Bruno stamps your room key like a tiny passport.', es:'Mision de hotel completada. Bruno sella tu llave como si fuera pasaporte.'}
+    {t:'scene', img:'🌙', title:'Room Service',
+     en:'11 pm. Pajamas, TV, sudden hunger. The room service menu sits on the desk.',
+     es:'11 pm. Pijama, tele, hambre repentina. El menú de room service está en el escritorio.'},
+    {t:'decision', speaker:'☎️ Room Service', line:'"Room service, good evening!"',
+     opts:[
+       {x:'Hi, I would like to order some food.', ok:true, fb:'"I would like to order" = quisiera pedir. Suave y claro.'},
+       {x:'FOOD. ROOM 504. FAST.', ok:false, fb:'😂 Suena a robot. Más amable.'},
+       {x:'Is this the pizza police?', ok:false, fb:'No existe la policía de pizza 😅'}
+     ]},
+    {t:'decision', speaker:'☎️ Room Service', line:'"What would you like?"',
+     opts:[
+       {x:'A burger and fries, please.', ok:true, fb:'burger = hamburguesa · fries = papas fritas. Clásico de medianoche 🍔'},
+       {x:'Everything on the menu.', ok:false, fb:'¡¿TODO?! Tu estómago dice no 😂'},
+       {x:'Something warm and nice.', ok:false, fb:'Muy general 😅 Pedí algo específico.'}
+     ]},
+    {t:'fill', q:'"It will arrive in 30 ___." (minutos)', a:'minutes', opts:['minutes','monkeys','mountains'],
+     fb:'minutes = minutos · "monkeys" = monos 🐒 ¡Cuidado!'},
+    {t:'build', words:['order','like','to','I','would','food'], answer:'I would like to order food', es:'quisiera pedir comida'},
+    {t:'decision', speaker:'🛎️ Bellboy Ben', line:'Knock knock! Ben arrives with a tray. "Anything else?"',
+     opts:[
+       {x:'No thanks, Ben. This looks great!', ok:true, fb:'Ben hace doble turno esta noche 😄 ¡Agradecele!'},
+       {x:'Yes, bring me breakfast too.', ok:false, fb:'😂 Son las 11 pm. El desayuno viene en horas.'},
+       {x:'Ben, do you live here?', ok:false, fb:'😄 Casi. Solo agradecé.'}
+     ]},
+    {t:'scene', img:'🍔', title:'Midnight feast!',
+     en:'Burger, fries, bonus chocolate. Room service mastered in English, in pajamas!',
+     es:'Hamburguesa, papas y chocolatito extra. ¡Room service conquistado en inglés, en pijama!'}
   ]
-}))
+},
+{
+  id:'hotel-noisy-room', code:'😤→😴', title:'Too Noisy!', emoji:'🔊',
+  sub:'No podés dormir. Pedí que te cambien de cuarto.',
+  reward:{xp:70, coins:35},
+  nodes:[
+    {t:'scene', img:'🔊', title:'Too Noisy!',
+     en:'3 am. The room next door is having a PARTY. You have not slept at all.',
+     es:'3 am. La habitación de al lado tiene FIESTA. No dormiste nada.'},
+    {t:'decision', speaker:'🐶 Bruno', line:'Call the front desk. What do you say?',
+     opts:[
+       {x:'Hi, my room is too noisy. I cannot sleep.', ok:true, fb:'"My room is too noisy" + "I cannot sleep" = problema claro y urgente.'},
+       {x:'Hi, there is a party in my walls.', ok:false, fb:'😅 La fiesta es en la habitación AL LADO, no en tus paredes.'},
+       {x:'Hi, this hotel hates sleep.', ok:false, fb:'😂 El hotel no odia el sueño. Describí el problema específico.'}
+     ]},
+    {t:'decision', speaker:'🏨 Manager Olivia', line:'"I am so sorry! Would you like to change rooms?"',
+     opts:[
+       {x:'Yes, please. Somewhere quiet.', ok:true, fb:'"Somewhere quiet" = un lugar tranquilo. Adjetivo clave en hoteles 🤫'},
+       {x:'Yes, and arrest those neighbors.', ok:false, fb:'😂 Olivia no tiene poderes de arresto. Solo cambiá de cuarto.'},
+       {x:'No, I love suffering.', ok:false, fb:'😅 Pedí el cambio.'}
+     ]},
+    {t:'fill', q:'"Room 320 is on the other side, very ___." (tranquilo)', a:'quiet', opts:['quiet','quick','quit'],
+     fb:'quiet = tranquilo/silencioso · opuesto de noisy. Muy útiles en hoteles.'},
+    {t:'build', words:['room','is','too','my','noisy'], answer:'my room is too noisy', es:'mi habitación está muy ruidosa'},
+    {t:'decision', speaker:'🛎️ Bellboy Ben', line:'Ben moves your bags at 3 am without complaining. "Room 320, all quiet!"',
+     opts:[
+       {x:'Thank you so much, Ben. You are amazing!', ok:true, fb:'Ben a las 3 am merece un elogio enorme 🌙✨'},
+       {x:'Took you long enough.', ok:false, fb:'¡Son las 3 AM! Ben merece una medalla 😅'},
+       {x:'Are you a robot, Ben?', ok:false, fb:'😂 No es robot, es muy dedicado. Solo agradecé.'}
+     ]},
+    {t:'scene', img:'😴', title:'Finally... sleep!',
+     en:'Room 320: pure silence. Asleep in seconds. Lesson: "noisy" and "quiet" are hotel superpowers!',
+     es:'Habitación 320: silencio absoluto. Dormido en segundos. Lección: "noisy" y "quiet" son superpoderes hoteleros.'}
+  ]
+},
+{
+  id:'hotel-late-checkout', code:'12→14', title:'Late Checkout', emoji:'⏰',
+  sub:'Vuelo tarde. Negociá más horas de habitación.',
+  reward:{xp:70, coins:35},
+  nodes:[
+    {t:'scene', img:'⏰', title:'Late Checkout',
+     en:'Checkout at noon, flight at 9 pm. Nine hours dragging bags? No way. Time to negotiate.',
+     es:'Checkout al mediodía, vuelo a las 9 pm. ¿Nueve horas con maletas? Para nada. A negociar.'},
+    {t:'decision', speaker:'🐶 Bruno', line:'What do you ask Olivia?',
+     opts:[
+       {x:'Is late checkout possible?', ok:true, fb:'"Late checkout" = salida tardía. Pregunta directa y profesional.'},
+       {x:'Can I live here forever?', ok:false, fb:'😂 Olivia diría que sí… por mucho dinero. Pedí late checkout.'},
+       {x:'I refuse to leave.', ok:false, fb:'¡Eso es una ocupación! 😅 Preguntá educadamente.'}
+     ]},
+    {t:'decision', speaker:'🏨 Manager Olivia', line:'"Let me check... Until 2 pm, no extra charge!"',
+     opts:[
+       {x:'That is perfect, thank you!', ok:true, fb:'"No extra charge" = sin costo extra. ¡Victoria total!'},
+       {x:'Only 2 pm?', ok:false, fb:'¡Te regaló 2 horas GRATIS! 😂'},
+       {x:'Make it 8 pm and add lunch.', ok:false, fb:'😄 2 pm gratis es un regalo. No estirés.'}
+     ]},
+    {t:'fill', q:'"Can I leave my luggage at the front ___?" (mostrador)', a:'desk', opts:['desk','dish','duck'],
+     fb:'front desk = mostrador de recepción. Guardar equipaje ahí suele ser gratis.'},
+    {t:'build', words:['checkout','late','possible','is'], answer:'is late checkout possible', es:'¿es posible una salida tardía?'},
+    {t:'decision', speaker:'🏨 Manager Olivia', line:'"Bags safe until 8 pm. Enjoy the pool!"',
+     opts:[
+       {x:'You are the best, Olivia!', ok:true, fb:'Olivia resolvió TODO. Un elogio sincero nunca sobra ✨'},
+       {x:'Do not open my suitcase.', ok:false, fb:'😅 Nadie va a abrirla. Confiá.'},
+       {x:'Guard it with your life.', ok:false, fb:'😂 "Thank you" basta.'}
+     ]},
+    {t:'scene', img:'🏊', title:'Bonus hours!',
+     en:'Two extra room hours, bags stored all day, pool until 7. Negotiating in English: pure gold!',
+     es:'Dos horas extra de habitación, equipaje guardado todo el día, piscina hasta las 7. ¡Negociar en inglés: oro puro!'}
+  ]
+},
+{
+  id:'hotel-laundry', code:'👕→✨', title:'Laundry Emergency', emoji:'👕',
+  sub:'Café en la camisa. Reunión en 3 horas. El tiempo corre.',
+  reward:{xp:65, coins:32},
+  nodes:[
+    {t:'scene', img:'☕', title:'Laundry Emergency',
+     en:'Breakfast disaster: coffee all over your white shirt. Meeting in 3 hours. Bruno covers his eyes.',
+     es:'Desastre del desayuno: café en tu camisa blanca. Reunión en 3 horas. Bruno se tapa los ojos.'},
+    {t:'decision', speaker:'🐶 Bruno', line:'Run to the front desk! What do you ask?',
+     opts:[
+       {x:'Does the hotel have laundry service?', ok:true, fb:'"Laundry service" = servicio de lavandería. ¡La pregunta clave!'},
+       {x:'I need a new shirt.', ok:false, fb:'El hotel no tiene tienda de ropa 😅 Preguntá por la lavandería.'},
+       {x:'I hate coffee now.', ok:false, fb:'😂 Entendemos el drama, pero necesitás la lavandería YA.'}
+     ]},
+    {t:'decision', speaker:'🏨 Manager Olivia', line:'"Express takes 2 hours. Regular takes 24."',
+     opts:[
+       {x:'Express please! I have a meeting.', ok:true, fb:'"Express" = servicio rápido. 2 horas es perfecto para tu reunión.'},
+       {x:'24 hours is fine.', ok:false, fb:'¡Reunión en 3 HORAS! 24 no alcanza 😅'},
+       {x:'Can I use the iron?', ok:false, fb:'La plancha no quita manchas de café 😄'}
+     ]},
+    {t:'fill', q:'"Fill out this ___." (formulario)', a:'form', opts:['form','farm','foam'],
+     fb:'form = formulario. Completalo con tu número de habitación.'},
+    {t:'build', words:['service','have','hotel','does','laundry','the'], answer:'does the hotel have laundry service', es:'¿el hotel tiene servicio de lavandería?'},
+    {t:'decision', speaker:'🔧 Tech Tony', line:'"Your shirt is ready! Stain is gone. Like new!"',
+     opts:[
+       {x:'Incredible! Thank you so much, Tony!', ok:true, fb:'Tony sabe arreglar todo. ¡Un crack! 👕✨'},
+       {x:'2 hours for ONE shirt?', ok:false, fb:'¡Express son 2 horas para una camisa impecable! Rapidísimo 😅'},
+       {x:'I do not trust this.', ok:false, fb:'😂 Confiá en Tony. Siempre cumple.'}
+     ]},
+    {t:'scene', img:'✨', title:'Spotless!',
+     en:'White shirt, zero stain, 30 minutes to the meeting. Laundry emergency solved in English!',
+     es:'Camisa blanca, sin mancha, 30 minutos para la reunión. ¡Emergencia de lavandería resuelta en inglés!'}
+  ]
+},
+{
+  id:'hotel-safe', code:'💰→🔒', title:'The Hotel Safe', emoji:'🔒',
+  sub:'Aprendé a usar la caja fuerte para tus objetos de valor.',
+  reward:{xp:65, coins:32},
+  nodes:[
+    {t:'scene', img:'🔒', title:'The Hotel Safe',
+     en:'You open the closet and find a small black box: the hotel safe. Instructions in English only!',
+     es:'Abrís el placard: una cajita negra. La caja fuerte del hotel. ¡Instrucciones solo en inglés!'},
+    {t:'decision', speaker:'🐶 Bruno', line:'You call the front desk. How do you ask?',
+     opts:[
+       {x:'Hi, how do I use the safe in my room?', ok:true, fb:'"How do I use…?" = ¿cómo uso…? Pregunta de instrucciones perfecta.'},
+       {x:'Hi, there is a mysterious black box.', ok:false, fb:'😂 No es misterioso, es la caja fuerte.'},
+       {x:'Hi, is my room haunted?', ok:false, fb:'😅 No hay fantasmas. Solo una caja fuerte.'}
+     ]},
+    {t:'decision', speaker:'🏨 Manager Olivia', line:'"Enter a 4-digit code, press OK, close the door."',
+     opts:[
+       {x:'Got it! I choose my own code?', ok:true, fb:'"Got it!" = entendido. Y sí, elegís tu PIN. ¡Fácil!'},
+       {x:'Four digits? I know only three.', ok:false, fb:'😄 No es quiz matemático. Es tu PIN personal de 4 números.'},
+       {x:'And if I forget?', ok:false, fb:'Primero confirmá que entendiste el proceso.'}
+     ]},
+    {t:'fill', q:'"Keep your ___ in the safe." (pasaporte)', a:'passport', opts:['passport','password','pasta'],
+     fb:'passport = pasaporte. La caja fuerte es perfecta para guardarlo.'},
+    {t:'build', words:['use','I','the','safe','how','do'], answer:'how do I use the safe', es:'¿cómo uso la caja fuerte?'},
+    {t:'decision', speaker:'🏨 Manager Olivia', line:'"If you forget the code, call us. We reset it with your ID."',
+     opts:[
+       {x:'Perfect. Thank you for explaining!', ok:true, fb:'"Thank you for explaining" = gracias por explicar ✨'},
+       {x:'I never forget. I am a genius.', ok:false, fb:'😂 Todos olvidan códigos. Mejor saber cómo resetearlo.'},
+       {x:'Reset? Like a phone?', ok:false, fb:'Sí, parecido. Agradecé y listo.'}
+     ]},
+    {t:'scene', img:'🔐', title:'Valuables secured!',
+     en:'Passport, cash, and jewelry locked safely. You learned to use a hotel safe in English!',
+     es:'Pasaporte, efectivo y joyas asegurados. ¡Aprendiste a usar una caja fuerte en inglés!'}
+  ]
+},
+{
+  id:'hotel-breakfast', code:'6AM→🍳', title:'Hotel Breakfast', emoji:'🍳',
+  sub:'Buffet de desayuno: pedí, preguntá e interactuá en inglés.',
+  reward:{xp:65, coins:32},
+  nodes:[
+    {t:'scene', img:'🍳', title:'Hotel Breakfast',
+     en:'6:30 am. The breakfast room smells amazing. Emma is managing the buffet today.',
+     es:'6:30 am. El salón de desayuno huele increíble. Emma está manejando el buffet hoy.'},
+    {t:'decision', speaker:'👩 Emma', line:'"Good morning! Room number, please?"',
+     opts:[
+       {x:'Room 504. Good morning!', ok:true, fb:'Dar tu número al desayuno = estándar en hoteles. ✅'},
+       {x:'I live here now.', ok:false, fb:'😄 Solo estás de visita. "Room 504" funciona mejor.'},
+       {x:'Shhh, I am not awake yet.', ok:false, fb:'😂 Emma entiende… pero necesita tu habitación.'}
+     ]},
+    {t:'decision', speaker:'👩 Emma', line:'"Eggs to order! How would you like them?"',
+     opts:[
+       {x:'Scrambled, please.', ok:true, fb:'scrambled = revueltos · fried = fritos · boiled = cocidos. Vocabulario de huevos 🥚'},
+       {x:'Yellow and round.', ok:false, fb:'😂 Eso describe todos los huevos. Decí cómo: scrambled, fried, boiled…'},
+       {x:'As fast as possible.', ok:false, fb:'😅 Hay que elegir CÓMO, no con qué velocidad.'}
+     ]},
+    {t:'fill', q:'"Is there ___ juice?" (naranja)', a:'orange', opts:['orange','origin','organ'],
+     fb:'orange juice = jugo de naranja. Pregunta clásica del desayuno en cualquier hotel.'},
+    {t:'build', words:['like','scrambled','I','eggs','would'], answer:'I would like scrambled eggs', es:'quisiera huevos revueltos'},
+    {t:'decision', speaker:'👩 Emma', line:'"Coffee or tea to drink?"',
+     opts:[
+       {x:'Coffee please, with milk.', ok:true, fb:'"With milk" = con leche. ¡Siempre especificá cómo querés el café! ☕'},
+       {x:'Both mixed together.', ok:false, fb:'😂 Café con té no existe. Elegí uno.'},
+       {x:'I only drink mountain water.', ok:false, fb:'😅 Muy poético, pero pedí café o té.'}
+     ]},
+    {t:'scene', img:'☕', title:'Best breakfast!',
+     en:'Scrambled eggs, orange juice, coffee with milk. Emma runs the best breakfast in town. Day officially started!',
+     es:'Huevos revueltos, jugo de naranja y café con leche. Emma tiene el mejor desayuno. ¡Día oficialmente iniciado!'}
+  ]
+},
+{
+  id:'hotel-concierge', code:'?→MAP', title:'Ask the Concierge', emoji:'🗺️',
+  sub:'Tarde libre. Ben el conserje sabe todo lo de la ciudad.',
+  reward:{xp:70, coins:35},
+  nodes:[
+    {t:'scene', img:'🗺️', title:'Ask the Concierge',
+     en:'Free afternoon! Concierge desk sign: "Ask me anything!" Ben is there, new hat on.',
+     es:'¡Tarde libre! Mostrador del conserje: "¡Preguntame todo!" Ben está ahí, sombrero nuevo.'},
+    {t:'decision', speaker:'🛎️ Bellboy Ben', line:'"How can I help you explore today?"',
+     opts:[
+       {x:'What do you recommend nearby?', ok:true, fb:'"What do you recommend nearby?" = ¿qué recomendás cerca? La pregunta de oro del turista.'},
+       {x:'Ben, do you ever rest?', ok:false, fb:'😂 Ben trabaja duro. Preguntá por los lugares.'},
+       {x:'Recommend me to the manager.', ok:false, fb:'😄 Eso significa que Olivia te recomiende a VOS. Preguntá los lugares.'}
+     ]},
+    {t:'decision', speaker:'🛎️ Bellboy Ben', line:'"Old town: 10 min by taxi. Market opens at 9."',
+     opts:[
+       {x:'Great! Can you book a taxi for me?', ok:true, fb:'"Can you book a taxi?" = ¿puede pedir un taxi? ¡El conserje puede!'},
+       {x:'Great! I will walk 3 hours instead.', ok:false, fb:'😅 Hay taxi a 10 minutos. Pedíselo a Ben.'},
+       {x:'Does Ben drive the taxi?', ok:false, fb:'😂 Ben tiene suficiente trabajo. Pedile que llame uno.'}
+     ]},
+    {t:'fill', q:'"Is there an entrance ___?" (tarifa de entrada)', a:'fee', opts:['fee','feet','feed'],
+     fb:'fee = tarifa de entrada. Siempre preguntá antes de ir.'},
+    {t:'build', words:['recommend','do','what','you','nearby'], answer:'what do you recommend nearby', es:'¿qué recomendás cerca?'},
+    {t:'decision', speaker:'🛎️ Bellboy Ben', line:'"Taxi in 5 minutes! Here is a map and my card."',
+     opts:[
+       {x:'Thank you, Ben! You are incredible.', ok:true, fb:'Ben es el MVP del hotel 🌟'},
+       {x:'Ben, I want to take you with me.', ok:false, fb:'😄 Ben tiene que quedarse. Llevate el mapa.'},
+       {x:'Keep the card, I have GPS.', ok:false, fb:'😅 Ben conoce secretos que el GPS no sabe. Guardá la tarjeta.'}
+     ]},
+    {t:'scene', img:'🌆', title:'City explorer!',
+     en:"Map, Ben's card, and a taxi. You asked recommendations, booked a ride — in English!",
+     es:'Mapa, tarjeta de Ben y un taxi. Pediste recomendaciones, reservaste viaje — ¡en inglés!'}
+  ]
+},
+{
+  id:'hotel-complaint', code:'😠→✅', title:'Hotel Complaint', emoji:'😤',
+  sub:'Varios problemas en la habitación. Reclamá claro y educado.',
+  reward:{xp:75, coins:38},
+  nodes:[
+    {t:'scene', img:'😤', title:'Hotel Complaint',
+     en:'You arrive to your room: broken AC, dirty bathroom, no blanket. Bruno gasps.',
+     es:'Llegás al cuarto: aire roto, baño sucio, sin cobija. Bruno se horroriza.'},
+    {t:'decision', speaker:'🐶 Bruno', line:'Serious complaint needed. How do you start?',
+     opts:[
+       {x:'Excuse me, there are several problems with my room.', ok:true, fb:'"Several problems" = varios problemas. Reclamo organizado y profesional.'},
+       {x:'THIS HOTEL IS A DISASTER!', ok:false, fb:'😤 Entendemos el enojo, pero gritar no ayuda. Sé claro y educado.'},
+       {x:'I want a different planet.', ok:false, fb:'😂 Pedí otra habitación, no otro planeta.'}
+     ]},
+    {t:'decision', speaker:'🏨 Manager Olivia', line:'"I am truly sorry! Please describe the issues."',
+     opts:[
+       {x:'The AC is broken, the bathroom is dirty, and there is no blanket.', ok:true, fb:'Lista clara: AC, baño, cobija. Así se reportan múltiples problemas. 📋'},
+       {x:'Everything is wrong and I am sad.', ok:false, fb:'😅 "Everything" no ayuda. Sé específico.'},
+       {x:'You know the problem.', ok:false, fb:'Olivia no puede adivinar. Describí todo.'}
+     ]},
+    {t:'fill', q:'"The ___ in my room is broken." (aire acondicionado)', a:'AC', opts:['AC','TV','OK'],
+     fb:'AC = air conditioning = aire acondicionado. Abreviatura universal en hoteles.'},
+    {t:'build', words:['is','my','dirty','bathroom'], answer:'my bathroom is dirty', es:'mi baño está sucio'},
+    {t:'decision', speaker:'🏨 Manager Olivia', line:'"Upgrade to a suite at no extra cost. I sincerely apologize."',
+     opts:[
+       {x:'Thank you. I appreciate that very much.', ok:true, fb:'¡Suite gratis! "I appreciate that" = lo agradezco mucho ✨'},
+       {x:'Finally! Took you long enough.', ok:false, fb:'😅 Resolvió rápido Y con upgrade. Un poco de gracia.'},
+       {x:'I want TWO suites.', ok:false, fb:'😂 Una es más que suficiente.'}
+     ]},
+    {t:'scene', img:'🛎️', title:'Suite life!',
+     en:'Broken room to free suite. Clear complaint, great outcome — in English!',
+     es:'De cuarto roto a suite gratis. Reclamo claro, resultado perfecto — ¡en inglés!'}
+  ]
+},
+{
+  id:'hotel-wake-up-call', code:'😴→⏰', title:'Wake-Up Call', emoji:'📱',
+  sub:'Vuelo temprano. Asegurate de que te despierten a tiempo.',
+  reward:{xp:60, coins:30},
+  nodes:[
+    {t:'scene', img:'✈️', title:'Wake-Up Call',
+     en:'Flight at 7 am. Miss it and everything is lost. You need a wake-up call. You dial front desk.',
+     es:'Vuelo a las 7 am. Si lo perdés, lo perdés todo. Necesitás llamada despertador. Llamás a recepción.'},
+    {t:'decision', speaker:'🏨 Manager Olivia', line:'"Front desk, good night!"',
+     opts:[
+       {x:'Hi Olivia, I need a wake-up call please.', ok:true, fb:'"Wake-up call" = llamada despertador. Servicio clave en hoteles.'},
+       {x:'Hi Olivia, wake up instead of me.', ok:false, fb:'😅 Olivia no puede despertar POR vos. Pedí la wake-up call.'},
+       {x:'Hi, call me beautiful at 5 am.', ok:false, fb:'😂 Buen intento, pero pedí la llamada despertador.'}
+     ]},
+    {t:'decision', speaker:'🏨 Manager Olivia', line:'"Of course! What time?"',
+     opts:[
+       {x:'At 5 am, please. My flight is at 7.', ok:true, fb:'"At 5 am" = a las 5 de la mañana. Siempre especificá am o pm.'},
+       {x:'Very early.', ok:false, fb:'"Very early" no es una hora exacta 😅 Decí "at 5 am".'},
+       {x:'Before the sun wakes up.', ok:false, fb:'😂 Poético… pero "at 5 am" es más claro para Olivia.'}
+     ]},
+    {t:'fill', q:'"I have a ___ at 7 am." (vuelo)', a:'flight', opts:['flight','fright','freight'],
+     fb:'flight = vuelo · fright = susto · freight = carga. Tres palabras similares.'},
+    {t:'build', words:['call','need','wake-up','I','a'], answer:'I need a wake-up call', es:'necesito una llamada despertador'},
+    {t:'decision', speaker:'🏨 Manager Olivia', line:'"Done! 5 am, room 504. Have a safe flight!"',
+     opts:[
+       {x:'Thank you Olivia! You are a lifesaver.', ok:true, fb:'"Lifesaver" = persona que te salva. ¡Olivia lo es! 🌟'},
+       {x:'Just do not forget me.', ok:false, fb:'😅 Olivia nunca olvida. Un poco más de confianza.'},
+       {x:'Call me three times. I sleep deep.', ok:false, fb:'😄 Una basta. Si querés dos, pedí dos — pero amablemente.'}
+     ]},
+    {t:'scene', img:'⏰', title:'Made the flight!',
+     en:'5 am, the phone rings. Olivia, on time as always. Flight caught. Hero of the morning: the wake-up call!',
+     es:'5 am, suena el teléfono. Olivia, puntual como siempre. Vuelo agarrado. ¡Héroe de la mañana: la wake-up call!'}
+  ]
+},
+{
+  id:'hotel-farewell', code:'🏨→🌍', title:'Farewell to the Hotel', emoji:'👋',
+  sub:'Último día: checkout, reseña y despedida de tus amigos.',
+  reward:{xp:80, coins:40},
+  nodes:[
+    {t:'scene', img:'🧳', title:'Farewell',
+     en:'Last morning. Bags packed, passport ready. Ben, Tony, Emma, and Olivia at the lobby. What a stay!',
+     es:'Última mañana. Maletas listas, pasaporte en mano. Ben, Tony, Emma y Olivia en el lobby. ¡Qué estadía!'},
+    {t:'decision', speaker:'🏨 Manager Olivia', line:'"Good morning! Ready to check out?"',
+     opts:[
+       {x:'Yes, and I wanted to thank everyone.', ok:true, fb:'Agradecer al equipo = detalle que siempre recuerdan ✨'},
+       {x:'Yes. Bye.', ok:false, fb:'😅 Muy frío después de toda una semana. Agradecé un poco.'},
+       {x:'No, I live here now.', ok:false, fb:'😂 Aunque lo entendemos… tenés un vuelo.'}
+     ]},
+    {t:'decision', speaker:'🛎️ Bellboy Ben', line:'"It was our pleasure! Would you leave us a review?"',
+     opts:[
+       {x:'Absolutely! You all deserve five stars.', ok:true, fb:'"Five stars" = cinco estrellas. ¡Merecidas! ⭐⭐⭐⭐⭐'},
+       {x:'Maybe. Depends on my mood.', ok:false, fb:'😄 Ben movió maletas a las 3 am. ¡Cinco estrellas ya!'},
+       {x:'Reviews are overrated.', ok:false, fb:'😅 Las reseñas ayudan mucho al equipo. Dale las cinco estrellas.'}
+     ]},
+    {t:'fill', q:'"Anything else before you ___?" (te vayas)', a:'go', opts:['go','grow','glow'],
+     fb:'before you go = antes de que te vayas. Frase de cierre en casi toda situación.'},
+    {t:'build', words:['was','wonderful','stay','the'], answer:'the stay was wonderful', es:'la estadía estuvo maravillosa'},
+    {t:'decision', speaker:'🔧 Tech Tony', line:'"Safe travels! Come back if the heater breaks again!" *winks*',
+     opts:[
+       {x:'Ha! I hope not. But I will come back!', ok:true, fb:'Broma + promesa de volver = despedida perfecta 💙'},
+       {x:'The heater will not dare.', ok:false, fb:'😂 Más probable que Tony lo arregle de nuevo. Di "I will come back".'},
+       {x:'Tony, I will miss you most.', ok:false, fb:'😄 Olivia, Ben y Emma también trabajaron mucho. Incluí a todos.'}
+     ]},
+    {t:'scene', img:'🌍', title:'Until next time!',
+     en:'Checked out with grace, five-star reviews promised, friendships made in English. Hotel World: COMPLETE! ✈️',
+     es:'Checkout con clase, reseñas de cinco estrellas prometidas, amistades hechas en inglés. ¡Hotel World: COMPLETADO! ✈️'}
+  ]
+}
 ]},
 
 /* ════════════════ 🛒 SHOPPING ════════════════ */
@@ -4431,7 +4800,8 @@ function finishChallenge(){
 let GM = null; /* estado del juego activo */
 
 function exitGame(){
-  if(GM && GM.dirty && !confirm('¿Salir del juego? Perdés el avance de esta ronda.')) return;
+  /* Runner no necesita confirm: no hay progreso que perder mid-run */
+  if(GM && GM.dirty && GM.game !== 'runner' && !confirm('¿Salir del juego? Perdés el avance de esta ronda.')) return;
   if(GM && GM._timer) clearInterval(GM._timer);
   if(GM && GM._raf) cancelAnimationFrame(GM._raf);
   window.onkeydown = null;
@@ -4484,25 +4854,30 @@ function startBrunoRun(replay=false){
   }
   GM = {
     game:'runner', dirty:true, next, worldId:CW.id, replay,
-    x:54, y:0, vy:0, ground:158, jump:false, duck:false,
+    x:54, y:158, vy:0, ground:158, jump:false, duck:false,  /* y=ground: Bruno arranca en el suelo */
     distance:0, goal:950, speed:3.1, coins:0, hits:0, frame:0,
-    stumbles:0, obstacles:[], tokens:[], lastObstacle:0, lastToken:0, done:false
+    stumbles:0, obstacles:[], tokens:[],
+    lastObstacle:120, /* primer obstáculo aparece después de un tramo libre */
+    lastToken:40, done:false
   };
   go('scr-game');
   gameHeader('🐶 Bruno Run', `<span id="runner-dist">0%</span> · 🪙 <span id="runner-coins">0</span> · 🐾 <span id="runner-hearts">3</span>`);
   gameBruno(replay
     ? `Bruno vuelve a correr hacia <b>${next.ico} ${next.name}</b> para practicar y juntar monedas.`
-    : `Bruno corre hacia <b>${next.ico} ${next.name}</b>. Saltá obstáculos, juntá monedas y llegá al portal para abrir el siguiente mundo.`);
+    : `Bruno corre hacia <b>${next.ico} ${next.name}</b>. ¡Tocá <b>Saltar</b> o la pantalla para esquivar obstáculos y llegar al portal!`);
   document.getElementById('game-stage').innerHTML = `
-    <div class="runner-hud"><span>Destino: ${next.ico} ${next.name}</span><span>Espacio/tocar = saltar</span></div>
-    <div class="runner-wrap"><canvas id="runner-canvas" width="420" height="220"></canvas></div>
+    <div class="runner-hud"><span>🎯 ${next.ico} ${next.name}</span><span id="runner-pct">0%</span></div>
+    <div class="runner-wrap" onclick="runnerJump()" style="cursor:pointer">
+      <canvas id="runner-canvas" width="420" height="220"></canvas>
+    </div>
     <div class="runner-controls">
-      <button class="btn btn-mint" onpointerdown="runnerJump()">Saltar</button>
-      <button class="btn btn-ghost" onpointerdown="runnerDuck(true)" onpointerup="runnerDuck(false)" onpointerleave="runnerDuck(false)">Agacharse</button>
+      <button class="btn btn-mint" onpointerdown="runnerJump()">⬆️ Saltar</button>
+      <button class="btn btn-ghost" onpointerdown="runnerDuck(true)" onpointerup="runnerDuck(false)" onpointerleave="runnerDuck(false)">⬇️ Agacharse</button>
     </div>`;
   window.onkeydown = e=>{ if(GM?.game!=='runner') return; if(e.code==='Space'||e.code==='ArrowUp'){ e.preventDefault(); runnerJump(); } if(e.code==='ArrowDown') runnerDuck(true); };
   window.onkeyup = e=>{ if(GM?.game==='runner' && e.code==='ArrowDown') runnerDuck(false); };
-  GM._raf = requestAnimationFrame(runnerLoop);
+  /* pequeño delay para que el DOM pinte el canvas antes de arrancar el loop */
+  setTimeout(()=>{ if(GM && GM.game==='runner') GM._raf = requestAnimationFrame(runnerLoop); }, 80);
 }
 function runnerJump(){
   if(!GM || GM.game!=='runner') return;
@@ -4514,7 +4889,8 @@ function runnerDuck(on){
 function runnerLoop(){
   if(!GM || GM.game!=='runner' || GM.done) return;
   const c = document.getElementById('runner-canvas');
-  if(!c) return;
+  /* Bug fix: si el canvas aún no está en el DOM, reintenta en el próximo frame */
+  if(!c){ GM._raf = requestAnimationFrame(runnerLoop); return; }
   const ctx = c.getContext('2d');
   GM.frame++;
   GM.distance += GM.speed;
@@ -4561,9 +4937,11 @@ function runnerLoop(){
   }
 
   runnerDraw(ctx, c, bruno);
-  document.getElementById('runner-dist').textContent = Math.min(100, Math.floor(GM.distance/GM.goal*100))+'%';
-  document.getElementById('runner-coins').textContent = GM.coins;
-  document.getElementById('runner-hearts').textContent = Math.max(0,3-GM.hits);
+  const pct = Math.min(100, Math.floor(GM.distance/GM.goal*100));
+  const pctEl = document.getElementById('runner-pct') || document.getElementById('runner-dist');
+  if(pctEl) pctEl.textContent = pct+'%';
+  const coinEl = document.getElementById('runner-coins'); if(coinEl) coinEl.textContent = GM.coins;
+  const hrtEl = document.getElementById('runner-hearts'); if(hrtEl) hrtEl.textContent = Math.max(0,3-GM.hits);
   if(GM.distance>=GM.goal){ runnerWin(); return; }
   GM._raf = requestAnimationFrame(runnerLoop);
 }
