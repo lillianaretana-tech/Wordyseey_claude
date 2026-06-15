@@ -344,6 +344,37 @@ h1,h2,h3,.num,.btn{font-family:'Fredoka',sans-serif}
 .bruno-demo .bportal{position:absolute;right:18px;bottom:12px;font-size:2rem}
 .bruno-demo .bcoin{position:absolute;left:48%;bottom:38px;font-size:1.15rem;animation:float 1.6s ease-in-out infinite}
 @keyframes demoRun{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+/* ════════ IDENTIDAD VISUAL POR MUNDO (Prioridad 1) ════════
+   Cada pantalla de mundo/historia recibe acento, gradiente y motivos
+   propios vía variables --w-*, seteadas por applyTheme(). Aditivo: no
+   cambia la arquitectura, solo la personalidad visual. */
+#scr-world,#scr-story{
+  --w-g1:#1E6FB8; --w-g2:#3FA0E0; --w-accent:#FFC65C;
+}
+.world-hero{
+  position:relative;border-radius:var(--radius);overflow:hidden;color:#fff;
+  background:linear-gradient(135deg,var(--w-g1),var(--w-g2));
+  padding:18px 16px;margin:2px 0 18px;box-shadow:var(--shadow);
+  border:1px solid rgba(255,255,255,.18);
+}
+.world-hero::after{
+  content:"";position:absolute;inset:0;opacity:.16;pointer-events:none;
+  background-image:radial-gradient(circle at 88% 18%, #fff 0 1.5px, transparent 2px),
+                   radial-gradient(circle at 22% 82%, #fff 0 1.5px, transparent 2px);
+  background-size:30px 30px,38px 38px;
+}
+.world-hero .wh-name{font-family:'Fredoka';font-weight:700;font-size:1.45rem;display:flex;align-items:center;gap:8px;position:relative;text-shadow:0 2px 6px rgba(0,0,0,.25)}
+.world-hero .wh-tag{display:inline-block;margin-top:8px;background:rgba(255,255,255,.24);color:#fff;
+  font-family:'Fredoka';font-weight:600;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:4px 11px;border-radius:999px;position:relative}
+.world-hero .wh-motif{position:absolute;right:14px;top:14px;font-size:1.7rem;letter-spacing:3px;opacity:.92;position:absolute}
+/* acentos temáticos derivados del tema activo */
+#scr-world .sectitle{color:var(--w-accent)}
+#scr-world .pass-route .plane{color:var(--w-accent)}
+#scr-world .vocab-chip{border-color:var(--w-accent)}
+#scr-story .scenecard{border-left:5px solid var(--w-accent)}
+#scr-story .speaker{color:var(--w-g1)}
 </style>
 </head>
 <body>
@@ -383,6 +414,7 @@ h1,h2,h3,.num,.btn{font-family:'Fredoka',sans-serif}
       <button class="backbtn" onclick="go('scr-home')">←</button>
       <h2 style="font-size:1.3rem" id="world-title"></h2>
     </div>
+    <div id="world-hero"></div>
     <div class="bruno">
       <span class="bruno-face">🐶</span>
       <div class="bruno-bubble" id="world-bruno"></div>
@@ -2782,8 +2814,8 @@ stories:[
   reward:{xp:75, coins:38},
   nodes:[
     {t:'scene', img:'🍳', title:'Hotel Breakfast',
-     en:'6:45 am. The Grand Dining Room smells like fresh coffee, warm bread, and bacon. Emma is coordinating the buffet with military efficiency.',
-     es:'6:45 am. El Gran Salón huele a café fresco, pan caliente y tocino. Emma coordina el buffet con eficiencia militar.'},
+     en:'6:45 am. The Grand Dining Room smells like fresh coffee, warm bread, and bacon. Emma is coordinating the buffet with military efficiency — and at the next table, Sarah, the kind passenger from the airport, waves hello. She is here on vacation too!',
+     es:'6:45 am. El Gran Salón huele a café fresco, pan caliente y tocino. Emma coordina el buffet con eficiencia militar — y en la mesa de al lado, Sarah, la amable pasajera del aeropuerto, te saluda. ¡También está de vacaciones!'},
     {t:'decision', speaker:'👩 Emma', line:'"Good morning! Room number, please? And is this your first morning with us?"',
      opts:[
        {x:'Room 504. Yes, first morning — and this smells incredible!', ok:true, fb:'Número + confirmación + cumplido genuino. Emma comienza el día con una sonrisa. "Incredible" = increíble.'},
@@ -3000,8 +3032,8 @@ stories:[
        {x:'Tony, come with me.', ok:false, fb:'😂 Tony tiene trabajo aquí. "Thank you for everything, Tony!" y al taxi.'}
      ]},
     {t:'scene', img:'🌍', title:'Until next time!',
-     en:'Taxi waiting. City one last glimpse. Ben waves from the door. Tony gives a thumbs up. Emma has her apron on. Olivia smiles. You made friends here — in English.',
-     es:'Taxi esperando. Ciudad un último vistazo. Ben saluda desde la puerta. Tony hace un pulgar arriba. Emma con su delantal puesto. Olivia sonríe. Hiciste amigos aquí — en inglés.'}
+     en:'Taxi waiting. City one last glimpse. Ben waves from the door. Tony gives a thumbs up. Emma has her apron on. Olivia smiles. And in the lobby, Captain Smith tips his hat: "Heading to the airport? See you on board!" You made friends here — in English.',
+     es:'Taxi esperando. Ciudad un último vistazo. Ben saluda desde la puerta. Tony hace un pulgar arriba. Emma con su delantal puesto. Olivia sonríe. Y en el lobby, el Capitán Smith se toca la gorra: "¿Vas al aeropuerto? ¡Nos vemos a bordo!" Hiciste amigos aquí — en inglés.'}
   ]
 }
 ]},
@@ -3554,8 +3586,8 @@ stories:[
   reward:{xp:70, coins:35},
   nodes:[
     {t:'scene', img:'🧲', title:'Souvenir Hunt',
-     en:"You need three souvenirs: one for your mom, one for a friend, and one for yourself. Your budget is $15. Clerk Mia runs the souvenir stand.",
-     es:'Necesitás tres recuerdos: uno para tu mamá, uno para una amiga y uno para vos. Tu presupuesto es $15. La dependienta Mia atiende el puesto de recuerdos.'},
+     en:"You need three souvenirs: one for your mom, one for a friend, and one for yourself. Your budget is $15. Clerk Mia runs the souvenir stand — and there is Marco, your travel friend from the airport, browsing the same shelf!",
+     es:'Necesitás tres recuerdos: uno para tu mamá, uno para una amiga y uno para vos. Tu presupuesto es $15. La dependienta Mia atiende el puesto de recuerdos — ¡y ahí está Marco, tu amigo viajero del aeropuerto, mirando el mismo estante!'},
     {t:'decision', speaker:'🛍️ Clerk Mia', line:'"Welcome! We have magnets, mugs, and keychains."',
      opts:[
        {x:'How much are the keychains?', ok:true, fb:'Para plural usamos "How much ARE…". keychains = llaveros.'},
@@ -3576,7 +3608,7 @@ stories:[
      es:'Mia pone las opciones sobre la mesa. "Tres llaveros serían $9. Tres tazas serían $24." Bruno toca con la pata la pila más barata.'},
     {t:'fill', q:'"The mugs are too ___." (caro/caras)', a:'expensive', opts:['expensive','exciting','expert'],
      fb:'expensive = caro · cheap = barato. "Too expensive" = demasiado caro. Pasás del presupuesto.'},
-    {t:'decision', speaker:'🐶 Bruno', line:'Your budget is $15. What do you choose?',
+    {t:'decision', speaker:'👨 Marco', line:'"Hey, small world! I am buying souvenirs too. Your budget is $15 — what will you get?"',
      opts:[
        {x:'Three keychains, please.', ok:true, fb:'$9 total: simple y dentro del presupuesto. Buena decisión 💪'},
        {x:'Three golden statues.', ok:false, fb:'Tu presupuesto acaba de esconderse 😂'},
@@ -4084,8 +4116,8 @@ stories:[
   reward:{xp:75, coins:35},
   nodes:[
     {t:'scene', img:'💊', title:'Pharmacy Run',
-     en:"You have a headache. The pharmacy is open, and Pharmacist Raj is behind the counter. You need to explain the problem in English.",
-     es:'Te duele la cabeza. La farmacia está abierta y el farmacéutico Raj está en el mostrador. Necesitás explicar el problema en inglés.'},
+     en:"You have a headache. The pharmacy is open, and Pharmacist Raj — yes, the same one from the clinic — is behind the counter. You need to explain the problem in English.",
+     es:'Te duele la cabeza. La farmacia está abierta y el farmacéutico Raj —sí, el mismo de la clínica— está en el mostrador. Necesitás explicar el problema en inglés.'},
     {t:'decision', speaker:'💊 Pharmacist Raj', line:'"Hello! How can I help you?"',
      opts:[
        {x:'I have a headache.', ok:true, fb:'Claro y útil: "I have a headache" = me duele la cabeza. ache = dolor.'},
@@ -6260,9 +6292,9 @@ stories:[
   reward:{xp:75, coins:35},
   nodes:[
     {t:'scene', img:'🏨', title:'Hotel Reservation',
-     en:"You arrive at the hotel after a long drive. Bruno yawns dramatically. Hotel Clerk Ben smiles at the front desk.",
-     es:'Llegás al hotel después de un viaje largo. Bruno bosteza con drama. El recepcionista Ben sonríe en el mostrador.'},
-    {t:'decision', speaker:'🏨 Hotel Clerk Ben', line:'"Good evening! Do you have a reservation?"',
+     en:"You arrive at the hotel after a long drive. Bruno yawns dramatically. At the front desk smiles a familiar face: Manager Olivia, from The Grand Hotel — she runs this branch too!",
+     es:'Llegás al hotel después de un viaje largo. Bruno bosteza con drama. En el mostrador sonríe una cara conocida: ¡Manager Olivia, la del Grand Hotel, también dirige esta sucursal!'},
+    {t:'decision', speaker:'🏨 Manager Olivia', line:'"Well, look who it is! Welcome back. Do you have a reservation with us tonight?"',
      opts:[
        {x:'Yes, I have a reservation under Mora.', ok:true, fb:'reservation = reservación · "under Mora" = a nombre de Mora.'},
        {x:'Yes, I have a dream.', ok:false, fb:'😄 Inspirador, pero pedí tu reservación.'},
@@ -6270,7 +6302,7 @@ stories:[
      ]},
     {t:'fill', q:'"I have a hotel ___." (reservación)', a:'reservation', opts:['reservation','conversation','celebration'],
      fb:'reservation = reservación · conversation = conversación · celebration = celebración.'},
-    {t:'decision', speaker:'🏨 Hotel Clerk Ben', line:'"Found it! A double room for two nights, correct?"',
+    {t:'decision', speaker:'🏨 Manager Olivia', line:'"Found it! A double room for two nights, correct?"',
      opts:[
        {x:'Yes, that is correct.', ok:true, fb:'"That is correct" = así es. Confirmar los datos de la reserva.'},
        {x:'Yes, for two centuries.', ok:false, fb:'😄 Son dos noches, no siglos.'},
@@ -6279,7 +6311,7 @@ stories:[
     {t:'fill', q:'"What time is ___?" (salida del hotel)', a:'checkout', opts:['checkout','checkmark','checkbook'],
      fb:'checkout = salida del hotel · checkmark = palomita · checkbook = chequera.'},
     {t:'build', words:['have','a','reservation','I'], answer:'I have a reservation', es:'tengo una reservación'},
-    {t:'decision', speaker:'🏨 Hotel Clerk Ben', line:'"Here is your key. Breakfast is at 7."',
+    {t:'decision', speaker:'🏨 Manager Olivia', line:'"Here is your key. Breakfast is at 7 — just like at The Grand!"',
      opts:[
        {x:'Is the wifi free?', ok:true, fb:'La pregunta del siglo XXI. "Is the wifi free?" = ¿el wifi es gratis?'},
        {x:'Is the key edible?', ok:false, fb:'😄 No te comas la llave.'},
@@ -6287,7 +6319,7 @@ stories:[
      ]},
     {t:'fill', q:'"My room is on the third ___." (piso)', a:'floor', opts:['floor','flour','flower'],
      fb:'floor = piso · flour = harina · flower = flor. ¡Tres palabras idénticas al oído!'},
-    {t:'decision', speaker:'🏨 Hotel Clerk Ben', line:'"Enjoy your stay! Anything else?"',
+    {t:'decision', speaker:'🏨 Manager Olivia', line:'"Enjoy your stay! Anything else, old friend?"',
      opts:[
        {x:'No, thank you. Good night!', ok:true, fb:'Cierre cordial tras un viaje largo.'},
        {x:'Yes, carry me to the room.', ok:false, fb:'😄 Ben no puede cargarte.'},
@@ -6304,9 +6336,9 @@ stories:[
   reward:{xp:75, coins:35},
   nodes:[
     {t:'scene', img:'🧳', title:'Lost Luggage',
-     en:"The baggage carousel stops. Your suitcase does not appear. Bruno checks under the belt, just in case. You head to the luggage desk.",
-     es:'La banda de equipaje se detiene. Tu maleta no aparece. Bruno revisa debajo de la cinta, por si acaso. Vas al módulo de equipaje.'},
-    {t:'decision', speaker:'🧑‍✈️ Luggage Desk', line:'"How can I help you?"',
+     en:"The baggage carousel stops. Your suitcase does not appear. Bruno checks under the belt, just in case. You head to the luggage desk — and the officer behind it looks oddly familiar. It is Officer James, from the airport!",
+     es:'La banda de equipaje se detiene. Tu maleta no aparece. Bruno revisa debajo de la cinta, por si acaso. Vas al módulo de equipaje… y el oficial detrás se ve raramente familiar. ¡Es Officer James, el del aeropuerto!'},
+    {t:'decision', speaker:'👮 Officer James', line:'"Wait — I remember you! The airport, the lost passport, right? Small world! So, what brings you to my desk today?"',
      opts:[
        {x:'My luggage is lost.', ok:true, fb:'luggage = equipaje · lost = perdido. Reporte directo y claro.'},
        {x:'My suitcase went on vacation.', ok:false, fb:'😄 Decí "my luggage is lost".'},
@@ -6314,7 +6346,7 @@ stories:[
      ]},
     {t:'fill', q:'"My ___ did not arrive." (equipaje)', a:'luggage', opts:['luggage','language','village'],
      fb:'luggage = equipaje · language = idioma · village = pueblo.'},
-    {t:'decision', speaker:'🧑‍✈️ Luggage Desk', line:'"What does your suitcase look like?"',
+    {t:'decision', speaker:'👮 Officer James', line:'"What does your suitcase look like?"',
      opts:[
        {x:'It is a large red suitcase with wheels.', ok:true, fb:'Describir color, tamaño y detalles = la encuentran más fácil.'},
        {x:'It looks like my hopes and dreams.', ok:false, fb:'😄 Describila de verdad: color y tamaño.'},
@@ -6323,7 +6355,7 @@ stories:[
     {t:'fill', q:'"Here is my luggage ___." (etiqueta / comprobante)', a:'tag', opts:['tag','bag','tug'],
      fb:'luggage tag = etiqueta de equipaje · bag = bolsa · tug = jalón. ¡Guardá siempre el comprobante!'},
     {t:'build', words:['my','luggage','is','lost'], answer:'my luggage is lost', es:'mi equipaje está perdido'},
-    {t:'decision', speaker:'🧑‍✈️ Luggage Desk', line:'"We found it on the next flight. Where should we deliver it?"',
+    {t:'decision', speaker:'👮 Officer James', line:'"We found it on the next flight. Where should we deliver it?"',
      opts:[
        {x:'Please deliver it to my hotel.', ok:true, fb:'deliver = entregar. Dar la dirección de entrega = solución.'},
        {x:'Deliver it to the moon.', ok:false, fb:'😄 Tu hotel está más cerca.'},
@@ -6331,7 +6363,7 @@ stories:[
      ]},
     {t:'fill', q:'"When will it ___?" (llegar)', a:'arrive', opts:['arrive','alive','arrange'],
      fb:'arrive = llegar · alive = vivo · arrange = organizar. arrival = llegada.'},
-    {t:'decision', speaker:'🧑‍✈️ Luggage Desk', line:'"It will arrive tonight. Sorry for the trouble!"',
+    {t:'decision', speaker:'👮 Officer James', line:'"It will arrive tonight. I will make sure of it personally — for an old friend!"',
      opts:[
        {x:'Thank you for sorting it out.', ok:true, fb:'"Sorting it out" = resolverlo. Cierre educado pese al problema.'},
        {x:'I will never forgive you.', ok:false, fb:'😄 Lo resolvieron rápido. Agradecé.'},
@@ -6524,8 +6556,8 @@ stories:[
   reward:{xp:75, coins:35},
   nodes:[
     {t:'scene', img:'⏱️', title:'Train Delay',
-     en:"The board changes. Your train is not leaving yet. Bruno stares at the clock with concern. Agent Tom makes an announcement.",
-     es:'El tablero cambia. Tu tren todavía no sale. Bruno mira el reloj con preocupación. El agente Tom hace un anuncio.'},
+     en:"The board changes. Your train is not leaving yet. Bruno stares at the clock with concern. Even Captain Smith is here, off duty, waiting for the same train with a coffee in hand. Agent Tom makes an announcement.",
+     es:'El tablero cambia. Tu tren todavía no sale. Bruno mira el reloj con preocupación. Hasta el Capitán Smith está aquí, de día libre, esperando el mismo tren con un café en la mano. El agente Tom hace un anuncio.'},
     {t:'decision', speaker:'🎫 Agent Tom', line:'"Attention: the 2 pm train is running late."',
      opts:[
        {x:'Excuse me, how long is the delay?', ok:true, fb:'delay = retraso. Preguntar cuánto = información práctica.'},
@@ -9413,8 +9445,8 @@ stories:[
   reward:{xp:80, coins:38},
   nodes:[
     {t:'scene', img:'🚴', title:'Spin Class',
-     en:"A fun spin class with upbeat music is about to start. Bruno bobs his head to the beat. Instructor Lia adjusts the bikes.",
-     es:'Va a empezar una clase de spinning divertida con música animada. Bruno mueve la cabeza al ritmo. La instructora Lia ajusta las bicicletas.'},
+     en:"A fun spin class with upbeat music is about to start. Bruno bobs his head to the beat. Instructor Lia adjusts the bikes — and on the next bike is Emma, the gate agent from the airport, ready to ride!",
+     es:'Va a empezar una clase de spinning divertida con música animada. Bruno mueve la cabeza al ritmo. La instructora Lia ajusta las bicicletas — ¡y en la bici de al lado está Emma, la agente de puerta del aeropuerto, lista para pedalear!'},
     {t:'decision', speaker:'🧘 Instructor Lia', line:'"Hop on a bike! Have you tried spin before?"',
      opts:[
        {x:'Not yet. Can you help me adjust the bike?', ok:true, fb:'bike = bicicleta · adjust = ajustar. Pedir ayuda con la máquina.'},
@@ -9440,7 +9472,7 @@ stories:[
      ]},
     {t:'fill', q:'"That was fun and full of ___!" (energía)', a:'energy', opts:['energy','envelope','enemy'],
      fb:'energy = energía · envelope = sobre · enemy = enemigo.'},
-    {t:'decision', speaker:'🐶 Bruno', line:'Bruno asks: how do you enjoy a spin class?',
+    {t:'decision', speaker:'👩 Emma', line:'"You again! From the airport AND now the gym! Ha! So, what is your secret to enjoying a spin class?"',
      opts:[
        {x:'Pedal at my own pace and rest when needed.', ok:true, fb:'Tu ritmo + pausas = clase disfrutada y sana. ¡Bien!'},
        {x:'Race everyone to exhaustion.', ok:false, fb:'😄 No es carrera.'},
@@ -9669,6 +9701,7 @@ function go(id){
   document.getElementById('mainnav').style.display = (id==='scr-story'||id==='scr-game') ? 'none':'flex';
   document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('on', b.dataset.scr===id));
   window.scrollTo(0,0);
+  if(id==='scr-world'||id==='scr-story') applyTheme(CW.id);
   if(id==='scr-home') renderHome();
   if(id==='scr-world') renderWorld();
   if(id==='scr-profile') renderProfile();
@@ -10211,8 +10244,41 @@ function previewBrunoRun(){
 /* =====================================================
    WORLD
    ===================================================== */
+/* ════════ TEMAS VISUALES POR MUNDO (Prioridad 1) ════════ */
+const THEMES = {
+  airport:   {g1:'#1E6FB8', g2:'#3FA0E0', accent:'#FFC65C', conn:'✈️', motif:'✈️🛫🧳', tag:'Boarding pass'},
+  restaurant:{g1:'#D34A2A', g2:'#FF9A3C', accent:'#FFD166', conn:'🍴', motif:'🍕🍷🕯️', tag:'Menú del día'},
+  hotel:     {g1:'#243B6B', g2:'#46618F', accent:'#E8C77D', conn:'🔑', motif:'🛎️🔑🛏️', tag:'Room key'},
+  shopping:  {g1:'#C9367F', g2:'#FF77A9', accent:'#FFD166', conn:'🏷️', motif:'🛍️🏷️🛒', tag:'Recibo'},
+  daily:     {g1:'#2E8F73', g2:'#57C7A4', accent:'#FFC65C', conn:'🏠', motif:'🏠☕🔑', tag:'Día a día'},
+  office:    {g1:'#2B4C7E', g2:'#5C7CB0', accent:'#7FD1C4', conn:'💼', motif:'💼💻📊', tag:'Memo interno'},
+  health:    {g1:'#1E8E9E', g2:'#54C4D0', accent:'#9BF0E0', conn:'➕', motif:'🏥🩺➕', tag:'Ficha clínica'},
+  travel:    {g1:'#D97A1E', g2:'#F2B05A', accent:'#2EC4B6', conn:'🚗', motif:'🚗🗺️⛽', tag:'En ruta'},
+  education: {g1:'#3A4DB0', g2:'#6E80D8', accent:'#FFC65C', conn:'🎓', motif:'🎓📚✏️', tag:'Lección'},
+  social:    {g1:'#7A3FB8', g2:'#B07AE0', accent:'#FFD166', conn:'💬', motif:'👥💬🎉', tag:'Conexión'},
+  lifestyle: {g1:'#C4486B', g2:'#F2845C', accent:'#7FD1C4', conn:'🌆', motif:'🌆💅🐾', tag:'Vida urbana'},
+  gym:       {g1:'#C0392B', g2:'#FF7A4D', accent:'#FFD166', conn:'💪', motif:'🏋️🏅🔥', tag:'Medalla'}
+};
+function applyTheme(id){
+  const t = THEMES[id] || THEMES.airport;
+  ['scr-world','scr-story'].forEach(sid=>{
+    const el = document.getElementById(sid);
+    if(!el) return;
+    el.style.setProperty('--w-g1', t.g1);
+    el.style.setProperty('--w-g2', t.g2);
+    el.style.setProperty('--w-accent', t.accent);
+  });
+  return t;
+}
+
 function renderWorld(){
+  const TH = applyTheme(CW.id);
   document.getElementById('world-title').textContent = `${CW.ico} ${CW.name} World`;
+  const hero = document.getElementById('world-hero');
+  if(hero) hero.innerHTML =
+    `<div class="wh-motif">${TH.motif}</div>`+
+    `<div class="wh-name">${CW.ico} ${CW.name} World</div>`+
+    `<span class="wh-tag">${TH.tag}</span>`;
   document.getElementById('world-bruno').innerHTML = CW.brunoIntro;
   document.getElementById('challenge-sub').textContent =
     `10 preguntas mixtas · vocabulario y frases de ${CW.name}`;
@@ -10223,7 +10289,7 @@ function renderWorld(){
     const stars = rec ? '★'.repeat(rec) + '☆'.repeat(3-rec) : '☆☆☆';
     return `<button class="pass" onclick="startStory('${st.id}')">
       ${rec?'<span class="stamp-done">Completada</span>':''}
-      <div class="pass-route"><span class="code">${st.code.split('→')[0]}</span><span class="plane">✈</span><span class="code">${st.code.split('→')[1]}</span></div>
+      <div class="pass-route"><span class="code">${st.code.split('→')[0]}</span><span class="plane">${TH.conn}</span><span class="code">${st.code.split('→')[1]}</span></div>
       <div class="perf"></div>
       <div class="pass-title">${st.emoji} ${st.title}</div>
       <div class="pass-sub">${st.sub}</div>
@@ -10787,7 +10853,7 @@ function startBrunoRun(replay=false){
     '<div class="runner-hud" style="display:flex;justify-content:space-between;align-items:center;'
     +'margin-bottom:4px;font-family:Fredoka;font-weight:700;font-size:1rem">'
     +'<span>🎯 '+next.ico+' '+next.name+'</span>'
-    +'<span>�DE99<span id="rn-coins2">0</span></span></div>'
+    +'<span>🪙<span id="rn-coins2">0</span></span></div>'
     +'<div style="height:9px;background:var(--deeper);border-radius:99px;margin-bottom:6px;'
     +'overflow:hidden;border:1px solid rgba(255,246,232,.15)">'
     +'<div id="rn-bar" style="height:100%;background:linear-gradient(90deg,#2EC4B6,#FFD166);'
@@ -11024,7 +11090,7 @@ function runnerWin(){
     +' Juntó <b>'+GM.coins+'</b> monedas.</p>'
     +'<div class="rewards">'
     +'<div class="reward">+'+xp+' ⚡XP</div>'
-    +'<div class="reward">+'+coins+' �DE99</div>'
+    +'<div class="reward">+'+coins+' 🪙</div>'
     +(firstBridge?'<div class="reward">🔓 '+next.name+'</div>':'')
     +'</div>'
     +'<button class="btn btn-coral" onclick="closeModal();'
