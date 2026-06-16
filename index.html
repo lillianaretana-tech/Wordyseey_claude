@@ -375,6 +375,83 @@ h1,h2,h3,.num,.btn{font-family:'Fredoka',sans-serif}
 #scr-world .vocab-chip{border-color:var(--w-accent)}
 #scr-story .scenecard{border-left:5px solid var(--w-accent)}
 #scr-story .speaker{color:var(--w-g1)}
+
+/* P3 · quips de Bruno dentro del feedback */
+.bquip{font-family:'Fredoka';font-weight:700;margin-bottom:6px;font-size:.96rem;line-height:1.3}
+.feedback.ok .bquip{color:#9ff0d8}
+.feedback.bad .bquip{color:#ffd2ad}
+.bfact{display:block;font-weight:400;font-size:.84rem;opacity:.92;margin-top:5px}
+/* P4 · banner de evento temporal en el inicio */
+#event-banner{display:none;align-items:center;gap:12px;color:#fff;border-radius:var(--radius);
+  padding:12px 14px;margin:2px 0 14px;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.18)}
+#event-banner .evt-emoji{font-size:1.9rem;line-height:1}
+#event-banner .evt-name{font-family:'Fredoka';font-weight:700;font-size:1.02rem}
+#event-banner .evt-blurb{font-size:.82rem;opacity:.95;line-height:1.3}
+/* P8 · reporte de analítica (modo dueña) */
+.an-report{text-align:left;font-size:.86rem;max-height:52vh;overflow:auto}
+.an-report h4{font-family:'Fredoka';color:var(--gold);margin:10px 0 4px;font-size:.92rem}
+.an-report .an-row{display:flex;justify-content:space-between;gap:10px;padding:2px 0;border-bottom:1px dashed rgba(255,255,255,.1)}
+.an-evtbtns{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.an-evtbtns button{font-family:'Fredoka';font-weight:600;font-size:.78rem;border:none;border-radius:999px;padding:6px 10px;background:var(--deeper);color:var(--cream);cursor:pointer}
+
+/* ════════════════ P6 · COLECCIONABLES (recuerdos de viaje) ════════════════ */
+.collgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.coll{border:2px solid rgba(255,246,232,.18);border-radius:14px;padding:10px 6px;text-align:center;
+  display:flex;flex-direction:column;align-items:center;gap:4px;background:rgba(255,255,255,.03);
+  color:var(--cream-dim);opacity:.5;font-family:'Fredoka';font-weight:600;font-size:.6rem;
+  min-height:80px;justify-content:center;line-height:1.15;letter-spacing:.02em}
+.coll .ce{font-size:1.55rem;line-height:1}
+.coll.have{opacity:1;background:rgba(255,255,255,.06);box-shadow:0 4px 12px rgba(0,0,0,.18)}
+.coll.have.t-postcard{border-color:#7AB8FF}
+.coll.have.t-souvenir{border-color:#57C7A4}
+.coll.have.t-ticket{border-color:#FFC65C}
+.coll.have.t-medal{border-color:#FF6B6B}
+.coll.have.t-rare{border-color:#C9A0FF;box-shadow:0 0 16px rgba(201,160,255,.35)}
+.coll-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px;font-size:.82rem;color:var(--cream-dim)}
+.coll-head b{font-family:'Fredoka';color:var(--gold)}
+.reward.found{background:linear-gradient(135deg,#7A3FB8,#C9367F);color:#fff}
+
+/* ════════════════ P7 · EFECTOS Y FEEDBACK ════════════════
+   Confetti DOM liviano (sin librerías), modales celebratorios y micro-feedback.
+   Respeta prefers-reduced-motion y limita partículas para no afectar rendimiento. */
+#fx-layer{position:fixed;inset:0;pointer-events:none;z-index:60;overflow:hidden}
+.fx-bit{position:absolute;top:-8vh;line-height:1;will-change:transform,opacity;opacity:0;
+  animation:fxFall var(--d,1.4s) cubic-bezier(.2,.6,.5,1) forwards;animation-delay:var(--dl,0s)}
+@keyframes fxFall{
+  0%{opacity:0;transform:translate(0,0) rotate(0) scale(.6)}
+  12%{opacity:1}
+  100%{opacity:0;transform:translate(var(--x,0),112vh) rotate(var(--r,360deg)) scale(1)}
+}
+.modal.celebrate{animation:popBig .5s cubic-bezier(.18,1.5,.4,1)}
+@keyframes popBig{0%{transform:scale(.6);opacity:0}60%{transform:scale(1.06)}100%{transform:scale(1);opacity:1}}
+.modal.celebrate::after{content:"";position:absolute;inset:-2px;border-radius:24px;pointer-events:none;
+  box-shadow:0 0 0 2px rgba(255,198,92,.5),0 0 34px rgba(255,198,92,.45);animation:glowPulse 1.6s ease-in-out infinite}
+@keyframes glowPulse{0%,100%{opacity:.45}50%{opacity:1}}
+.m-emoji.bounce{animation:emojiBounce .9s ease}
+@keyframes emojiBounce{0%{transform:scale(.4) rotate(-12deg)}50%{transform:scale(1.25) rotate(8deg)}70%{transform:scale(.95) rotate(-4deg)}100%{transform:scale(1) rotate(0)}}
+.m-emoji.chest{animation:chestShake .6s ease}
+@keyframes chestShake{0%,100%{transform:rotate(0)}20%{transform:rotate(-10deg) scale(1.06)}40%{transform:rotate(10deg)}60%{transform:rotate(-7deg)}80%{transform:rotate(6deg)}}
+.rewards.stagger .reward{opacity:0;animation:rwIn .45s ease forwards}
+.rewards.stagger .reward:nth-child(1){animation-delay:.15s}
+.rewards.stagger .reward:nth-child(2){animation-delay:.30s}
+.rewards.stagger .reward:nth-child(3){animation-delay:.45s}
+.rewards.stagger .reward:nth-child(4){animation-delay:.60s}
+@keyframes rwIn{from{opacity:0;transform:translateY(10px) scale(.85)}to{opacity:1;transform:none}}
+.reward.shine{position:relative;overflow:hidden}
+.reward.shine::after{content:"";position:absolute;top:0;left:-60%;width:50%;height:100%;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);animation:shineX 1.4s ease .5s}
+@keyframes shineX{to{left:130%}}
+.bigstars.pop .st{display:inline-block;opacity:0;animation:starPop .5s cubic-bezier(.2,1.6,.4,1) forwards}
+.bigstars.pop .st:nth-child(1){animation-delay:.10s}
+.bigstars.pop .st:nth-child(2){animation-delay:.30s}
+.bigstars.pop .st:nth-child(3){animation-delay:.50s}
+@keyframes starPop{from{opacity:0;transform:scale(0) rotate(-40deg)}to{opacity:1;transform:none}}
+.unlock-hero{margin:4px auto 12px;width:96px;height:96px;border-radius:24px;display:flex;align-items:center;justify-content:center;font-size:3rem;
+  background:linear-gradient(135deg,var(--uh1,#1E6FB8),var(--uh2,#3FA0E0));box-shadow:0 0 0 3px rgba(255,255,255,.25),0 10px 28px rgba(0,0,0,.3);animation:heroFloat 2.4s ease-in-out infinite}
+@keyframes heroFloat{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-7px) rotate(2deg)}}
+.gainfly{position:fixed;z-index:62;font-family:'Fredoka';font-weight:700;color:var(--gold);pointer-events:none;
+  text-shadow:0 2px 6px rgba(0,0,0,.4);animation:gainUp 1s ease forwards}
+@keyframes gainUp{0%{opacity:0;transform:translateY(6px) scale(.8)}20%{opacity:1}100%{opacity:0;transform:translateY(-28px) scale(1.1)}}
 </style>
 </head>
 <body>
@@ -398,6 +475,7 @@ h1,h2,h3,.num,.btn{font-family:'Fredoka',sans-serif}
       <span class="bruno-face" onclick="ownerTap()" style="cursor:pointer" title="Wordyssey">🐶</span>
       <div class="bruno-bubble" id="bruno-msg"></div>
     </div>
+    <div id="event-banner"></div>
     <div id="home-account"></div>
     <div id="home-practice"></div>
 
@@ -475,6 +553,8 @@ h1,h2,h3,.num,.btn{font-family:'Fredoka',sans-serif}
     <div id="profile-stats"></div>
     <div class="sectitle mt">🛂 Sellos del pasaporte</div>
     <div class="stampgrid" id="stamps"></div>
+    <div class="sectitle mt">🧳 Recuerdos de viaje</div>
+    <div id="collectibles"></div>
     <div class="sectitle mt">🔊 Voz en inglés</div>
     <div id="voice-picker-slot"></div>
     <button class="btn btn-ghost mt" onclick="resetGame()">Reiniciar progreso</button>
@@ -490,6 +570,7 @@ h1,h2,h3,.num,.btn{font-family:'Fredoka',sans-serif}
   </div>
 
   <div id="toast"></div>
+  <div id="fx-layer"></div>
 </div>
 
 <script>
@@ -509,6 +590,8 @@ const DEFAULT = {
   totalCorrect:0, totalWrong:0, wordsLearned:[], gamesPlayed:0, letterGamesTried:{},
   practiceLevel:1, practiceRounds:0,
   review:{},
+  analytics:{}, eventOverride:null,
+  collected:{},
   daily:{ day:null, variant:0, storyDone:0, questions:0, xpEarned:0, practiceDone:0, gamesDone:0 }
 };
 let S = load();
@@ -9714,10 +9797,66 @@ function toast(msg){
   clearTimeout(t._h); t._h = setTimeout(()=>t.classList.remove('show'), 2400);
 }
 function modal(html){
-  document.getElementById('modal').innerHTML = html;
+  const m = document.getElementById('modal');
+  m.className = 'modal';
+  m.innerHTML = html;
   document.getElementById('modal-bg').classList.add('show');
 }
 function closeModal(){ document.getElementById('modal-bg').classList.remove('show'); }
+
+/* ════════════════ P7 · EFECTOS Y FEEDBACK (motor) ════════════════ */
+const FX_REDUCED = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+function fxBurst(opts){
+  opts = opts || {};
+  if(FX_REDUCED) return;
+  const layer = document.getElementById('fx-layer'); if(!layer) return;
+  const n = Math.min(opts.count||28, 40);
+  const bits = opts.bits || ['🎉','✨','⭐','🎊','💫'];
+  const cols = opts.colors || ['#FFC65C','#57C7A4','#FF6B6B','#7AB8FF','#FFD166'];
+  const frag = document.createDocumentFragment();
+  for(let i=0;i<n;i++){
+    const el = document.createElement('span');
+    el.className = 'fx-bit';
+    if(Math.random()<0.45){ el.textContent='●'; el.style.color=cols[i%cols.length]; }
+    else el.textContent = bits[i%bits.length];
+    el.style.left = (opts.x!=null?opts.x:Math.random()*100)+'vw';
+    el.style.setProperty('--x', (Math.random()*60-30)+'vw');
+    el.style.setProperty('--r', (Math.random()*720-360)+'deg');
+    el.style.setProperty('--d', (1.1+Math.random()*0.7)+'s');
+    el.style.setProperty('--dl', (Math.random()*0.25)+'s');
+    el.style.fontSize = (0.8+Math.random()*0.9)+'rem';
+    frag.appendChild(el);
+  }
+  layer.appendChild(frag);
+  setTimeout(()=>{ layer.innerHTML=''; }, 2300);
+}
+function flyGain(text){
+  if(FX_REDUCED) return;
+  const anchor = document.querySelector('.statsbar');
+  const host = document.getElementById('fx-layer');
+  if(!host || !anchor) return;
+  const r = anchor.getBoundingClientRect();
+  const el = document.createElement('div');
+  el.className = 'gainfly'; el.textContent = text;
+  el.style.left = (r.left + r.width*0.5)+'px';
+  el.style.top  = (r.bottom)+'px';
+  host.appendChild(el);
+  setTimeout(()=>el.remove(), 1000);
+}
+function bigstarsHTML(stars){
+  return [0,1,2].map(i=>`<span class="st">${i<stars?'★':'☆'}</span>`).join('');
+}
+/* abre un modal con celebración: pop grande, brillo, premios escalonados y confetti */
+function celebrateModal(html, opts){
+  opts = opts || {};
+  modal(html);
+  const m = document.getElementById('modal');
+  m.classList.add('celebrate');
+  const em = m.querySelector('.m-emoji'); if(em) em.classList.add(opts.chest ? 'chest' : 'bounce');
+  const rw = m.querySelector('.rewards'); if(rw){ rw.classList.add('stagger'); rw.querySelectorAll('.reward').forEach(p=>p.classList.add('shine')); }
+  const bs = m.querySelector('.bigstars'); if(bs) bs.classList.add('pop');
+  if(!FX_REDUCED) setTimeout(()=>fxBurst(opts), opts.chest ? 420 : 120);
+}
 
 /* ---------- SONIDO Y PRONUNCIACION ---------- */
 let SOUND_ON = localStorage.getItem('wordyssey_sound') !== 'off';
@@ -9978,23 +10117,26 @@ function gainXP(n){
   save();
   if(leveled){
     S.coins += 20; save();
-    setTimeout(()=>modal(`
+    setTimeout(()=>celebrateModal(`
       <span class="m-emoji">🎉</span>
       <h2>¡Nivel ${S.level}!</h2>
       <p>Bruno está dando vueltas de la emoción.</p>
       <div class="rewards"><div class="reward">+20 🪙 bonus</div></div>
       <button class="btn btn-coral" onclick="closeModal()">¡Seguimos!</button>
-    `), 400);
+    `, { count:30, bits:['⚡','🎉','✨','⭐'] }), 400);
   }
 }
 function xpNeeded(lv){ return lv*100; }
-function gainCoins(n){ S.coins += n; checkBadge('rich', S.coins>=300); save(); }
+function gainCoins(n){
+  S.coins += n; checkBadge('rich', S.coins>=300); save();
+  if(n>0 && !document.getElementById('modal-bg').classList.contains('show')) flyGain('+'+n+' 🪙');
+}
 
 function checkBadge(id, cond){
   if(cond && !S.badges.includes(id)){
     S.badges.push(id); save();
     const b = BADGES.find(x=>x.id===id);
-    if(b) setTimeout(()=>toast(`🛂 Nuevo sello: ${b.emoji} ${b.name}`), 800);
+    if(b){ setTimeout(()=>toast(`🛂 Nuevo sello: ${b.emoji} ${b.name}`), 800); setTimeout(()=>fxBurst({count:16, bits:['✨','🛂','⭐','💫']}), 820); }
   }
 }
 function learnWords(arr){
@@ -10036,8 +10178,10 @@ function pickAdaptive(items, kind, count, level){
    ===================================================== */
 function renderHome(){
   checkDay();
+  backfillCollectibles();
   renderHomeAccountBox();
   renderHomePracticeBanner();
+  renderEventBanner();
   document.getElementById('ui-level').textContent = S.level;
   document.getElementById('ui-coins').textContent = S.coins;
   document.getElementById('ui-stars').textContent = S.stars;
@@ -10056,7 +10200,7 @@ function renderHome(){
     const nextLocked = WORLDS.findIndex((w,i)=>!worldUnlocked(i));
     if(nextLocked>0 && WORLDS[nextLocked-1].stories.every(st=>S.stories[st.id]) && !S.bosses[WORLDS[nextLocked-1].id])
       msg = `Bruno cree que estás listo para el <b>Boss de ${WORLDS[nextLocked-1].name}</b> 👹 ¡Vencelo para abrir ${WORLDS[nextLocked].name}!`;
-    else msg = `Llevás <b>${done}/${totalStories} historias</b>. Bruno olfatea más aventuras cerca… 🐾`;
+    else msg = `Llevás <b>${done}/${totalStories} historias</b>. ${brunoPick('greet')}`;
   }
   document.getElementById('bruno-msg').innerHTML = msg;
 
@@ -10106,9 +10250,11 @@ function renderHome(){
     const doneCount = w.stories.filter(st=>S.stories[st.id]).length;
     const bossDone = !!S.bosses[w.id];
     const ownerOnly = OWNER && !realDone; /* abierto solo por modo dueña */
+    const collHave = [0,1,2,3].filter(k=>hasColl(w.id,k)).length;
+    const collHint = (open && !ownerOnly) ? ` · 🧳 ${collHave}/4` : '';
     const sub = open
       ? (ownerOnly ? `🔑 Vista de dueña · ${w.stories.length} historias`
-                   : `${doneCount}/${w.stories.length} historias${bossDone?' · 👑':''}`)
+                   : `${doneCount}/${w.stories.length} historias${bossDone?' · 👑':''}${collHint}`)
       : `${w.stories.length} historias · ${w.boss.emoji} ${w.boss.name}`;
     return `<button class="world ${open?(bossDone?'':'featured'):'locked preview'}" onclick="${open?`openWorld(${i})`:`previewWorld(${i})`}">
       ${bossDone?'<span class="wdone">👑</span>':''}
@@ -10125,6 +10271,7 @@ function openWorld(i){
     return;
   }
   CW = WORLDS[i];
+  bumpA('worldOpens', CW.id);
   go('scr-world');
 }
 
@@ -10333,15 +10480,152 @@ function renderWorld(){
    ===================================================== */
 let SP = null;
 
+/* ════════════════ P3 · BRUNO VIVO — reacciones contextuales ════════════════
+   Frases variadas con anti-repetición. Reaccionan a aciertos, errores,
+   rachas (combo dentro de la historia), recuperación tras fallo, y sueltan
+   curiosidades de vocabulario de vez en cuando. */
+const BRUNO = {
+  correct:['¡Bien ahí!','¡Eso!','Vas afinando el oído.','Cada vez más natural.','Me gusta cómo suena.','Native vibes 😎','¡Pura vida con ese inglés!','Lo clavaste.','Bruno mueve la cola de alegría.','¡Correcto y con estilo!'],
+  combo3:['¡Tres seguidas! Estás on fire 🔥','¡Racha encendida! No parés.','Imparable hoy.','Bruno casi no te alcanza el ritmo.'],
+  combo5:['¡Cinco al hilo! Bruno aúlla de orgullo 🐺','¡Modo experto activado!','Esto ya es nivel leyenda ✨','Bruno quiere tu autógrafo 🐾'],
+  wrong:['Tranqui, así se aprende.','Casi. Mirá bien y seguimos.','Nada grave, lo agarrás a la próxima.','Errar también enseña. ¡Dale!','Bruno te pasa una pista con la cola.','Suave: respiramos y seguimos.'],
+  recover:['¡Así se remonta!','¡Volviste con todo!','Eso, recuperaste el ritmo.','Bruno sabía que podías.'],
+  greet:['Bruno olfatea más aventuras cerca… 🐾','¿Seguimos explorando? Bruno ya tiene la correa puesta.','El mundo no se recorre solo. ¡Vamos!','Bruno preparó café y vocabulario nuevo ☕','Hay historias nuevas esperando, dice Bruno.'],
+  perfect:['¡Perfecto, sin un solo error! Bruno está impresionado 🐶','Redondito. Bruno te entrega la medalla invisible 🏅','Sin fallar una. ¡Crack total!','Impecable. Bruno presume de alumna 🌟']
+};
+let _bq = {};
+function brunoPick(cat){
+  const arr = BRUNO[cat]; if(!arr || !arr.length) return '';
+  if(arr.length===1) return arr[0];
+  let i; do { i = Math.floor(Math.random()*arr.length); } while(i===_bq[cat] && arr.length>1);
+  _bq[cat]=i; return arr[i];
+}
+const WORDFACTS = {
+  coffee:'Dato: "coffee" viene del árabe "qahwa". ☕',
+  airport:'Dato: "airport" = air + port, un puerto del aire. ✈️',
+  hotel:'Dato: "hotel" y "hospital" comparten raíz: lugares que hospedan. 🏨',
+  ticket:'Ojo: "ticket" también significa "multa" según el contexto. 🎫',
+  water:'Dato: cerca del 60% de tu cuerpo es "water". 💧',
+  friend:'Dato: "friend" viene de una raíz antigua que significa "amar". 🫶',
+  gym:'Dato: "gym" es corto de "gymnasium", del griego "gymnós". 🏋️',
+  doctor:'Dato: "doctor" viene del latín "docere": enseñar. 🩺',
+  menu:'Dato: "menu" es francés y significa "detallado". 🍽️',
+  sale:'Ojo: "on sale" = en oferta · "for sale" = a la venta. 🏷️',
+  luggage:'Dato: "luggage" (US) y "baggage" significan casi lo mismo. 🧳',
+  breakfast:'Dato: "breakfast" = break + fast: romper el ayuno. 🍳'
+};
+function brunoFact(words){
+  if(!words) return '';
+  for(const w of words){
+    const k = String(w).toLowerCase().replace(/[^a-z]/g,'');
+    if(WORDFACTS[k] && Math.random()<0.5) return WORDFACTS[k];
+  }
+  return '';
+}
+function brunoReact(ok){
+  if(!SP) return '';
+  if(ok){
+    const c = SP.combo||0;
+    if(c>=5 && Math.random()<0.85) return brunoPick('combo5');
+    if(c>=3 && Math.random()<0.7) return brunoPick('combo3');
+    if(SP._justMissed){ SP._justMissed=false; return brunoPick('recover'); }
+    return brunoPick('correct');
+  } else {
+    SP._justMissed = true;
+    return brunoPick('wrong');
+  }
+}
+function brunoQuipHTML(ok, words){
+  let q = brunoReact(ok);
+  if(ok && words){ const f = brunoFact(words); if(f) q += ' <span class="bfact">'+f+'</span>'; }
+  return q ? '<div class="bquip">🐶 '+q+'</div>' : '';
+}
+/* setea feedback: quip de Bruno (HTML seguro) + texto educativo (como nodo de texto) */
+function setFB(fb, cls, quipHTML, text){
+  fb.className = 'feedback '+cls;
+  fb.innerHTML = quipHTML || '';
+  fb.appendChild(document.createTextNode(text));
+}
+
+/* ════════════════ P8 · ANALÍTICA DE CONTENIDO ════════════════
+   Conteos livianos en localStorage para guiar el contenido futuro.
+   Invisible para el jugador; se consulta desde el Modo dueña. */
+function bumpA(map, key){
+  if(!key) return;
+  S.analytics = S.analytics || {};
+  S.analytics[map] = S.analytics[map] || {};
+  S.analytics[map][key] = (S.analytics[map][key]||0) + 1;
+  save();
+}
+function topEntries(obj, n, asc){
+  const arr = Object.entries(obj||{}).sort((a,b)=> asc ? a[1]-b[1] : b[1]-a[1]);
+  return arr.slice(0, n||5);
+}
+function ownerAnalytics(){
+  const A = S.analytics || {};
+  const nameStory = id => { for(const w of WORLDS){ const s=w.stories.find(x=>x.id===id); if(s) return s.emoji+' '+s.title; } return id; };
+  const nameWorld = id => { const w=WORLDS.find(x=>x.id===id); return w? w.ico+' '+w.name : id; };
+  const rows = (entries, fmt) => entries.length ? entries.map(([k,v])=>`<div class="an-row"><span>${fmt?fmt(k):k}</span><b>${v}</b></div>`).join('') : '<div class="an-row"><span>Sin datos aún</span><b>—</b></div>';
+  const evtBtns = EVENTS.map(e=>`<button onclick="forceEvent('${e.id}')">${e.emoji} ${e.id}</button>`).join('') + `<button onclick="forceEvent(null)">✖ ninguno</button>`;
+  modal(`
+    <span class="m-emoji">📊</span>
+    <h2>Analítica (dueña)</h2>
+    <div class="an-report">
+      <h4>📖 Historias más jugadas</h4>${rows(topEntries(A.storyPlays,5), nameStory)}
+      <h4>💤 Historias menos jugadas</h4>${rows(topEntries(A.storyPlays,5,true), nameStory)}
+      <h4>✅ Más completadas</h4>${rows(topEntries(A.storyCompletes,5), nameStory)}
+      <h4>🎮 Juegos favoritos</h4>${rows(topEntries(A.gamePlays,5))}
+      <h4>🗺️ Mundos favoritos</h4>${rows(topEntries(A.worldOpens,5), nameWorld)}
+      <h4>🧩 Palabras más difíciles</h4>${rows(topEntries(A.wordMiss,8))}
+      <h4>🚪 Más abandonadas</h4>${rows(topEntries(A.abandons,5), nameStory)}
+      <h4>🎟️ Forzar evento (prueba)</h4>
+      <div class="an-evtbtns">${evtBtns}</div>
+    </div>
+    <button class="btn btn-coral" onclick="closeModal()">Cerrar</button>
+  `);
+}
+function forceEvent(id){ S.eventOverride = id; save(); closeModal(); renderEventBanner(); toast(id?('🎟️ Evento forzado: '+id):'Evento de prueba desactivado'); }
+
+/* ════════════════ P4 · EVENTOS ESPECIALES (estructura) ════════════════
+   Para agregar un evento: copiá un objeto del array. Campos:
+   id, emoji, name, from/to ('MM-DD'), blurb, theme{g1,g2}.
+   activeEvent() decide cuál corre según la fecha (o el override del Modo dueña).
+   El contenido temático (historias/recompensas) se puede enganchar luego;
+   por ahora la estructura ya muestra el evento y queda lista para crecer. */
+const EVENTS = [
+  {id:'anniversary', emoji:'🎉', name:'Anniversary Event',           from:'12-01', to:'12-07', blurb:'¡Wordyssey está de aniversario! Bruno reparte confeti por los mundos.',          theme:{g1:'#7A3FB8', g2:'#FF77A9'}},
+  {id:'christmas',   emoji:'🎄', name:'Christmas Adventure',          from:'12-18', to:'12-31', blurb:'Bruno se puso gorro navideño. Aventuras con espíritu festivo. 🎄',                  theme:{g1:'#C0392B', g2:'#2E8F73'}},
+  {id:'halloween',   emoji:'🎃', name:'Halloween Quest',              from:'10-25', to:'10-31', blurb:'Bruno se disfrazó y hay vocabulario de misterio en el aire. 👻',                   theme:{g1:'#6A2C91', g2:'#E67E22'}},
+  {id:'summer',      emoji:'☀️', name:'Summer Travel Event',          from:'06-21', to:'07-15', blurb:'Verano de viajes con Bruno. ¡A explorar nuevos rumbos! 🏖️',                        theme:{g1:'#1E8E9E', g2:'#FFC65C'}},
+  {id:'valentine',   emoji:'❤️', name:"Valentine's Restaurant Challenge", from:'02-10', to:'02-16', blurb:'Mesa para dos: inglés con sabor a romance esta semana. 💞',                   theme:{g1:'#C9367F', g2:'#FF7A4D'}}
+];
+function activeEvent(){
+  if(S.eventOverride){ return EVENTS.find(e=>e.id===S.eventOverride) || null; }
+  const d = new Date();
+  const md = String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  return EVENTS.find(e=> e.from<=e.to ? (md>=e.from && md<=e.to) : (md>=e.from || md<=e.to)) || null;
+}
+function renderEventBanner(){
+  const host = document.getElementById('event-banner'); if(!host) return;
+  const ev = activeEvent();
+  if(!ev){ host.style.display='none'; host.innerHTML=''; return; }
+  host.style.display='flex';
+  host.style.background = `linear-gradient(135deg,${ev.theme.g1},${ev.theme.g2})`;
+  host.innerHTML = `<div class="evt-emoji">${ev.emoji}</div>`+
+    `<div><div class="evt-name">${ev.name}</div><div class="evt-blurb">${ev.blurb}</div></div>`;
+}
+
 function startStory(id){
   const story = CW.stories.find(s=>s.id===id);
-  SP = { story, i:0, mistakes:0, hearts:3, mode:'story' };
+  SP = { story, i:0, mistakes:0, hearts:3, mode:'story', combo:0, bestCombo:0 };
+  bumpA('storyPlays', id);
   go('scr-story');
   renderNode();
 }
 
 function confirmExit(){
   if(confirm('¿Salir de la aventura? Perdés el progreso de esta historia.')){
+    if(SP && SP.mode==='story' && SP.story) bumpA('abandons', SP.story.id);
     const back = SP && SP.practice ? 'scr-home' : 'scr-world';
     SP = null; go(back);
   }
@@ -10434,13 +10718,14 @@ function checkBuild(){
     playSfx('ok');
     speak(node.alt || node.answer);
     fb.className = 'feedback ok';
-    fb.innerHTML = `✅ <b>"${node.alt || node.answer}"</b> — ${node.es}`;
+    fb.innerHTML = brunoQuipHTML(true, (node.alt || node.answer).split(' ')) + `✅ <b>"${node.alt || node.answer}"</b> — ${node.es}`;
     learnWords((node.alt || node.answer).split(' '));
     showContinue('nextNode()');
   }else{
     playSfx('bad');
+    bumpA('wordMiss', node.answer);
     fb.className = 'feedback bad';
-    fb.textContent = '❌ Casi… reordená las palabras y volvé a Comprobar, o tocá "Ver respuesta".';
+    fb.innerHTML = brunoQuipHTML(false) + '❌ Casi… reordená las palabras y volvé a Comprobar, o tocá "Ver respuesta".';
     loseHeart();
     showContinue('revealBuild()', 'Ver respuesta →');
   }
@@ -10457,11 +10742,11 @@ function pickOpt(idx){
   if(o.ok){
     playSfx('ok');
     speak(o.x);
-    fb.className='feedback ok'; fb.textContent = '✅ ' + o.fb;
+    setFB(fb, 'ok', brunoQuipHTML(true, [o.x]), '✅ ' + o.fb);
   }else{
     playSfx('bad');
     btns[idx].classList.add('wrong');
-    fb.className='feedback bad'; fb.textContent = '❌ ' + o.fb;
+    setFB(fb, 'bad', brunoQuipHTML(false), '❌ ' + o.fb);
     loseHeart();
   }
   showContinue('nextNode()');
@@ -10479,12 +10764,13 @@ function pickFill(btn, val){
   if(ok){
     playSfx('ok');
     speak(String(node.a));
-    fb.className='feedback ok'; fb.textContent = '✅ ' + node.fb;
+    setFB(fb, 'ok', brunoQuipHTML(true, [String(node.a)]), '✅ ' + node.fb);
     learnWords([String(node.a)]);
   }else{
     playSfx('bad');
     btn.classList.add('wrong');
-    fb.className='feedback bad'; fb.textContent = '❌ ' + node.fb;
+    bumpA('wordMiss', String(node.a));
+    setFB(fb, 'bad', brunoQuipHTML(false), '❌ ' + node.fb);
     loseHeart();
   }
   showContinue('nextNode()');
@@ -10492,7 +10778,8 @@ function pickFill(btn, val){
 
 function registerAnswer(ok){
   S.daily.questions++;
-  if(ok) S.totalCorrect++; else { S.totalWrong++; if(SP) SP.mistakes++; }
+  if(ok){ S.totalCorrect++; if(SP){ SP.combo=(SP.combo||0)+1; SP.bestCombo=Math.max(SP.bestCombo||0, SP.combo); } }
+  else { S.totalWrong++; if(SP){ SP.mistakes++; SP.combo=0; } }
   const total = S.totalCorrect + S.totalWrong;
   checkBadge('accuracy-80', total>=50 && Math.round(S.totalCorrect/total*100)>=80);
   save();
@@ -10535,6 +10822,82 @@ function bossNext(){
   SP.i++; renderBossQ();
 }
 
+/* ════════════════ P6 · COLECCIONABLES — recuerdos de viaje ════════════════
+   Items opcionales que se DESCUBREN al explorar (no son obligatorios).
+   Milestones por mundo: 1ª historia → 📸 postal · mitad → 🧳 souvenir ·
+   todas → 🎫 ticket · boss → 🏅 medalla. Más hallazgos raros 🌟 al azar.
+   Viven en el pasaporte (Perfil). Para agregar: editá COLLECTIBLES. */
+const COLL_TYPES = { postcard:'📸', souvenir:'🧳', ticket:'🎫', medal:'🏅', rare:'🌟' };
+const COLLECTIBLES = {
+  airport:   [['postcard','🗼','Torre de control'],['souvenir','🛩️','Avión de juguete'],['ticket','🎫','Boarding pass dorado'],['medal','🪽','Alas de Capitán']],
+  restaurant:[['postcard','👨‍🍳','Cocina abierta'],['souvenir','🍷','Posavasos del chef'],['ticket','🍽️','Mesa VIP'],['medal','⭐','Estrella del menú']],
+  hotel:     [['postcard','🛎️','Lobby del Grand'],['souvenir','🗝️','Llave vintage'],['ticket','🕛','Late checkout'],['medal','🎩','Huésped de honor']],
+  shopping:  [['postcard','🪟','Vitrina de moda'],['souvenir','🛍️','Bolsa de la tienda'],['ticket','🏷️','Cupón VIP'],['medal','💳','Comprador experto']],
+  daily:     [['postcard','🏘️','Mi barrio'],['souvenir','☕','Taza favorita'],['ticket','🚌','Pase del bus'],['medal','🏡','Vecino del año']],
+  office:    [['postcard','🏙️','Vista de la oficina'],['souvenir','🏆','Taza Best Worker'],['ticket','📊','Pase de reunión'],['medal','💼','Empleado estrella']],
+  health:    [['postcard','🏥','Clínica luminosa'],['souvenir','🩹','Curita de la suerte'],['ticket','📋','Cita prioritaria'],['medal','💚','Bienestar total']],
+  travel:    [['postcard','🗺️','Ruta panorámica'],['souvenir','🧲','Imán de viaje'],['ticket','🚆','Boleto de tren'],['medal','🧭','Explorador de rutas']],
+  education: [['postcard','📚','La biblioteca'],['souvenir','✏️','Lápiz dorado'],['ticket','📝','Pase de examen'],['medal','🎓','Mejor alumno']],
+  social:    [['postcard','🎉','La fiesta'],['souvenir','🖼️','Foto grupal'],['ticket','🎟️','Entrada al evento'],['medal','💬','Alma social']],
+  lifestyle: [['postcard','🌆','Skyline de la ciudad'],['souvenir','🐾','Llavero de mascota'],['ticket','💅','Pase del salón'],['medal','✨','Vida urbana']],
+  gym:       [['postcard','🏋️','El gimnasio'],['souvenir','🧴','Toalla campeona'],['ticket','🎫','Pase mensual'],['medal','💪','Iron Champion']]
+};
+const RARE_FINDS = [
+  ['rare','🦴','Hueso dorado de Bruno'],
+  ['rare','🍀','Trébol de la suerte'],
+  ['rare','🌠','Estrella fugaz'],
+  ['rare','🪙','Moneda antigua'],
+  ['rare','🗝️','Llave misteriosa']
+];
+function collKey(world,i){ return world+':'+i; }
+function hasColl(world,i){ return !!(S.collected && S.collected[collKey(world,i)]); }
+function collItemAt(world,i){ return world==='rare' ? RARE_FINDS[i] : (COLLECTIBLES[world]||[])[i]; }
+function awardColl(world, i){
+  const it = collItemAt(world,i); if(!it) return null;
+  const key = collKey(world,i);
+  S.collected = S.collected || {};
+  if(S.collected[key]) return null;
+  S.collected[key] = true; save();
+  return { type:it[0], emoji:it[1], name:it[2] };
+}
+function awardWorldMilestones(world){
+  const w = WORLDS.find(x=>x.id===world); if(!w) return [];
+  const done  = w.stories.filter(s=>S.stories[s.id]).length;
+  const total = w.stories.length;
+  const got = [];
+  if(done>=1){ const a=awardColl(world,0); if(a) got.push(a); }
+  if(done>=Math.ceil(total/2)){ const a=awardColl(world,1); if(a) got.push(a); }
+  if(done>=total){ const a=awardColl(world,2); if(a) got.push(a); }
+  return got;
+}
+function maybeRareFind(){
+  if(Math.random() > 0.12) return [];
+  for(let i=0;i<RARE_FINDS.length;i++){ if(!hasColl('rare',i)){ const a=awardColl('rare',i); return a?[a]:[]; } }
+  return [];
+}
+function collPill(item){ return `<div class="reward found">${item.emoji} ${COLL_TYPES[item.type]} ¡Nuevo recuerdo!</div>`; }
+function totalCollected(){ return Object.keys(S.collected||{}).length; }
+function totalCollectibles(){ return WORLDS.length*4 + RARE_FINDS.length; }
+function collCard(it, have){
+  const type=it[0], emoji=it[1], name=it[2];
+  return `<div class="coll ${have?'have t-'+type:''}" title="${have?name:'Recuerdo por descubrir'}">`+
+    `<span class="ce">${have?emoji:'❔'}</span><span class="cname">${have?name:'???'}</span></div>`;
+}
+function renderCollectibles(){
+  const host = document.getElementById('collectibles'); if(!host) return;
+  let cards = '';
+  WORLDS.forEach(w=> (COLLECTIBLES[w.id]||[]).forEach((it,i)=> cards += collCard(it, hasColl(w.id,i)) ));
+  RARE_FINDS.forEach((it,i)=> cards += collCard(it, hasColl('rare',i)) );
+  host.innerHTML = `<div class="coll-head"><span>Descubrilos explorando los mundos 🐾</span><b>${totalCollected()}/${totalCollectibles()}</b></div>`+
+    `<div class="collgrid">${cards}</div>`;
+}
+/* otorga en silencio los recuerdos ya merecidos por progreso anterior (una sola vez) */
+function backfillCollectibles(){
+  if(S.collBackfilled) return;
+  WORLDS.forEach(w=>{ awardWorldMilestones(w.id); if(S.bosses[w.id]) awardColl(w.id,3); });
+  S.collBackfilled = true; save();
+}
+
 function finishStory(){
   const st = SP.story;
   const stars = SP.mistakes===0 ? 3 : SP.mistakes<=2 ? 2 : 1;
@@ -10545,6 +10908,7 @@ function finishStory(){
     S.stories[st.id] = stars;
   }
   S.daily.storyDone++;
+  bumpA('storyCompletes', st.id);
   gainCoins(st.reward.coins);
   gainXP(st.reward.xp);
   checkBadge('first-steps', true);
@@ -10561,18 +10925,24 @@ function finishStory(){
     if(map[doneCount]) unlock = `<div class="reward" style="background:var(--mint);color:#06342A">🎮 ¡Desbloqueaste ${map[doneCount]}!</div>`;
   }
 
-  modal(`
-    <span class="m-emoji">🎉</span>
+  const TH = THEMES[CW.id] || {};
+  const foundColl = awardWorldMilestones(CW.id).concat(maybeRareFind());
+  const collPills = foundColl.map(collPill).join('');
+  const collNote = foundColl.length ? `<p style="color:#C9367F;font-weight:600;margin-top:-4px">🧳 ¡Sumaste ${foundColl.length===1?'un recuerdo':foundColl.length+' recuerdos'} a tu pasaporte!</p>` : '';
+  celebrateModal(`
+    <span class="m-emoji">${unlock ? '🎁' : (stars===3 ? '🏆' : '🎁')}</span>
     <h2>¡Historia completada!</h2>
-    <div class="bigstars">${'★'.repeat(stars)}${'☆'.repeat(3-stars)}</div>
-    <p>${unlock ? 'Bruno encontró un juego nuevo para vos. 🐶' : (stars===3?'¡Perfecto! Sin errores. Bruno está impresionado 🐶':'¡Bien hecho! Repetila para ganar las 3 estrellas.')}</p>
+    <div class="bigstars">${bigstarsHTML(stars)}</div>
+    <p>${unlock ? 'Bruno encontró un juego nuevo para vos. 🐶' : (stars===3 ? brunoPick('perfect') : '¡Bien hecho! Repetila para ganar las 3 estrellas.')}</p>
+    ${collNote}
     <div class="rewards">
       <div class="reward">+${st.reward.xp} ⚡XP</div>
       <div class="reward">+${st.reward.coins} 🪙</div>
       ${unlock}
+      ${collPills}
     </div>
     <button class="btn btn-coral" onclick="closeModal();go('scr-world')">Continuar</button>
-  `);
+  `, { chest:true, count: (stars===3?36:22) + foundColl.length*8, colors:[TH.accent||'#FFC65C', TH.g1||'#57C7A4', TH.g2||'#7AB8FF', '#FFD166'] });
 }
 
 /* =====================================================
@@ -10748,7 +11118,9 @@ function finishChallenge(){
     else levelNote = `Seguís en práctica <b>${practiceLevelName()}</b>.`;
   }
   gainCoins(coins); gainXP(xp); save();
-  modal(`
+  const goodRound = SP.score >= 8;
+  const openFn = goodRound ? celebrateModal : modal;
+  openFn(`
     <span class="m-emoji">${SP.score>=8?'🏆':SP.score>=5?'💪':'🐶'}</span>
     <h2>${isPractice?'Práctica libre':'Ronda completa'}: ${SP.score}/${SP.qs.length}</h2>
     <p>${isPractice ? levelNote : (SP.score>=8?'¡Velocidad de jet! Bruno aplaude con la cola.':SP.score>=5?'¡Buen trabajo! Cada ronda te hace más fuerte.':'Bruno dice: los errores también enseñan. ¡Una más!')}</p>
@@ -10757,7 +11129,7 @@ function finishChallenge(){
       <div class="reward">+${coins} 🪙</div>
     </div>
     <button class="btn btn-coral" onclick="closeModal();go('${isPractice?'scr-home':'scr-world'}')">Continuar</button>
-  `);
+  `, goodRound ? { count:30, bits:['⚡','🎉','✨','⭐'] } : undefined);
 }
 
 /* =====================================================
@@ -11117,6 +11489,7 @@ function runnerLose(){
 
 /* ============ 🔍 SOPA DE LETRAS ============ */
 function startWordSearch(){
+  bumpA('gamePlays','wordsearch');
   markLetterGameTried('wordsearch');
   const picks = gameVocab(7);
   const size = 11;
@@ -11215,6 +11588,7 @@ function wsTap(r,c){
 
 /* ============ 🧠 MEMORIA (parejas EN ↔ ES) ============ */
 function startMemory(){
+  bumpA('gamePlays','memory');
   markLetterGameTried('memory');
   const picks = gameVocab(6);
   let cards=[];
@@ -11270,6 +11644,7 @@ function memTap(idx){
 
 /* ============ 🔗 PAREJAS (relacionar columnas) ============ */
 function startMatch(){
+  bumpA('gamePlays','match');
   markLetterGameTried('match');
   const picks = gameVocab(5);
   GM = {
@@ -11430,6 +11805,7 @@ function validateCrossword(cw){
 }
 
 function startCrossword(){
+  bumpA('gamePlays','crossword');
   markLetterGameTried('crossword');
 
   /* ── Intentar hasta 10 veces hasta obtener un crucigrama válido ── */
@@ -11746,17 +12122,28 @@ function bossWin(){
   save();
   const idx = WORLDS.findIndex(w=>w.id===CW.id);
   const next = WORLDS[idx+1];
-  modal(`
-    <span class="m-emoji">🏆</span>
-    <h2>¡Boss vencido!</h2>
-    <p>${CW.boss.name} se retira derrotado. ${next ? `¡Desbloqueaste el mundo <b>${next.ico} ${next.name}</b>!` : '¡Conquistaste TODOS los mundos! 👑'}</p>
+  const allDone = WORLDS.every(w=>S.bosses[w.id]);
+  const medal = awardColl(CW.id, 3);
+  const medalPill = medal ? collPill(medal) : '';
+  const NT = next ? (THEMES[next.id] || {}) : (THEMES[CW.id] || {});
+  const hero = next
+    ? `<div class="unlock-hero" style="--uh1:${NT.g1||'#1E6FB8'};--uh2:${NT.g2||'#3FA0E0'}">${next.ico}</div>`
+    : `<span class="m-emoji">👑</span>`;
+  const cta = next
+    ? `<button class="btn btn-coral" onclick="closeModal();openWorld(${idx+1})">¡Explorar ${next.name}! →</button>`
+    : `<button class="btn btn-coral" onclick="closeModal();go('scr-home')">¡Leyenda! 👑</button>`;
+  celebrateModal(`
+    ${hero}
+    <h2>${next ? '¡Nuevo mundo desbloqueado!' : '¡Conquistaste TODO!'}</h2>
+    <p>${CW.boss.name} se retira derrotado. ${next ? `Se abre el camino a <b>${next.ico} ${next.name} World</b>.` : '¡Venciste a todos los bosses de Wordyssey! 👑'}</p>
     <div class="rewards">
       <div class="reward">+150 ⚡XP</div>
       <div class="reward">+80 🪙</div>
       <div class="reward">👑 Sello</div>
+      ${medalPill}
     </div>
-    <button class="btn btn-coral" onclick="closeModal();go('scr-home')">¡Victoria!</button>
-  `);
+    ${cta}
+  `, { count: allDone ? 40 : 34, colors:[NT.accent||'#FFC65C', NT.g1||'#57C7A4', NT.g2||'#7AB8FF', '#FFD166'] });
 }
 
 function bossLose(){
@@ -11788,11 +12175,13 @@ function renderProfile(){
     <div class="statrow"><span>🎮 Juegos de letras</span><b>${S.gamesPlayed||0}</b></div>
     <div class="statrow"><span>📈 Práctica libre</span><b>${practiceLevelName()}</b></div>
     <div class="statrow"><span>🎯 Precisión</span><b>${acc}%</b></div>
-    <div class="statrow"><span>🔥 Racha actual</span><b>${S.streak} día${S.streak===1?'':'s'}</b></div>`;
+    <div class="statrow"><span>🔥 Racha actual</span><b>${S.streak} día${S.streak===1?'':'s'}</b></div>`
+    + (OWNER ? `<div class="statrow" style="cursor:pointer;background:rgba(46,196,182,.12)" onclick="ownerAnalytics()"><span>📊 Analítica de contenido</span><b>Ver →</b></div>` : '');
   document.getElementById('stamps').innerHTML = BADGES.map(b=>`
     <div class="stamp ${S.badges.includes(b.id)?'earned':''}" title="${b.desc}">
       <span class="se">${b.emoji}</span>${b.name}
     </div>`).join('');
+  renderCollectibles();
 
   /* ── Selector de voz ── */
   const vpEl = document.getElementById('voice-picker-slot');
