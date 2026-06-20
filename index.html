@@ -596,5 +596,185 @@ h1,h2,h3,.num,.btn{font-family:'Fredoka',sans-serif}
   document.head.appendChild(s);
 })();
 </script>
+<script>
+/*
+  Wordyssey usage analytics
+  -------------------------------------------------------
+  What it measures:
+  - how many browsers play Wordyssey, with an anonymous local player id
+  - how often they return, how long sessions last, and which activities start/end
+  - approximate location only through your analytics provider, never GPS
+  - no dashboard, counter, or report is shown inside the game
+
+  Private owner-only setup:
+  1. Create a Google Analytics 4 property in your own private Google account.
+     Only people with access to that GA4 property can see reports.
+     Players cannot see metrics from this HTML file.
+  2. Replace GA_MEASUREMENT_ID below.
+  2. Optional: set CUSTOM_ENDPOINT to your own endpoint if you prefer Supabase,
+     Make, Zapier, Apps Script, or another private collector. Keep the database
+     report access private and do not expose secret/admin keys in this file.
+*/
+(function(){
+  const GA_MEASUREMENT_ID = 'G-LQHK3KT9T1'; // Google Analytics 4, owner-only reports.
+  const CUSTOM_ENDPOINT = ''; // Optional HTTPS URL that accepts JSON POST events.
+  const STORAGE_KEY = 'wordyssey_analytics_id';
+  const SESSION_KEY = 'wordyssey_analytics_session';
+  const VERSION = '2026-06-20';
+  const STARTED_AT = Date.now();
+  const sessionId = `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
+  let lastScreen = document.querySelector('.screen.active')?.id || 'scr-home';
+  let currentActivity = null;
+
+  function uuid(){
+    if(crypto && crypto.randomUUID) return crypto.randomUUID();
+    return `anon-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+  }
+
+  function playerId(){
+    let id = localStorage.getItem(STORAGE_KEY);
+    if(!id){
+      id = uuid();
+      localStorage.setItem(STORAGE_KEY, id);
+      emit('new_player');
+    }
+    return id;
+  }
+
+  function sessionCount(){
+    const raw = localStorage.getItem(SESSION_KEY);
+    const count = raw ? Number(raw) + 1 : 1;
+    localStorage.setItem(SESSION_KEY, String(count));
+    return count;
+  }
+
+  function basePayload(extra){
+    return Object.assign({
+      app: 'wordyssey',
+      version: VERSION,
+      anonymous_player_id: playerId(),
+      session_id: sessionId,
+      url_path: location.pathname,
+      page_title: document.title,
+      language: navigator.language || '',
+      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || '',
+      viewport: `${window.innerWidth}x${window.innerHeight}`,
+      referrer: document.referrer || '',
+      seconds_in_session: Math.round((Date.now() - STARTED_AT) / 1000)
+    }, extra || {});
+  }
+
+  function loadGA(){
+    if(!GA_MEASUREMENT_ID) return;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function(){ dataLayer.push(arguments); };
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(GA_MEASUREMENT_ID)}`;
+    document.head.appendChild(script);
+    gtag('js', new Date());
+    gtag('config', GA_MEASUREMENT_ID, {
+      anonymize_ip: true,
+      send_page_view: false
+    });
+  }
+
+  function emit(name, details){
+    const payload = basePayload(Object.assign({ event_name: name }, details || {}));
+    if(window.gtag){
+      gtag('event', name, payload);
+    }
+    if(CUSTOM_ENDPOINT){
+      try{
+        fetch(CUSTOM_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+          keepalive: true
+        }).catch(()=>{});
+      }catch(e){}
+    }
+    return payload;
+  }
+
+  function wrap(name, eventName, getDetails){
+    const original = window[name];
+    if(typeof original !== 'function' || original.__wordysseyAnalyticsWrapped) return;
+    function wrapped(){
+      const details = typeof getDetails === 'function' ? getDetails.apply(this, arguments) : {};
+      emit(eventName, details);
+      return original.apply(this, arguments);
+    }
+    wrapped.__wordysseyAnalyticsWrapped = true;
+    window[name] = wrapped;
+  }
+
+  function activityStart(type, details){
+    currentActivity = Object.assign({ type, started_at: Date.now() }, details || {});
+    emit('activity_start', currentActivity);
+  }
+
+  function activityEnd(outcome, details){
+    if(!currentActivity) return;
+    const duration = Math.round((Date.now() - currentActivity.started_at) / 1000);
+    emit('activity_end', Object.assign({}, currentActivity, { outcome, duration_seconds: duration }, details || {}));
+    currentActivity = null;
+  }
+
+  function activeScreen(){
+    return document.querySelector('.screen.active')?.id || lastScreen;
+  }
+
+  function install(){
+    loadGA();
+    emit('session_start', { session_number: sessionCount() });
+    emit('screen_view', { screen: activeScreen() });
+
+    wrap('go', 'screen_change_requested', function(screen){ return { from_screen: activeScreen(), to_screen: screen }; });
+    wrap('navTo', 'screen_change_requested', function(screen){ return { from_screen: activeScreen(), to_screen: screen }; });
+    wrap('openWorld', 'world_open', function(index){ return { world_index: index }; });
+    wrap('startChallenge', 'challenge_start', function(){ activityStart('quick_challenge'); return {}; });
+    wrap('finishChallenge', 'challenge_finish', function(){ activityEnd('completed'); return {}; });
+    wrap('startStory', 'story_start', function(worldIndex, storyIndex){
+      activityStart('story', { world_index: worldIndex, story_index: storyIndex });
+      return { world_index: worldIndex, story_index: storyIndex };
+    });
+    wrap('finishStory', 'story_finish', function(){ activityEnd('completed'); return {}; });
+    wrap('startBoss', 'boss_start', function(worldIndex){
+      activityStart('boss', { world_index: worldIndex });
+      return { world_index: worldIndex };
+    });
+    wrap('bossWin', 'boss_win', function(){ activityEnd('won'); return {}; });
+    wrap('bossLose', 'boss_lose', function(){ activityEnd('lost'); return {}; });
+    wrap('startGlobalPractice', 'practice_start', function(){ activityStart('practice'); return {}; });
+    wrap('startMatch', 'letter_game_start', function(){ activityStart('letter_game', { game_type: 'match' }); return { game_type: 'match' }; });
+    wrap('startMemory', 'letter_game_start', function(){ activityStart('letter_game', { game_type: 'memory' }); return { game_type: 'memory' }; });
+    wrap('startWordSearch', 'letter_game_start', function(){ activityStart('letter_game', { game_type: 'word_search' }); return { game_type: 'word_search' }; });
+    wrap('startCrossword', 'letter_game_start', function(){ activityStart('letter_game', { game_type: 'crossword' }); return { game_type: 'crossword' }; });
+    wrap('startBrunoRun', 'letter_game_start', function(){ activityStart('letter_game', { game_type: 'bruno_run' }); return { game_type: 'bruno_run' }; });
+    wrap('finishGame', 'letter_game_finish', function(){ activityEnd('completed'); return {}; });
+    wrap('exitGame', 'activity_exit', function(){ activityEnd('exited'); return {}; });
+
+    setInterval(function(){
+      const screen = activeScreen();
+      if(screen !== lastScreen){
+        emit('screen_view', { screen, previous_screen: lastScreen });
+        lastScreen = screen;
+      }
+    }, 1000);
+
+    setInterval(function(){ emit('heartbeat', { screen: activeScreen() }); }, 60000);
+    document.addEventListener('visibilitychange', function(){
+      if(document.visibilityState === 'hidden') emit('session_pause', { screen: activeScreen() });
+    });
+    window.addEventListener('beforeunload', function(){ emit('session_end', { screen: activeScreen() }); });
+  }
+
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', install);
+  else setTimeout(install, 0);
+
+  window.WordysseyAnalytics = { emit };
+})();
+</script>
 </body>
 </html>
