@@ -1,17 +1,17 @@
 ﻿<!DOCTYPE html>
 <!--
-  â•”â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•—
-  â•‘  Wordysseyâ„¢  â€”  Â© 2026 Lilliana Retana Tech                   â•‘
-  â•‘  Todos los derechos reservados. Software, contenido, marca,   â•‘
-  â•‘  personajes (Bruno) y diseÃ±o son propiedad de su autora.      â•‘
-  â•‘  Prohibida su copia, redistribuciÃ³n o uso no autorizado.      â•‘
-  â•šâ•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  Wordyssey™  —  © 2026 Lilliana Retana Tech                   ║
+  ║  Todos los derechos reservados. Software, contenido, marca,   ║
+  ║  personajes (Bruno) y diseño son propiedad de su autora.      ║
+  ║  Prohibida su copia, redistribución o uso no autorizado.      ║
+  ╚══════════════════════════════════════════════════════════════╝
 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Wordyssey â€” Turn Words Into Adventures</title>
+<title>Wordyssey — Turn Words Into Adventures</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -237,7 +237,7 @@ h1,h2,h3,.num,.btn{font-family:'Fredoka',sans-serif}
 .sync-ok{color:var(--mint);font-family:'Fredoka';font-weight:600}
 .sync-warn{color:var(--gold);font-family:'Fredoka';font-weight:600}
 
-/* ===== Legibilidad (presbicia): textos mÃ¡s grandes ===== */
+/* ===== Legibilidad (presbicia): textos más grandes ===== */
 .scene-text{font-size:1.14rem;line-height:1.62}
 .scene-text .es{font-size:1rem}
 .scene-title{font-size:1.38rem}
@@ -353,9 +353,9 @@ h1,h2,h3,.num,.btn{font-family:'Fredoka',sans-serif}
 .bruno-demo .bcoin{position:absolute;left:48%;bottom:38px;font-size:1.15rem;animation:float 1.6s ease-in-out infinite}
 @keyframes demoRun{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
 
-/* â•â•â•â•â•â•â•â• IDENTIDAD VISUAL POR MUNDO (Prioridad 1) â•â•â•â•â•â•â•â•
+/* ════════ IDENTIDAD VISUAL POR MUNDO (Prioridad 1) ════════
    Cada pantalla de mundo/historia recibe acento, gradiente y motivos
-   propios vÃ­a variables --w-*, seteadas por applyTheme(). Aditivo: no
+   propios vía variables --w-*, seteadas por applyTheme(). Aditivo: no
    cambia la arquitectura, solo la personalidad visual. */
 #scr-world,#scr-story{
   --w-g1:#1E6FB8; --w-g2:#3FA0E0; --w-accent:#FFC65C;
@@ -377,32 +377,32 @@ h1,h2,h3,.num,.btn{font-family:'Fredoka',sans-serif}
   font-family:'Fredoka';font-weight:600;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
   padding:4px 11px;border-radius:999px;position:relative}
 .world-hero .wh-motif{position:absolute;right:14px;top:14px;font-size:1.7rem;letter-spacing:3px;opacity:.92;position:absolute}
-/* acentos temÃ¡ticos derivados del tema activo */
+/* acentos temáticos derivados del tema activo */
 #scr-world .sectitle{color:var(--w-accent)}
 #scr-world .pass-route .plane{color:var(--w-accent)}
 #scr-world .vocab-chip{border-color:var(--w-accent)}
 #scr-story .scenecard{border-left:5px solid var(--w-accent)}
 #scr-story .speaker{color:var(--w-g1)}
 
-/* P3 Â· quips de Bruno dentro del feedback */
+/* P3 · quips de Bruno dentro del feedback */
 .bquip{font-family:'Fredoka';font-weight:700;margin-bottom:6px;font-size:.96rem;line-height:1.3}
 .feedback.ok .bquip{color:#9ff0d8}
 .feedback.bad .bquip{color:#ffd2ad}
 .bfact{display:block;font-weight:400;font-size:.84rem;opacity:.92;margin-top:5px}
-/* P4 Â· banner de evento temporal en el inicio */
+/* P4 · banner de evento temporal en el inicio */
 #event-banner{display:none;align-items:center;gap:12px;color:#fff;border-radius:var(--radius);
   padding:12px 14px;margin:2px 0 14px;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.18)}
 #event-banner .evt-emoji{font-size:1.9rem;line-height:1}
 #event-banner .evt-name{font-family:'Fredoka';font-weight:700;font-size:1.02rem}
 #event-banner .evt-blurb{font-size:.82rem;opacity:.95;line-height:1.3}
-/* P8 Â· reporte de analÃ­tica (modo dueÃ±a) */
+/* P8 · reporte de analítica (modo dueña) */
 .an-report{text-align:left;font-size:.86rem;max-height:52vh;overflow:auto}
 .an-report h4{font-family:'Fredoka';color:var(--gold);margin:10px 0 4px;font-size:.92rem}
 .an-report .an-row{display:flex;justify-content:space-between;gap:10px;padding:2px 0;border-bottom:1px dashed rgba(255,255,255,.1)}
 .an-evtbtns{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .an-evtbtns button{font-family:'Fredoka';font-weight:600;font-size:.78rem;border:none;border-radius:999px;padding:6px 10px;background:var(--deeper);color:var(--cream);cursor:pointer}
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• P6 Â· COLECCIONABLES (recuerdos de viaje) â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+/* ════════════════ P6 · COLECCIONABLES (recuerdos de viaje) ════════════════ */
 .collgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .coll{border:2px solid rgba(255,246,232,.18);border-radius:14px;padding:10px 6px;text-align:center;
   display:flex;flex-direction:column;align-items:center;gap:4px;background:rgba(255,255,255,.03);
@@ -419,9 +419,9 @@ h1,h2,h3,.num,.btn{font-family:'Fredoka',sans-serif}
 .coll-head b{font-family:'Fredoka';color:var(--gold)}
 .reward.found{background:linear-gradient(135deg,#7A3FB8,#C9367F);color:#fff}
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• P7 Â· EFECTOS Y FEEDBACK â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   Confetti DOM liviano (sin librerÃ­as), modales celebratorios y micro-feedback.
-   Respeta prefers-reduced-motion y limita partÃ­culas para no afectar rendimiento. */
+/* ════════════════ P7 · EFECTOS Y FEEDBACK ════════════════
+   Confetti DOM liviano (sin librerías), modales celebratorios y micro-feedback.
+   Respeta prefers-reduced-motion y limita partículas para no afectar rendimiento. */
 #fx-layer{position:fixed;inset:0;pointer-events:none;z-index:60;overflow:hidden}
 .fx-bit{position:absolute;top:-8vh;line-height:1;will-change:transform,opacity;opacity:0;
   animation:fxFall var(--d,1.4s) cubic-bezier(.2,.6,.5,1) forwards;animation-delay:var(--dl,0s)}
@@ -466,15 +466,15 @@ h1,h2,h3,.num,.btn{font-family:'Fredoka',sans-serif}
 </head>
 <body>
 <div id="app">
-  <button class="sound-toggle" id="sound-toggle" onclick="toggleSound()" title="Sonido y pronunciaciÃ³n">ðŸ”ˆ</button>
+  <button class="sound-toggle" id="sound-toggle" onclick="toggleSound()" title="Sonido y pronunciación">🔈</button>
 
   <!-- ============ HOME ============ -->
   <section class="screen active" id="scr-home">
     <div class="statsbar">
       <div class="stat levelchip">Lv <span id="ui-level" class="num">1</span></div>
-      <div class="stat"><span class="ico">ðŸª™</span><span id="ui-coins">0</span></div>
-      <div class="stat"><span class="ico">â­</span><span id="ui-stars">0</span></div>
-      <div class="stat"><span class="ico">ðŸ”¥</span><span id="ui-streak">0</span></div>
+      <div class="stat"><span class="ico">🪙</span><span id="ui-coins">0</span></div>
+      <div class="stat"><span class="ico">⭐</span><span id="ui-stars">0</span></div>
+      <div class="stat"><span class="ico">🔥</span><span id="ui-streak">0</span></div>
     </div>
     <div class="xpwrap">
       <div class="xptrack"><div class="xpfill" id="ui-xpfill"></div></div>
@@ -482,55 +482,55 @@ h1,h2,h3,.num,.btn{font-family:'Fredoka',sans-serif}
     </div>
 
     <div class="bruno">
-      <span class="bruno-face" onclick="ownerTap()" style="cursor:pointer" title="Wordyssey">ðŸ¶</span>
+      <span class="bruno-face" onclick="ownerTap()" style="cursor:pointer" title="Wordyssey">🐶</span>
       <div class="bruno-bubble" id="bruno-msg"></div>
     </div>
     <div id="event-banner"></div>
     <div id="home-account"></div>
     <div id="home-practice"></div>
 
-    <div class="sectitle">ðŸŽ¯ Objetivos de hoy</div>
+    <div class="sectitle">🎯 Objetivos de hoy</div>
     <div id="goals"></div>
 
-    <div class="sectitle mt" id="worlds-title">ðŸ—ºï¸ Mundos</div>
+    <div class="sectitle mt" id="worlds-title">🗺️ Mundos</div>
     <div class="worldgrid" id="worlds"></div>
-    <div class="brandfoot">ðŸ¶ Wordysseyâ„¢ Â· Â© 2026 <b>Lilliana Retana Tech</b> Â· Todos los derechos reservados</div>
+    <div class="brandfoot">🐶 Wordyssey™ · © 2026 <b>Lilliana Retana Tech</b> · Todos los derechos reservados</div>
   </section>
 
   <!-- ============ WORLD ============ -->
   <section class="screen" id="scr-world">
     <div class="player-top">
-      <button class="backbtn" onclick="go('scr-home')">â†</button>
+      <button class="backbtn" onclick="go('scr-home')">←</button>
       <h2 style="font-size:1.3rem" id="world-title"></h2>
     </div>
     <div id="world-hero"></div>
     <div class="bruno">
-      <span class="bruno-face">ðŸ¶</span>
+      <span class="bruno-face">🐶</span>
       <div class="bruno-bubble" id="world-bruno"></div>
     </div>
 
-    <div class="sectitle">ðŸ“– Historias</div>
+    <div class="sectitle">📖 Historias</div>
     <div id="storylist"></div>
 
-    <div class="sectitle mt">âš¡ Retos rÃ¡pidos</div>
+    <div class="sectitle mt">⚡ Retos rápidos</div>
     <button class="pass" onclick="startChallenge()">
-      <div class="pass-route"><span class="code">QCK</span><span class="plane">âš¡</span><span class="code">+XP</span></div>
+      <div class="pass-route"><span class="code">QCK</span><span class="plane">⚡</span><span class="code">+XP</span></div>
       <div class="perf"></div>
       <div class="pass-title">Ronda de retos</div>
       <div class="pass-sub" id="challenge-sub"></div>
     </button>
 
-    <div class="sectitle mt">ðŸŽ® Juegos de letras</div>
+    <div class="sectitle mt">🎮 Juegos de letras</div>
     <div id="gameslist"></div>
 
-    <div class="sectitle mt">ðŸ‘¹ Boss final</div>
+    <div class="sectitle mt">👹 Boss final</div>
     <div id="bosscard"></div>
   </section>
 
   <!-- ============ STORY PLAYER ============ -->
   <section class="screen" id="scr-story">
     <div class="player-top">
-      <button class="backbtn" onclick="confirmExit()">â†</button>
+      <button class="backbtn" onclick="confirmExit()">←</button>
       <div class="prog"><div class="progfill" id="story-prog"></div></div>
       <div class="hearts" id="story-hearts"></div>
     </div>
@@ -540,12 +540,12 @@ h1,h2,h3,.num,.btn{font-family:'Fredoka',sans-serif}
   <!-- ============ GAME PLAYER ============ -->
   <section class="screen" id="scr-game">
     <div class="player-top">
-      <button class="backbtn" onclick="exitGame()">â†</button>
+      <button class="backbtn" onclick="exitGame()">←</button>
       <h2 style="font-size:1.2rem" id="game-title"></h2>
       <div id="game-info" class="game-info"></div>
     </div>
     <div class="bruno mini" id="game-bruno-wrap">
-      <span class="bruno-face">ðŸ¶</span>
+      <span class="bruno-face">🐶</span>
       <div class="bruno-bubble" id="game-bruno"></div>
     </div>
     <div id="game-stage"></div>
@@ -553,27 +553,27 @@ h1,h2,h3,.num,.btn{font-family:'Fredoka',sans-serif}
 
   <!-- ============ PROFILE ============ -->
   <section class="screen" id="scr-profile">
-    <div class="player-top"><h2 style="font-size:1.4rem">ðŸ‘¤ Tu pasaporte</h2></div>
+    <div class="player-top"><h2 style="font-size:1.4rem">👤 Tu pasaporte</h2></div>
     <div class="bruno">
-      <span class="bruno-face">ðŸ¶</span>
+      <span class="bruno-face">🐶</span>
       <div class="bruno-bubble" id="profile-msg"></div>
     </div>
-    <div class="sectitle">â˜ï¸ Cuenta y sincronizaciÃ³n</div>
+    <div class="sectitle">☁️ Cuenta y sincronización</div>
     <div id="profile-account"></div>
-    <div class="sectitle">ðŸ“Š EstadÃ­sticas</div>
+    <div class="sectitle">📊 Estadísticas</div>
     <div id="profile-stats"></div>
-    <div class="sectitle mt">ðŸ›‚ Sellos del pasaporte</div>
+    <div class="sectitle mt">🛂 Sellos del pasaporte</div>
     <div class="stampgrid" id="stamps"></div>
-    <div class="sectitle mt">ðŸ§³ Recuerdos de viaje</div>
+    <div class="sectitle mt">🧳 Recuerdos de viaje</div>
     <div id="collectibles"></div>
-    <div class="sectitle mt">ðŸ”Š Voz en inglÃ©s</div>
+    <div class="sectitle mt">🔊 Voz en inglés</div>
     <div id="voice-picker-slot"></div>
     <button class="btn btn-ghost mt" onclick="resetGame()">Reiniciar progreso</button>
   </section>
 
   <nav class="nav" id="mainnav">
-    <button class="on" data-scr="scr-home" onclick="navTo(this)"><span class="nico">ðŸ </span>Inicio</button>
-    <button data-scr="scr-profile" onclick="navTo(this)"><span class="nico">ðŸ›‚</span>Pasaporte</button>
+    <button class="on" data-scr="scr-home" onclick="navTo(this)"><span class="nico">🏠</span>Inicio</button>
+    <button data-scr="scr-profile" onclick="navTo(this)"><span class="nico">🛂</span>Pasaporte</button>
   </nav>
 
   <div class="modal-bg" id="modal-bg">
@@ -778,6 +778,7 @@ h1,h2,h3,.num,.btn{font-family:'Fredoka',sans-serif}
 </script>
 </body>
 </html>
+
 
 
 
