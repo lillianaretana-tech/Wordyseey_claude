@@ -1,0 +1,712 @@
+[
+  {
+    "worldId": "health",
+    "vocab": [
+      {
+        "en": "vet",
+        "es": "veterinario/a"
+      },
+      {
+        "en": "checkup",
+        "es": "revisión"
+      },
+      {
+        "en": "vaccination record",
+        "es": "registro de vacunas"
+      },
+      {
+        "en": "weigh",
+        "es": "pesar"
+      }
+    ],
+    "story": {
+      "id": "bruno-vet-visit-b1",
+      "code": "PAW→VET",
+      "title": "Bruno at the Vet",
+      "emoji": "🐾",
+      "cefr": "B1",
+      "release": "2026-10-17",
+      "sub": "B1 · Acompaña a Bruno a su revisión, describe observaciones y aclara indicaciones.",
+      "reward": {
+        "xp": 110,
+        "coins": 45
+      },
+      "nodes": [
+        {
+          "t": "scene",
+          "img": "🐶",
+          "title": "A small adventure, a real appointment",
+          "en": "Mia has booked a routine checkup for Bruno. At the veterinary clinic, Bruno studies the door as if it might open onto a dog park. Mia carries his vaccination record and a short list of questions.",
+          "es": "Mia ha reservado una revisión de rutina para Bruno. En la clínica veterinaria, él observa la puerta como si llevara a un parque para perros. Mia lleva su registro de vacunas y una lista de preguntas."
+        },
+        {
+          "t": "decision",
+          "speaker": "Receptionist",
+          "line": "Good morning. Are you here for an appointment?",
+          "opts": [
+            {
+              "x": "I would like to change his name.",
+              "ok": false,
+              "fb": "La recepcionista pregunta por la cita, no por el nombre de Bruno."
+            },
+            {
+              "x": "Yes, Bruno has a checkup at ten thirty.",
+              "ok": true,
+              "fb": "“Has a checkup at…” comunica el motivo y la hora de la cita."
+            },
+            {
+              "x": "He has already finished the examination.",
+              "ok": false,
+              "fb": "La revisión todavía no ha comenzado."
+            }
+          ]
+        },
+        {
+          "t": "fill",
+          "q": "Mia brings Bruno's vaccination ___.",
+          "a": "record",
+          "opts": [
+            "recipe",
+            "record",
+            "receipt"
+          ],
+          "fb": "“Vaccination record” es el registro de vacunas. “Receipt” es un recibo de pago."
+        },
+        {
+          "t": "scene",
+          "img": "🐶",
+          "title": "Facts before guesses",
+          "en": "The vet asks what Mia has noticed at home. Mia remembers that Bruno has been eating more slowly this week, but she does not know why. She describes what she has seen instead of guessing a diagnosis.",
+          "es": "La veterinaria pregunta qué ha observado Mia en casa. Mia recuerda que Bruno ha comido más despacio esta semana, pero no sabe por qué. Describe lo que ha visto sin adivinar un diagnóstico."
+        },
+        {
+          "t": "decision",
+          "speaker": "Vet",
+          "line": "Have you noticed any changes in his routine?",
+          "opts": [
+            {
+              "x": "He has been eating more slowly this week.",
+              "ok": true,
+              "fb": "El presente perfecto continuo conecta una observación reciente con el momento actual."
+            },
+            {
+              "x": "You already know exactly why he does that.",
+              "ok": false,
+              "fb": "Mia no conoce la causa y no debe presentarla como un hecho."
+            },
+            {
+              "x": "His appointment starts at ten thirty.",
+              "ok": false,
+              "fb": "La hora no responde a la pregunta sobre cambios en la rutina."
+            }
+          ]
+        },
+        {
+          "t": "build",
+          "words": [
+            "He",
+            "has",
+            "been",
+            "eating",
+            "more",
+            "slowly"
+          ],
+          "answer": "He has been eating more slowly",
+          "es": "Ha estado comiendo más despacio"
+        },
+        {
+          "t": "fill",
+          "q": "Complete the time expression: He has been eating more slowly ___ Monday.",
+          "a": "since",
+          "opts": [
+            "during",
+            "for",
+            "since"
+          ],
+          "fb": "“Since” introduce el punto de inicio: since Monday. “For” introduce una duración: for three days."
+        },
+        {
+          "t": "scene",
+          "img": "⚖️",
+          "title": "One step at a time",
+          "en": "Before the examination, the vet asks Mia to help Bruno stand on the scale. He places one paw on it, then looks proudly at everyone. The vet laughs gently and asks Mia to wait until all four paws are on the scale.",
+          "es": "Antes del examen, la veterinaria pide ayuda para que Bruno se suba a la báscula. Él coloca una pata y mira orgulloso a todos. Ella sonríe y pide esperar hasta que las cuatro patas estén sobre la báscula."
+        },
+        {
+          "t": "decision",
+          "speaker": "Vet",
+          "line": "Could you help him stand still while we weigh him?",
+          "opts": [
+            {
+              "x": "Of course. What time does the clinic open tomorrow?",
+              "ok": false,
+              "fb": "La pregunta pide ayuda ahora, no el horario de mañana."
+            },
+            {
+              "x": "Of course. I will help him stay in place.",
+              "ok": true,
+              "fb": "“Stand still” significa permanecer quieto; “weigh him” significa pesarlo."
+            },
+            {
+              "x": "Of course. I will take the scale home.",
+              "ok": false,
+              "fb": "No se pide llevarse la báscula."
+            }
+          ]
+        },
+        {
+          "t": "decision",
+          "speaker": "Vet",
+          "line": "I will examine him first, and then we can discuss the next steps.",
+          "opts": [
+            {
+              "x": "So you have already decided what the problem is.",
+              "ok": false,
+              "fb": "La veterinaria propone examinar primero; todavía no da una conclusión."
+            },
+            {
+              "x": "So I should choose a treatment before the examination.",
+              "ok": false,
+              "fb": "La frase no autoriza elegir un tratamiento."
+            },
+            {
+              "x": "All right. Could you explain the next steps afterwards?",
+              "ok": true,
+              "fb": "“Afterwards” significa después. Mia solicita una explicación tras la revisión."
+            }
+          ]
+        },
+        {
+          "t": "build",
+          "words": [
+            "Could",
+            "you",
+            "write",
+            "the",
+            "instructions",
+            "down"
+          ],
+          "answer": "Could you write the instructions down",
+          "es": "¿Podría escribir las indicaciones?"
+        },
+        {
+          "t": "decision",
+          "speaker": "Mia",
+          "line": "Before leaving, Mia wants to check that she understood the plan.",
+          "opts": [
+            {
+              "x": "Could I repeat the plan back to you to check I understood?",
+              "ok": true,
+              "fb": "Repetir el plan con sus propias palabras ayuda a confirmar la comprensión."
+            },
+            {
+              "x": "I will pretend I understood every detail.",
+              "ok": false,
+              "fb": "Fingir que se entendió evita aclarar dudas importantes."
+            },
+            {
+              "x": "I do not need to ask what the instructions mean.",
+              "ok": false,
+              "fb": "Pedir aclaraciones forma parte de la comunicación efectiva."
+            }
+          ]
+        },
+        {
+          "t": "fill",
+          "q": "The vet checks Bruno before discussing the next ___.",
+          "a": "steps",
+          "opts": [
+            "scales",
+            "steps",
+            "stories"
+          ],
+          "fb": "“Next steps” significa próximos pasos, no un tratamiento específico."
+        },
+        {
+          "t": "scene",
+          "img": "✅",
+          "title": "A clearer plan",
+          "en": "The visit ends with Mia asking her remaining questions and keeping the written instructions with Bruno's records. Bruno leaves with his usual enthusiasm. His greatest achievement, he seems to think, was getting all four paws onto the mysterious scale.",
+          "es": "La visita termina con Mia aclarando sus preguntas y guardando las indicaciones escritas junto a los registros de Bruno. Él sale entusiasmado. Parece creer que su mayor logro fue poner las cuatro patas sobre aquella misteriosa báscula."
+        }
+      ]
+    }
+  },
+  {
+    "worldId": "office",
+    "vocab": [
+      {
+        "en": "scope",
+        "es": "alcance"
+      },
+      {
+        "en": "trade-off",
+        "es": "concesión entre objetivos"
+      },
+      {
+        "en": "deliverable",
+        "es": "entregable"
+      },
+      {
+        "en": "feasible",
+        "es": "viable"
+      }
+    ],
+    "story": {
+      "id": "bruno-scope-negotiation-b2",
+      "code": "PLAN→DEAL",
+      "title": "The Deadline Trade-Off",
+      "emoji": "🤝",
+      "cefr": "B2",
+      "release": "2026-10-17",
+      "sub": "B2 · Negocia alcance y plazos, formula condiciones y confirma acuerdos por escrito.",
+      "reward": {
+        "xp": 140,
+        "coins": 55
+      },
+      "nodes": [
+        {
+          "t": "scene",
+          "img": "🐶",
+          "title": "Three changes, one deadline",
+          "en": "A client asks Mia's team to add a new dashboard to a report due on Friday. The team can finish the original report on time, but the dashboard needs extra work. Bruno sits under the meeting table, apparently unconcerned about deadlines.",
+          "es": "Un cliente pide añadir un nuevo panel a un informe que debe entregarse el viernes. El equipo puede terminar el informe original a tiempo, pero el panel requiere trabajo adicional. Bruno descansa bajo la mesa, aparentemente indiferente a los plazos."
+        },
+        {
+          "t": "decision",
+          "speaker": "Client",
+          "line": "Could you include the dashboard and still deliver everything by Friday?",
+          "opts": [
+            {
+              "x": "Certainly. We can promise that without reviewing the extra work.",
+              "ok": false,
+              "fb": "Prometer sin revisar el trabajo adicional no establece un compromiso viable."
+            },
+            {
+              "x": "We can deliver the original report by Friday; the dashboard would need more time.",
+              "ok": true,
+              "fb": "La respuesta distingue el compromiso vigente del alcance adicional sin rechazar la conversación."
+            },
+            {
+              "x": "The original report will not be delivered under any circumstances.",
+              "ok": false,
+              "fb": "El texto indica que el informe original sí puede entregarse a tiempo."
+            }
+          ]
+        },
+        {
+          "t": "fill",
+          "q": "The client is asking to expand the project ___.",
+          "a": "scope",
+          "opts": [
+            "scope",
+            "scenery",
+            "shift"
+          ],
+          "fb": "“Scope” es el conjunto de trabajo incluido en un proyecto."
+        },
+        {
+          "t": "scene",
+          "img": "🐶",
+          "title": "Discovering the real priority",
+          "en": "The client explains that the board mainly needs a clear summary on Friday. The detailed dashboard would be useful for the following week. Mia notices that the requested deadline and the actual business need are not quite the same.",
+          "es": "El cliente explica que la junta necesita principalmente un resumen claro el viernes. El panel detallado serviría para la semana siguiente. Mia distingue entre la fecha pedida y la necesidad real del negocio."
+        },
+        {
+          "t": "decision",
+          "speaker": "Mia",
+          "line": "Which question would best clarify the priority?",
+          "opts": [
+            {
+              "x": "Who first chose the colour of the dashboard?",
+              "ok": false,
+              "fb": "El color no aclara qué información necesita la junta ni cuándo."
+            },
+            {
+              "x": "Why does nobody understand how busy we are?",
+              "ok": false,
+              "fb": "La pregunta expresa frustración, pero no permite definir prioridades."
+            },
+            {
+              "x": "Which information must the board have on Friday?",
+              "ok": true,
+              "fb": "La pregunta identifica lo imprescindible antes de negociar las opciones."
+            }
+          ]
+        },
+        {
+          "t": "build",
+          "words": [
+            "If",
+            "we",
+            "reduce",
+            "the",
+            "scope",
+            "we",
+            "can",
+            "meet",
+            "the",
+            "deadline"
+          ],
+          "answer": "If we reduce the scope we can meet the deadline",
+          "es": "Si reducimos el alcance, podemos cumplir el plazo"
+        },
+        {
+          "t": "fill",
+          "q": "A feasible plan is a plan that is ___.",
+          "a": "realistic",
+          "opts": [
+            "decorative",
+            "realistic",
+            "automatic"
+          ],
+          "fb": "“Feasible” describe algo que puede realizarse con las condiciones y recursos disponibles."
+        },
+        {
+          "t": "decision",
+          "speaker": "Client",
+          "line": "Could we receive the summary on Friday and the dashboard on Tuesday?",
+          "opts": [
+            {
+              "x": "That could work, provided we agree on what the summary includes.",
+              "ok": true,
+              "fb": "“Provided” introduce una condición necesaria: siempre que se acuerde el contenido."
+            },
+            {
+              "x": "That guarantees unlimited changes until Tuesday.",
+              "ok": false,
+              "fb": "La propuesta de fechas no permite cambios ilimitados."
+            },
+            {
+              "x": "That means you no longer need the summary.",
+              "ok": false,
+              "fb": "El cliente sigue solicitando el resumen para el viernes."
+            }
+          ]
+        },
+        {
+          "t": "scene",
+          "img": "🐶",
+          "title": "A useful reservation",
+          "en": "A colleague suggests accepting every requested feature now and discussing resources later. Mia disagrees politely. She supports the goal, but wants the agreement to reflect what the team can actually deliver.",
+          "es": "Un colega propone aceptar todas las funciones ahora y discutir los recursos después. Mia discrepa con cortesía: apoya el objetivo, pero quiere un acuerdo que refleje lo que el equipo puede entregar."
+        },
+        {
+          "t": "decision",
+          "speaker": "Mia",
+          "line": "Choose a constructive way to raise the concern.",
+          "opts": [
+            {
+              "x": "Your idea is useless and so is the meeting.",
+              "ok": false,
+              "fb": "El ataque personal no explica la limitación ni abre una solución."
+            },
+            {
+              "x": "I see the benefit, but I am concerned that we would be committing before checking capacity.",
+              "ok": true,
+              "fb": "Reconoce la ventaja y expresa una reserva específica en lugar de atacar a la persona."
+            },
+            {
+              "x": "There are no risks, although we have not checked capacity.",
+              "ok": false,
+              "fb": "La falta de revisión no permite afirmar que no hay riesgos."
+            }
+          ]
+        },
+        {
+          "t": "fill",
+          "q": "Complete: We can add the feature, ___ we receive the data today.",
+          "a": "provided",
+          "opts": [
+            "despite",
+            "unless",
+            "provided"
+          ],
+          "fb": "“Provided” significa siempre que. “Unless” significaría a menos que y cambiaría la condición."
+        },
+        {
+          "t": "build",
+          "words": [
+            "Could",
+            "we",
+            "confirm",
+            "the",
+            "revised",
+            "scope",
+            "in",
+            "writing"
+          ],
+          "answer": "Could we confirm the revised scope in writing",
+          "es": "¿Podríamos confirmar por escrito el alcance revisado?"
+        },
+        {
+          "t": "decision",
+          "speaker": "Client",
+          "line": "So the summary is due Friday and the agreed dashboard is due Tuesday. Is that correct?",
+          "opts": [
+            {
+              "x": "Yes. I will send the agreed scope and dates for confirmation.",
+              "ok": true,
+              "fb": "Resume y documenta las dos entregas sin introducir promesas nuevas."
+            },
+            {
+              "x": "Yes, and every future request is included for free.",
+              "ok": false,
+              "fb": "El cliente no ha acordado cambios futuros ilimitados."
+            },
+            {
+              "x": "No, we agreed to deliver nothing until next month.",
+              "ok": false,
+              "fb": "Contradice las fechas que acaban de establecerse."
+            }
+          ]
+        },
+        {
+          "t": "scene",
+          "img": "✅",
+          "title": "Agreement, not guesswork",
+          "en": "Mia sends a short written summary naming each deliverable, its deadline, and the information the client must provide. The client confirms it. Bruno wakes up just as the meeting ends: excellent timing, but not a project management method.",
+          "es": "Mia envía un resumen con cada entregable, su fecha y la información que debe aportar el cliente. El cliente lo confirma. Bruno despierta justo al terminar: excelente oportunidad, pero no un método de gestión de proyectos."
+        }
+      ]
+    }
+  },
+  {
+    "worldId": "technology",
+    "vocab": [
+      {
+        "en": "redact",
+        "es": "ocultar información sensible"
+      },
+      {
+        "en": "unsupported claim",
+        "es": "afirmación sin respaldo"
+      },
+      {
+        "en": "tentative",
+        "es": "provisional"
+      },
+      {
+        "en": "plausible",
+        "es": "plausible, aparentemente razonable"
+      }
+    ],
+    "story": {
+      "id": "bruno-ai-confidence-c1",
+      "code": "DRAFT→CHECK",
+      "title": "The Confident AI Draft",
+      "emoji": "🧠",
+      "cefr": "C1",
+      "release": "2026-10-17",
+      "sub": "C1 · Detecta afirmaciones sin respaldo, interpreta matices y defiende una revisión crítica.",
+      "reward": {
+        "xp": 175,
+        "coins": 65
+      },
+      "nodes": [
+        {
+          "t": "scene",
+          "img": "🐶",
+          "title": "Polished does not mean proven",
+          "en": "Mia uses an approved AI writing tool to draft a project update from a short, anonymised outline. The draft is elegant and confident. It also says that the launch date has been confirmed, although the team is still assessing two unresolved dependencies. Bruno watches the cursor as if it were a suspicious insect.",
+          "es": "Mia utiliza una herramienta de IA aprobada para redactar un informe a partir de un esquema anonimizado. El texto es elegante y seguro, pero presenta como confirmada una fecha de lanzamiento que todavía depende de dos asuntos pendientes. Bruno observa el cursor como si fuera un insecto sospechoso."
+        },
+        {
+          "t": "decision",
+          "speaker": "Colleague",
+          "line": "The wording sounds professional. Why not send it as it is?",
+          "opts": [
+            {
+              "x": "Because professional wording cannot be useful in an update.",
+              "ok": false,
+              "fb": "El problema no es que el estilo sea profesional, sino que afirme más de lo que permite la evidencia."
+            },
+            {
+              "x": "Because a confident tone does not establish that the underlying claim is supported.",
+              "ok": true,
+              "fb": "Distingue entre la seguridad retórica y el respaldo de una afirmación."
+            },
+            {
+              "x": "Because every statement produced by AI must be false.",
+              "ok": false,
+              "fb": "Que una afirmación requiera revisión no significa que todo el texto sea falso."
+            }
+          ]
+        },
+        {
+          "t": "fill",
+          "q": "An assertion not supported by the available evidence is an ___ claim.",
+          "a": "unsupported",
+          "opts": [
+            "uninterrupted",
+            "unrelated",
+            "unsupported"
+          ],
+          "fb": "“Unsupported claim” es una afirmación sin respaldo suficiente, aunque suene convincente."
+        },
+        {
+          "t": "scene",
+          "img": "🐶",
+          "title": "A request for context",
+          "en": "A colleague offers to paste an entire customer email thread into the tool. It includes names, contact details, and information unrelated to the update. Mia suggests using only the facts needed for the approved task, with identifying details removed.",
+          "es": "Un colega propone pegar el intercambio completo de correos de un cliente, con nombres, contactos e información ajena al informe. Mia propone usar solo los hechos necesarios para la tarea aprobada, sin datos que identifiquen a las personas."
+        },
+        {
+          "t": "decision",
+          "speaker": "Mia",
+          "line": "Which response best addresses relevance and confidentiality?",
+          "opts": [
+            {
+              "x": "Let us extract the relevant facts and redact identifying details before using the approved tool.",
+              "ok": true,
+              "fb": "Limita el contexto a lo pertinente y propone ocultar los datos identificativos."
+            },
+            {
+              "x": "Let us include every detail so we never need to exercise judgement.",
+              "ok": false,
+              "fb": "Incluir más información no sustituye el criterio ni resuelve la confidencialidad."
+            },
+            {
+              "x": "Let us publish the thread first so confidentiality no longer matters.",
+              "ok": false,
+              "fb": "Hacer pública la información no es una solución válida al problema planteado."
+            }
+          ]
+        },
+        {
+          "t": "build",
+          "words": [
+            "Had",
+            "we",
+            "sent",
+            "it",
+            "we",
+            "would",
+            "have",
+            "overstated",
+            "our",
+            "certainty"
+          ],
+          "answer": "Had we sent it we would have overstated our certainty",
+          "es": "Si lo hubiéramos enviado, habríamos exagerado nuestra certeza"
+        },
+        {
+          "t": "decision",
+          "speaker": "Draft sentence",
+          "line": "The launch is guaranteed to take place on 12 November.",
+          "opts": [
+            {
+              "x": "The launch has happened already.",
+              "ok": false,
+              "fb": "Cambiar el futuro por pasado introduce un hecho nuevo no respaldado."
+            },
+            {
+              "x": "There is no possibility of launching in November.",
+              "ok": false,
+              "fb": "La incertidumbre sobre la fecha no permite descartar todo el mes."
+            },
+            {
+              "x": "We are aiming for 12 November, subject to the outstanding checks.",
+              "ok": true,
+              "fb": "“Aiming for” y “subject to” presentan un objetivo condicionado, no una garantía."
+            }
+          ]
+        },
+        {
+          "t": "fill",
+          "q": "In this context, “subject to the outstanding checks” means ___.",
+          "a": "dependent on checks that remain to be completed",
+          "opts": [
+            "already approved without further checks",
+            "dependent on checks that remain to be completed",
+            "unrelated to any remaining checks"
+          ],
+          "fb": "“Subject to” expresa dependencia; “outstanding” aquí significa pendiente, no excelente."
+        },
+        {
+          "t": "scene",
+          "img": "🐶",
+          "title": "The convenient shortcut",
+          "en": "The revised draft now includes a plausible statistic about customer satisfaction. Nobody can locate its source. A colleague argues that removing it will make the update less persuasive. Mia thinks that is precisely why its status should be questioned.",
+          "es": "El borrador revisado incluye una cifra plausible de satisfacción del cliente, pero nadie encuentra su fuente. Un colega teme que eliminarla haga el informe menos persuasivo. Mia considera que esa es precisamente una razón para examinarla."
+        },
+        {
+          "t": "decision",
+          "speaker": "Colleague",
+          "line": "Could we keep the number and add “approximately”?",
+          "opts": [
+            {
+              "x": "Yes. “Approximately” converts an invented figure into verified evidence.",
+              "ok": false,
+              "fb": "Una palabra que reduce la precisión no aporta una fuente ni valida una cifra."
+            },
+            {
+              "x": "No. Qualifying the precision would not supply the missing evidence.",
+              "ok": true,
+              "fb": "El matiz numérico no resuelve la ausencia de respaldo."
+            },
+            {
+              "x": "Yes, as long as we remove the customer name.",
+              "ok": false,
+              "fb": "Ocultar un nombre protege identidad, pero no verifica el dato."
+            }
+          ]
+        },
+        {
+          "t": "fill",
+          "q": "Choose the best contrast: The figure is plausible; ___, it has not been verified.",
+          "a": "nevertheless",
+          "opts": [
+            "therefore",
+            "similarly",
+            "nevertheless"
+          ],
+          "fb": "“Nevertheless” marca un contraste: parece razonable; sin embargo, no se ha verificado."
+        },
+        {
+          "t": "build",
+          "words": [
+            "The",
+            "evidence",
+            "warrants",
+            "a",
+            "more",
+            "tentative",
+            "conclusion"
+          ],
+          "answer": "The evidence warrants a more tentative conclusion",
+          "es": "La evidencia justifica una conclusión más provisional"
+        },
+        {
+          "t": "decision",
+          "speaker": "Mia",
+          "line": "What should the final review focus on?",
+          "opts": [
+            {
+              "x": "Whether each claim matches its evidence and whether uncertainty is represented fairly.",
+              "ok": true,
+              "fb": "Relaciona afirmaciones, evidencia y grado de certeza, además de revisar el estilo."
+            },
+            {
+              "x": "Whether the draft contains enough sophisticated words to discourage questions.",
+              "ok": false,
+              "fb": "La sofisticación del vocabulario no sustituye la evidencia ni una explicación clara."
+            },
+            {
+              "x": "Whether readers will mistake the tool for the project manager.",
+              "ok": false,
+              "fb": "La prioridad es la responsabilidad sobre el contenido y sus afirmaciones."
+            }
+          ]
+        },
+        {
+          "t": "scene",
+          "img": "✅",
+          "title": "A draft with an accountable author",
+          "en": "Mia removes the unsourced statistic, confirms the remaining facts, and keeps the launch date conditional. The tool has helped with structure and phrasing; it has not assumed responsibility for the message. Bruno finally loses interest in the cursor. The team keeps its interest in what the words actually commit them to.",
+          "es": "Mia elimina la cifra sin fuente, confirma los hechos restantes y mantiene la fecha como condicional. La herramienta ayudó con estructura y redacción, pero no asumió la responsabilidad del mensaje. Bruno pierde el interés por el cursor; el equipo sigue atento a los compromisos que expresan sus palabras."
+        }
+      ]
+    }
+  }
+]
