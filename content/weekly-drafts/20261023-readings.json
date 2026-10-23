@@ -1,0 +1,408 @@
+[
+  {
+    "id": "wdy-20261023-a1",
+    "title": "The Yellow Ribbon",
+    "cefr": "A1",
+    "category": "Vida diaria",
+    "difficulty": "Suave",
+    "season": 3,
+    "read_minutes": 1,
+    "blurb": "The Yellow Ribbon",
+    "summary": "Un regalo y una invitación a jugar.",
+    "text": "Mia has a yellow ribbon. She puts it on a small box. The box is for her sister, Ana. There is a book in the box. Bruno sits next to the table. He has a ball, but the ball is not a gift. At four o'clock, Ana comes home. Mia gives her the box. Ana opens it and smiles. She likes books about animals. Bruno brings his ball to Ana. Now Ana has a new book and a dog who wants to play.",
+    "glossary": [
+      {
+        "term": "ribbon",
+        "meaning": "cinta"
+      },
+      {
+        "term": "box",
+        "meaning": "caja"
+      },
+      {
+        "term": "gift",
+        "meaning": "regalo"
+      }
+    ],
+    "comprehension_questions": [
+      {
+        "question": "What is inside the box?",
+        "options": [
+          "A ball",
+          "A book",
+          "A ribbon only"
+        ],
+        "answer_index": 1,
+        "explanation": "El texto dice que dentro de la caja hay un libro."
+      },
+      {
+        "question": "Who receives the box?",
+        "options": [
+          "Mia",
+          "Bruno",
+          "Ana"
+        ],
+        "answer_index": 2,
+        "explanation": "Mia entrega la caja a su hermana Ana."
+      },
+      {
+        "question": "What does Bruno want to do at the end?",
+        "options": [
+          "Play with Ana",
+          "Open another box",
+          "Read alone"
+        ],
+        "answer_index": 0,
+        "explanation": "Bruno lleva su pelota: el final explica que quiere jugar."
+      }
+    ],
+    "coins": 15,
+    "xp": 40,
+    "emoji": "📖",
+    "active": false,
+    "is_active": false,
+    "sort_order": 202610230,
+    "reading_mode": "single"
+  },
+  {
+    "id": "wdy-20261023-a2",
+    "title": "A Poster in Two Languages",
+    "cefr": "A2",
+    "category": "Cultura",
+    "difficulty": "Media",
+    "season": 3,
+    "read_minutes": 2,
+    "blurb": "A Poster in Two Languages",
+    "summary": "Una revisión evita que falte información en un afiche.",
+    "text": "On Tuesday, Mia helped make a poster for a neighbourhood film night. She wrote the time in English and Spanish, but she forgot the address. Bruno lay beside the paper while she worked. Before printing twenty copies, Mia showed the poster to her neighbour Luis. He liked the pictures, then asked where the film would be shown. Mia looked at her poster and laughed. She added the community centre's address and a small map. The event was on Saturday at seven, and everyone could bring a cushion. On Saturday, Luis arrived with his daughter and two cushions. They found the centre easily. Mia was glad she had asked someone to check the poster before printing it.",
+    "glossary": [
+      {
+        "term": "poster",
+        "meaning": "afiche"
+      },
+      {
+        "term": "cushion",
+        "meaning": "cojín"
+      },
+      {
+        "term": "address",
+        "meaning": "dirección"
+      }
+    ],
+    "comprehension_questions": [
+      {
+        "question": "What did the first poster leave out?",
+        "options": [
+          "The address",
+          "The day",
+          "The pictures"
+        ],
+        "answer_index": 0,
+        "explanation": "Tenía la hora y las imágenes, pero faltaba la dirección."
+      },
+      {
+        "question": "Why did Mia change it before printing?",
+        "options": [
+          "Luis changed the event date",
+          "Luis's question revealed missing information",
+          "The printer could not print pictures"
+        ],
+        "answer_index": 1,
+        "explanation": "La pregunta de Luis mostró que no se sabía dónde sería la actividad."
+      },
+      {
+        "question": "What happened on Saturday?",
+        "options": [
+          "Luis brought twenty posters",
+          "The film moved to Mia's home",
+          "Luis and his daughter found the centre"
+        ],
+        "answer_index": 2,
+        "explanation": "Llegaron al centro sin dificultad, con dos cojines."
+      }
+    ],
+    "coins": 20,
+    "xp": 60,
+    "emoji": "📖",
+    "active": false,
+    "is_active": false,
+    "sort_order": 202610231,
+    "reading_mode": "single"
+  },
+  {
+    "id": "wdy-20261023-b1",
+    "title": "The Rain Gauge Notebook",
+    "cefr": "B1",
+    "category": "Vida diaria",
+    "difficulty": "Media",
+    "season": 3,
+    "read_minutes": 2,
+    "blurb": "The Rain Gauge Notebook",
+    "summary": "Un registro honesto de una medición perdida.",
+    "text": "For a school project, Mia agreed to record the rainfall in her garden for a week. She placed a rain gauge away from the roof and checked it at eight each morning. Bruno usually waited by the gate while she wrote down the measurement. On Thursday, she found the gauge on its side. She could see that rain had fallen, but she could not tell how much water had spilled. Her first thought was to write a number similar to Wednesday's. Instead, she marked Thursday as 'measurement unavailable' and explained what had happened. At school, another student said that a blank entry made the project look unfinished. Their teacher disagreed. The notebook showed both the observations and their limits. Mia secured the gauge more firmly for the following week. Her next report would include a short note about the new position, so readers could understand what had changed.",
+    "glossary": [
+      {
+        "term": "rain gauge",
+        "meaning": "pluviómetro"
+      },
+      {
+        "term": "spill",
+        "meaning": "derramarse"
+      },
+      {
+        "term": "entry",
+        "meaning": "anotación"
+      },
+      {
+        "term": "secure",
+        "meaning": "sujetar firmemente"
+      }
+    ],
+    "comprehension_questions": [
+      {
+        "question": "Why was Thursday's measurement unavailable?",
+        "options": [
+          "Mia checked at nine",
+          "The gauge had fallen over",
+          "The garden stayed dry"
+        ],
+        "answer_index": 1,
+        "explanation": "El recipiente estaba de lado y se desconocía cuánto se había derramado."
+      },
+      {
+        "question": "What does the teacher value?",
+        "options": [
+          "A complete set of estimated numbers",
+          "An attractive notebook cover",
+          "An honest account of missing evidence"
+        ],
+        "answer_index": 2,
+        "explanation": "La docente valora que se expliquen los límites de las observaciones."
+      },
+      {
+        "question": "Why mention the new position?",
+        "options": [
+          "To make a change in method visible",
+          "To claim Thursday had no rain",
+          "To avoid taking further measurements"
+        ],
+        "answer_index": 0,
+        "explanation": "Anotar el cambio permite interpretar cómo se obtuvieron las mediciones siguientes."
+      }
+    ],
+    "coins": 25,
+    "xp": 80,
+    "emoji": "📖",
+    "active": false,
+    "is_active": false,
+    "sort_order": 202610232,
+    "reading_mode": "single"
+  },
+  {
+    "id": "wdy-20261023-b2",
+    "title": "The Subscription Nobody Used",
+    "cefr": "B2",
+    "category": "Negocios",
+    "difficulty": "Media",
+    "season": 3,
+    "read_minutes": 2,
+    "blurb": "The Subscription Nobody Used",
+    "summary": "Un teatro distingue demanda, accesibilidad y costo.",
+    "text": "A community theatre paid for an online ticketing subscription that included automatic seat selection. When renewal approached, the treasurer proposed cancelling it: most audience members bought tickets at the door. Mia suggested checking why the feature was rarely used before deciding that it had no value. A short survey revealed that several regular visitors preferred booking in advance but could not read the small seat numbers on their phones. Others had never noticed the booking link. The committee agreed to test a clearer link and a larger seating chart during two performances. They would compare completed bookings, requests for help and the staff time involved. Bruno, asleep beside a stack of programmes, remained unimpressed by subscription debates. The trial did not guarantee renewal. It offered a way to distinguish an unwanted service from one that people had struggled to access. The treasurer also set a maximum cost the theatre could afford, regardless of how popular the feature became.",
+    "glossary": [
+      {
+        "term": "renewal",
+        "meaning": "renovación"
+      },
+      {
+        "term": "treasurer",
+        "meaning": "tesorero/a"
+      },
+      {
+        "term": "seating chart",
+        "meaning": "plano de asientos"
+      },
+      {
+        "term": "regardless of",
+        "meaning": "independientemente de"
+      }
+    ],
+    "comprehension_questions": [
+      {
+        "question": "What assumption does Mia question?",
+        "options": [
+          "That low use necessarily means low value",
+          "That subscriptions have a cost",
+          "That the theatre has regular visitors"
+        ],
+        "answer_index": 0,
+        "explanation": "El poco uso podría deberse a barreras de acceso, no a falta de interés."
+      },
+      {
+        "question": "What would the trial help distinguish?",
+        "options": [
+          "Actors from audience members",
+          "Lack of demand from difficulty using the service",
+          "Door sales from free invitations only"
+        ],
+        "answer_index": 1,
+        "explanation": "El ensayo permite examinar demanda y accesibilidad con información adicional."
+      },
+      {
+        "question": "Why set a maximum affordable cost?",
+        "options": [
+          "To guarantee renewal",
+          "To stop measuring staff time",
+          "To keep financial feasibility in the decision"
+        ],
+        "answer_index": 2,
+        "explanation": "Aunque aumente el uso, la capacidad económica sigue siendo un criterio."
+      }
+    ],
+    "coins": 30,
+    "xp": 100,
+    "emoji": "📖",
+    "active": false,
+    "is_active": false,
+    "sort_order": 202610233,
+    "reading_mode": "single"
+  },
+  {
+    "id": "wdy-20261023-c1",
+    "title": "The Applause Between Takes",
+    "cefr": "C1",
+    "category": "Cultura",
+    "difficulty": "Alta",
+    "season": 3,
+    "read_minutes": 2,
+    "blurb": "The Applause Between Takes",
+    "summary": "Un montaje documental altera lo que el público infiere.",
+    "text": "During the editing of a short documentary, Mia noticed that a speaker's hesitant answer had been followed by enthusiastic applause. The sequence felt convincing, yet the applause had actually greeted a different speaker later that evening. The editor argued that audience reaction shots were routinely rearranged to maintain rhythm. No words had been altered, and the final sequence captured the event's broadly supportive atmosphere. Mia accepted that editing inevitably selects and compresses. Her concern was narrower: the sequence invited viewers to infer an immediate endorsement that the recording did not establish. Removing every cut would neither be practical nor make the film neutral. Keeping this particular cut, however, would turn a general impression into an apparently witnessed exchange. The team retained the applause elsewhere and let the hesitant answer end in the room's original silence. The result was less triumphant, but it preserved the distinction between what the audience had demonstrably responded to and what the filmmakers believed they generally felt. Bruno's brief appearance in the closing credits required no such negotiation; his yawn had been recorded exactly when the meeting ran late.",
+    "glossary": [
+      {
+        "term": "endorsement",
+        "meaning": "respaldo"
+      },
+      {
+        "term": "infer",
+        "meaning": "inferir"
+      },
+      {
+        "term": "hesitant",
+        "meaning": "vacilante"
+      },
+      {
+        "term": "demonstrably",
+        "meaning": "de forma demostrable"
+      }
+    ],
+    "comprehension_questions": [
+      {
+        "question": "What is Mia's central objection?",
+        "options": [
+          "All editing is dishonest",
+          "The sequence implies an unsupported immediate response",
+          "The speaker's words were replaced"
+        ],
+        "answer_index": 1,
+        "explanation": "La ubicación del aplauso sugiere una reacción concreta que la grabación no demuestra."
+      },
+      {
+        "question": "Why acknowledge that editing selects and compresses?",
+        "options": [
+          "To concede a general necessity while challenging a specific choice",
+          "To insist that all cuts be removed",
+          "To deny that viewers draw inferences"
+        ],
+        "answer_index": 0,
+        "explanation": "Mia distingue la edición inevitable de una decisión particular que altera lo inferido."
+      },
+      {
+        "question": "What does the retained silence achieve?",
+        "options": [
+          "It proves that the audience opposed the speaker",
+          "It makes the film entirely neutral",
+          "It preserves the recorded response without inventing endorsement"
+        ],
+        "answer_index": 2,
+        "explanation": "El silencio conserva lo registrado; no permite concluir oposición ni neutralidad absoluta."
+      }
+    ],
+    "coins": 35,
+    "xp": 120,
+    "emoji": "📖",
+    "active": false,
+    "is_active": false,
+    "sort_order": 202610234,
+    "reading_mode": "single"
+  },
+  {
+    "id": "wdy-20261023-c2",
+    "title": "The Courtesy of an Unsent Invitation",
+    "cefr": "C2",
+    "category": "Historias",
+    "difficulty": "Alta",
+    "season": 3,
+    "read_minutes": 3,
+    "blurb": "The Courtesy of an Unsent Invitation",
+    "summary": "Una invitación cuestiona una tradición institucional.",
+    "text": "The anniversary committee praised the founder's discretion: each year she declined the ceremony, sparing her successors the awkwardness of celebrating under her gaze. Mia, arranging the archive, found that the founder had never received an invitation. A former secretary had once remarked that she disliked public occasions; the remark had hardened into a considerate policy, then into a flattering account of her restraint. No one had deliberately excluded her, which was precisely what made the discovery difficult to discuss. There was no villain whose removal might repair the story. Asked whether she wished to attend this year, the founder replied that she would rather visit the workshops on an ordinary afternoon. The committee took this as confirmation that its assumption had been right all along. Mia was less certain. An accurately guessed preference did not retrospectively become a choice freely offered. Nor did the founder's answer oblige her to repudiate decades of genuinely affectionate recollection. In the revised programme, the committee omitted the familiar passage about her annual refusal. It did not replace it with an accusation. The invitation, sent and answered at last, had corrected a practice more cleanly than a public confession could have settled its interpretation. Whether the institution had learned humility or merely found a subtler way to look considerate remained, Mia thought, a question for next year's post.",
+    "glossary": [
+      {
+        "term": "harden into",
+        "meaning": "consolidarse hasta volverse rígido"
+      },
+      {
+        "term": "restraint",
+        "meaning": "discreción o contención"
+      },
+      {
+        "term": "repudiate",
+        "meaning": "rechazar expresamente"
+      },
+      {
+        "term": "retrospectively",
+        "meaning": "de manera retrospectiva"
+      }
+    ],
+    "comprehension_questions": [
+      {
+        "question": "What distinction underpins Mia's unease?",
+        "options": [
+          "A preference correctly inferred is still different from an offered choice",
+          "The founder secretly wanted to lead the ceremony",
+          "Archives are more reliable than living people in every case"
+        ],
+        "answer_index": 0,
+        "explanation": "Acertar una preferencia no sustituye haber dado a la persona la oportunidad de decidir."
+      },
+      {
+        "question": "What is the effect of 'no villain'?",
+        "options": [
+          "It absolves the institution of any need to change",
+          "It complicates accountability by locating the problem in an inherited practice",
+          "It reveals a hidden organiser's malicious plan"
+        ],
+        "answer_index": 1,
+        "explanation": "El daño surge de una práctica compartida, sin un culpable individual que resuelva todo."
+      },
+      {
+        "question": "What does the final sentence leave unresolved?",
+        "options": [
+          "Whether the founder received this year's invitation",
+          "Whether the programme was revised",
+          "Whether the change reflects learning or improved self-presentation"
+        ],
+        "answer_index": 2,
+        "explanation": "El cierre mantiene abierta la diferencia entre humildad institucional y cuidado de la imagen."
+      }
+    ],
+    "coins": 40,
+    "xp": 140,
+    "emoji": "📖",
+    "active": false,
+    "is_active": false,
+    "sort_order": 202610235,
+    "reading_mode": "single"
+  }
+]
