@@ -1,0 +1,17 @@
+const fs=require('fs'),vm=require('vm'),assert=require('node:assert/strict');
+const html=fs.readFileSync(__dirname+'/../index.html','utf8');
+const full=Buffer.from(html.match(/var D="([^"]+)"/)[1],'base64').toString();
+const code=full.slice(full.indexOf('let _ttsVoice '),full.indexOf('function audio(){'));
+let voices=[],spoken=[],cancelled=0,notices=[];const values=new Map([['wdy_voice','Shared']]);
+const c={SOUND_ON:true,localStorage:{getItem:k=>values.get(k)||null,setItem:(k,v)=>values.set(k,v)},document:{getElementById:()=>null},setTimeout:()=>{},toast:x=>notices.push(x),SpeechSynthesisUtterance:function(text){this.text=text;},window:{speechSynthesis:{getVoices:()=>voices,speak:u=>spoken.push(u),cancel:()=>cancelled++,onvoiceschanged:null}}};vm.createContext(c);vm.runInContext(code,c);
+const run=x=>vm.runInContext(x,c);
+voices=[{name:'Shared',voiceURI:'us',lang:'en-US'},{name:'Shared',voiceURI:'au',lang:'en-AU'},{name:'British',voiceURI:'uk',lang:'en-GB'},{name:'Shared',voiceURI:'au',lang:'en-AU'},{name:'Spanish',voiceURI:'es',lang:'es-ES'}];
+c.window.speechSynthesis.onvoiceschanged();assert.equal(run('_ttsEnglishVoices().length'),3);assert.equal(run('_ttsVoice.lang'),'en-US');
+run("setVoice(_ttsVoiceKey(_ttsEnglishVoices()[1]))");let u=spoken.at(-1);assert.equal(u.lang,'en-AU');assert.equal(u.voice.voiceURI,'au');assert.ok(cancelled>0);assert.ok(values.get('wdy_voice_key').includes('au'));
+c.window.speechSynthesis.onvoiceschanged();assert.equal(run('_ttsVoice.lang'),'en-AU');
+run("speakLong('This is the first sentence. This is the second sentence.')");assert.equal(spoken.at(-1).lang,'en-AU');
+assert.ok(run('renderVoicePicker()').includes('en-AU'));assert.ok(run('renderVoicePicker()').includes('&quot;'));
+voices=voices.filter(v=>v.lang!=='en-AU');run('_ttsPickVoice()');assert.equal(run('_ttsVoice.lang'),'en-US');
+c.SOUND_ON=false;const before=spoken.length;run('testVoice()');assert.equal(spoken.length,before);assert.ok(notices.length);
+voices=[];run('_ttsPickVoice()');assert.equal(run('_ttsReady'),false);
+console.log('PASS: locale, duplicate-name identity, persistence, late voices, removed voice fallback, long narration, escaped options, muted preview');
