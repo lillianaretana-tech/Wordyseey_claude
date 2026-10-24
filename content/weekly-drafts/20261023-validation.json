@@ -5,7 +5,9 @@
   "adventure_level": "B1",
   "scenes": 4,
   "exercises": 10,
-  "catalog_validation": "BLOCKED: Supabase MCP permission denied",
-  "database_inserts": 0,
-  "publication": false
+  "catalog_validation": "PASS: 128-row catalogue checked, schema constraints confirmed, no duplicate IDs/titles/texts",
+  "database_inserts": 6,
+  "readings_active": true,
+  "adventure_validation": "PASS: JS syntax; all 258 previous stories identical; 259 total; valid supported nodes and answers; boss replay retained",
+  "publication": "readings active; adventure ready for deployment after Lilly publication request"
 }
