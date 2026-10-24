@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-23",
+  "readings": 6,
+  "questions": 18,
+  "adventure_level": "B1",
+  "scenes": 4,
+  "exercises": 10,
+  "catalog_validation": "PASS: 128-row catalogue checked, schema constraints confirmed, no duplicate IDs/titles/texts",
+  "database_inserts": 6,
+  "readings_active": true,
+  "adventure_validation": "PASS: JS syntax; all 258 previous stories identical; 259 total; valid supported nodes and answers; boss replay retained",
+  "publication": "readings active; adventure ready for deployment after Lilly publication request"
+}

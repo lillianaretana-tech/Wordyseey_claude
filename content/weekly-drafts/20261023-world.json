@@ -1,0 +1,235 @@
+[
+  {
+    "worldId": "travel",
+    "vocab": [
+      {
+        "en": "ferry",
+        "es": "ferri, transbordador"
+      },
+      {
+        "en": "sailing",
+        "es": "salida o travesía de un barco"
+      },
+      {
+        "en": "carrier",
+        "es": "transportadora"
+      },
+      {
+        "en": "departure",
+        "es": "salida"
+      }
+    ],
+    "story": {
+      "id": "bruno-20261023-ferry-b1",
+      "code": "PAW→FERRY",
+      "title": "Bruno's First Ferry",
+      "emoji": "⛴️",
+      "cefr": "B1",
+      "release": "2026-10-23",
+      "sub": "B1 · Consulta las condiciones para viajar con Bruno, compara salidas y confirma la reserva.",
+      "reward": {
+        "xp": 110,
+        "coins": 45
+      },
+      "nodes": [
+        {
+          "t": "scene",
+          "title": "A crossing to plan",
+          "en": "Mia and Bruno arrive at a ferry terminal for a visit to a nearby island. The board lists a departure at nine and another at eleven. Before buying a ticket, Mia needs to check whether Bruno can travel with her.",
+          "es": "Mia y Bruno llegan a la terminal de ferris para visitar una isla cercana. Hay salidas a las nueve y a las once. Antes de comprar, Mia necesita confirmar si Bruno puede viajar.",
+          "img": "🐶"
+        },
+        {
+          "t": "decision",
+          "speaker": "Clerk",
+          "line": "Good morning. How can I help?",
+          "opts": [
+            {
+              "x": "Does this ferry allow dogs?",
+              "ok": true,
+              "fb": "Pregunta directamente por la condición que Mia necesita confirmar."
+            },
+            {
+              "x": "Which island did we visit yesterday?",
+              "ok": false,
+              "fb": "La consulta es sobre este viaje, no un recuerdo."
+            },
+            {
+              "x": "Where can I collect a parcel?",
+              "ok": false,
+              "fb": "No están recogiendo un paquete."
+            }
+          ]
+        },
+        {
+          "t": "fill",
+          "q": "Mia asks about the rules before ___ a ticket.",
+          "a": "buying",
+          "opts": [
+            "bought",
+            "buying",
+            "buy"
+          ],
+          "fb": "Después de la preposición “before” se usa aquí la forma -ing."
+        },
+        {
+          "t": "scene",
+          "title": "Different boats, different conditions",
+          "en": "The clerk explains that the nine o'clock boat requires dogs to travel in a carrier. On the eleven o'clock boat, dogs may stay with their owners on the outside deck, on a lead. Mia has a lead but no carrier. These are the rules for this fictional ferry service.",
+          "es": "La embarcación de las nueve exige transportadora. La de las once permite perros con sus dueños en la cubierta exterior, con correa. Mia tiene correa, pero no transportadora. Son las normas de este servicio ficticio.",
+          "img": "🐶"
+        },
+        {
+          "t": "decision",
+          "speaker": "Clerk",
+          "line": "Have you brought a carrier?",
+          "opts": [
+            {
+              "x": "Yes, I can show you my ticket.",
+              "ok": false,
+              "fb": "Un boleto no es una transportadora."
+            },
+            {
+              "x": "No, but I have brought a lead.",
+              "ok": true,
+              "fb": "Contesta sobre la transportadora y aporta la alternativa disponible."
+            },
+            {
+              "x": "No, Bruno is travelling yesterday.",
+              "ok": false,
+              "fb": "La frase mezcla tiempos y no responde a lo preguntado."
+            }
+          ]
+        },
+        {
+          "t": "build",
+          "words": [
+            "We",
+            "can",
+            "take",
+            "the",
+            "later",
+            "ferry"
+          ],
+          "answer": "We can take the later ferry",
+          "es": "Podemos tomar el ferri que sale más tarde"
+        },
+        {
+          "t": "fill",
+          "q": "The eleven o'clock sailing leaves ___ the nine o'clock sailing.",
+          "a": "after",
+          "opts": [
+            "during",
+            "before",
+            "after"
+          ],
+          "fb": "Las once son después de las nueve: “after”."
+        },
+        {
+          "t": "decision",
+          "speaker": "Mia",
+          "line": "Which sailing meets the stated conditions with the equipment Mia has?",
+          "opts": [
+            {
+              "x": "The nine o'clock boat, because no equipment is needed.",
+              "ok": false,
+              "fb": "La primera salida exige transportadora y Mia no tiene una."
+            },
+            {
+              "x": "The eleven o'clock boat, because Bruno can travel on a lead.",
+              "ok": true,
+              "fb": "La segunda salida permite la correa que Mia lleva."
+            },
+            {
+              "x": "Either boat, because the rules are identical.",
+              "ok": false,
+              "fb": "Las dos embarcaciones tienen condiciones distintas."
+            }
+          ]
+        },
+        {
+          "t": "scene",
+          "title": "A small change of plan",
+          "en": "Mia phones her friend on the island. They had planned to meet at ten, but the later ferry arrives at noon. Her friend can meet them at twelve thirty instead. Bruno watches a gull through the window while Mia confirms the new time.",
+          "es": "Mia llama a su amiga. Iban a encontrarse a las diez, pero el ferri posterior llega al mediodía. La amiga puede recibirlos a las doce y media. Bruno observa una gaviota mientras Mia confirma el cambio.",
+          "img": "🐶"
+        },
+        {
+          "t": "decision",
+          "speaker": "Friend",
+          "line": "What time shall I meet you?",
+          "opts": [
+            {
+              "x": "At twelve thirty, if that still works for you.",
+              "ok": true,
+              "fb": "Confirma la nueva hora y comprueba que le sirva a su amiga."
+            },
+            {
+              "x": "At ten, before we leave the mainland.",
+              "ok": false,
+              "fb": "A las diez aún no habrán salido."
+            },
+            {
+              "x": "At eleven, when the ferry arrives at noon.",
+              "ok": false,
+              "fb": "Las once son la hora de salida, no la de llegada."
+            }
+          ]
+        },
+        {
+          "t": "fill",
+          "q": "The ferry departs at eleven and ___ at noon.",
+          "a": "arrives",
+          "opts": [
+            "returns",
+            "arrives",
+            "departs"
+          ],
+          "fb": "“Departs” es sale; “arrives” es llega. El texto no indica un regreso."
+        },
+        {
+          "t": "build",
+          "words": [
+            "Could",
+            "you",
+            "confirm",
+            "the",
+            "departure",
+            "time"
+          ],
+          "answer": "Could you confirm the departure time",
+          "es": "¿Podría confirmar la hora de salida?"
+        },
+        {
+          "t": "decision",
+          "speaker": "Clerk",
+          "line": "One adult and one dog on the eleven o'clock sailing, outside deck. Is that right?",
+          "opts": [
+            {
+              "x": "Yes, and please move us to the nine o'clock boat.",
+              "ok": false,
+              "fb": "Cambiar a la primera salida recuperaría el problema de la transportadora."
+            },
+            {
+              "x": "No, we agreed to leave the dog behind.",
+              "ok": false,
+              "fb": "Bruno sí viaja con Mia."
+            },
+            {
+              "x": "Yes, that matches the journey we discussed.",
+              "ok": true,
+              "fb": "Confirma los pasajeros, la salida y el lugar acordados."
+            }
+          ]
+        },
+        {
+          "t": "scene",
+          "title": "Ready to cross",
+          "en": "With the booking confirmed, Mia waits for boarding instructions and keeps Bruno on his lead. They will arrive later than first planned, but her friend knows when to expect them. Bruno seems pleased with the extra time to watch the gulls.",
+          "es": "Con la reserva confirmada, Mia espera las indicaciones de embarque y mantiene a Bruno con correa. Llegarán más tarde de lo previsto inicialmente, pero su amiga conoce la nueva hora. Bruno disfruta mirando las gaviotas.",
+          "img": "⛴️"
+        }
+      ]
+    }
+  }
+]
