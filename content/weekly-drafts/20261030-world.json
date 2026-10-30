@@ -1,0 +1,243 @@
+[
+  {
+    "worldId": "social",
+    "vocab": [
+      {
+        "en": "covered courtyard",
+        "es": "patio cubierto"
+      },
+      {
+        "en": "provided that",
+        "es": "siempre que"
+      },
+      {
+        "en": "step-free",
+        "es": "sin escalones"
+      },
+      {
+        "en": "venue",
+        "es": "lugar del evento"
+      }
+    ],
+    "story": {
+      "id": "bruno-20261030-picnic-relocation-b2",
+      "code": "RAIN→PLAN",
+      "title": "The Picnic Moves Indoors",
+      "emoji": "🌦️",
+      "cefr": "B2",
+      "release": "2026-10-30",
+      "sub": "B2 · Negocia alternativas, interpreta condiciones y comunica un cambio de lugar.",
+      "reward": {
+        "xp": 140,
+        "coins": 55
+      },
+      "nodes": [
+        {
+          "t": "scene",
+          "img": "🐶",
+          "title": "A forecast changes the plan",
+          "en": "Rain is forecast for the neighbourhood picnic. Mia has booked a community hall as a backup, but she has not checked whether Bruno may enter. Several guests need step-free access. Before announcing a new venue, she calls the caretaker.",
+          "es": "Se pronostica lluvia. Mia reservó un salón como alternativa, pero debe confirmar si admite a Bruno y si tiene acceso sin escalones."
+        },
+        {
+          "t": "decision",
+          "speaker": "Mia",
+          "line": "Which question checks the two requirements before confirming?",
+          "opts": [
+            {
+              "x": "Is the hall warmer than the park?",
+              "ok": false,
+              "fb": "No confirma las dos necesidades."
+            },
+            {
+              "x": "Are dogs permitted, and is there step-free access?",
+              "ok": true,
+              "fb": "Consulta ambas condiciones concretas."
+            },
+            {
+              "x": "Can we announce the move before checking access?",
+              "ok": false,
+              "fb": "Anunciar primero podría dejar invitados sin una opción viable."
+            }
+          ]
+        },
+        {
+          "t": "fill",
+          "q": "The hall is a backup ___ for the picnic.",
+          "a": "venue",
+          "opts": [
+            "forecast",
+            "venue",
+            "invitation"
+          ],
+          "fb": "Venue designa el lugar de una actividad."
+        },
+        {
+          "t": "scene",
+          "img": "🐶",
+          "title": "A conditional alternative",
+          "en": "The caretaker says dogs cannot enter the main hall, but may use the covered courtyard provided they remain on a lead. The courtyard has a step-free entrance and space for the whole group. It shelters guests from rain, although wind can reach its open sides.",
+          "es": "No se admiten perros en el salón principal. Sí en el patio cubierto, con correa. Hay entrada sin escalones y espacio suficiente, pero los lados abiertos dejan pasar viento."
+        },
+        {
+          "t": "decision",
+          "speaker": "Mia",
+          "line": "Which interpretation accurately preserves the condition?",
+          "opts": [
+            {
+              "x": "Bruno may use the courtyard if he stays on a lead.",
+              "ok": true,
+              "fb": "Conserva permiso y condición."
+            },
+            {
+              "x": "Bruno may use every room if the group is small.",
+              "ok": false,
+              "fb": "El permiso no incluye todas las salas."
+            },
+            {
+              "x": "The courtyard is fully enclosed and heated.",
+              "ok": false,
+              "fb": "No está cerrado por completo ni se ha mencionado calefacción."
+            }
+          ]
+        },
+        {
+          "t": "build",
+          "words": [
+            "We",
+            "can",
+            "use",
+            "the",
+            "courtyard",
+            "provided",
+            "that",
+            "Bruno",
+            "stays",
+            "on",
+            "a",
+            "lead"
+          ],
+          "answer": "We can use the courtyard provided that Bruno stays on a lead",
+          "es": "Podemos usar el patio siempre que Bruno permanezca con correa"
+        },
+        {
+          "t": "fill",
+          "q": "The courtyard is covered; ___, its open sides may let wind in.",
+          "a": "however",
+          "opts": [
+            "therefore",
+            "similarly",
+            "however"
+          ],
+          "fb": "However introduce la limitación que contrasta con la ventaja de estar cubierto."
+        },
+        {
+          "t": "decision",
+          "speaker": "Mia",
+          "line": "A guest asks whether the new location will definitely be comfortable in strong wind. What can Mia say?",
+          "opts": [
+            {
+              "x": "The roof guarantees there will be no wind.",
+              "ok": false,
+              "fb": "Tener techo no cierra los lados."
+            },
+            {
+              "x": "It has a roof, but I cannot promise protection from strong wind.",
+              "ok": true,
+              "fb": "Comunica lo confirmado y el límite de lo que sabe."
+            },
+            {
+              "x": "The caretaker has cancelled all outdoor events.",
+              "ok": false,
+              "fb": "No se ha cancelado el evento."
+            }
+          ]
+        },
+        {
+          "t": "scene",
+          "img": "🐶",
+          "title": "Checking with the group",
+          "en": "Mia explains the courtyard's limitations to the guests. They agree to meet there for a shorter picnic, bring warm layers and keep the original starting time of two o'clock. The caretaker confirms the booking and the accessible entrance on Oak Street, not the steps on Pine Street.",
+          "es": "Mia informa las limitaciones. El grupo acuerda un picnic más corto, ropa abrigada y la hora original de las dos. La entrada accesible está en Oak Street; Pine Street tiene escalones."
+        },
+        {
+          "t": "decision",
+          "speaker": "Mia",
+          "line": "Which update gives guests the information they need?",
+          "opts": [
+            {
+              "x": "The picnic is somewhere near the hall. Come whenever you like.",
+              "ok": false,
+              "fb": "Faltan hora y acceso precisos."
+            },
+            {
+              "x": "The picnic starts at three in the main hall; dogs are welcome inside.",
+              "ok": false,
+              "fb": "Cambia la hora e inventa permiso para el salón."
+            },
+            {
+              "x": "We will meet at two in the covered courtyard. Use the step-free Oak Street entrance and bring a warm layer.",
+              "ok": true,
+              "fb": "Resume el acuerdo, la entrada correcta y la preparación necesaria."
+            }
+          ]
+        },
+        {
+          "t": "fill",
+          "q": "The location has changed, ___ the starting time remains the same.",
+          "a": "whereas",
+          "opts": [
+            "because",
+            "whereas",
+            "unless"
+          ],
+          "fb": "Whereas contrasta dos aspectos: cambia el lugar y se mantiene la hora."
+        },
+        {
+          "t": "build",
+          "words": [
+            "Could",
+            "you",
+            "confirm",
+            "which",
+            "entrance",
+            "has",
+            "no",
+            "steps"
+          ],
+          "answer": "Could you confirm which entrance has no steps",
+          "es": "¿Podría confirmar qué entrada no tiene escalones?"
+        },
+        {
+          "t": "decision",
+          "speaker": "Mia",
+          "line": "What should Mia confirm before closing the call?",
+          "opts": [
+            {
+              "x": "The courtyard booking and the Oak Street entrance.",
+              "ok": true,
+              "fb": "Son los detalles operativos que acaba de acordar."
+            },
+            {
+              "x": "That the weather forecast cannot change.",
+              "ok": false,
+              "fb": "No puede garantizarse el tiempo."
+            },
+            {
+              "x": "That guests no longer need the revised message.",
+              "ok": false,
+              "fb": "Los invitados sí necesitan recibir el cambio."
+            }
+          ]
+        },
+        {
+          "t": "scene",
+          "img": "🐶",
+          "title": "A shared solution",
+          "en": "At two, the guests arrive through the agreed entrance. Bruno settles beside Mia on his lead while rain taps on the courtyard roof. The picnic is shorter than planned, but everyone received the same clear information and could decide whether the alternative suited them.",
+          "es": "A las dos llegan por la entrada acordada. Bruno permanece con Mia y su correa. El picnic es más corto, pero todos recibieron información clara para decidir si la alternativa les servía."
+        }
+      ]
+    }
+  }
+]
