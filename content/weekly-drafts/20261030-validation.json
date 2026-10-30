@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-30",
+  "readings": 6,
+  "questions": 18,
+  "adventure_level": "B2",
+  "exercises": 10,
+  "status": "pending review",
+  "catalogue_rows_reviewed": 134,
+  "checks": [
+    "current columns and constraints inspected",
+    "new IDs/titles/texts not present in catalogue",
+    "questions and answers reviewed",
+    "new story ID absent from root source",
+    "social world exists",
+    "supported scene/decision/fill/build nodes"
+  ],
+  "publication": false
+}
