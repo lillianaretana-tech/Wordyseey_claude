@@ -1,0 +1,392 @@
+[
+  {
+    "id": "wdy-20261030-a1",
+    "title": "Two Pots on the Windowsill",
+    "cefr": "A1",
+    "category": "Vida diaria",
+    "difficulty": "Suave",
+    "season": 3,
+    "read_minutes": 1,
+    "blurb": "Two Pots on the Windowsill",
+    "summary": "Two Pots on the Windowsill",
+    "text": "Mia has two pots on the kitchen windowsill. One pot has mint. The other has basil. The mint is near the window, but the basil is behind a big book. Mia reads the labels. The basil needs more light. She moves the book to a shelf. Now both pots are near the window. Bruno sits on the floor. He cannot see the labels, but he can smell the mint. Mia gives the plants water and writes their names on two new cards.",
+    "glossary": [
+      {
+        "term": "pot",
+        "meaning": "maceta"
+      },
+      {
+        "term": "windowsill",
+        "meaning": "alféizar"
+      },
+      {
+        "term": "shelf",
+        "meaning": "estante"
+      }
+    ],
+    "comprehension_questions": [
+      {
+        "question": "What blocks the basil's light?",
+        "options": [
+          "A book",
+          "A curtain",
+          "The mint pot"
+        ],
+        "answer_index": 0,
+        "explanation": "La albahaca estaba detrás de un libro grande."
+      },
+      {
+        "question": "Where does Mia put the book?",
+        "options": [
+          "On the floor",
+          "On a shelf",
+          "Outside"
+        ],
+        "answer_index": 1,
+        "explanation": "Mia mueve el libro a un estante."
+      },
+      {
+        "question": "What can Bruno do from the floor?",
+        "options": [
+          "Read both labels",
+          "Reach the window",
+          "Smell the mint"
+        ],
+        "answer_index": 2,
+        "explanation": "El texto distingue entre ver las etiquetas y oler la menta."
+      }
+    ],
+    "coins": 15,
+    "xp": 40,
+    "emoji": "📖",
+    "active": false,
+    "is_active": false,
+    "sort_order": 202610300,
+    "reading_mode": "single"
+  },
+  {
+    "id": "wdy-20261030-a2",
+    "title": "The Costume with a Loose Button",
+    "cefr": "A2",
+    "category": "Vida diaria",
+    "difficulty": "Media",
+    "season": 3,
+    "read_minutes": 2,
+    "blurb": "The Costume with a Loose Button",
+    "summary": "The Costume with a Loose Button",
+    "text": "Before the school play, Mia checked her costume. One button was loose. She wanted to buy a new button, but the shops were already closed. Her aunt remembered a small envelope inside the costume bag. It contained a spare button and some thread. The old button was not broken, so Mia sewed it on more firmly and kept the spare. Bruno slept beside the bag while she worked. Ten minutes later, Mia tried the costume again. Everything fitted. At the theatre, another actor asked why she carried the little envelope. Mia explained what had happened. Next time, the actor said, he would check his costume before leaving home too.",
+    "glossary": [
+      {
+        "term": "loose",
+        "meaning": "flojo"
+      },
+      {
+        "term": "spare",
+        "meaning": "de repuesto"
+      },
+      {
+        "term": "thread",
+        "meaning": "hilo"
+      }
+    ],
+    "comprehension_questions": [
+      {
+        "question": "Why could Mia not buy a button?",
+        "options": [
+          "She had lost her money",
+          "The shops were closed",
+          "The bag was missing"
+        ],
+        "answer_index": 1,
+        "explanation": "Las tiendas ya habían cerrado."
+      },
+      {
+        "question": "Which button did she use?",
+        "options": [
+          "The original button",
+          "The spare button",
+          "One from another actor"
+        ],
+        "answer_index": 0,
+        "explanation": "El botón original no estaba roto: lo volvió a coser."
+      },
+      {
+        "question": "What did the other actor decide?",
+        "options": [
+          "Buy a new costume",
+          "Leave the envelope at home",
+          "Check his costume before leaving"
+        ],
+        "answer_index": 2,
+        "explanation": "Aprendió a revisar el vestuario con anticipación."
+      }
+    ],
+    "coins": 20,
+    "xp": 60,
+    "emoji": "📖",
+    "active": false,
+    "is_active": false,
+    "sort_order": 202610301,
+    "reading_mode": "single"
+  },
+  {
+    "id": "wdy-20261030-b1",
+    "title": "The Bird Count at Dawn",
+    "cefr": "B1",
+    "category": "Vida diaria",
+    "difficulty": "Media",
+    "season": 3,
+    "read_minutes": 2,
+    "blurb": "The Bird Count at Dawn",
+    "summary": "The Bird Count at Dawn",
+    "text": "Mia joined a volunteer bird count in a small park. The organiser explained that participants should record what they could identify, rather than guess. Bruno stayed on his lead beside Mia, away from the nesting area. At seven, Mia saw three birds on a branch. A few minutes later, three similar birds appeared near the fountain. She nearly wrote six, then realised they might be the same birds. She described both sightings and asked the organiser how to record them. He explained the counting method again and helped her avoid counting the same birds twice. Later, Mia heard a call she did not recognise. She noted the time and sound without assigning a species. Her list was shorter than she had expected, but every entry made clear what she knew and what she was unsure about.",
+    "glossary": [
+      {
+        "term": "sighting",
+        "meaning": "avistamiento"
+      },
+      {
+        "term": "branch",
+        "meaning": "rama"
+      },
+      {
+        "term": "species",
+        "meaning": "especie"
+      }
+    ],
+    "comprehension_questions": [
+      {
+        "question": "Why might a total of six be misleading?",
+        "options": [
+          "The fountain was closed",
+          "The birds could be the same individuals",
+          "Only sounds were recorded"
+        ],
+        "answer_index": 1,
+        "explanation": "Dos avistamientos no garantizan que sean seis aves distintas."
+      },
+      {
+        "question": "What did Mia do with the unfamiliar call?",
+        "options": [
+          "Named the most common species",
+          "Removed all her notes",
+          "Recorded it without guessing a species"
+        ],
+        "answer_index": 2,
+        "explanation": "Anotó hora y sonido, dejando abierta la identificación."
+      },
+      {
+        "question": "What best describes her final list?",
+        "options": [
+          "Careful about uncertainty",
+          "Complete for every species in the park",
+          "Based mainly on estimates"
+        ],
+        "answer_index": 0,
+        "explanation": "El registro distingue observaciones e incertidumbres."
+      }
+    ],
+    "coins": 25,
+    "xp": 80,
+    "emoji": "📖",
+    "active": false,
+    "is_active": false,
+    "sort_order": 202610302,
+    "reading_mode": "single"
+  },
+  {
+    "id": "wdy-20261030-b2",
+    "title": "A Deposit for Reusable Cups",
+    "cefr": "B2",
+    "category": "Cultura",
+    "difficulty": "Media",
+    "season": 3,
+    "read_minutes": 2,
+    "blurb": "A Deposit for Reusable Cups",
+    "summary": "A Deposit for Reusable Cups",
+    "text": "A neighbourhood concert planned to replace disposable cups with reusable ones. A refundable deposit seemed straightforward: visitors would pay when collecting a cup and receive the deposit back on returning it. Mia supported the idea but asked the organisers to walk through the whole process. Where would people queue? Could someone return several cups at once? What would happen if the refund desk closed before the final song? A rehearsal revealed that the collection desk was wide enough for two volunteers, while the return point could accommodate only one. The team moved the return point and kept it open after the music ended. They also provided a clearly explained borrowing option for visitors who could not leave a deposit, without requiring them to explain their circumstances publicly. Bruno watched the empty cups being stacked, disappointed that none contained a picnic. The revised plan kept the environmental aim while addressing practical barriers. Its success would be judged by actual cup returns and visitor experience, rather than by the number of reusable cups purchased.",
+    "glossary": [
+      {
+        "term": "refundable",
+        "meaning": "reembolsable"
+      },
+      {
+        "term": "deposit",
+        "meaning": "depósito"
+      },
+      {
+        "term": "accommodate",
+        "meaning": "dar cabida a"
+      }
+    ],
+    "comprehension_questions": [
+      {
+        "question": "What did the rehearsal reveal?",
+        "options": [
+          "Too few cups had been purchased",
+          "The return point was a bottleneck",
+          "Visitors refused refunds"
+        ],
+        "answer_index": 1,
+        "explanation": "La devolución admitía menos personal y podía producir una fila."
+      },
+      {
+        "question": "Why offer a borrowing option discreetly?",
+        "options": [
+          "To preserve access without exposing personal circumstances",
+          "To remove every responsibility for cups",
+          "To increase the deposit"
+        ],
+        "answer_index": 0,
+        "explanation": "La alternativa evita excluir o avergonzar a quien no pueda dejar depósito."
+      },
+      {
+        "question": "Which evidence best evaluates the plan?",
+        "options": [
+          "The purchase invoice alone",
+          "The number of posters",
+          "Cup returns and visitor experience"
+        ],
+        "answer_index": 2,
+        "explanation": "El objetivo requiere observar uso y devolución, además de la experiencia."
+      }
+    ],
+    "coins": 30,
+    "xp": 100,
+    "emoji": "📖",
+    "active": false,
+    "is_active": false,
+    "sort_order": 202610303,
+    "reading_mode": "single"
+  },
+  {
+    "id": "wdy-20261030-c1",
+    "title": "The Recommendation with a Reservation",
+    "cefr": "C1",
+    "category": "Trabajo",
+    "difficulty": "Alta",
+    "season": 3,
+    "read_minutes": 2,
+    "blurb": "The Recommendation with a Reservation",
+    "summary": "The Recommendation with a Reservation",
+    "text": "The reference letter described a former colleague as exceptionally thorough and most effective when responsibilities were clearly defined. One recruiter read the second phrase as a warning about inflexibility. Another regarded it as an ordinary description of the conditions in which good work emerged. Mia, invited to review the wording, resisted treating either interpretation as self-evident. A qualification can narrow praise without cancelling it; equally, a carefully chosen compliment can carry a reservation that its writer is reluctant to state directly. The letter alone could not establish which intention applied. Rather than translate ambiguity into a confident judgement about the candidate, the recruiters asked the referee for a concrete example of handling an unexpected task. The response described a successful adjustment after an initially unclear brief had been clarified. That example did not prove unlimited adaptability, but it replaced speculation about tone with something assessable. Bruno slept through the discussion, indifferent to the distinction between being reliably predictable and being praised for predictability. Mia suggested keeping both the example and its limits in the assessment.",
+    "glossary": [
+      {
+        "term": "reservation",
+        "meaning": "reserva o reparo"
+      },
+      {
+        "term": "referee",
+        "meaning": "persona que da referencias"
+      },
+      {
+        "term": "brief",
+        "meaning": "instrucciones de una tarea"
+      }
+    ],
+    "comprehension_questions": [
+      {
+        "question": "Why does Mia resist choosing an interpretation immediately?",
+        "options": [
+          "Reference letters never convey meaning",
+          "The wording alone does not settle intention",
+          "Both recruiters know the candidate well"
+        ],
+        "answer_index": 1,
+        "explanation": "La frase permite interpretaciones sin demostrar la intención del autor."
+      },
+      {
+        "question": "What is gained by asking for an example?",
+        "options": [
+          "Evidence about behaviour replaces speculation about tone",
+          "A guarantee of adaptability",
+          "Permission to ignore the letter"
+        ],
+        "answer_index": 0,
+        "explanation": "El caso concreto permite evaluar una conducta, con límites."
+      },
+      {
+        "question": "How should the successful adjustment be treated?",
+        "options": [
+          "As proof of every future response",
+          "As evidence that clarification is unnecessary",
+          "As relevant but limited evidence"
+        ],
+        "answer_index": 2,
+        "explanation": "Un episodio favorable no acredita adaptabilidad ilimitada."
+      }
+    ],
+    "coins": 35,
+    "xp": 120,
+    "emoji": "📖",
+    "active": false,
+    "is_active": false,
+    "sort_order": 202610304,
+    "reading_mode": "single"
+  },
+  {
+    "id": "wdy-20261030-c2",
+    "title": "The Name Left on the Plaque",
+    "cefr": "C2",
+    "category": "Historias",
+    "difficulty": "Alta",
+    "season": 3,
+    "read_minutes": 3,
+    "blurb": "The Name Left on the Plaque",
+    "summary": "The Name Left on the Plaque",
+    "text": "When the workshop reopened, the brass plaque beside its door was the only object that had not been restored. Its donor's name remained legible beneath a patina that the architect had called honest. The committee initially treated its retention as a matter of historical accuracy. Removing a name, several members argued, would not undo the donation. Mia agreed, but asked why historical accuracy required the name to occupy the entrance rather than the archive. The question exposed an uncertainty the renovation had politely postponed: was the plaque documenting an earlier relationship or renewing an honour in the present? A proposed explanatory label seemed to resolve the dilemma until its wording was discussed. To explain why a name remained was already to take a position on what remaining meant. The committee eventually placed the original plaque inside an exhibition about the workshop's funding and left the entrance unmarked. This was neither a deletion of the past nor an escape from interpretation. It changed the setting in which the past addressed the visitor. Mia found the decision defensible precisely because the committee stopped calling it neutral. The exhibition would still need scrutiny; context could illuminate a history, but it could also become an elegant means of containing questions the institution preferred not to hear.",
+    "glossary": [
+      {
+        "term": "patina",
+        "meaning": "pátina"
+      },
+      {
+        "term": "retention",
+        "meaning": "conservación"
+      },
+      {
+        "term": "scrutiny",
+        "meaning": "examen crítico"
+      }
+    ],
+    "comprehension_questions": [
+      {
+        "question": "What distinction drives the debate?",
+        "options": [
+          "Old metal versus new metal",
+          "Documentation of history versus present-day honour",
+          "Private funding versus no funding"
+        ],
+        "answer_index": 1,
+        "explanation": "La discusión distingue registrar una relación pasada y renovar un homenaje."
+      },
+      {
+        "question": "Why is the explanatory label not neutral?",
+        "options": [
+          "Every explanation frames the meaning of retention",
+          "It necessarily removes the donor's name",
+          "Visitors cannot read labels"
+        ],
+        "answer_index": 0,
+        "explanation": "Explicar la permanencia ya interpreta qué significa conservarla."
+      },
+      {
+        "question": "What qualification closes the text?",
+        "options": [
+          "Archives always settle disagreement",
+          "The committee has eliminated interpretation",
+          "Context can clarify history or contain uncomfortable questions"
+        ],
+        "answer_index": 2,
+        "explanation": "El cierre advierte que contextualizar también puede limitar la discusión."
+      }
+    ],
+    "coins": 40,
+    "xp": 140,
+    "emoji": "📖",
+    "active": false,
+    "is_active": false,
+    "sort_order": 202610305,
+    "reading_mode": "single"
+  }
+]
