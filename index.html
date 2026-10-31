@@ -875,6 +875,15 @@ body{
 #wordyssey-install .wi-close{position:absolute;top:7px;right:8px;border:0;background:transparent;color:inherit;font-size:23px;cursor:pointer;padding:4px 8px}
 #wordyssey-install .wi-help{font-size:.86rem;line-height:1.5;margin-top:9px}
 </style>
+<style id="wordyssey-library-shortcut-style">
+#home-library-shortcut{width:100%;display:flex;align-items:center;gap:13px;text-align:left;margin:13px 0 19px;padding:16px 14px;border:1px solid rgba(98,191,161,.45);border-radius:18px;background:linear-gradient(125deg,rgba(98,191,161,.19),rgba(234,184,90,.13));color:var(--cream,#fff);cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.12);font:inherit}
+#home-library-shortcut:focus-visible{outline:3px solid var(--gold,#ffc65c);outline-offset:3px}
+#home-library-shortcut .hls-icon{font-size:2rem;flex-shrink:0}
+#home-library-shortcut .hls-copy{display:flex;flex-direction:column;gap:5px;flex:1;min-width:0}
+#home-library-shortcut strong{font-family:'Fredoka',sans-serif;font-size:1.14rem;line-height:1.15}
+#home-library-shortcut small{font-size:.83rem;line-height:1.4;color:var(--cream-dim,#d6d6d6)}
+#home-library-shortcut .hls-arrow{font-size:1.5rem;color:var(--mint,#83d9bb)}
+</style>
 </head>
 <body>
 <div id="app">
@@ -909,6 +918,11 @@ body{
 
     <div id="home-account"></div>
     <div id="home-practice"></div>
+    <button type="button" id="home-library-shortcut" onclick="openLibrary()" aria-label="Abrir la Biblioteca de Bruno: lecturas y listening">
+      <span class="hls-icon" aria-hidden="true">📖</span>
+      <span class="hls-copy"><strong>Lecturas y Listening</strong><small>Explorá la Biblioteca de Bruno: leé, escuchá y practicá a tu ritmo.</small></span>
+      <span class="hls-arrow" aria-hidden="true">→</span>
+    </button>
 
     <div class="sectitle">Plan de hoy</div>
     <div id="goals"></div>
