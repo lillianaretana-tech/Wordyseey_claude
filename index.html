@@ -965,7 +965,7 @@ body{
       <summary><span>🌎 Ruta de viaje</span><small>Tocá para explorar todos los mundos y capítulos</small></summary>
       <div class="worldgrid" id="worlds"></div>
     </details>
-    <div class="brandfoot">🐶 Bruno's Wordyssey™ · © 2026 <b>Lilliana Retana Tech</b> · Todos los derechos reservados · <span id="wordyssey-version-label" title="Versión de la aplicación">Versión 1.1.4</span></div>
+    <div class="brandfoot">🐶 Bruno's Wordyssey™ · © 2026 <b>Lilliana Retana Tech</b> · Todos los derechos reservados · <span id="wordyssey-version-label" title="Versión de la aplicación">Versión 1.1.5</span></div>
   </section>
 
   <!-- ============ WORLD ============ -->
@@ -1298,8 +1298,14 @@ function compact(){
   const anchor=document.getElementById('event-banner');
   if(anchor)anchor.insertAdjacentElement('afterend',panel);else home.prepend(panel);
  }
- const cards=[...home.querySelectorAll('.weekly-update-card')].filter(el=>!el.closest('.wordyssey-weekly-disclosure'));
- cards.forEach(card=>panel.appendChild(card));
+ const cards=[...home.querySelectorAll('.weekly-update-card')];
+ const seen=new Set();
+ for(const card of cards){
+  const title=(card.querySelector('b,strong')?.textContent||card.textContent||'').trim().toLocaleLowerCase().replace(/\\s+/g,' ');
+  if(title&&seen.has(title)){card.remove();continue}
+  if(title)seen.add(title);
+  if(!panel.contains(card))panel.appendChild(card);
+ }
 }
 function init(){
  compact();
