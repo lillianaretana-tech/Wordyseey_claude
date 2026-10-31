@@ -865,6 +865,16 @@ body{
   .journey-line::before{display:none}
 }
 </style>
+
+<style id="wordyssey-install-styles">
+#wordyssey-install{display:none;position:relative;margin:10px 0 16px;padding:15px 40px 15px 15px;border:1px solid rgba(255,198,92,.55);border-radius:18px;background:linear-gradient(120deg,rgba(255,198,92,.18),rgba(87,199,164,.13));color:var(--cream,#fff);box-shadow:0 5px 18px rgba(0,0,0,.12)}
+#wordyssey-install.wi-visible{display:block}
+#wordyssey-install .wi-title{font-family:'Fredoka',sans-serif;font-size:1.13rem;font-weight:700;margin-bottom:5px}
+#wordyssey-install .wi-desc{font-size:.93rem;line-height:1.45;margin-bottom:11px}
+#wordyssey-install .wi-action{background:var(--gold,#ffc65c);color:#35270b;border:0;border-radius:11px;padding:10px 16px;font-family:'Fredoka',sans-serif;font-weight:700;cursor:pointer}
+#wordyssey-install .wi-close{position:absolute;top:7px;right:8px;border:0;background:transparent;color:inherit;font-size:23px;cursor:pointer;padding:4px 8px}
+#wordyssey-install .wi-help{font-size:.86rem;line-height:1.5;margin-top:9px}
+</style>
 </head>
 <body>
 <div id="app">
@@ -888,6 +898,15 @@ body{
       <div class="bruno-bubble" id="bruno-msg"></div>
     </div>
     <div id="event-banner"></div>
+
+<div id="wordyssey-install" aria-label="Instalar Wordyssey">
+  <button type="button" class="wi-close" id="wi-close" aria-label="Cerrar invitación">×</button>
+  <div class="wi-title">🐶 ¡Llevá a Bruno con vos!</div>
+  <div class="wi-desc">Instalá Wordyssey en tu celular y practicá inglés desde tu pantalla de inicio.</div>
+  <button type="button" class="wi-action" id="wi-action">📲 Instalar aplicación</button>
+  <div class="wi-help" id="wi-help" hidden></div>
+</div>
+
     <div id="home-account"></div>
     <div id="home-practice"></div>
 
@@ -1184,6 +1203,37 @@ body{
 })();
 </script>
 <script>if ('serviceWorker' in navigator) { window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js').catch(() => {})); }</script>
+
+<script id="wordyssey-install-script">
+(function(){
+  'use strict';
+  const box=document.getElementById('wordyssey-install');
+  const action=document.getElementById('wi-action');
+  const help=document.getElementById('wi-help');
+  const close=document.getElementById('wi-close');
+  if(!box||!action||!help||!close) return;
+  const standalone=()=>window.matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
+  const ios=/iPhone|iPad|iPod/i.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+  let installEvent=null;
+  const dismissed=()=>{try{return sessionStorage.getItem('wordyssey-install-dismissed')==='1'}catch(e){return false}};
+  const render=()=>{
+    if(standalone()||dismissed()){box.classList.remove('wi-visible');return}
+    if(installEvent){action.hidden=false;help.hidden=true;box.classList.add('wi-visible')}
+    else if(ios){action.hidden=true;help.hidden=false;help.textContent='En Safari, tocá Compartir (□↑) y luego «Agregar a pantalla de inicio».';box.classList.add('wi-visible')}
+    else{box.classList.remove('wi-visible')}
+  };
+  window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installEvent=e;render()});
+  window.addEventListener('appinstalled',()=>{installEvent=null;box.classList.remove('wi-visible')});
+  close.addEventListener('click',()=>{try{sessionStorage.setItem('wordyssey-install-dismissed','1')}catch(e){}box.classList.remove('wi-visible')});
+  action.addEventListener('click',async()=>{
+    if(!installEvent)return;
+    const promptEvent=installEvent;installEvent=null;
+    try{await promptEvent.prompt();await promptEvent.userChoice}catch(e){}
+    render();
+  });
+  render();
+})();
+</script>
 </body>
 </html>
 
