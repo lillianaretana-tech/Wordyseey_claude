@@ -906,6 +906,13 @@ body{
 .home-worlds-panel .worldgrid{padding-bottom:12px}
 #goals{scroll-margin-top:22px}
 </style>
+<style id="wordyssey-friday-compact-style">
+.wordyssey-weekly-disclosure{margin:10px 0 15px;padding:0 12px;border:1px solid rgba(255,246,232,.2);border-radius:16px;background:rgba(255,246,232,.06)}
+.wordyssey-weekly-disclosure>summary{cursor:pointer;padding:13px 3px;line-height:1.45;color:var(--cream,#fff);font-size:.88rem;list-style:none}
+.wordyssey-weekly-disclosure>summary::-webkit-details-marker{display:none}
+.wordyssey-weekly-disclosure>summary strong{color:var(--gold,#ffc65c)}
+.wordyssey-weekly-disclosure>.weekly-update-card{margin:7px 0 12px}
+</style>
 </head>
 <body>
 <div id="app">
@@ -928,6 +935,15 @@ body{
       <span class="bruno-face" onclick="ownerTap()" style="cursor:pointer" title="Wordyssey">🐶</span>
       <div class="bruno-bubble" id="bruno-msg"></div>
     </div>
+    <div class="home-quick-nav" aria-label="Elegí qué querés practicar">
+      <div class="home-quick-title">✨ ¿Qué querés hacer hoy?</div>
+      <div class="home-quick-grid">
+        <button type="button" class="home-quick-card home-quick-featured" onclick="openLibrary()"><span class="home-quick-emoji">📖</span><strong>Leer y escuchar</strong><small>Biblioteca de Bruno</small></button>
+        <button type="button" class="home-quick-card" onclick="document.getElementById('worlds-panel').open=true;document.getElementById('worlds-panel').scrollIntoView({behavior:'smooth',block:'start'})"><span class="home-quick-emoji">🌎</span><strong>Explorar mundos</strong><small>Capítulos y aventuras</small></button>
+        <button type="button" class="home-quick-card" onclick="document.getElementById('goals').scrollIntoView({behavior:'smooth',block:'start'})"><span class="home-quick-emoji">🎯</span><strong>Mi plan de hoy</strong><small>Objetivos y práctica</small></button>
+        <button type="button" class="home-quick-card" onclick="go('scr-profile')"><span class="home-quick-emoji">🏅</span><strong>Mi progreso</strong><small>Logros y estadísticas</small></button>
+      </div>
+    </div>
     <div id="event-banner"></div>
 
 <div id="wordyssey-install" aria-label="Instalar Wordyssey">
@@ -940,15 +956,7 @@ body{
 
     <div id="home-account"></div>
     <div id="home-practice"></div>
-    <div class="home-quick-nav" aria-label="Elegí qué querés practicar">
-      <div class="home-quick-title">✨ ¿Qué querés hacer hoy?</div>
-      <div class="home-quick-grid">
-        <button type="button" class="home-quick-card home-quick-featured" onclick="openLibrary()"><span class="home-quick-emoji">📖</span><strong>Leer y escuchar</strong><small>Biblioteca de Bruno</small></button>
-        <button type="button" class="home-quick-card" onclick="document.getElementById('worlds-panel').open=true;document.getElementById('worlds-panel').scrollIntoView({behavior:'smooth',block:'start'})"><span class="home-quick-emoji">🌎</span><strong>Explorar mundos</strong><small>Capítulos y aventuras</small></button>
-        <button type="button" class="home-quick-card" onclick="document.getElementById('goals').scrollIntoView({behavior:'smooth',block:'start'})"><span class="home-quick-emoji">🎯</span><strong>Mi plan de hoy</strong><small>Objetivos y práctica</small></button>
-        <button type="button" class="home-quick-card" onclick="go('scr-profile')"><span class="home-quick-emoji">🏅</span><strong>Mi progreso</strong><small>Logros y estadísticas</small></button>
-      </div>
-    </div>
+
 
     <div class="sectitle">Plan de hoy</div>
     <div id="goals"></div>
@@ -1274,6 +1282,34 @@ body{
     render();
   });
   render();
+})();
+</script>
+<script id="wordyssey-friday-compact-script">
+(function(){
+'use strict';
+function compact(){
+ const home=document.getElementById('scr-home');if(!home)return;
+ let panel=home.querySelector('.wordyssey-weekly-disclosure');
+ if(!panel){
+  panel=document.createElement('details');panel.className='wordyssey-weekly-disclosure';
+  const summary=document.createElement('summary');
+  summary.innerHTML='🐾 <strong>¡Nuevas aventuras cada viernes!</strong> &nbsp; ¿Querés ver las de esta semana? ▾';
+  panel.appendChild(summary);
+  const anchor=document.getElementById('event-banner');
+  if(anchor)anchor.insertAdjacentElement('afterend',panel);else home.prepend(panel);
+ }
+ const cards=[...home.querySelectorAll('.weekly-update-card')].filter(el=>!el.closest('.wordyssey-weekly-disclosure'));
+ cards.forEach(card=>panel.appendChild(card));
+}
+function init(){
+ compact();
+ const home=document.getElementById('scr-home');
+ if(home){
+  let pending=false;
+  new MutationObserver(()=>{if(!pending){pending=true;requestAnimationFrame(()=>{pending=false;compact()})}}).observe(home,{childList:true,subtree:true});
+ }
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
 </script>
 </body>
