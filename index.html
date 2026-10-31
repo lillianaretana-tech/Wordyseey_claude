@@ -13,6 +13,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="vibecoders-verify" content="a85bb7e3f46e8ecb5de9a7ebdc778458">
 <title>Bruno's Wordyssey — Turn Words Into Adventures</title>
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#0E2A33">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="/icons/bruno-192.png">
 <meta name="wordyssey-account-version" content="1.0.0">
 <meta name="wordyssey-content-version" content="1.1.2">
 <link rel="icon" type="image/png" href="assets/bruno/bruno-head.png">
@@ -1178,6 +1183,7 @@ body{
   window.WordysseyAnalytics = { emit };
 })();
 </script>
+<script>if ('serviceWorker' in navigator) { window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js').catch(() => {})); }</script>
 </body>
 </html>
 

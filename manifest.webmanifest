@@ -1,0 +1,26 @@
+{
+  "id": "/",
+  "name": "Bruno's Wordyssey — Aprende inglés con Bruno",
+  "short_name": "Wordyssey",
+  "description": "Aprende inglés con Bruno mediante aventuras, historias y juegos.",
+  "lang": "es",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0E2A33",
+  "theme_color": "#0E2A33",
+  "icons": [
+    {
+      "src": "/icons/bruno-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/bruno-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
