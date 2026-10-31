@@ -965,7 +965,7 @@ body{
       <summary><span>🌎 Ruta de viaje</span><small>Tocá para explorar todos los mundos y capítulos</small></summary>
       <div class="worldgrid" id="worlds"></div>
     </details>
-    <div class="brandfoot">🐶 Bruno's Wordyssey™ · © 2026 <b>Lilliana Retana Tech</b> · Todos los derechos reservados · <span id="wordyssey-version-label" title="Versión de la aplicación">Versión 1.1.5</span></div>
+    <div class="brandfoot">🐶 Bruno's Wordyssey™ · © 2026 <b>Lilliana Retana Tech</b> · Todos los derechos reservados · <span id="wordyssey-version-label" title="Versión de la aplicación">Versión 1.1.6</span></div>
   </section>
 
   <!-- ============ WORLD ============ -->
@@ -1287,33 +1287,32 @@ body{
 <script id="wordyssey-friday-compact-script">
 (function(){
 'use strict';
-function compact(){
+function updateFriday(){
  const home=document.getElementById('scr-home');if(!home)return;
  let panel=home.querySelector('.wordyssey-weekly-disclosure');
  if(!panel){
   panel=document.createElement('details');panel.className='wordyssey-weekly-disclosure';
-  const summary=document.createElement('summary');
-  summary.innerHTML='🐾 <strong>¡Nuevas aventuras cada viernes!</strong> &nbsp; ¿Querés ver las de esta semana? ▾';
-  panel.appendChild(summary);
   const anchor=document.getElementById('event-banner');
   if(anchor)anchor.insertAdjacentElement('afterend',panel);else home.prepend(panel);
  }
- const cards=[...home.querySelectorAll('.weekly-update-card')];
- const seen=new Set();
- for(const card of cards){
-  const title=(card.querySelector('b,strong')?.textContent||card.textContent||'').trim().toLocaleLowerCase().replace(/\\s+/g,' ');
-  if(title&&seen.has(title)){card.remove();continue}
-  if(title)seen.add(title);
-  if(!panel.contains(card))panel.appendChild(card);
+ // The previous home cards were a fixed 17 October release, not the current weekly feed.
+ // Remove only promotional cards; their underlying chapters remain in their worlds.
+ home.querySelectorAll('.weekly-update-card').forEach(card=>card.remove());
+ if(!panel.querySelector('[data-wordyssey-current-week]')){
+  const summary=document.createElement('summary');
+  summary.innerHTML='🐾 <strong>¡Nuevas aventuras cada viernes!</strong> &nbsp; ¿Querés ver las del 30 de octubre? ▾';
+  const links=document.createElement('div');
+  links.setAttribute('data-wordyssey-current-week','2026-10-30');
+  links.innerHTML='<p style="margin:4px 0 12px;font-size:.88rem;line-height:1.5">Esta semana: 6 lecturas nuevas (A1–C2) en Biblioteca · Temporada 3 y la aventura B2 <b>The Picnic Moves Indoors</b> en el mundo Social.</p><button type="button" class="btn btn-mint" style="width:100%;margin-bottom:9px" onclick="openLibrary()">📖 Ver las 6 lecturas nuevas</button><button type="button" class="btn" style="width:100%;margin-bottom:12px" onclick="document.getElementById(\'worlds-panel\').open=true;document.getElementById(\'worlds-panel\').scrollIntoView({behavior:\'smooth\',block:\'start\'})">🌎 Buscar la aventura en Social</button>';
+  panel.replaceChildren(summary,links);
  }
 }
 function init(){
- compact();
+ updateFriday();
  const home=document.getElementById('scr-home');
- if(home){
-  let pending=false;
-  new MutationObserver(()=>{if(!pending){pending=true;requestAnimationFrame(()=>{pending=false;compact()})}}).observe(home,{childList:true,subtree:true});
- }
+ if(!home)return;
+ let pending=false;
+ new MutationObserver(()=>{if(pending)return;pending=true;requestAnimationFrame(()=>{pending=false;updateFriday()})}).observe(home,{childList:true,subtree:true});
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
