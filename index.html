@@ -884,6 +884,28 @@ body{
 #home-library-shortcut small{font-size:.83rem;line-height:1.4;color:var(--cream-dim,#d6d6d6)}
 #home-library-shortcut .hls-arrow{font-size:1.5rem;color:var(--mint,#83d9bb)}
 </style>
+<style id="wordyssey-navigation-improvements">
+.home-quick-nav{margin:16px 0 20px}
+.home-quick-title{font-family:'Fredoka',sans-serif;font-size:1.16rem;font-weight:700;color:var(--cream,#fff);margin-bottom:11px}
+.home-quick-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.home-quick-card{display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:5px;min-height:118px;padding:14px 12px;border-radius:17px;border:1px solid rgba(255,244,229,.15);background:rgba(255,244,229,.06);color:var(--cream,#fff);font:inherit;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.1)}
+.home-quick-card:active{transform:scale(.985)}
+.home-quick-card:focus-visible,.home-worlds-panel summary:focus-visible{outline:3px solid var(--gold,#ffc65c);outline-offset:3px}
+.home-quick-featured{border-color:rgba(98,191,161,.55);background:linear-gradient(135deg,rgba(98,191,161,.24),rgba(234,184,90,.13))}
+.home-quick-emoji{font-size:1.65rem;line-height:1.1}
+.home-quick-card strong{font-family:'Fredoka',sans-serif;font-size:.99rem;line-height:1.2}
+.home-quick-card small{color:var(--cream-dim,#c9d3d1);font-size:.73rem;line-height:1.3}
+.home-worlds-panel{margin:20px 0;border:1px solid rgba(255,244,229,.17);border-radius:18px;padding:0 12px;background:rgba(255,244,229,.035);scroll-margin-top:22px}
+.home-worlds-panel summary{cursor:pointer;list-style:none;padding:17px 4px;display:flex;flex-direction:column;gap:4px}
+.home-worlds-panel summary::-webkit-details-marker{display:none}
+.home-worlds-panel summary span{font-family:'Fredoka',sans-serif;font-size:1.16rem;font-weight:700;color:var(--cream,#fff)}
+.home-worlds-panel summary small{font-size:.78rem;color:var(--cream-dim,#c9d3d1)}
+.home-worlds-panel summary:after{content:'⌄';position:absolute;right:18px;font-size:1.3rem}
+.home-worlds-panel{position:relative}
+.home-worlds-panel[open] summary:after{content:'⌃'}
+.home-worlds-panel .worldgrid{padding-bottom:12px}
+#goals{scroll-margin-top:22px}
+</style>
 </head>
 <body>
 <div id="app">
@@ -918,17 +940,23 @@ body{
 
     <div id="home-account"></div>
     <div id="home-practice"></div>
-    <button type="button" id="home-library-shortcut" onclick="openLibrary()" aria-label="Abrir la Biblioteca de Bruno: lecturas y listening">
-      <span class="hls-icon" aria-hidden="true">📖</span>
-      <span class="hls-copy"><strong>Lecturas y Listening</strong><small>Explorá la Biblioteca de Bruno: leé, escuchá y practicá a tu ritmo.</small></span>
-      <span class="hls-arrow" aria-hidden="true">→</span>
-    </button>
+    <div class="home-quick-nav" aria-label="Elegí qué querés practicar">
+      <div class="home-quick-title">✨ ¿Qué querés hacer hoy?</div>
+      <div class="home-quick-grid">
+        <button type="button" class="home-quick-card home-quick-featured" onclick="openLibrary()"><span class="home-quick-emoji">📖</span><strong>Leer y escuchar</strong><small>Biblioteca de Bruno</small></button>
+        <button type="button" class="home-quick-card" onclick="document.getElementById('worlds-panel').open=true;document.getElementById('worlds-panel').scrollIntoView({behavior:'smooth',block:'start'})"><span class="home-quick-emoji">🌎</span><strong>Explorar mundos</strong><small>Capítulos y aventuras</small></button>
+        <button type="button" class="home-quick-card" onclick="document.getElementById('goals').scrollIntoView({behavior:'smooth',block:'start'})"><span class="home-quick-emoji">🎯</span><strong>Mi plan de hoy</strong><small>Objetivos y práctica</small></button>
+        <button type="button" class="home-quick-card" onclick="go('scr-profile')"><span class="home-quick-emoji">🏅</span><strong>Mi progreso</strong><small>Logros y estadísticas</small></button>
+      </div>
+    </div>
 
     <div class="sectitle">Plan de hoy</div>
     <div id="goals"></div>
 
-    <div class="sectitle mt" id="worlds-title">Ruta de viaje</div>
-    <div class="worldgrid" id="worlds"></div>
+    <details class="home-worlds-panel" id="worlds-panel">
+      <summary><span>🌎 Ruta de viaje</span><small>Tocá para explorar todos los mundos y capítulos</small></summary>
+      <div class="worldgrid" id="worlds"></div>
+    </details>
     <div class="brandfoot">🐶 Bruno's Wordyssey™ · © 2026 <b>Lilliana Retana Tech</b> · Todos los derechos reservados · v1.1.2</div>
   </section>
 
