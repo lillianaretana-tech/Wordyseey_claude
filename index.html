@@ -965,7 +965,7 @@ body{
       <summary><span>🌎 Ruta de viaje</span><small>Tocá para explorar todos los mundos y capítulos</small></summary>
       <div class="worldgrid" id="worlds"></div>
     </details>
-    <div class="brandfoot">🐶 Bruno's Wordyssey™ · © 2026 <b>Lilliana Retana Tech</b> · Todos los derechos reservados · <span id="wordyssey-version-label" title="Versión de la aplicación">Versión 1.1.6</span></div>
+    <div class="brandfoot">🐶 Bruno's Wordyssey™ · © 2026 <b>Lilliana Retana Tech</b> · Todos los derechos reservados · <span id="wordyssey-version-label" title="Versión de la aplicación">Versión 1.1.7</span></div>
   </section>
 
   <!-- ============ WORLD ============ -->
@@ -1298,6 +1298,7 @@ function updateFriday(){
  // The previous home cards were a fixed 17 October release, not the current weekly feed.
  // Remove only promotional cards; their underlying chapters remain in their worlds.
  home.querySelectorAll('.weekly-update-card').forEach(card=>card.remove());
+ if(!panel.dataset.weeklyInitialized){panel.open=false;panel.dataset.weeklyInitialized='1'}
  if(!panel.querySelector('[data-wordyssey-current-week]')){
   const summary=document.createElement('summary');
   summary.innerHTML='🐾 <strong>¡Nuevas aventuras cada viernes!</strong> &nbsp; ¿Querés ver las del 30 de octubre? ▾';
