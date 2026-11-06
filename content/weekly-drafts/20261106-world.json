@@ -1,0 +1,220 @@
+[
+  {
+    "worldId": "office",
+    "vocab": [
+      {
+        "en": "drill",
+        "es": "simulacro"
+      },
+      {
+        "en": "handover",
+        "es": "traspaso de responsabilidad"
+      },
+      {
+        "en": "unaccounted for",
+        "es": "sin localizar"
+      },
+      {
+        "en": "reconcile",
+        "es": "conciliar datos"
+      }
+    ],
+    "story": {
+      "id": "bruno-20261106-drill-handover-c1",
+      "code": "DRILL→HANDOVER",
+      "title": "The Headcount That Would Not Add Up",
+      "emoji": "📋",
+      "cefr": "C1",
+      "release": "2026-11-06",
+      "sub": "C1 · Distingue evidencia de inferencia y entrega un informe preciso tras un simulacro.",
+      "reward": {
+        "xp": 175,
+        "coins": 65
+      },
+      "nodes": [
+        {
+          "t": "scene",
+          "title": "Two lists at the drill",
+          "en": "During an announced evacuation drill at a pet-friendly office, Bruno waits beside Eva at the designated assembly point. Two wardens report different totals. One counted everyone present; the other counted only names on the staff roster.",
+          "es": "En un simulacro anunciado, Bruno espera con Eva. Un responsable contó a todos los presentes; el otro, solo al personal de la lista.",
+          "img": "🐶"
+        },
+        {
+          "t": "decision",
+          "speaker": "Eva",
+          "line": "How should Eva describe the discrepancy?",
+          "opts": [
+            {
+              "x": "The totals may represent different groups; let's establish what each list includes.",
+              "ok": true,
+              "fb": "Identifica una diferencia de alcance sin prejuzgar."
+            },
+            {
+              "x": "The staff roster must be obsolete.",
+              "ok": false,
+              "fb": "Que haya dos criterios no prueba que la lista esté desactualizada."
+            },
+            {
+              "x": "The higher figure proves somebody counted twice.",
+              "ok": false,
+              "fb": "No hay evidencia de doble conteo."
+            }
+          ]
+        },
+        {
+          "t": "fill",
+          "q": "Before comparing totals, we need to ___ the two lists.",
+          "a": "reconcile",
+          "opts": [
+            "endorse",
+            "reconcile",
+            "distribute"
+          ],
+          "fb": "Reconcile implica cotejar y explicar discrepancias."
+        },
+        {
+          "t": "scene",
+          "title": "A separate visitor record",
+          "en": "The visitor log accounts for the extra people, except for one entry marked as still on site. Eva remembers that Bruno's trainer left before the drill, but cannot verify that the entry belongs to her. She asks the designated lead to confirm it with reception.",
+          "es": "El registro de visitas explica la diferencia salvo una entrada. Eva recuerda que la entrenadora de Bruno salió, pero pide confirmación antes de atribuirle ese registro.",
+          "img": "🐶"
+        },
+        {
+          "t": "decision",
+          "speaker": "Eva",
+          "line": "Which report communicates the uncertainty accurately?",
+          "opts": [
+            {
+              "x": "One person is confirmed missing inside.",
+              "ok": false,
+              "fb": "Un registro abierto no demuestra que alguien siga dentro."
+            },
+            {
+              "x": "The trainer definitely left; mark the record as closed.",
+              "ok": false,
+              "fb": "El recuerdo no identifica el registro."
+            },
+            {
+              "x": "One visitor entry is unresolved; reception has been asked to verify it.",
+              "ok": true,
+              "fb": "Distingue el dato pendiente y la acción solicitada."
+            }
+          ]
+        },
+        {
+          "t": "build",
+          "answer": "We cannot treat an open entry as proof of presence",
+          "words": [
+            "We",
+            "cannot",
+            "treat",
+            "an",
+            "open",
+            "entry",
+            "as",
+            "proof",
+            "of",
+            "presence"
+          ],
+          "es": "No podemos tomar una entrada abierta como prueba de presencia"
+        },
+        {
+          "t": "fill",
+          "q": "The entry remains unresolved ___ reception confirms the departure.",
+          "a": "until",
+          "opts": [
+            "whereas",
+            "unless",
+            "until"
+          ],
+          "fb": "Until indica que el estado continúa hasta la confirmación."
+        },
+        {
+          "t": "scene",
+          "title": "The handover",
+          "en": "Reception confirms the trainer had signed out on paper, but the digital log was not updated. The lead asks Eva to brief the next warden and flag the gap between the two records. Bruno's trainer has been accounted for; no one needs to guess from the totals alone.",
+          "es": "Recepción confirma la salida en papel, ausente en el registro digital. Eva debe comunicar el resultado y señalar la diferencia entre registros.",
+          "img": "🐶"
+        },
+        {
+          "t": "decision",
+          "speaker": "Eva",
+          "line": "Which handover gives the next warden a usable account?",
+          "opts": [
+            {
+              "x": "Everyone is fine; delete the entry.",
+              "ok": false,
+              "fb": "No conserva la evidencia ni indica qué hacer."
+            },
+            {
+              "x": "Reception verified the paper sign-out; the digital log needs reconciliation.",
+              "ok": true,
+              "fb": "Comunica la fuente de confirmación y el trabajo pendiente."
+            },
+            {
+              "x": "The digital system failed, so no records can be trusted.",
+              "ok": false,
+              "fb": "Generaliza a partir de una sola discrepancia."
+            }
+          ]
+        },
+        {
+          "t": "build",
+          "answer": "The discrepancy arose because the records were updated separately",
+          "words": [
+            "The",
+            "discrepancy",
+            "arose",
+            "because",
+            "the",
+            "records",
+            "were",
+            "updated",
+            "separately"
+          ],
+          "es": "La discrepancia surgió porque los registros se actualizaron por separado"
+        },
+        {
+          "t": "fill",
+          "q": "The count was accurate ___ the staff roster was concerned.",
+          "a": "as far as",
+          "opts": [
+            "in spite of",
+            "as far as",
+            "with a view to"
+          ],
+          "fb": "As far as ... is concerned delimita el alcance de una afirmación."
+        },
+        {
+          "t": "decision",
+          "speaker": "Eva",
+          "line": "What recommendation follows from the evidence?",
+          "opts": [
+            {
+              "x": "Define who reconciles paper and digital sign-outs before closing the drill record.",
+              "ok": true,
+              "fb": "Asigna una responsabilidad concreta sin inferir causas no comprobadas."
+            },
+            {
+              "x": "Remove visitors from all future counts.",
+              "ok": false,
+              "fb": "Excluir visitas no resuelve el problema identificado."
+            },
+            {
+              "x": "Replace the drill with a review of the visitor log.",
+              "ok": false,
+              "fb": "No aborda la conciliación de los registros."
+            }
+          ]
+        },
+        {
+          "t": "scene",
+          "title": "An auditable conclusion",
+          "en": "Eva records how the two totals were reconciled and leaves the process improvement open for the team. Bruno finally stretches. The drill is over; the lesson about counting the same population twice with different rules is not.",
+          "es": "Eva documenta cómo se conciliaron los totales y deja abierta la mejora. Bruno se estira. El simulacro terminó; la lección sobre criterios de conteo queda.",
+          "img": "🐶"
+        }
+      ]
+    }
+  }
+]
