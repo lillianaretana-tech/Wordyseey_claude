@@ -1,0 +1,392 @@
+[
+  {
+    "id": "wdy-20261106-a1",
+    "title": "The Bell at the Bike Shop",
+    "cefr": "A1",
+    "category": "Vida diaria",
+    "difficulty": "Suave",
+    "season": 3,
+    "read_minutes": 1,
+    "blurb": "The Bell at the Bike Shop",
+    "summary": "Eva prueba dos timbres para su bicicleta.",
+    "text": "Eva is at a bike shop. Her bike has no bell. The shop has a big bell and a small bell. Eva tries the big bell first. It is very loud. Bruno lifts his head. Then Eva tries the small bell. She can hear it, but Bruno stays on his mat. Eva buys the small bell. The shopkeeper puts it on her bike. Eva pays and walks home with Bruno.",
+    "glossary": [
+      {
+        "term": "bell",
+        "meaning": "timbre"
+      },
+      {
+        "term": "loud",
+        "meaning": "fuerte, de alto volumen"
+      },
+      {
+        "term": "mat",
+        "meaning": "tapete"
+      }
+    ],
+    "comprehension_questions": [
+      {
+        "question": "What does Eva need for her bike?",
+        "options": [
+          "A bell",
+          "A light",
+          "A basket"
+        ],
+        "answer_index": 0,
+        "explanation": "La bicicleta no tiene timbre."
+      },
+      {
+        "question": "What does Bruno do when the big bell rings?",
+        "options": [
+          "He leaves the shop",
+          "He lifts his head",
+          "He goes to sleep"
+        ],
+        "answer_index": 1,
+        "explanation": "Bruno levanta la cabeza al oír el timbre grande."
+      },
+      {
+        "question": "Which bell does Eva buy?",
+        "options": [
+          "Both bells",
+          "The big bell",
+          "The small bell"
+        ],
+        "answer_index": 2,
+        "explanation": "Eva compra el timbre pequeño."
+      }
+    ],
+    "coins": 15,
+    "xp": 40,
+    "emoji": "📖",
+    "active": false,
+    "is_active": false,
+    "sort_order": 202611060,
+    "reading_mode": "single"
+  },
+  {
+    "id": "wdy-20261106-a2",
+    "title": "The Clock in the Window",
+    "cefr": "A2",
+    "category": "Vida diaria",
+    "difficulty": "Media",
+    "season": 3,
+    "read_minutes": 2,
+    "blurb": "The Clock in the Window",
+    "summary": "The Clock in the Window",
+    "text": "A clock in a shop window showed half past four, but Eva's phone said five. She had promised to meet Leo outside the library at five fifteen. Rather than assume her phone was wrong, she asked the shopkeeper. He explained that the window clock was for sale and had stopped that morning. Eva had fifteen minutes left. She walked straight to the library instead of stopping for a snack. Leo arrived just as she reached the door. On their way home, they passed the shop again. The clock still showed half past four, but there was now a little sign beside it: batteries not included.",
+    "glossary": [
+      {
+        "term": "half past",
+        "meaning": "y media"
+      },
+      {
+        "term": "for sale",
+        "meaning": "en venta"
+      },
+      {
+        "term": "instead of",
+        "meaning": "en vez de"
+      }
+    ],
+    "comprehension_questions": [
+      {
+        "question": "Why did the two times differ?",
+        "options": [
+          "The clock had stopped",
+          "Eva had changed time zones",
+          "The library clock was slow"
+        ],
+        "answer_index": 0,
+        "explanation": "El reloj del escaparate se había detenido."
+      },
+      {
+        "question": "What did Eva skip?",
+        "options": [
+          "The meeting",
+          "A snack",
+          "The walk"
+        ],
+        "answer_index": 1,
+        "explanation": "Fue directamente a la biblioteca."
+      },
+      {
+        "question": "What does the final sign explain?",
+        "options": [
+          "The shop closes at four",
+          "The clock belongs to Leo",
+          "The buyer needs to supply batteries"
+        ],
+        "answer_index": 2,
+        "explanation": "Las pilas no vienen incluidas."
+      }
+    ],
+    "coins": 20,
+    "xp": 60,
+    "emoji": "📖",
+    "active": false,
+    "is_active": false,
+    "sort_order": 202611061,
+    "reading_mode": "single"
+  },
+  {
+    "id": "wdy-20261106-b1",
+    "title": "The Parcel with Two Numbers",
+    "cefr": "B1",
+    "category": "Vida diaria",
+    "difficulty": "Media",
+    "season": 3,
+    "read_minutes": 2,
+    "blurb": "The Parcel with Two Numbers",
+    "summary": "The Parcel with Two Numbers",
+    "text": "Eva offered to collect a parcel for her neighbour. The message showed number 18, but the label in the photo showed 81. Both buildings were on the same street, so she could not tell which number was right. At number 18, the receptionist said the shop used collection codes and did not need a home address. Eva realised she had confused the collection address with the delivery address printed on the label. Before showing the code, she called her neighbour to confirm which shop had sent the message. Once he confirmed it, she collected the parcel and sent him a short note explaining where the confusion had come from. The two numbers were both correct; they simply referred to different stages of the delivery.",
+    "glossary": [
+      {
+        "term": "parcel",
+        "meaning": "paquete"
+      },
+      {
+        "term": "label",
+        "meaning": "etiqueta"
+      },
+      {
+        "term": "refer to",
+        "meaning": "referirse a"
+      }
+    ],
+    "comprehension_questions": [
+      {
+        "question": "Why were both numbers correct?",
+        "options": [
+          "They marked different stages",
+          "The street had been renumbered",
+          "There were two parcels"
+        ],
+        "answer_index": 0,
+        "explanation": "Uno indicaba la recogida y el otro la entrega."
+      },
+      {
+        "question": "Why did Eva call her neighbour?",
+        "options": [
+          "To request a new parcel",
+          "To confirm the shop before sharing the code",
+          "To change his home address"
+        ],
+        "answer_index": 1,
+        "explanation": "Confirmó quién había enviado el mensaje antes de mostrar el código."
+      },
+      {
+        "question": "What resolved the confusion?",
+        "options": [
+          "Ignoring the label",
+          "Choosing the larger number",
+          "Understanding the purpose of each address"
+        ],
+        "answer_index": 2,
+        "explanation": "El problema era interpretar qué indicaba cada dirección."
+      }
+    ],
+    "coins": 25,
+    "xp": 80,
+    "emoji": "📖",
+    "active": false,
+    "is_active": false,
+    "sort_order": 202611062,
+    "reading_mode": "single"
+  },
+  {
+    "id": "wdy-20261106-b2",
+    "title": "One Microphone, Two Queues",
+    "cefr": "B2",
+    "category": "Historias",
+    "difficulty": "Media",
+    "season": 3,
+    "read_minutes": 2,
+    "blurb": "One Microphone, Two Queues",
+    "summary": "One Microphone, Two Queues",
+    "text": "At a community debate, the chair invited everyone to queue for the microphone. The arrangement seemed fair until Eva noticed that several participants could not stand for long. The chair considered letting them jump the queue, but that would require them to explain personal circumstances in public. Instead, volunteers began handing numbered cards to anyone who wanted to speak, whether seated or standing. An assistant carried the microphone to each person. The change solved one problem but revealed another: a few confident speakers took several turns before others had their first. The chair therefore introduced a second round for repeat contributions. Both changes preserved the order of requests within each round. After the meeting, the organisers compared who had actually spoken with who had asked to speak. They wanted to know whether the procedure worked in practice, not merely whether it looked orderly.",
+    "glossary": [
+      {
+        "term": "chair",
+        "meaning": "moderador"
+      },
+      {
+        "term": "repeat contribution",
+        "meaning": "segunda intervención"
+      },
+      {
+        "term": "procedure",
+        "meaning": "procedimiento"
+      }
+    ],
+    "comprehension_questions": [
+      {
+        "question": "What did numbered cards achieve?",
+        "options": [
+          "They limited attendance",
+          "They removed the need to stand in line",
+          "They guaranteed equal speaking time"
+        ],
+        "answer_index": 1,
+        "explanation": "Se podía pedir turno sin permanecer de pie."
+      },
+      {
+        "question": "Why add a second round?",
+        "options": [
+          "To give first-time speakers priority",
+          "To prevent follow-up comments altogether",
+          "To shorten each speech"
+        ],
+        "answer_index": 0,
+        "explanation": "Quienes aún no habían hablado obtuvieron prioridad."
+      },
+      {
+        "question": "What did the organisers compare?",
+        "options": [
+          "The lengths of the two queues",
+          "The chair's notes and the agenda",
+          "Requests to speak and actual participation"
+        ],
+        "answer_index": 2,
+        "explanation": "Así podían evaluar si el sistema funcionaba."
+      }
+    ],
+    "coins": 30,
+    "xp": 100,
+    "emoji": "📖",
+    "active": false,
+    "is_active": false,
+    "sort_order": 202611063,
+    "reading_mode": "single"
+  },
+  {
+    "id": "wdy-20261106-c1",
+    "title": "The Promise in the Footnote",
+    "cefr": "C1",
+    "category": "Cultura",
+    "difficulty": "Alta",
+    "season": 3,
+    "read_minutes": 2,
+    "blurb": "The Promise in the Footnote",
+    "summary": "The Promise in the Footnote",
+    "text": "A museum described its new archive as permanently available to the public. An archivist pointed to a footnote: the museum would maintain access only while its licensing agreement remained in force. The communications team argued that the qualification was technically visible. Eva agreed that it was visible, but questioned whether a reader would reconcile it with the promise in the headline. A disclaimer can specify a minor exception; here, it withdrew the very certainty that made the announcement attractive. The team replaced the promise with a statement that the archive was available under the current agreement and that renewal would be reviewed annually. Some colleagues worried that the revised wording sounded less ambitious. Eva suggested that the ambition could still be stated separately: the museum intended to maintain access and was negotiating for a longer agreement. That distinction let the institution express commitment without presenting an outcome it could not yet guarantee.",
+    "glossary": [
+      {
+        "term": "qualification",
+        "meaning": "matiz que limita"
+      },
+      {
+        "term": "in force",
+        "meaning": "vigente"
+      },
+      {
+        "term": "withdraw",
+        "meaning": "retirar"
+      }
+    ],
+    "comprehension_questions": [
+      {
+        "question": "What made the footnote inadequate?",
+        "options": [
+          "It was missing from the page",
+          "It undermined the headline's central certainty",
+          "It introduced a different archive"
+        ],
+        "answer_index": 1,
+        "explanation": "La nota anulaba la certeza que daba fuerza a la promesa."
+      },
+      {
+        "question": "What distinction does Eva preserve?",
+        "options": [
+          "Intent versus a guaranteed outcome",
+          "Public versus private ownership",
+          "Annual versus monthly visits"
+        ],
+        "answer_index": 0,
+        "explanation": "La institución podía manifestar una intención sin garantizarla."
+      },
+      {
+        "question": "What does 'technically visible' concede?",
+        "options": [
+          "Everyone understood the warning",
+          "The agreement was already renewed",
+          "The caveat appeared, but might not correct the impression"
+        ],
+        "answer_index": 2,
+        "explanation": "Que se pueda ver no asegura que el lector corrija la impresión."
+      }
+    ],
+    "coins": 35,
+    "xp": 120,
+    "emoji": "📖",
+    "active": false,
+    "is_active": false,
+    "sort_order": 202611064,
+    "reading_mode": "single"
+  },
+  {
+    "id": "wdy-20261106-c2",
+    "title": "The Right to Leave a Blank",
+    "cefr": "C2",
+    "category": "Historias",
+    "difficulty": "Alta",
+    "season": 3,
+    "read_minutes": 2,
+    "blurb": "The Right to Leave a Blank",
+    "summary": "The Right to Leave a Blank",
+    "text": "A research team digitising a neighbourhood survey debated what to do with unanswered questions. One analyst wanted to infer likely replies from nearby entries, arguing that a complete dataset would make the district easier to compare with others. Another pointed out that silence had several possible sources: uncertainty, fatigue, distrust, or a deliberate refusal to answer. Treating all four as a statistical inconvenience would leave the apparent precision of the final report untouched while changing whose judgements it contained. Eva proposed retaining blanks and publishing separate estimates where comparisons genuinely required them. The report would describe the assumptions and show how different plausible interpretations affected the outcome. A colleague objected that this made the findings less decisive. Eva thought the decisiveness had been borrowed from an assumption that readers had never been invited to inspect. Still, her proposal did not make silence transparent. A blank left unfilled could mark a refusal, or simply a form put down in a hurry. What the team could preserve was the uncertainty, along with the possibility that some respondents had meant precisely to withhold a judgement.",
+    "glossary": [
+      {
+        "term": "infer",
+        "meaning": "inferir"
+      },
+      {
+        "term": "withhold",
+        "meaning": "reservarse"
+      },
+      {
+        "term": "decisiveness",
+        "meaning": "carácter concluyente"
+      }
+    ],
+    "comprehension_questions": [
+      {
+        "question": "What does 'borrowed' imply about decisiveness?",
+        "options": [
+          "It was copied from another survey",
+          "It depended on a concealed assumption",
+          "It was guaranteed by sample size"
+        ],
+        "answer_index": 1,
+        "explanation": "La seguridad aparente provenía de un supuesto no expuesto."
+      },
+      {
+        "question": "Why publish estimates separately?",
+        "options": [
+          "To distinguish modelling from observed replies",
+          "To identify every silent respondent",
+          "To eliminate uncertainty"
+        ],
+        "answer_index": 0,
+        "explanation": "Se separa lo estimado de lo que las personas respondieron."
+      },
+      {
+        "question": "What limit does the conclusion acknowledge?",
+        "options": [
+          "No comparisons are possible",
+          "A blank is always a refusal",
+          "The reason for a particular blank remains unknown"
+        ],
+        "answer_index": 2,
+        "explanation": "Conservar un vacío no revela por qué quedó vacío."
+      }
+    ],
+    "coins": 40,
+    "xp": 140,
+    "emoji": "📖",
+    "active": false,
+    "is_active": false,
+    "sort_order": 202611065,
+    "reading_mode": "single"
+  }
+]
