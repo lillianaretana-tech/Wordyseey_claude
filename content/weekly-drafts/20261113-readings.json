@@ -1,0 +1,392 @@
+[
+  {
+    "id": "wdy-20261113-a1",
+    "title": "The Red Peg",
+    "cefr": "A1",
+    "category": "Vida diaria",
+    "difficulty": "Suave",
+    "season": 3,
+    "read_minutes": 1,
+    "blurb": "Nina distingue dos toallas en un día de viento.",
+    "summary": "Nina distingue dos toallas en un día de viento.",
+    "text": "Nina hangs two towels outside. The blue towel is hers. The white towel is for Bruno after his walk. The wind lifts one corner of the white towel. Nina puts a red peg on that corner. When she comes back, the blue towel is dry, but Bruno's towel is still wet. She takes the blue towel inside and leaves the white one in the sun.",
+    "glossary": [
+      {
+        "term": "peg",
+        "meaning": "pinza"
+      },
+      {
+        "term": "corner",
+        "meaning": "esquina"
+      },
+      {
+        "term": "dry",
+        "meaning": "seco"
+      }
+    ],
+    "comprehension_questions": [
+      {
+        "question": "Which towel is for Bruno?",
+        "options": [
+          "White",
+          "Blue",
+          "Red"
+        ],
+        "answer_index": 0,
+        "explanation": "La toalla blanca es para Bruno."
+      },
+      {
+        "question": "Why does Nina add a peg?",
+        "options": [
+          "To mark the blue towel",
+          "To hold down a corner",
+          "To hang a second line"
+        ],
+        "answer_index": 1,
+        "explanation": "La pinza sujeta la esquina que levanta el viento."
+      },
+      {
+        "question": "Which towel does she leave outside?",
+        "options": [
+          "Both towels",
+          "The blue one",
+          "The white one"
+        ],
+        "answer_index": 2,
+        "explanation": "La blanca todavía está mojada."
+      }
+    ],
+    "coins": 15,
+    "xp": 40,
+    "emoji": "📖",
+    "active": false,
+    "is_active": false,
+    "sort_order": 202611130,
+    "reading_mode": "single"
+  },
+  {
+    "id": "wdy-20261113-a2",
+    "title": "A Box for the Balcony",
+    "cefr": "A2",
+    "category": "Vida diaria",
+    "difficulty": "Media",
+    "season": 3,
+    "read_minutes": 2,
+    "blurb": "Una tapa improvisada ayuda a aprovechar el espacio del balcón.",
+    "summary": "Una tapa improvisada ayuda a aprovechar el espacio del balcón.",
+    "text": "Nina wanted a small box for her balcony. At the market she found a wooden one with a lid, but it was too wide for the space beside the chair. The seller offered a narrower box without a lid. Nina measured it with the tape she had brought from home. It fitted, but she wanted to keep paper and pencils inside, so rain was still a problem. The seller showed her a tray that could sit upside down on top. Nina bought the box and tray together. At home, she put them beside the chair, under the roof, and left the tray loose so she could lift it easily.",
+    "glossary": [
+      {
+        "term": "lid",
+        "meaning": "tapa"
+      },
+      {
+        "term": "narrower",
+        "meaning": "más estrecho"
+      },
+      {
+        "term": "upside down",
+        "meaning": "boca abajo"
+      }
+    ],
+    "comprehension_questions": [
+      {
+        "question": "Why did Nina reject the first box?",
+        "options": [
+          "It was too wide",
+          "It was too low",
+          "It had no lid"
+        ],
+        "answer_index": 0,
+        "explanation": "El primer cajón no cabía al lado de la silla."
+      },
+      {
+        "question": "How did she check the second box?",
+        "options": [
+          "She compared its price",
+          "She measured it",
+          "She carried the chair to the market"
+        ],
+        "answer_index": 1,
+        "explanation": "Usó la cinta que llevó de casa."
+      },
+      {
+        "question": "What role does the tray play?",
+        "options": [
+          "It holds the chair",
+          "It goes under the box",
+          "It acts as a cover"
+        ],
+        "answer_index": 2,
+        "explanation": "Puesta boca abajo, sirve como tapa."
+      }
+    ],
+    "coins": 20,
+    "xp": 60,
+    "emoji": "📖",
+    "active": false,
+    "is_active": false,
+    "sort_order": 202611131,
+    "reading_mode": "single"
+  },
+  {
+    "id": "wdy-20261113-b1",
+    "title": "The Empty Slot on Thursday",
+    "cefr": "B1",
+    "category": "Vida diaria",
+    "difficulty": "Media",
+    "season": 3,
+    "read_minutes": 2,
+    "blurb": "Un grupo ajusta los turnos según el transporte de sus vecinos.",
+    "summary": "Un grupo ajusta los turnos según el transporte de sus vecinos.",
+    "text": "A repair group offered free appointments on Thursday evenings. The volunteer coordinator noticed a pattern: the last slot was often empty, although the waiting list was long. Instead of adding more slots, she called people who had declined the late appointment. Several relied on a bus that stopped running before the session ended. One member suggested arranging rides, but the group could not promise that every week. They moved the final slot forward by twenty minutes and asked people to bring smaller repairs to it. For the next month the coordinator recorded whether people arrived, whether the job was finished and whether they could catch the bus. The change was modest, but it tested the reason people had given instead of assuming they had lost interest.",
+    "glossary": [
+      {
+        "term": "slot",
+        "meaning": "turno disponible"
+      },
+      {
+        "term": "decline",
+        "meaning": "rechazar"
+      },
+      {
+        "term": "rely on",
+        "meaning": "depender de"
+      }
+    ],
+    "comprehension_questions": [
+      {
+        "question": "Why did several people decline?",
+        "options": [
+          "The bus service ended too early",
+          "The repair group charged them",
+          "They had already repaired everything"
+        ],
+        "answer_index": 0,
+        "explanation": "Dependían de un bus que terminaba antes de la sesión."
+      },
+      {
+        "question": "Why not promise rides?",
+        "options": [
+          "The venue banned cars",
+          "The group could not guarantee them weekly",
+          "The waiting list was closed"
+        ],
+        "answer_index": 1,
+        "explanation": "No podían asegurar transporte todas las semanas."
+      },
+      {
+        "question": "What made the trial informative?",
+        "options": [
+          "It counted only sign-ups",
+          "It extended every visit",
+          "It checked attendance, completion and transport"
+        ],
+        "answer_index": 2,
+        "explanation": "Se midió si podían llegar, terminar y tomar el bus."
+      }
+    ],
+    "coins": 25,
+    "xp": 80,
+    "emoji": "📖",
+    "active": false,
+    "is_active": false,
+    "sort_order": 202611132,
+    "reading_mode": "single"
+  },
+  {
+    "id": "wdy-20261113-b2",
+    "title": "The Spare Key Nobody Wanted",
+    "cefr": "B2",
+    "category": "Vida diaria",
+    "difficulty": "Media",
+    "season": 3,
+    "read_minutes": 2,
+    "blurb": "Un comité define qué necesita antes de decidir dónde dejar una llave.",
+    "summary": "Un comité define qué necesita antes de decidir dónde dejar una llave.",
+    "text": "Residents of a shared building proposed leaving a spare key at the café downstairs. It would save late-night calls to neighbours, but the café closed before the hour when most lockouts happened. Its owner also felt uneasy about deciding whether a stranger was entitled to collect it. A resident suggested a staffed reception desk in another building, which stayed open later but required a ten-minute walk. Rather than hold a simple vote on the two venues, the committee agreed first on what a workable arrangement had to offer: a clear way to establish identity, predictable opening hours and a process for removing access when somebody moved out. That shifted the discussion. The café was convenient in daylight, but convenience alone did not meet the agreed criteria. The committee then invited the reception manager to explain what their service could actually provide before promising anything to residents.",
+    "glossary": [
+      {
+        "term": "lockout",
+        "meaning": "quedarse fuera sin llave"
+      },
+      {
+        "term": "entitled",
+        "meaning": "autorizado"
+      },
+      {
+        "term": "workable",
+        "meaning": "viable"
+      }
+    ],
+    "comprehension_questions": [
+      {
+        "question": "Why was the café unsuitable for many lockouts?",
+        "options": [
+          "It closed too early",
+          "It was too far away",
+          "It had no owner"
+        ],
+        "answer_index": 0,
+        "explanation": "Cerraba antes de la hora de muchos incidentes."
+      },
+      {
+        "question": "Why agree on criteria first?",
+        "options": [
+          "To avoid consulting the manager",
+          "To judge each venue against actual needs",
+          "To ensure the closest venue won"
+        ],
+        "answer_index": 1,
+        "explanation": "Los criterios permiten evaluar cada opción más allá de la comodidad."
+      },
+      {
+        "question": "What remained to be established?",
+        "options": [
+          "Whether residents had keys at all",
+          "Whether the café served food",
+          "What the reception service could commit to"
+        ],
+        "answer_index": 2,
+        "explanation": "La reunión debía aclarar el servicio real antes de prometerlo."
+      }
+    ],
+    "coins": 30,
+    "xp": 100,
+    "emoji": "📖",
+    "active": false,
+    "is_active": false,
+    "sort_order": 202611133,
+    "reading_mode": "single"
+  },
+  {
+    "id": "wdy-20261113-c1",
+    "title": "The Grant That Paid in Arrears",
+    "cefr": "C1",
+    "category": "Cultura",
+    "difficulty": "Alta",
+    "season": 3,
+    "read_minutes": 2,
+    "blurb": "Una cooperativa distingue el costo final del efectivo que necesita por adelantado.",
+    "summary": "Una cooperativa distingue el costo final del efectivo que necesita por adelantado.",
+    "text": "A craft cooperative celebrated a grant that would cover most of the cost of a new kiln. Only after receiving the terms did the treasurer realise that the grant would reimburse the purchase rather than pay for it upfront. Several members argued that a grant covering eighty per cent made the kiln affordable. The treasurer drew two timelines: one showed the final cost, the other showed how much cash would leave the account before any reimbursement arrived. The second exposed a problem the first concealed. Paying the supplier in full would leave too little cash to cover rent during the waiting period. Instead of abandoning the purchase, the cooperative asked whether a deposit and a later instalment would satisfy both the supplier and the grant administrator. Neither had agreed yet. The treasurer presented the arrangement as a route worth exploring, while making clear that the original commitment was still beyond what the account could support.",
+    "glossary": [
+      {
+        "term": "in arrears",
+        "meaning": "después de efectuado el gasto"
+      },
+      {
+        "term": "upfront",
+        "meaning": "por adelantado"
+      },
+      {
+        "term": "instalment",
+        "meaning": "cuota"
+      }
+    ],
+    "comprehension_questions": [
+      {
+        "question": "Why are two timelines needed?",
+        "options": [
+          "To distinguish overall cost from when cash is needed",
+          "To compare two kilns",
+          "To show the grant covers rent"
+        ],
+        "answer_index": 0,
+        "explanation": "El reembolso reduce el costo final, pero llega después del desembolso."
+      },
+      {
+        "question": "What could paying in full jeopardise?",
+        "options": [
+          "The kiln warranty",
+          "The rent payment",
+          "The size of the grant award"
+        ],
+        "answer_index": 1,
+        "explanation": "La cuenta quedaría con fondos insuficientes para el alquiler."
+      },
+      {
+        "question": "How does the treasurer present staged payment?",
+        "options": [
+          "As already agreed",
+          "As irrelevant to the grant",
+          "As a possibility subject to agreement"
+        ],
+        "answer_index": 2,
+        "explanation": "La opción depende de la aceptación de ambas partes."
+      }
+    ],
+    "coins": 35,
+    "xp": 120,
+    "emoji": "📖",
+    "active": false,
+    "is_active": false,
+    "sort_order": 202611134,
+    "reading_mode": "single"
+  },
+  {
+    "id": "wdy-20261113-c2",
+    "title": "A Name for the Unfinished Map",
+    "cefr": "C2",
+    "category": "Cultura",
+    "difficulty": "Alta",
+    "season": 3,
+    "read_minutes": 2,
+    "blurb": "Una cartógrafa intenta conservar la incertidumbre deliberada de un mapa antiguo.",
+    "summary": "Una cartógrafa intenta conservar la incertidumbre deliberada de un mapa antiguo.",
+    "text": "A cartographer inherited a hand-drawn map on which one valley was labelled only with a question mark. The publisher asked her to replace it with the name most often used in modern records. The name would make the map searchable, but it would also settle a question the original drafter had deliberately left open. The cartographer considered reproducing the mark without comment. That too would mislead: readers might take it to mean that the valley had no name rather than that the drafter had declined to choose one. She eventually listed the documented names in the index and left the mark on the map, adding a note explaining what could and could not be inferred from it. A colleague called the result a compromise between fidelity and usefulness. She thought that description understated the problem. Fidelity was not an attribute a reproduction acquired by looking like its source. It depended on whether the new reader was invited to draw the same conclusions as the old one, or was warned when the conditions for drawing them had changed.",
+    "glossary": [
+      {
+        "term": "drafter",
+        "meaning": "persona que trazó el mapa"
+      },
+      {
+        "term": "fidelity",
+        "meaning": "fidelidad al original"
+      },
+      {
+        "term": "understate",
+        "meaning": "restar importancia"
+      }
+    ],
+    "comprehension_questions": [
+      {
+        "question": "Why would a single modern name be problematic?",
+        "options": [
+          "It would make the valley unsearchable",
+          "It would resolve a choice the original left open",
+          "It would misplace the valley"
+        ],
+        "answer_index": 1,
+        "explanation": "La etiqueta impondría una decisión que el original suspendía."
+      },
+      {
+        "question": "Why is a bare question mark also misleading?",
+        "options": [
+          "It might imply the valley had no name",
+          "It would require removing the index",
+          "It would imply the drafter chose a name"
+        ],
+        "answer_index": 0,
+        "explanation": "La ausencia de una elección no equivale a que no existieran nombres."
+      },
+      {
+        "question": "What does the closing argument require of a faithful reproduction?",
+        "options": [
+          "Identical lettering in all circumstances",
+          "A single interpretation imposed by the publisher",
+          "Attention to how changed reading conditions shape inference"
+        ],
+        "answer_index": 2,
+        "explanation": "La fidelidad también exige advertir cuando un lector nuevo podría inferir otra cosa."
+      }
+    ],
+    "coins": 40,
+    "xp": 140,
+    "emoji": "📖",
+    "active": false,
+    "is_active": false,
+    "sort_order": 202611135,
+    "reading_mode": "single"
+  }
+]
