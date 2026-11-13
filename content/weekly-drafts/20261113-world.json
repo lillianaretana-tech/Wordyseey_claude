@@ -1,0 +1,180 @@
+[
+  {
+    "worldId": "shopping",
+    "vocab": [
+      {
+        "en": "weigh",
+        "es": "pesar"
+      },
+      {
+        "en": "per kilo",
+        "es": "por kilo"
+      },
+      {
+        "en": "change",
+        "es": "vuelto"
+      },
+      {
+        "en": "receipt",
+        "es": "recibo"
+      }
+    ],
+    "story": {
+      "id": "bruno-20261113-market-change-b1",
+      "code": "MARKET→CHANGE",
+      "title": "Two Prices at the Market",
+      "emoji": "🍐",
+      "cefr": "B1",
+      "release": "2026-11-13",
+      "sub": "B1 · Pregunta por unidades, verifica el total y aclara el vuelto con cortesía.",
+      "reward": {
+        "xp": 110,
+        "coins": 45
+      },
+      "nodes": [
+        {
+          "t": "scene",
+          "title": "Two signs",
+          "en": "Nina and Bruno stop at a market stall. One sign says pears are four dollars per kilo. Another says a small basket is three dollars. Nina wants half a kilo of pears, not a basket.",
+          "es": "Nina y Bruno ven dos precios. Las peras cuestan cuatro dólares por kilo; una canasta pequeña cuesta tres. Nina quiere medio kilo de peras sueltas.",
+          "img": "🐶"
+        },
+        {
+          "t": "decision",
+          "speaker": "Nina",
+          "line": "What should Nina ask?",
+          "opts": [
+            {
+              "x": "Could you weigh half a kilo of pears, please?",
+              "ok": true,
+              "fb": "Pide la cantidad en la unidad correcta."
+            },
+            {
+              "x": "Could you give me half of the basket price?",
+              "ok": false,
+              "fb": "La canasta y las peras sueltas tienen precios distintos."
+            },
+            {
+              "x": "Could you give me four kilos for a dollar?",
+              "ok": false,
+              "fb": "Invierte el precio y la cantidad."
+            }
+          ]
+        },
+        {
+          "t": "fill",
+          "q": "Four dollars ___ kilo means four dollars for one kilo.",
+          "a": "per",
+          "opts": [
+            "by",
+            "per",
+            "from"
+          ],
+          "fb": "Per expresa el precio por unidad."
+        },
+        {
+          "t": "scene",
+          "title": "A second item",
+          "en": "The seller weighs the pears. Nina adds one lemon for one dollar. Bruno stays beside her bag while she checks the total: two dollars for the pears and one for the lemon.",
+          "es": "Las peras pesan medio kilo y cuestan dos dólares. Nina agrega un limón de un dólar mientras Bruno espera junto a su bolsa.",
+          "img": "🐶"
+        },
+        {
+          "t": "build",
+          "answer": "How much is that altogether",
+          "words": [
+            "How",
+            "much",
+            "is",
+            "that",
+            "altogether"
+          ],
+          "es": "¿Cuánto es todo en total?"
+        },
+        {
+          "t": "decision",
+          "speaker": "Nina",
+          "line": "What total should Nina expect?",
+          "opts": [
+            {
+              "x": "Two dollars.",
+              "ok": false,
+              "fb": "Eso cubre solo las peras."
+            },
+            {
+              "x": "Four dollars.",
+              "ok": false,
+              "fb": "Cuatro dólares es el precio de un kilo entero de peras."
+            },
+            {
+              "x": "Three dollars.",
+              "ok": true,
+              "fb": "Dos dólares por las peras más uno por el limón."
+            }
+          ]
+        },
+        {
+          "t": "scene",
+          "title": "A polite correction",
+          "en": "Nina pays with a five-dollar bill. The seller hands back one dollar. Nina checks the receipt before speaking. It shows the expected total of three dollars, so she is expecting two dollars in change.",
+          "es": "Nina paga con cinco dólares y recibe uno. El recibo confirma un total de tres: debería recibir dos de vuelto.",
+          "img": "🐶"
+        },
+        {
+          "t": "fill",
+          "q": "Nina checks the ___ before asking about her change.",
+          "a": "receipt",
+          "opts": [
+            "basket",
+            "scale",
+            "receipt"
+          ],
+          "fb": "El recibo permite comprobar qué se cobró."
+        },
+        {
+          "t": "decision",
+          "speaker": "Nina",
+          "line": "How can Nina raise the issue politely?",
+          "opts": [
+            {
+              "x": "You charged me five dollars for the pears.",
+              "ok": false,
+              "fb": "El recibo no indica eso."
+            },
+            {
+              "x": "I think I should have received two dollars in change. Could we check?",
+              "ok": true,
+              "fb": "Explica la diferencia e invita a verificarla."
+            },
+            {
+              "x": "Could you add another lemon to the bill?",
+              "ok": false,
+              "fb": "Agregar otro producto no aclara el vuelto."
+            }
+          ]
+        },
+        {
+          "t": "build",
+          "answer": "I paid with a five dollar bill",
+          "words": [
+            "I",
+            "paid",
+            "with",
+            "a",
+            "five",
+            "dollar",
+            "bill"
+          ],
+          "es": "Pagué con un billete de cinco dólares"
+        },
+        {
+          "t": "scene",
+          "title": "The right change",
+          "en": "The seller checks the till and gives Nina the missing dollar. Nina thanks him, puts the receipt in her bag, and walks away with Bruno. Next time she will still check the unit price before comparing offers.",
+          "es": "El vendedor revisa la caja y entrega el dólar faltante. Nina le da las gracias y se va con Bruno; seguirá comparando precios según la unidad.",
+          "img": "🐶"
+        }
+      ]
+    }
+  }
+]
