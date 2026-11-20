@@ -1,0 +1,60 @@
+{
+  "date": "2026-11-20",
+  "status": "incomplete_pending_catalogue_access",
+  "readings": [
+    {
+      "id": "wdy-20261120-a1",
+      "cefr": "A1",
+      "title": "The Brush beside the Door",
+      "status": "incomplete; do not import"
+    },
+    {
+      "id": "wdy-20261120-a2",
+      "cefr": "A2",
+      "title": "A Seat for the Cello",
+      "status": "incomplete; do not import"
+    },
+    {
+      "id": "wdy-20261120-b1",
+      "cefr": "B1",
+      "title": "The Rehearsal with No Audience",
+      "status": "incomplete; do not import"
+    },
+    {
+      "id": "wdy-20261120-b2",
+      "cefr": "B2",
+      "title": "The Workshop That Needed a Waiting List",
+      "status": "incomplete; do not import"
+    },
+    {
+      "id": "wdy-20261120-c1",
+      "cefr": "C1",
+      "title": "The Forecast without a Range",
+      "status": "incomplete; do not import"
+    },
+    {
+      "id": "wdy-20261120-c2",
+      "cefr": "C2",
+      "title": "The Apprentice Who Kept the Offcuts",
+      "status": "incomplete; do not import"
+    }
+  ],
+  "adventure": {
+    "cefr": "B2",
+    "worldId": "hotel",
+    "title": "The Accessible Room Before Check-in",
+    "premise": "Nina and Bruno compare a confirmed room description with practical access needs, clarify which features are guaranteed and arrange a suitable alternative before arrival.",
+    "status": "outline only; scenes and exercises not completed"
+  },
+  "database_inserts": 0,
+  "published": false,
+  "validation": {
+    "root_source_inspected": true,
+    "prior_adventure": "Two Prices at the Market B1",
+    "open_prs": 0,
+    "catalogue": "permission denied",
+    "schema": "not verified",
+    "originality": "pending full catalogue comparison"
+  },
+  "limitations": "This is a planning checkpoint, not six finished readings or an executable adventure. No insert or activation allowed from this file. Complete content, questions, Spanish explanations and engine validation before review."
+}
