@@ -1,0 +1,244 @@
+[
+  {
+    "worldId": "hotel",
+    "vocab": [
+      {
+        "en": "step-free route",
+        "es": "ruta sin escalones"
+      },
+      {
+        "en": "clear opening",
+        "es": "ancho libre de paso"
+      },
+      {
+        "en": "subject to availability",
+        "es": "sujeto a disponibilidad"
+      },
+      {
+        "en": "written confirmation",
+        "es": "confirmación por escrito"
+      },
+      {
+        "en": "threshold",
+        "es": "umbral"
+      }
+    ],
+    "story": {
+      "id": "bruno-20261120-room-confirmation-b2",
+      "code": "BOOK→CHECK",
+      "title": "The Accessible Room Before Check-in",
+      "emoji": "🏨",
+      "cefr": "B2",
+      "release": "2026-11-20",
+      "sub": "B2 · Aclara características concretas de una habitación y confirma una alternativa antes de llegar.",
+      "reward": {
+        "xp": 140,
+        "coins": 55
+      },
+      "nodes": [
+        {
+          "t": "scene",
+          "img": "🐶",
+          "title": "A label is only a start",
+          "en": "Nina is travelling with her aunt Elena, who uses a wheelchair, and Bruno. Elena has explained what works for her: a step-free route and a bathroom door with a clear opening of at least eighty centimetres. The hotel's booking says 'accessible room requested', but does not confirm those features. Bruno rests his chin on the suitcase while Nina calls.",
+          "es": "Nina viajará con su tía Elena, que usa silla de ruedas, y Bruno. Elena ha explicado sus necesidades concretas: una ruta sin escalones y un paso libre de al menos ochenta centímetros en la puerta del baño. La reserva indica que se solicitó una habitación accesible, pero no confirma esas características. Bruno apoya el hocico en la maleta mientras Nina llama."
+        },
+        {
+          "t": "decision",
+          "speaker": "Receptionist",
+          "line": "Your request is noted, subject to availability.",
+          "opts": [
+            {
+              "x": "Thank you. Could you confirm the route and the bathroom door's clear opening?",
+              "ok": true,
+              "fb": "Pide verificar las características concretas: una solicitud anotada no equivale a una garantía."
+            },
+            {
+              "x": "Thank you. That confirms both measurements.",
+              "ok": false,
+              "fb": "“Subject to availability” mantiene la disponibilidad pendiente; no confirma medidas."
+            },
+            {
+              "x": "Thank you. Please remove the request.",
+              "ok": false,
+              "fb": "Eliminar la solicitud no aclara si la habitación resulta adecuada."
+            }
+          ]
+        },
+        {
+          "t": "fill",
+          "q": "The room is subject ___ availability.",
+          "a": "to",
+          "opts": [
+            "for",
+            "to",
+            "with"
+          ],
+          "fb": "La expresión fija “subject to availability” significa sujeto a disponibilidad."
+        },
+        {
+          "t": "build",
+          "words": [
+            "door",
+            "bathroom",
+            "the",
+            "of",
+            "opening",
+            "clear",
+            "the",
+            "confirm",
+            "you",
+            "Could"
+          ],
+          "answer": "Could you confirm the clear opening of the bathroom door",
+          "es": "¿Podría confirmar el ancho libre de paso de la puerta del baño?"
+        },
+        {
+          "t": "scene",
+          "img": "📏",
+          "title": "Checking the actual route",
+          "en": "The receptionist checks with a colleague. The original room has a seventy-four-centimetre bathroom opening. Another room has an eighty-four-centimetre opening, but its shortest route from reception includes two steps. A longer route through the courtyard has no steps. Nina asks whether guests can use that route at all hours.",
+          "es": "La recepcionista consulta con un colega. La habitación original tiene un paso de setenta y cuatro centímetros en el baño. Otra tiene ochenta y cuatro, pero el camino más corto desde recepción incluye dos escalones. Hay una ruta más larga por el patio, sin escalones. Nina pregunta si puede usarse a cualquier hora."
+        },
+        {
+          "t": "decision",
+          "speaker": "Receptionist",
+          "line": "The bathroom opening in the original room is seventy-four centimetres.",
+          "opts": [
+            {
+              "x": "It meets Elena's stated minimum of eighty centimetres.",
+              "ok": false,
+              "fb": "Setenta y cuatro es menor que el mínimo de ochenta indicado por Elena."
+            },
+            {
+              "x": "Then every room in the hotel must be unsuitable.",
+              "ok": false,
+              "fb": "La medida corresponde a una habitación; no permite concluir lo mismo de todas."
+            },
+            {
+              "x": "That is below her stated minimum. Could we check another room?",
+              "ok": true,
+              "fb": "Compara la medida con la necesidad expresada y solicita una alternativa."
+            }
+          ]
+        },
+        {
+          "t": "fill",
+          "q": "We can consider the second room, ___ the step-free route remains available overnight.",
+          "a": "provided",
+          "opts": [
+            "although",
+            "provided",
+            "unless"
+          ],
+          "fb": "“Provided” introduce una condición necesaria: siempre que la ruta siga disponible durante la noche."
+        },
+        {
+          "t": "decision",
+          "speaker": "Receptionist",
+          "line": "The courtyard route is step-free and open twenty-four hours. It is longer than the route with steps.",
+          "opts": [
+            {
+              "x": "Please describe the distance so Elena can decide whether it works for her.",
+              "ok": true,
+              "fb": "Solicita información para que Elena decida; no presupone qué distancia le resulta adecuada."
+            },
+            {
+              "x": "A longer route automatically meets everyone's needs.",
+              "ok": false,
+              "fb": "Una ruta sin escalones puede tener otras características que la persona necesite valorar."
+            },
+            {
+              "x": "We will use the steps because they are quicker.",
+              "ok": false,
+              "fb": "La ruta con escalones no cumple la necesidad que Elena ha comunicado."
+            }
+          ]
+        },
+        {
+          "t": "scene",
+          "img": "🐶",
+          "title": "Bruno has his own condition",
+          "en": "The hotel sends the route's distance and photographs. Elena reviews them and says the second room works for this visit. Nina then checks Bruno's booking separately. Dogs are permitted in the second room, but the hotel's note still assigns Bruno to the original one. Bruno brings his lead, apparently ready to negotiate in person.",
+          "es": "El hotel envía la distancia de la ruta y fotografías. Elena las revisa y confirma que la segunda habitación le sirve para esta visita. Nina comprueba por separado la reserva de Bruno. Se admiten perros en esa habitación, pero la nota del hotel todavía lo vincula con la original. Bruno trae su correa, listo al parecer para negociar en persona."
+        },
+        {
+          "t": "decision",
+          "speaker": "Receptionist",
+          "line": "Dogs are allowed in the second room, but I still need to transfer Bruno's booking note.",
+          "opts": [
+            {
+              "x": "Please cancel Elena's room instead.",
+              "ok": false,
+              "fb": "Cancelar la habitación contradice la elección de Elena y no resuelve la nota de Bruno."
+            },
+            {
+              "x": "Please update the dog note and confirm the room and route details together.",
+              "ok": true,
+              "fb": "Distingue una norma general de una gestión pendiente y solicita confirmación conjunta."
+            },
+            {
+              "x": "Then the dog note has already been transferred.",
+              "ok": false,
+              "fb": "La recepcionista dice que la actualización todavía está pendiente."
+            }
+          ]
+        },
+        {
+          "t": "build",
+          "words": [
+            "travel",
+            "we",
+            "before",
+            "confirmation",
+            "written",
+            "send",
+            "Please"
+          ],
+          "answer": "Please send written confirmation before we travel",
+          "es": "Por favor, envíe la confirmación por escrito antes de que viajemos"
+        },
+        {
+          "t": "fill",
+          "q": "Elena reviewed the details before ___ the alternative.",
+          "a": "accepting",
+          "opts": [
+            "accepted",
+            "accepting",
+            "accept"
+          ],
+          "fb": "Después de la preposición “before” se puede usar la forma en -ing: before accepting."
+        },
+        {
+          "t": "decision",
+          "speaker": "Nina",
+          "line": "The email confirms the second room, its eighty-four-centimetre opening, the courtyard route at all hours and Bruno's updated note. What should Nina do next?",
+          "opts": [
+            {
+              "x": "Assume that these features suit every wheelchair user.",
+              "ok": false,
+              "fb": "Las necesidades varían; Elena valoró esta alternativa concreta para esta visita."
+            },
+            {
+              "x": "Treat the original room as the confirmed one.",
+              "ok": false,
+              "fb": "El correo confirma la segunda habitación, no la original."
+            },
+            {
+              "x": "Share it with Elena and keep the confirmation for arrival.",
+              "ok": true,
+              "fb": "Comparte el acuerdo con la viajera y conserva los detalles para comprobarlos al llegar."
+            }
+          ]
+        },
+        {
+          "t": "scene",
+          "img": "✅",
+          "title": "Before the journey begins",
+          "en": "Elena checks the email and agrees that it reflects what they discussed. Nina saves the confirmation with the booking. They have resolved the uncertainty before travelling, rather than leaving Elena to negotiate after arrival. Bruno puts one paw beside the packed lead. His own contribution to careful planning appears to be enthusiasm.",
+          "es": "Elena revisa el correo y confirma que refleja lo conversado. Nina lo guarda junto a la reserva. Han aclarado la incertidumbre antes del viaje, sin dejar la negociación para la llegada. Bruno coloca una pata junto a la correa preparada: su contribución a la planificación parece ser el entusiasmo."
+        }
+      ]
+    }
+  }
+]
