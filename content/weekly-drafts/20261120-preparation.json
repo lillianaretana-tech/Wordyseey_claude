@@ -1,60 +1,87 @@
 {
   "date": "2026-11-20",
-  "status": "incomplete_pending_catalogue_access",
+  "status": "complete_pending_review",
+  "readings_file": "20261120-readings.json",
+  "adventure_file": "20261120-world.json",
   "readings": [
     {
       "id": "wdy-20261120-a1",
-      "cefr": "A1",
       "title": "The Brush beside the Door",
-      "status": "incomplete; do not import"
+      "cefr": "A1",
+      "questions": 3,
+      "active": false,
+      "is_active": false
     },
     {
       "id": "wdy-20261120-a2",
-      "cefr": "A2",
       "title": "A Seat for the Cello",
-      "status": "incomplete; do not import"
+      "cefr": "A2",
+      "questions": 3,
+      "active": false,
+      "is_active": false
     },
     {
       "id": "wdy-20261120-b1",
-      "cefr": "B1",
       "title": "The Rehearsal with No Audience",
-      "status": "incomplete; do not import"
+      "cefr": "B1",
+      "questions": 3,
+      "active": false,
+      "is_active": false
     },
     {
       "id": "wdy-20261120-b2",
-      "cefr": "B2",
       "title": "The Workshop That Needed a Waiting List",
-      "status": "incomplete; do not import"
+      "cefr": "B2",
+      "questions": 3,
+      "active": false,
+      "is_active": false
     },
     {
       "id": "wdy-20261120-c1",
-      "cefr": "C1",
       "title": "The Forecast without a Range",
-      "status": "incomplete; do not import"
+      "cefr": "C1",
+      "questions": 3,
+      "active": false,
+      "is_active": false
     },
     {
       "id": "wdy-20261120-c2",
-      "cefr": "C2",
       "title": "The Apprentice Who Kept the Offcuts",
-      "status": "incomplete; do not import"
+      "cefr": "C2",
+      "questions": 3,
+      "active": false,
+      "is_active": false
     }
   ],
   "adventure": {
+    "id": "bruno-20261120-room-confirmation-b2",
+    "title": "The Accessible Room Before Check-in",
     "cefr": "B2",
     "worldId": "hotel",
-    "title": "The Accessible Room Before Check-in",
-    "premise": "Nina and Bruno compare a confirmed room description with practical access needs, clarify which features are guaranteed and arrange a suitable alternative before arrival.",
-    "status": "outline only; scenes and exercises not completed"
+    "scenes": 4,
+    "exercises": 10,
+    "reward": {
+      "xp": 140,
+      "coins": 55
+    }
   },
-  "database_inserts": 0,
+  "database_inserts": 6,
   "published": false,
   "validation": {
-    "root_source_inspected": true,
-    "prior_adventure": "Two Prices at the Market B1",
-    "open_prs": 0,
-    "catalogue": "permission denied",
-    "schema": "not verified",
-    "originality": "pending full catalogue comparison"
-  },
-  "limitations": "This is a planning checkpoint, not six finished readings or an executable adventure. No insert or activation allowed from this file. Complete content, questions, Spanish explanations and engine validation before review."
+    "schema_constraints_checked": true,
+    "ids_checked_before_insert": true,
+    "insert_on_conflict_do_nothing": true,
+    "root_engine_supported_types_checked": true,
+    "root_story_id_collision": false,
+    "reading_questions": 18,
+    "correct_answer_indexes_valid": true,
+    "decision_unique_correct_answer": true,
+    "fill_answers_in_options": true,
+    "build_word_multisets_match": true,
+    "prior_catalogue_and_repository_batches_reviewed": true,
+    "originality": "Editorial review of titles, premises and questions; no matching title or new story ID found. Not a plagiarism guarantee.",
+    "cefr": "Editorial grading A1–C2; not externally certified.",
+    "root_index_modified": false,
+    "auth_or_progress_accessed": false
+  }
 }
