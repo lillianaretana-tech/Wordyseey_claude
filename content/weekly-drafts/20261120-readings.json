@@ -1,0 +1,416 @@
+[
+  {
+    "id": "wdy-20261120-a1",
+    "title": "The Brush beside the Door",
+    "cefr": "A1",
+    "category": "Vida diaria",
+    "difficulty": "Suave",
+    "season": 3,
+    "read_minutes": 1,
+    "blurb": "Dos cepillos y una tarea en orden.",
+    "summary": "Nina limpia el tapete y sus zapatos con la ayuda de una pequeña pausa para Bruno.",
+    "text": "Nina has two brushes. The small brush is for her shoes. The big brush is for the mat by the door. Today her shoes are dirty. The mat is dirty too. Bruno is on the mat. Nina says, 'Come here, Bruno.' He stands up and comes to her. Nina takes the mat outside. She cleans it with the big brush. Then she cleans her shoes with the small brush. Now the mat and the shoes are clean.",
+    "glossary": [
+      {
+        "term": "brush",
+        "meaning": "cepillo"
+      },
+      {
+        "term": "mat",
+        "meaning": "tapete"
+      },
+      {
+        "term": "dirty",
+        "meaning": "sucio"
+      },
+      {
+        "term": "outside",
+        "meaning": "afuera"
+      }
+    ],
+    "comprehension_questions": [
+      {
+        "question": "What is the small brush for?",
+        "options": [
+          "The mat",
+          "Nina's shoes",
+          "Bruno's bed"
+        ],
+        "answer_index": 1,
+        "explanation": "El texto dice que el cepillo pequeño es para los zapatos."
+      },
+      {
+        "question": "Where is Bruno at first?",
+        "options": [
+          "On the mat",
+          "Outside the door",
+          "Beside the shoes"
+        ],
+        "answer_index": 0,
+        "explanation": "Al principio Bruno está sobre el tapete; después se acerca a Nina."
+      },
+      {
+        "question": "What does Nina clean first?",
+        "options": [
+          "Her shoes",
+          "Both brushes",
+          "The mat"
+        ],
+        "answer_index": 2,
+        "explanation": "Nina lleva el tapete afuera y lo limpia antes de limpiar los zapatos."
+      }
+    ],
+    "coins": 15,
+    "xp": 40,
+    "emoji": "🐶",
+    "active": false,
+    "is_active": false,
+    "sort_order": 202611200,
+    "reading_mode": "single"
+  },
+  {
+    "id": "wdy-20261120-a2",
+    "title": "A Seat for the Cello",
+    "cefr": "A2",
+    "category": "Viajes",
+    "difficulty": "Suave",
+    "season": 3,
+    "read_minutes": 1,
+    "blurb": "Un cambio de transporte para proteger un instrumento.",
+    "summary": "Nina y Leo resuelven cómo llevar un violonchelo seco a su clase.",
+    "text": "Nina and her cousin Leo planned to walk to his cello lesson. Before they left, it started raining heavily. Leo's cello was in a tall case, and neither of them wanted it to get wet. They called a taxi. When it arrived, the driver opened the boot, but the case was too tall to fit safely. Nina asked whether they could use the back seat instead. The driver checked the space and agreed. Leo sat beside the case in the back, and Nina sat in the front. The journey took ten minutes. They arrived five minutes before the lesson. Leo carried the dry case inside while Nina paid the driver. Next time, they would check the weather before leaving.",
+    "glossary": [
+      {
+        "term": "cello",
+        "meaning": "violonchelo"
+      },
+      {
+        "term": "case",
+        "meaning": "estuche"
+      },
+      {
+        "term": "boot",
+        "meaning": "maletero"
+      },
+      {
+        "term": "fit",
+        "meaning": "caber"
+      }
+    ],
+    "comprehension_questions": [
+      {
+        "question": "Why did they change their travel plan?",
+        "options": [
+          "The lesson started earlier",
+          "Leo forgot the address",
+          "Heavy rain started"
+        ],
+        "answer_index": 2,
+        "explanation": "Planeaban caminar, pero cambiaron al taxi cuando comenzó a llover fuerte."
+      },
+      {
+        "question": "What prevented them from using the boot?",
+        "options": [
+          "The case was too tall",
+          "The driver kept it locked",
+          "Nina was sitting there"
+        ],
+        "answer_index": 0,
+        "explanation": "El estuche era demasiado alto para colocarlo de forma segura en el maletero."
+      },
+      {
+        "question": "Which statement is correct?",
+        "options": [
+          "They missed five minutes of the lesson",
+          "They arrived early with a dry case",
+          "Nina travelled beside the cello"
+        ],
+        "answer_index": 1,
+        "explanation": "Llegaron cinco minutos antes y el estuche seguía seco; Nina iba delante."
+      }
+    ],
+    "coins": 20,
+    "xp": 60,
+    "emoji": "🎻",
+    "active": false,
+    "is_active": false,
+    "sort_order": 202611201,
+    "reading_mode": "single"
+  },
+  {
+    "id": "wdy-20261120-b1",
+    "title": "The Rehearsal with No Audience",
+    "cefr": "B1",
+    "category": "Cultura",
+    "difficulty": "Media",
+    "season": 3,
+    "read_minutes": 2,
+    "blurb": "Escuchar desde las butacas cambia un ensayo.",
+    "summary": "Una prueba desde distintos asientos revela dificultades de comprensión.",
+    "text": "At the final rehearsal, the actors thought every line sounded clear. They were standing close together on the stage, and the hall was empty. Nina, who was helping with the lights, decided to listen from the back row. During one scene she could hear only half of the conversation. Two actors were speaking while facing a large piece of scenery.\n\nThe director first suggested making the scene faster. Nina explained that speed was not the problem: she could hear the actors when they faced the seats. They invited three volunteers to sit in different parts of the hall and report which lines they missed. The actors then changed where they stood and when they turned around.\n\nAt the next rehearsal, the volunteers understood the whole exchange. Nobody had needed to shout. The actors had been judging the performance from a place the audience would never occupy. Listening from the seats helped them improve the scene without changing its meaning.",
+    "glossary": [
+      {
+        "term": "rehearsal",
+        "meaning": "ensayo"
+      },
+      {
+        "term": "back row",
+        "meaning": "última fila"
+      },
+      {
+        "term": "scenery",
+        "meaning": "decorado"
+      },
+      {
+        "term": "face",
+        "meaning": "mirar hacia"
+      }
+    ],
+    "comprehension_questions": [
+      {
+        "question": "Why had the actors missed the problem?",
+        "options": [
+          "They had listened from the stage",
+          "They had not learned their lines",
+          "They had tested only the lights"
+        ],
+        "answer_index": 0,
+        "explanation": "Se escuchaban desde el escenario, cerca unos de otros, no desde las butacas."
+      },
+      {
+        "question": "Why would making the scene faster be unhelpful?",
+        "options": [
+          "The volunteers preferred long scenes",
+          "The scenery needed more paint",
+          "The actors' direction affected what could be heard"
+        ],
+        "answer_index": 2,
+        "explanation": "La dificultad aparecía cuando hablaban mirando al decorado; aumentar la velocidad no resolvía eso."
+      },
+      {
+        "question": "What is the main lesson?",
+        "options": [
+          "Every play needs a smaller hall",
+          "Testing from the user's position can reveal hidden problems",
+          "Clear speech always requires shouting"
+        ],
+        "answer_index": 1,
+        "explanation": "Probar desde el lugar del público reveló un problema que los actores no percibían."
+      }
+    ],
+    "coins": 25,
+    "xp": 80,
+    "emoji": "🎭",
+    "active": false,
+    "is_active": false,
+    "sort_order": 202611202,
+    "reading_mode": "single"
+  },
+  {
+    "id": "wdy-20261120-b2",
+    "title": "The Workshop That Needed a Waiting List",
+    "cefr": "B2",
+    "category": "Vida diaria",
+    "difficulty": "Media",
+    "season": 3,
+    "read_minutes": 3,
+    "blurb": "Reservar un lugar también implica cumplir una promesa.",
+    "summary": "Un estudio corrige reservas excesivas sin reducir la práctica prometida.",
+    "text": "A pottery studio advertised an introductory workshop with twelve places. By Monday, twenty people had registered because the booking form had failed to close. The owner considered putting two learners at each wheel and describing the arrangement as collaborative. Her instructor was unconvinced. The advertised session promised each participant twenty minutes of individual practice, with supervision while the wheel was moving. Sharing equipment would make that promise impossible within the scheduled time.\n\nNina suggested distinguishing a booking error from a teaching method. Pair work could be valuable in another session, but it should not be introduced merely to conceal a shortage. The studio contacted everyone, explained what had happened and offered the first twelve registrants their original places. The remaining eight could choose a second date or a full refund. Nobody was moved without being asked.\n\nThe second workshop attracted six of those eight people. The owner had hoped to avoid an awkward message; instead, the message helped restore confidence. A full room might have looked successful in a photograph, but it would not have shown how little practice each learner received.",
+    "glossary": [
+      {
+        "term": "pottery",
+        "meaning": "cerámica"
+      },
+      {
+        "term": "wheel",
+        "meaning": "torno"
+      },
+      {
+        "term": "unconvinced",
+        "meaning": "no convencido"
+      },
+      {
+        "term": "refund",
+        "meaning": "reembolso"
+      }
+    ],
+    "comprehension_questions": [
+      {
+        "question": "What made the proposed sharing arrangement unsuitable?",
+        "options": [
+          "Pair work is never educational",
+          "It conflicted with the promised individual practice",
+          "The wheels could not be moved"
+        ],
+        "answer_index": 1,
+        "explanation": "El compromiso era de veinte minutos de práctica individual supervisada; compartir impedía cumplirlo en ese horario."
+      },
+      {
+        "question": "Why does Nina distinguish the error from a teaching method?",
+        "options": [
+          "To allow the studio to charge twice",
+          "To replace supervision with photographs",
+          "To avoid disguising a shortage as an educational choice"
+        ],
+        "answer_index": 2,
+        "explanation": "Una estrategia pedagógica puede ser útil, pero aquí se proponía para ocultar un exceso de reservas."
+      },
+      {
+        "question": "What can be concluded about the final arrangement?",
+        "options": [
+          "It preserved choice while addressing the studio's mistake",
+          "All twenty learners attended on the original date",
+          "Everyone preferred a refund"
+        ],
+        "answer_index": 0,
+        "explanation": "Los ocho restantes pudieron elegir otra fecha o reembolso, sin ser trasladados automáticamente."
+      }
+    ],
+    "coins": 30,
+    "xp": 100,
+    "emoji": "🏺",
+    "active": false,
+    "is_active": false,
+    "sort_order": 202611203,
+    "reading_mode": "single"
+  },
+  {
+    "id": "wdy-20261120-c1",
+    "title": "The Forecast without a Range",
+    "cefr": "C1",
+    "category": "Negocios",
+    "difficulty": "Alta",
+    "season": 3,
+    "read_minutes": 4,
+    "blurb": "Una previsión útil hace visibles sus supuestos.",
+    "summary": "Una coordinadora distingue una previsión condicionada de una garantía de asistencia.",
+    "text": "The organisers of a regional arts exhibition expected roughly twelve thousand visits. Their working model also contained a lower estimate of eight thousand and an upper estimate of sixteen thousand. Much depended on school bookings that had not yet been confirmed and on an outreach campaign for which funding was being requested. When the forecast reached the presentation slides, only the central figure remained.\n\nNo one had invented a number. Nevertheless, Nina, the exhibition's coordinator, argued that the editing had changed what the number appeared to mean. A planning estimate had acquired the visual authority of a commitment. One trustee objected that showing a range would make the organisation seem uncertain of its own appeal. Nina replied that confidence in the programme did not remove uncertainty about transport, bookings or promotion.\n\nShe proposed showing the range alongside the assumptions that would move attendance towards either end. Crucially, the slide would distinguish visits already supported by confirmed bookings from visits dependent on further outreach. This also clarified the funding request: the requested money was intended to influence attendance, rather than merely reward a forecast already treated as inevitable.\n\nThe revised presentation retained the central estimate but made its dependencies visible. The trustees could then discuss which actions were worth supporting. A single number had invited a verdict on optimism; a conditional forecast enabled a decision about what to do.",
+    "glossary": [
+      {
+        "term": "forecast",
+        "meaning": "previsión"
+      },
+      {
+        "term": "outreach",
+        "meaning": "difusión dirigida"
+      },
+      {
+        "term": "trustee",
+        "meaning": "miembro del órgano de gobierno"
+      },
+      {
+        "term": "dependencies",
+        "meaning": "factores de los que depende un resultado"
+      }
+    ],
+    "comprehension_questions": [
+      {
+        "question": "How did the slide alter the forecast?",
+        "options": [
+          "It made an estimate appear more certain than its assumptions allowed",
+          "It replaced the central estimate with the upper limit",
+          "It counted only confirmed school visits"
+        ],
+        "answer_index": 0,
+        "explanation": "Eliminar el rango y las condiciones hizo que una estimación pareciera un compromiso, aunque la cifra no fuera inventada."
+      },
+      {
+        "question": "Why does the funding request matter to the interpretation?",
+        "options": [
+          "The funding guarantees exactly twelve thousand visits",
+          "Funding would pay for actions that could affect attendance",
+          "The organisation had already completed every outreach activity"
+        ],
+        "answer_index": 1,
+        "explanation": "La financiación solicitada permitiría acciones capaces de influir en la asistencia; esta no era un resultado independiente del apoyo."
+      },
+      {
+        "question": "What does the last paragraph imply?",
+        "options": [
+          "A conditional forecast makes numerical estimates unnecessary",
+          "Optimism is incompatible with responsible planning",
+          "Explicit assumptions make the forecast more useful for choosing actions"
+        ],
+        "answer_index": 2,
+        "explanation": "Al mostrar dependencias, la conversación pasa de juzgar optimismo a decidir qué acciones apoyar."
+      }
+    ],
+    "coins": 35,
+    "xp": 120,
+    "emoji": "📊",
+    "active": false,
+    "is_active": false,
+    "sort_order": 202611204,
+    "reading_mode": "single"
+  },
+  {
+    "id": "wdy-20261120-c2",
+    "title": "The Apprentice Who Kept the Offcuts",
+    "cefr": "C2",
+    "category": "Cultura",
+    "difficulty": "Alta",
+    "season": 3,
+    "read_minutes": 5,
+    "blurb": "Los restos de una obra también cuentan la historia de su selección.",
+    "summary": "Una artesana y un curador examinan cómo se construye la evidencia de un proceso creativo.",
+    "text": "During the making of her first table, an apprentice kept a box of wooden offcuts. Some bore pencil marks; others preserved the curve of a joint she had abandoned. Years later, a gallery invited her, now an established furniture maker, to display the box beside the table. Its proposed caption described the contents as a recovered record of the work's emergence.\n\nShe hesitated. The pieces had certainly come from that commission, but the box was no untouched deposit of experience. She had discarded the dullest fragments, rescued one from the stove and arranged the survivors whenever she needed to remind herself that the struggle had been worthwhile. A visitor might reasonably read the display as evidence of a linear progression towards the finished object. In her memory, however, several promising decisions had led nowhere; some apparently careless ones had proved decisive.\n\nThe curator suggested adding dates to restore the sequence. Yet chronology alone would not explain why particular fragments had survived. Nor would it account for the later act of arranging them, through which an uncertain apprenticeship had gradually become a story she could tell with assurance.\n\nThey eventually exhibited the box with two photographs: one of its contents as first brought to the gallery, and another of her final arrangement. The caption acknowledged both the fragments' origin and their subsequent selection. This did not render the display inauthentic. It located its authenticity in a more demanding place: the offcuts testified to making a table, while their arrangement testified to making that labour intelligible afterwards. The evidence had a history of its own.",
+    "glossary": [
+      {
+        "term": "offcuts",
+        "meaning": "recortes sobrantes de madera"
+      },
+      {
+        "term": "untouched deposit",
+        "meaning": "conjunto conservado sin intervención"
+      },
+      {
+        "term": "linear progression",
+        "meaning": "progresión lineal"
+      },
+      {
+        "term": "testified to",
+        "meaning": "daba testimonio de"
+      }
+    ],
+    "comprehension_questions": [
+      {
+        "question": "What chiefly troubles the maker about the proposed caption?",
+        "options": [
+          "It wrongly attributes the table to the curator",
+          "It implies that a selected collection is an unmediated record",
+          "It denies that the fragments came from the commission"
+        ],
+        "answer_index": 1,
+        "explanation": "Los fragmentos sí proceden de la obra, pero su selección y organización impiden tratarlos como un registro intacto."
+      },
+      {
+        "question": "Why would dates alone be insufficient?",
+        "options": [
+          "The fragments have no relationship to the table",
+          "Chronology would necessarily falsify every recollection",
+          "They would not explain the selection and later arrangement"
+        ],
+        "answer_index": 2,
+        "explanation": "Ordenar por fecha no explica qué se conservó ni cómo fue reorganizado después para construir un relato."
+      },
+      {
+        "question": "What role do the two photographs play?",
+        "options": [
+          "They expose the display's own construction without cancelling its evidential value",
+          "They prove that every decision followed a predetermined plan",
+          "They establish that the original box contained every offcut"
+        ],
+        "answer_index": 0,
+        "explanation": "Las fotos hacen visible la intervención posterior: el conjunto sigue siendo evidencia, pero también tiene una historia de selección."
+      }
+    ],
+    "coins": 40,
+    "xp": 140,
+    "emoji": "🪵",
+    "active": false,
+    "is_active": false,
+    "sort_order": 202611205,
+    "reading_mode": "single"
+  }
+]
