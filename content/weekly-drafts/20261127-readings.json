@@ -1,0 +1,408 @@
+[
+  {
+    "id": "wdy-20261127-a1",
+    "title": "The Water Line",
+    "cefr": "A1",
+    "category": "Vida diaria",
+    "difficulty": "Suave",
+    "season": 3,
+    "read_minutes": 1,
+    "blurb": "Una botella y una línea azul.",
+    "summary": "Nina y Bruno descansan y toman agua en el parque.",
+    "text": "Nina has a clear bottle. There is a blue line on it. She puts water in the bottle. The water is at the line. She puts the bottle in her bag. At the park, she drinks some water. Now the water is below the line. Bruno has his own bowl. Nina puts water in his bowl too. They sit under a tree. Before they go home, Nina closes her bottle and puts it back in her bag.",
+    "glossary": [
+      {
+        "term": "line",
+        "meaning": "línea"
+      },
+      {
+        "term": "below",
+        "meaning": "debajo de"
+      },
+      {
+        "term": "bowl",
+        "meaning": "tazón"
+      }
+    ],
+    "comprehension_questions": [
+      {
+        "question": "Where is the water at first?",
+        "options": [
+          "Below the line",
+          "At the blue line",
+          "Above the line"
+        ],
+        "answer_index": 1,
+        "explanation": "Al llenar la botella, el agua llega a la línea azul."
+      },
+      {
+        "question": "What does Bruno drink from?",
+        "options": [
+          "His own bowl",
+          "Nina's bottle",
+          "A cup in the bag"
+        ],
+        "answer_index": 0,
+        "explanation": "Bruno tiene su propio tazón."
+      },
+      {
+        "question": "What does Nina do before going home?",
+        "options": [
+          "She leaves the bottle under the tree",
+          "She draws a new line",
+          "She closes the bottle"
+        ],
+        "answer_index": 2,
+        "explanation": "Antes de irse cierra la botella y la guarda."
+      }
+    ],
+    "coins": 15,
+    "xp": 40,
+    "emoji": "💧",
+    "active": false,
+    "is_active": false,
+    "sort_order": 202611270,
+    "reading_mode": "single"
+  },
+  {
+    "id": "wdy-20261127-a2",
+    "title": "The Curtain in the Afternoon",
+    "cefr": "A2",
+    "category": "Vida diaria",
+    "difficulty": "Suave",
+    "season": 3,
+    "read_minutes": 2,
+    "blurb": "Una cortina cambia la luz de una habitación.",
+    "summary": "Nina encuentra una solución sencilla para leer con comodidad.",
+    "text": "Nina bought a yellow curtain for her living room. In the shop, the colour looked warm and bright. At home, she hung it beside the window. The next afternoon, sunlight came through the cloth and made the white wall look yellow. Nina liked the colour, but she could not read comfortably in her usual chair because the light was too strong. She moved the chair away from the window and tried again. This time she could read, and the room still looked cheerful. She did not need to return the curtain. On the receipt, she wrote the size of the window. She wanted to remember it when she bought a second curtain for the other room.",
+    "glossary": [
+      {
+        "term": "curtain",
+        "meaning": "cortina"
+      },
+      {
+        "term": "cloth",
+        "meaning": "tela"
+      },
+      {
+        "term": "receipt",
+        "meaning": "recibo"
+      }
+    ],
+    "comprehension_questions": [
+      {
+        "question": "What changed the appearance of the wall?",
+        "options": [
+          "New paint",
+          "Light through the curtain",
+          "A yellow lamp"
+        ],
+        "answer_index": 1,
+        "explanation": "La luz atravesó la tela amarilla y cambió el aspecto de la pared blanca."
+      },
+      {
+        "question": "How did Nina solve her reading problem?",
+        "options": [
+          "She returned the curtain",
+          "She changed the window",
+          "She moved her chair"
+        ],
+        "answer_index": 2,
+        "explanation": "Movió la silla para evitar la luz demasiado intensa."
+      },
+      {
+        "question": "Why did she write on the receipt?",
+        "options": [
+          "To keep the window measurements",
+          "To complain about the shop",
+          "To record the price of a chair"
+        ],
+        "answer_index": 0,
+        "explanation": "Anotó las medidas para recordarlas al comprar otra cortina."
+      }
+    ],
+    "coins": 20,
+    "xp": 60,
+    "emoji": "🪟",
+    "active": false,
+    "is_active": false,
+    "sort_order": 202611271,
+    "reading_mode": "single"
+  },
+  {
+    "id": "wdy-20261127-b1",
+    "title": "The Tunnel under the Compost",
+    "cefr": "B1",
+    "category": "Historias",
+    "difficulty": "Media",
+    "season": 3,
+    "read_minutes": 3,
+    "blurb": "Observar un jardín requiere revisar el método.",
+    "summary": "Un grupo escolar aprende a interpretar un registro incompleto.",
+    "text": "When a school garden opened its compost bin, the children found a narrow tunnel near the bottom. One group wanted to cover it immediately. Another wanted to put food beside it to see what would appear. Their teacher suggested observing without touching or feeding anything first.\n\nNina helped them place a camera outside the bin, pointing towards the opening. The first night produced no useful pictures because a leaf moved in front of the lens. They moved the camera slightly and secured the leaf away from it. The following morning, the recording showed a small animal entering the tunnel after dark.\n\nThe teacher sent the recording to the garden coordinator, who arranged advice about managing the compost and keeping the area suitable for school activities. The children had not needed to catch the animal to learn something useful. They also discovered that an empty recording did not necessarily mean nothing had happened. Sometimes it meant their way of looking needed an adjustment.",
+    "glossary": [
+      {
+        "term": "compost bin",
+        "meaning": "recipiente de compost"
+      },
+      {
+        "term": "lens",
+        "meaning": "lente"
+      },
+      {
+        "term": "after dark",
+        "meaning": "después de anochecer"
+      },
+      {
+        "term": "adjustment",
+        "meaning": "ajuste"
+      }
+    ],
+    "comprehension_questions": [
+      {
+        "question": "Why was the first recording unhelpful?",
+        "options": [
+          "The tunnel was already covered",
+          "A leaf blocked the camera",
+          "The camera was inside a classroom"
+        ],
+        "answer_index": 1,
+        "explanation": "Una hoja se movió delante del lente; el resultado no demostraba ausencia de actividad."
+      },
+      {
+        "question": "What did they do with the useful recording?",
+        "options": [
+          "They used it to choose food for the animal",
+          "They posted the animal's exact location",
+          "They shared it with the coordinator"
+        ],
+        "answer_index": 2,
+        "explanation": "La docente envió la grabación a la persona encargada para organizar asesoramiento."
+      },
+      {
+        "question": "What did they learn about observation?",
+        "options": [
+          "The method can explain missing evidence",
+          "Catching an animal is always necessary",
+          "One empty recording proves a place is unused"
+        ],
+        "answer_index": 0,
+        "explanation": "La falta de imágenes podía deberse al método de observación y no a falta de actividad."
+      }
+    ],
+    "coins": 25,
+    "xp": 80,
+    "emoji": "🌱",
+    "active": false,
+    "is_active": false,
+    "sort_order": 202611272,
+    "reading_mode": "single"
+  },
+  {
+    "id": "wdy-20261127-b2",
+    "title": "The Subtitle That Arrived Too Soon",
+    "cefr": "B2",
+    "category": "Tecnología",
+    "difficulty": "Media",
+    "season": 3,
+    "read_minutes": 4,
+    "blurb": "El momento de un subtítulo cambia lo que entendemos.",
+    "summary": "Un club de cine ajusta subtítulos según la atención del público.",
+    "text": "A film club asked volunteers to subtitle a short comedy. The dialogue was easy to understand, but Nina noticed that one translated line appeared several seconds before the character spoke. It revealed the answer to a question that the scene deliberately left hanging. The translation was accurate; the timing changed the joke.\n\nThe editor proposed displaying longer blocks of text so viewers would have more time to read. That could help with reading speed, yet it might reveal even more of the exchange before the actors delivered it. Nina suggested splitting the line at a natural pause, then testing the sequence with viewers who had not seen the film.\n\nDuring the test, two viewers missed a short line while looking at an important visual detail. The volunteers adjusted both its duration and its position relative to the action. They kept the meaning, but treated attention as a limited resource rather than assuming that viewers could watch and read everything simultaneously.\n\nThe finished subtitles were not simply a transcript in another language. Their success depended on when information became available, and on what else the audience was being asked to notice.",
+    "glossary": [
+      {
+        "term": "subtitle",
+        "meaning": "subtítulo"
+      },
+      {
+        "term": "leave hanging",
+        "meaning": "dejar sin resolver momentáneamente"
+      },
+      {
+        "term": "transcript",
+        "meaning": "transcripción"
+      },
+      {
+        "term": "simultaneously",
+        "meaning": "simultáneamente"
+      }
+    ],
+    "comprehension_questions": [
+      {
+        "question": "What spoiled the joke initially?",
+        "options": [
+          "An incorrect translation of the answer",
+          "A subtitle disclosed information too early",
+          "A character spoke too quietly"
+        ],
+        "answer_index": 1,
+        "explanation": "El contenido era correcto, pero revelaba la respuesta antes del momento previsto."
+      },
+      {
+        "question": "Why might longer blocks be a poor solution?",
+        "options": [
+          "They could disclose more dialogue prematurely",
+          "They always make translation inaccurate",
+          "They prevent any reading time adjustment"
+        ],
+        "answer_index": 0,
+        "explanation": "Dar más tiempo con bloques largos podía anticipar todavía más información."
+      },
+      {
+        "question": "What does the viewer test demonstrate?",
+        "options": [
+          "Only dialogue matters in subtitling",
+          "Experienced editors never need feedback",
+          "Timing must account for competing visual attention"
+        ],
+        "answer_index": 2,
+        "explanation": "Los espectadores también necesitaban mirar una acción importante; lectura e imagen compiten por atención."
+      }
+    ],
+    "coins": 30,
+    "xp": 100,
+    "emoji": "🎬",
+    "active": false,
+    "is_active": false,
+    "sort_order": 202611273,
+    "reading_mode": "single"
+  },
+  {
+    "id": "wdy-20261127-c1",
+    "title": "The Reference Sample in the Freezer",
+    "cefr": "C1",
+    "category": "Trabajo",
+    "difficulty": "Alta",
+    "season": 3,
+    "read_minutes": 5,
+    "blurb": "Una referencia aprobada también puede cambiar.",
+    "summary": "Un laboratorio distingue continuidad documental de estabilidad material.",
+    "text": "A small food laboratory was comparing the colour of new batches against a reference sample kept in a freezer. The sample had served for months, and its label carried an impressive sequence of approval signatures. When a technician proposed replacing it, colleagues worried that a new reference would disrupt comparisons with earlier results.\n\nNina, reviewing the laboratory's documentation workflow, asked what evidence showed that the reference itself had remained stable. The records demonstrated that staff had checked new batches against it; they did not demonstrate that freezing had preserved its original colour indefinitely. Repeated agreement with the same comparator could therefore conceal a shared drift.\n\nThe laboratory did not discard its historical records. Instead, its technical lead arranged an independent check using the laboratory's established procedures and documented the link between the old reference and its replacement. Earlier observations remained intelligible, while future ones no longer relied solely on the assumption that an approved object could not change.\n\nThe awkward point was institutional as much as technical. Each signature certified an action performed at a particular time, yet the accumulated signatures had come to look like a permanent property of the sample. Continuity required preserving the relationship between measurements, not preserving one physical object at any cost. What appeared to threaten comparability was also an opportunity to establish what comparability had actually rested on.",
+    "glossary": [
+      {
+        "term": "reference sample",
+        "meaning": "muestra de referencia"
+      },
+      {
+        "term": "comparator",
+        "meaning": "elemento de comparación"
+      },
+      {
+        "term": "drift",
+        "meaning": "desviación gradual"
+      },
+      {
+        "term": "comparability",
+        "meaning": "comparabilidad"
+      }
+    ],
+    "comprehension_questions": [
+      {
+        "question": "What gap did Nina identify?",
+        "options": [
+          "No one had compared the new batches",
+          "Signatures had been deliberately forged",
+          "Checks against the reference did not establish the reference's stability"
+        ],
+        "answer_index": 2,
+        "explanation": "Usar repetidamente la misma referencia no demuestra que ella misma se conserve estable."
+      },
+      {
+        "question": "Why document the link between references?",
+        "options": [
+          "To maintain interpretable continuity across the change",
+          "To erase the earlier observations",
+          "To avoid any independent checking"
+        ],
+        "answer_index": 0,
+        "explanation": "Relacionar ambas referencias permite interpretar resultados anteriores y futuros sin borrar la historia."
+      },
+      {
+        "question": "What is the institutional misconception?",
+        "options": [
+          "Approval can come to be treated as an enduring material property",
+          "Every signature guarantees a separate measurement",
+          "Historical documentation must be discarded when an object changes"
+        ],
+        "answer_index": 0,
+        "explanation": "Las firmas acreditaban acciones en momentos concretos, pero se interpretaban como una cualidad permanente de la muestra."
+      }
+    ],
+    "coins": 35,
+    "xp": 120,
+    "emoji": "🧊",
+    "active": false,
+    "is_active": false,
+    "sort_order": 202611274,
+    "reading_mode": "single"
+  },
+  {
+    "id": "wdy-20261127-c2",
+    "title": "The Joke No One Would Translate Twice",
+    "cefr": "C2",
+    "category": "Cultura",
+    "difficulty": "Alta",
+    "season": 3,
+    "read_minutes": 6,
+    "blurb": "Un silencio elegido transforma una historia compartida.",
+    "summary": "Dos versiones de una broma revelan distintas relaciones con el público.",
+    "text": "An oral-history archive held two recordings of a family joke, told decades apart. In the earlier version, the teller imitated a neighbour's elaborate manner of speaking. In the later one, her daughter retained the same incident but omitted the imitation. Asked to translate both recordings for an exhibition, a translator initially treated the difference as a loss: the daughter's account seemed to preserve the facts while flattening the performance.\n\nDuring a consultation, however, the daughter explained that the imitation had become uncomfortable after the neighbour's grandchildren joined the family's social circle. She still found the incident funny; she no longer wished to invite laughter at a voice. What the translator had construed as diminished expressiveness was also an adjustment in whom the telling positioned as a permissible object of amusement.\n\nA literal restoration of the missing imitation would thus have supplied something the later teller had chosen to withhold. Conversely, presenting only the daughter's explanation risked making the earlier performance stand for a settled moral position that its teller had never been asked to articulate. The archive possessed two acts of telling, not a controlled experiment in changing attitudes.\n\nThe exhibition retained both recordings and commissioned separate translations, accompanied by a short account of the consultation. Neither version was promoted as the authentic joke from which the other had deviated. Their relationship lay partly in what persisted and partly in what had become unsayable in a particular company. Translation here required fidelity not only to the words that travelled, but to the social work performed by their conspicuous absence.",
+    "glossary": [
+      {
+        "term": "construed",
+        "meaning": "interpretado"
+      },
+      {
+        "term": "withhold",
+        "meaning": "omitir deliberadamente"
+      },
+      {
+        "term": "settled",
+        "meaning": "definido o establecido"
+      },
+      {
+        "term": "conspicuous absence",
+        "meaning": "ausencia que llama la atención"
+      }
+    ],
+    "comprehension_questions": [
+      {
+        "question": "What revises the translator's initial interpretation?",
+        "options": [
+          "The daughter reveals that the incident never happened",
+          "The omission reflects a changed social relationship",
+          "The archive proves the imitation was mistranscribed"
+        ],
+        "answer_index": 1,
+        "explanation": "La hija relaciona la omisión con nuevas relaciones sociales, no con una pérdida de capacidad expresiva."
+      },
+      {
+        "question": "Why avoid treating the recordings as a controlled experiment?",
+        "options": [
+          "Their tellers were responding to distinct occasions and relationships",
+          "The archive has no recordings",
+          "Translation makes all comparison meaningless"
+        ],
+        "answer_index": 0,
+        "explanation": "Son actos situados de narración; no aíslan variables ni prueban una evolución moral única."
+      },
+      {
+        "question": "What does fidelity require in the final paragraph?",
+        "options": [
+          "Restoring every omitted performance feature",
+          "Selecting the earlier version as the original",
+          "Recognising the function of deliberate omission"
+        ],
+        "answer_index": 2,
+        "explanation": "La fidelidad incluye entender qué hace socialmente el silencio elegido, además de traducir lo expresado."
+      }
+    ],
+    "coins": 40,
+    "xp": 140,
+    "emoji": "🎙️",
+    "active": false,
+    "is_active": false,
+    "sort_order": 202611275,
+    "reading_mode": "single"
+  }
+]
