@@ -1,0 +1,237 @@
+[
+  {
+    "worldId": "education",
+    "vocab": [
+      {
+        "en": "reversible",
+        "es": "reversible"
+      },
+      {
+        "en": "allocation",
+        "es": "asignación"
+      },
+      {
+        "en": "trial period",
+        "es": "periodo de prueba"
+      },
+      {
+        "en": "opportunity cost",
+        "es": "costo de oportunidad"
+      }
+    ],
+    "story": {
+      "id": "bruno-20261127-classroom-trial-c1",
+      "title": "The Classroom That Could Change Back",
+      "code": "ROOM→TRIAL",
+      "emoji": "🏫",
+      "cefr": "C1",
+      "release": "2026-11-27",
+      "sub": "C1 · Compara usos de un espacio, distingue respaldo de participación y negocia una prueba reversible.",
+      "reward": {
+        "xp": 175,
+        "coins": 65
+      },
+      "nodes": [
+        {
+          "t": "scene",
+          "img": "🐶",
+          "title": "One room, several claims",
+          "en": "Nina joins a planning meeting at an adult learning centre. A rarely used classroom could become a permanent recording studio. Bruno, allowed at the meeting, settles beside a stack of folding chairs. Evening conversation groups have also asked to use the room, but their members cannot attend this morning's meeting.",
+          "es": "Nina participa en una reunión de un centro de aprendizaje para adultos. Un aula poco utilizada podría convertirse en estudio de grabación permanente. Bruno se acomoda junto a unas sillas plegables. Los grupos de conversación nocturnos también han solicitado el espacio, pero no pueden asistir a esta reunión de la mañana."
+        },
+        {
+          "t": "decision",
+          "speaker": "Planning team",
+          "line": "Everyone here supports the studio. Can we record that the centre's learners agree?",
+          "opts": [
+            {
+              "x": "Yes; absence gives the same information as agreement.",
+              "ok": false,
+              "fb": "La ausencia no demuestra acuerdo."
+            },
+            {
+              "x": "We can record support among those present, while seeking the evening groups' views.",
+              "ok": true,
+              "fb": "Limita la conclusión a quienes participaron sin atribuir opiniones a los ausentes."
+            },
+            {
+              "x": "No; everyone absent must oppose the studio.",
+              "ok": false,
+              "fb": "Tampoco puede deducirse oposición de la ausencia."
+            }
+          ]
+        },
+        {
+          "t": "fill",
+          "q": "The proposal has support among attendees; ___, wider agreement has not been established.",
+          "a": "nevertheless",
+          "opts": [
+            "therefore",
+            "nevertheless",
+            "likewise"
+          ],
+          "fb": "“Nevertheless” introduce el contraste entre respaldo observado y consenso general no demostrado."
+        },
+        {
+          "t": "build",
+          "answer": "Absence should not be construed as consent",
+          "words": [
+            "consent",
+            "as",
+            "construed",
+            "be",
+            "not",
+            "should",
+            "Absence"
+          ],
+          "es": "La ausencia no debe interpretarse como consentimiento"
+        },
+        {
+          "t": "scene",
+          "img": "🐶",
+          "title": "An apparently cheap conversion",
+          "en": "The donated recording equipment would cost nothing. However, permanent soundproofing would fix the room's layout and prevent conversation groups from using it. Nina asks the team to consider what would be forgone, rather than comparing only purchase prices. Bruno lifts his head when someone demonstrates the portable microphone.",
+          "es": "El equipo donado sería gratuito. Sin embargo, el aislamiento permanente fijaría la distribución e impediría el uso por los grupos de conversación. Nina pide considerar a qué se renunciaría, además del precio de compra. Bruno levanta la cabeza cuando prueban el micrófono portátil."
+        },
+        {
+          "t": "decision",
+          "speaker": "Planning team",
+          "line": "Since the equipment is free, the conversion has no cost.",
+          "opts": [
+            {
+              "x": "The donated equipment also guarantees demand.",
+              "ok": false,
+              "fb": "Una donación no demuestra cuántas personas lo utilizarán."
+            },
+            {
+              "x": "The only relevant cost is the microphone's price.",
+              "ok": false,
+              "fb": "El precio no recoge las oportunidades que se pierden."
+            },
+            {
+              "x": "Forgoing other uses is a cost even without a purchase.",
+              "ok": true,
+              "fb": "Identifica el costo de oportunidad del uso exclusivo."
+            }
+          ]
+        },
+        {
+          "t": "fill",
+          "q": "The value of the next-best use forgone is an opportunity ___.",
+          "a": "cost",
+          "opts": [
+            "grant",
+            "cost",
+            "receipt"
+          ],
+          "fb": "“Opportunity cost” se refiere al valor de la mejor alternativa a la que se renuncia."
+        },
+        {
+          "t": "decision",
+          "speaker": "Planning team",
+          "line": "How could we learn about demand without committing the room permanently?",
+          "opts": [
+            {
+              "x": "Run a six-week trial with portable equipment and shared hours.",
+              "ok": true,
+              "fb": "Propone obtener evidencia con una intervención reversible."
+            },
+            {
+              "x": "Install fixed partitions before asking users.",
+              "ok": false,
+              "fb": "La obra fija elimina la reversibilidad antes de aprender."
+            },
+            {
+              "x": "Assume requests will disappear after conversion.",
+              "ok": false,
+              "fb": "No hay evidencia de que la demanda alternativa desaparezca."
+            }
+          ]
+        },
+        {
+          "t": "scene",
+          "img": "🐶",
+          "title": "Agreeing what the trial will answer",
+          "en": "The evening groups respond in writing. They welcome recording practice but need two evenings a week. The team drafts a shared timetable, with portable equipment stored after each session. Nina proposes tracking completed sessions, unmet requests and time spent setting up. Bruno's tail briefly knocks an unused cable; the technician stores it before the room reopens.",
+          "es": "Los grupos nocturnos responden por escrito. Apoyan practicar grabación, pero necesitan dos noches por semana. El equipo prepara un horario compartido y guardará el equipo portátil tras cada sesión. Nina propone registrar sesiones realizadas, solicitudes no atendidas y tiempo de montaje. La cola de Bruno roza un cable sin uso; el técnico lo guarda antes de reabrir el aula."
+        },
+        {
+          "t": "decision",
+          "speaker": "Planning team",
+          "line": "Should the trial be judged only by recording bookings?",
+          "opts": [
+            {
+              "x": "Yes; bookings capture every consequence of the change.",
+              "ok": false,
+              "fb": "Las reservas no muestran a quién deja fuera el reparto ni el trabajo adicional."
+            },
+            {
+              "x": "No; include unmet requests and setup demands as well.",
+              "ok": true,
+              "fb": "Combina uso observado, demanda excluida y esfuerzo operativo."
+            },
+            {
+              "x": "No; avoid agreeing any measures until it ends.",
+              "ok": false,
+              "fb": "Acordar criterios después facilita elegir solo los resultados convenientes."
+            }
+          ]
+        },
+        {
+          "t": "build",
+          "answer": "The arrangement remains provisional pending the review",
+          "words": [
+            "review",
+            "the",
+            "pending",
+            "provisional",
+            "remains",
+            "arrangement",
+            "The"
+          ],
+          "es": "El acuerdo sigue siendo provisional hasta la revisión"
+        },
+        {
+          "t": "fill",
+          "q": "A reversible trial allows the team to learn without ___ the final allocation.",
+          "a": "predetermining",
+          "opts": [
+            "predetermining",
+            "predetermined",
+            "predetermine"
+          ],
+          "fb": "Tras “without” se usa -ing. La prueba no debe decidir de antemano el reparto definitivo."
+        },
+        {
+          "t": "decision",
+          "speaker": "Planning team",
+          "line": "The draft says the studio will be permanent after six weeks unless someone complains. What should change?",
+          "opts": [
+            {
+              "x": "Silence should trigger immediate construction.",
+              "ok": false,
+              "fb": "El silencio no sustituye la evaluación acordada."
+            },
+            {
+              "x": "The review should be cancelled if bookings are high.",
+              "ok": false,
+              "fb": "Una sola cifra no recoge los efectos sobre los demás usos."
+            },
+            {
+              "x": "The team should explicitly review the agreed measures and consult both groups.",
+              "ok": true,
+              "fb": "Mantiene una decisión explícita basada en los criterios y la participación de ambos grupos."
+            }
+          ]
+        },
+        {
+          "t": "scene",
+          "img": "🐶",
+          "title": "A decision postponed for a reason",
+          "en": "The centre approves a six-week trial, reserves two evenings for conversation groups and schedules a review with representatives of both uses. No permanent conversion is authorised. Nina records the decision as a way to learn, not as a studio launch in disguise. Bruno leaves with the folding chairs still available for the next class.",
+          "es": "El centro aprueba una prueba de seis semanas, reserva dos noches para conversación y programa una revisión con representantes de ambos usos. No autoriza obras permanentes. Nina registra una decisión para aprender, no un lanzamiento encubierto del estudio. Bruno se marcha mientras las sillas siguen disponibles para la siguiente clase."
+        }
+      ]
+    }
+  }
+]
