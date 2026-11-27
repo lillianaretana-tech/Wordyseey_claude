@@ -1,0 +1,28 @@
+{
+  "date": "2026-11-27",
+  "status": "complete_files_pending_catalogue_validation_and_database_insert",
+  "readings": 6,
+  "reading_questions": 18,
+  "adventure_level": "C1",
+  "adventure_scenes": 4,
+  "adventure_exercises": 10,
+  "previous_adventure": "20261120 B2 Hotel",
+  "database_inserted": 0,
+  "published": false,
+  "validation": {
+    "root_engine_checked": true,
+    "world_exists": true,
+    "new_adventure_id_absent": true,
+    "prior_repository_jsons_reviewed": true,
+    "open_pull_requests": 0,
+    "answer_indexes_valid": true,
+    "decisions_one_correct": true,
+    "fill_and_build_answers_valid": true,
+    "cefr": "editorial assessment; not externally certified",
+    "originality": "Reviewed against available repository batches; full current database catalogue comparison blocked",
+    "schema": "Prior batch column structure reused; current database constraints not reverified",
+    "database_error": "MCP permission denied on both catalogue and date-ID queries",
+    "index_modified": false
+  },
+  "next_step": "Restore Supabase access, compare the full catalogue and current constraints, verify date IDs, and insert only missing readings with both activation flags false. Publication requires Lilly's explicit approval for this batch."
+}
